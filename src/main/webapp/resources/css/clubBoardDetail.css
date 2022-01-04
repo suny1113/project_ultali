@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/* 	전체틀 */
+#main{
+margin-left: 200px; 
+}
+
+/* 	모임 이미지 */
+#board_detail_img{
+	margin-top: 20px;
+	height: 300px;
+	width: 400px;
+	
+}
+
+/* 	모임 상세설명 틀*/
+#board_detail_description{
+	height: 300px;
+	width: 400px;
+/* 		background: blue; */
+	float: left;
+	border:1px solid
+	
+	
+}
+
+
+/* 	모임 상세설명 글씨*/
+#detail_description{
+	height: 50px;
+	width: 350px;
+}
+
+/* 	게시글 제목, 모집분야, 활동지역 등등 */
+#board_detail_list{
+	position: absolute;
+	display: inline-block;
+/* 		background: green; */
+	width: 500px;
+	height: 800px;
+	float: right;
+	top: 2px;
+	left: 650px;
+	
+}
+
+.text_padding_interval{
+	padding-right: 150px;
+}
+
+table{
+border-spacing: 0 20px;
+}
+
+.top_button{
+	background-color: #5E5E5E;
+	color: white;
+	margin-right: 70px;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+
+#wish{
+	float: left;
+}
+
+.middle_button, .bottom_button{
+	background-color: #E0E0E0;
+	color: black;
+	margin-right: 70px;
+	padding: 5px;
+}
+
+#middle, #bottom{
+	margin-top: 70px;
+	margin-left: 20px;
+}
+
+.top_button:hover, .middle_button:hover, .bottom_button:hover {
+	cursor: pointer;
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<context:component-scan base-package="kr.co.jhta.ultali.*" />
+	
+	<mvc:annotation-driven />
+	
+	<mvc:default-servlet-handler/>
+	
+	<mvc:view-resolvers> 
+		<mvc:jsp prefix="/views/" suffix=".jsp"/>
+	</mvc:view-resolvers>
+	
+	
+	
+	<!-- css, img, js 파일 경로 설정 -->
+	 
+	<!-- myBatis 설정 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@database-1.cuvv0emxbtmz.ap-northeast-2.rds.amazonaws.com:1521:orcl" />
+		<property name="username" value="scott" />
+		<property name="password" value="tigertiger1" />
+	</bean>
+	
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="/WEB-INF/sqlMapConfig.xml" />
+		<property name="mapperLocations" value="/WEB-INF/mapper/*.xml" />
+		
+	</bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>
+	
+	
+	<bean id="multipartResolver" 
+	 class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760000"></property>
+		<property name="uploadTempDir" value="/WEB-INF/"></property>
+	</bean>
+</beans>

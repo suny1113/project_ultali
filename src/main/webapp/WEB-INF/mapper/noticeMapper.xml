@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.jhta.ultali">
+	<!-- 실행하면 resultType이 필요하다 -->
+
+	<select id="selectAll" resultType="ndto">
+		SELECT n_no , n_title , mem_id , n_regdate , n_hits , n_detail
+		FROM (SELECT ROWNUM rn , n_no , n_title , mem_id , n_regdate , n_hits , n_detail
+			FROM (SELECT n_no , n_title , mem_id , to_char(n_regdate,'YYYY/MM/DD') n_regdate , n_hits , n_detail
+				FROM notice
+				ORDER BY n_no desc )
+		WHERE ROWNUM &lt; = #{endNo})
+		WHERE RN &gt;=#{startNo}
+	</select>
+
+	<insert id="noticeWrite" parameterType="ndto">
+
+		INSERT INTO notice
+		values (n_no_seq.nextval, #{n_title} , #{mem_id} , sysdate , #{n_hits} , #{n_detail})
+
+	</insert>
+
+	<select id="selectOne" parameterType="int" resultType="ndto">
+		SELECT n_no , n_title , mem_id , n_regdate , n_hits , n_detail
+		FROM notice
+		WHERE n_no = #{n_no}
+	</select>
+
+	<update id="updateOne" parameterType="ndto">
+		UPDATE notice
+		SET mem_id = #{mem_id} , n_title = #{n_title} , n_detail = #{n_detail}
+		WHERE n_no = #{n_no}
+	</update>
+
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM notice
+		WHERE n_no = #{n_no}
+	</delete>
+
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) total
+		FROM notice
+	</select>
+
+	<update id="raiseHits" parameterType="int">
+		UPDATE notice
+		SET hits = hits+1
+		WHERE n_no = #{n_no}
+	</update>
+
+</mapper>

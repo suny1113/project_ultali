@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.6.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	<property name="url" value="jdbc:oracle:thin:@database-1.cuvv0emxbtmz.ap-northeast-2.rds.amazonaws.com:1521:orcl" />
+	<property name="username" value="scott" />
+	<property name="password" value="tigertiger1" />
+</bean>
+
+<bean id="customPasswordEncoder" class="kr.co.jhta.ultali.security.CustomPasswordEncoder"></bean>
+
+
+<security:http auto-config="true" use-expressions="true">
+	<!-- ROLE_USER 권한이 있는 사람만 이 url로 접근 가능 -->
+<!-- 	<security:intercept-url pattern="/login/find" access="hasRole('ROLE_USER')"/>
+ -->	
+	<security:csrf disabled="true"/>
+
+	<!--  이경로로 매핑받아줘서 로그인 로직 처리하기 -->
+	<security:form-login login-page="/login/login" />
+</security:http>
+
+<security:authentication-manager>
+	<security:authentication-provider>
+		<security:jdbc-user-service data-source-ref="dataSource"
+		users-by-username-query="SELECT mem_id username, mem_pw password, enabled FROM member WHERE mem_id = ? "
+		authorities-by-username-query="SELECT mem_id username , auth authority FROM member_auth WHERE mem_id = ? "/>
+		<security:password-encoder ref="customPasswordEncoder"/>
+	</security:authentication-provider>
+</security:authentication-manager>
+
+
+</beans>
