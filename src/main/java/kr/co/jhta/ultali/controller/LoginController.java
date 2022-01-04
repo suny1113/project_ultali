@@ -22,6 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+	
+//	pull request 테스트용으로 수정함
 
 	@Autowired
 	LoginService service;
