@@ -24,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginController {
 	
 //	pull request 테스트용으로 수정함
+	
+	// pull request 두번째 테스트
 
 	@Autowired
 	LoginService service;
