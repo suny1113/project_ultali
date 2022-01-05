@@ -10,150 +10,154 @@
 </head>
 <body>
 	<div class="container">
-	
 		<div class="top_club_list">
-			<ul>
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">인기 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 1000</p>
-					</div>
-				</li>
-			</ul>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>
+				</div>		
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">인기 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 1000</p>
+				</div>
+			</div>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>
+				</div>		
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">인기 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 1000</p>
+				</div>
+			</div>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>
+				</div>		
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">인기 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 1000</p>
+				</div>
+			</div>
 		</div>
 	
 		<div class="club_list">
-			<ul>
-		<%-- <c:forEach var="dto" items="${soccer_club_list}"> --%>
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</li>
-		<%-- </c:forEach>  --%>
-		
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">인천 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</li>
-				
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">경기 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</li>
-				
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">대구 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</li>
-				
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">부산 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</li>
-				
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">양평 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</li>
-				
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">속초 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</li>
-				
-				<li class="club">
-					<div class="img">
-						<a href="clubBoard?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>
-					<div class="text">
-						<h2><a href="clubBoard?c_no=${dto.c_no}">창원 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</li>
-			</ul>
+	<%-- <c:forEach var="dto" items="${soccer_club_list}"> --%>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>	
+				</div>
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 10</p>
+				</div>
+			</div>
+	<%-- </c:forEach>  --%>
+	
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>	
+				</div>
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 10</p>
+				</div>
+			</div>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>	
+				</div>
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 10</p>
+				</div>
+			</div>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>	
+				</div>
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 10</p>
+				</div>
+			</div>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>	
+				</div>
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 10</p>
+				</div>
+			</div>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>	
+				</div>
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 10</p>
+				</div>
+			</div>
+			<div class="club">
+				<div class="img">
+					<a href="clubBoard?c_no=${dto.c_no}">
+						<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
+					</a>	
+				</div>
+				<div class="text">
+					<h2><a href="clubBoard?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
+					<p>일정 : 21.12.10 ~ 21.12.30</p>
+					<p>인원 : 5명</p>
+					<p>지역 : 서울</p>
+					<p>조회수 10</p>
+				</div>
+			</div>
+	
 		</div>
 		
 	</div>
