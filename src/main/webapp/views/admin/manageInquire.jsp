@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/adminReport.css">
+<style>
+	#inquire-table {
+		width: 768px;
+	}
+</style>
 </head>
 <body>
 
@@ -22,16 +27,17 @@
 				<a href="Inquire"><h1>1:1 문의 관리</h1></a>
 			</div>
 			<div class="report-body-right">
-				<h1>신고내역</h1>
-				<table id="report-table">
+				<h1>1:1 문의 관리</h1>
+				<table id="inquire-table">
 					<tr>
-						<th>신고자 아이디</th>
-						<th>신고번호</th>
+						<th>번호</th>
+						<th>제목</th>
+						<th>문의인</th>
+						<th>답변상태</th>
 					</tr>
 					<c:forEach var="dto" items="${dto}">
 						<tr>
-							<td>${dto.mem_id}</td>
-							<td><a href="reportDetail?rep_no=${dto.rep_no}"><strong>${dto.rep_no}</strong></a></td>
+						
 						</tr>
 					</c:forEach>
 				</table>

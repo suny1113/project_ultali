@@ -44,12 +44,14 @@
 	.logo-search {
 		padding: 20px;
 		margin: 0 auto;
-		width: 600px;
+		width: 750px;
 	}
 	
 	#logo {
-		width: 100px;
-		height: 100px;
+		position:relative;
+		left: -20px;
+		width: 250px;
+		height: 150px;
 	}
 	
 	#searchIcon {
@@ -64,7 +66,8 @@
 		width: 400px;
 		height: 25px;
 		position: relative;
-		top: -35px;
+		top: -85px;
+		left: -20px;
 		padding: 8px 20px;
 		margin: 0px 20px;
 		font-weight: bold;
