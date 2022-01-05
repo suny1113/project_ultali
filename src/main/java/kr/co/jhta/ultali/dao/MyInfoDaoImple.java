@@ -19,23 +19,31 @@ public class MyInfoDaoImple implements MyInfoDaoInter{
 	public void setSs(SqlSession ss) {
 		this.ss = ss;
 	}
-
+	
+	private final String namespace = "kr.co.jhta.ultali.myinfo";  
+	
 	@Override
 	public MyInfoDto selectOne(String id) {
 		System.out.println("Sql ss :"+ss);
-		return ss.selectOne("kr.co.jhta.ultali.showInfo",id);
+		return ss.selectOne(namespace+".showInfo",id);
+	}
+	
+	@Override
+	public int nicknameCheck(String new_nickname) {
+		int cnt = ss.selectOne(namespace+".",new_nickname);
+		return 0;
 	}
 
 	@Override
 	public void modify(String id) {
 		System.out.println("Sql ss :"+ss);
-		ss.update("kr.co.jhta.ultali.modifyOne",id);
+		ss.update(namespace+".modifyOne",id);
 	}
 
 	@Override
 	public void deleteOne(String id) {
 		System.out.println("Sql ss :"+ss);
-		ss.delete("kr.co.jhta.ultali.deleteOne",id);
+		ss.delete(namespace+".deleteOne",id);
 	}
 	
 }

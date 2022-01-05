@@ -24,6 +24,13 @@ public class MyInfoServiceImple implements MyInfoServiceInter{
 	}
 
 	@Override
+	public int nicknameCheck(String new_nickname) {
+		int cnt =myInfoDaoInter.nicknameCheck(new_nickname);
+		return cnt;
+	}
+	
+	
+	@Override
 	public void update(String mem_id) {
 		myInfoDaoInter.modify(mem_id);
 	}
@@ -32,4 +39,6 @@ public class MyInfoServiceImple implements MyInfoServiceInter{
 	public void delete(String id) {
 		myInfoDaoInter.deleteOne(id);
 	}
+	
+	
 }

@@ -1,18 +1,20 @@
 package kr.co.jhta.ultali.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.jhta.ultali.dto.MyInfoDto;
 import kr.co.jhta.ultali.service.MyInfoServiceInter;
 
 @Controller
-@RequestMapping("/myPage")
 public class MyInfoController {
 	
 	@Autowired
@@ -22,24 +24,41 @@ public class MyInfoController {
 		this.myInfoServiceInter = myInfoServiceInter;
 	}
 	
-	@RequestMapping("id")
+	@RequestMapping("idreq")
 	public String id() {
 		return "myPage/id";
 	}
 	
-	@RequestMapping("myInfo")
-	public ModelAndView showInfo(@ModelAttribute("mem_id") String mem_id) {
+	@GetMapping("myPage/myInfo")
+	public ModelAndView showInfoGet(HttpSession session) {
+		String id = (String)session.getAttribute("mem_id");
+		MyInfoDto myInfoDto = myInfoServiceInter.showInfo(id);
+		return new ModelAndView("myPage/myInfo","myInfoDto",myInfoDto);
+	}
+	
+	@PostMapping("myPage/myInfo")
+	public ModelAndView showInfoPost(@ModelAttribute("mem_id") String mem_id, HttpSession session) {
+		session.setAttribute("mem_id", mem_id);
 		MyInfoDto myInfoDto = myInfoServiceInter.showInfo(mem_id);
 		return new ModelAndView("myPage/myInfo","myInfoDto",myInfoDto);
 	}
 	
-	@GetMapping("modify")
+	@GetMapping("myPage/modify")
 	public ModelAndView modify(@ModelAttribute("mem_id") String mem_id) {
     	 MyInfoDto myInfoDto = myInfoServiceInter.showInfo(mem_id);
+    	 System.out.println("여기");
 		return new ModelAndView("myPage/myInfoModify","myInfoDto",myInfoDto);
 	}
 	
-	@PostMapping("modify")
+	// ajax 비동기 방식
+	@PostMapping("myPage/nicknameCheck")
+	public int nicknameCheck(@RequestParam("new_nickname") String new_nickname) {
+		int cnt = myInfoServiceInter.nicknameCheck(new_nickname);
+		return cnt;
+	}
+	
+	
+	@PostMapping("myPage/modify")
 	public String modifyInfo(@ModelAttribute("dto") MyInfoDto dto) {
 //		myInfoServiceInter.update(dto);
 		return "redirect:/home";
@@ -48,7 +67,6 @@ public class MyInfoController {
 	@RequestMapping("delete")
 	public String deleteOne(@ModelAttribute("mem_id") String mem_id) {
 		myInfoServiceInter.delete(mem_id);
-		// 경로 문제 수정
 		return "redirect:/home";
 	}
 	

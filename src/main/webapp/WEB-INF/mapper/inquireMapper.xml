@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.jhta.ultali.inquire">
+	<insert id="insertInquire" parameterType="InquireDto">
+		INSERT INTO personal_inquiry (p_inq_no,p_inq_title,mem_id,p_inq_detail,p_inq_status ) 
+		values (p_inq_no_seq.nextval,#{p_inq_title},#{mem_id},#{p_inq_detail},0)
+	</insert>
+	
+	<select id="selectList" resultType="InquireDto" parameterType="String">
+		select p_inq_no, p_inq_title, mem_id,p_inq_status from personal_inquiry
+		where mem_id = #{mem_id} order by p_inq_no DESC
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="InquireDto">
+		select p_inq_no, p_inq_title, mem_id, p_inq_detail,p_inq_answer
+		from personal_inquiry where p_inq_no = #{p_inq_no}
+	</select>
+	
+</mapper>

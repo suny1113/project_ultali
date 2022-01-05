@@ -7,9 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/myInfo.css">
+<link rel="stylesheet" href="../resources/css/myInfo.css">
 </head>
 <body>
+	<jsp:include page="../home/header.jsp"/>
 	<h1>내정보</h1>
 	<div class="container">
 		<menu>
@@ -17,22 +18,22 @@
 				<h2>마이페이지</h2>
 				<table>
 					<tr>
-						<td><a href="#">내 정보</a></td>
+						<td><a href="myInfo">내 정보</a></td>
 					</tr>
 					<tr>
 						<td><a href="#">최근 본 모임</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">찜한 모임</a></td>
+						<td><a href="wishList">찜한 모임</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">1대1 문의</a></td>
+						<td><a href="inquire">1대1 문의</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">내가 개설한 모임</a></td>
+						<td><a href="createdClub">내가 개설한 모임</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">내가 가입한 모임</a></td>
+						<td><a href="myClubList">내가 가입한 모임</a></td>
 					</tr>
 				</table>
 			</div>
@@ -66,6 +67,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../home/footer.jsp"/>
 	<!-- jsp:include footer -->
 </body>
 </html>

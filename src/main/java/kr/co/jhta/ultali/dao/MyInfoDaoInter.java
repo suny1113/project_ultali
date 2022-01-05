@@ -10,4 +10,8 @@ public interface MyInfoDaoInter {
 	
 	// 회원 탈퇴하기 (delete)
 	public void deleteOne(String id);
+	
+	// ajax 닉네임 체크하기
+	public int nicknameCheck(String id);
+	
 }
