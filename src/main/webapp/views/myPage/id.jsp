@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="myInfo">
+	<form action="myPage/myInfo" method="post">
 	id : <input type="text" name="mem_id" id="" />
 	<input type="submit" value="제출" />
 	</form>

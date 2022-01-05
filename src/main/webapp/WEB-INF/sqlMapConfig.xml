@@ -15,5 +15,8 @@
   		<typeAlias type="kr.co.jhta.ultali.dto.MyInfoDto" alias="MyInfoDto"/>
     	<typeAlias type="kr.co.jhta.ultali.dto.ReportDTO" alias="reportDto"/>
   		<typeAlias type="kr.co.jhta.ultali.dto.MemberDTO" alias="mdto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.InquireDto" alias="InquireDto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.AppDto" alias="AppDto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.MyClubDto" alias="MyClubDto"/>
 		</typeAliases>
 </configuration>

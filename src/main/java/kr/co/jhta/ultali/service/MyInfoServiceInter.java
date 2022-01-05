@@ -11,5 +11,8 @@ public interface MyInfoServiceInter {
 	
 	// 탈퇴하기
 	public void delete(String id);
+	
+	// nickname check 하기
+	public int nicknameCheck(String id);
 
 }
