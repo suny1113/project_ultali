@@ -1,13 +1,13 @@
 package kr.co.jhta.ultali.dao;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import kr.co.jhta.ultali.dto.MemberDTO;
 
 public interface LoginDAO {
 
-	boolean checkLogin(HashMap<String, String> map);
-	String findId(MemberDTO dto);
-	MemberDTO checkPhoneNumber(String phone);
-	void changePassword(HashMap<String, String> map);
+	boolean checkLogin(Map<String, String> map);
+	String findId(Map<String, String> map);
+//	MemberDTO checkPhoneNumber(String phone);
+	void changePassword(Map<String, String> map);
 }

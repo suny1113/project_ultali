@@ -46,7 +46,7 @@
 		margin-bottom: 20px;
 		border: 1px solid #C6C9CC;
 		border-radius: 3px;
-		font-size: 25px;
+		font-size: 20px;
 	}
 	
 	input[type="submit"]{
@@ -128,16 +128,7 @@
 		border-bottom: 1px solid rgb(240,240,240);
 		text-align: center;
 	}
-	
-	
 
-	
-
-
-
-	
-	
-	
 </style>
 </head>
 <body>
