@@ -38,7 +38,6 @@ public class LoginController {
 	public String login(String error, String logout, Model model) {
 		if(error != null) {
 			model.addAttribute("error", "로그인오류!");
-			log.info("error : "+error);
 		}else if(logout!=null) {
 			model.addAttribute("logout", "로그아웃됨");
 			
@@ -83,7 +82,7 @@ public class LoginController {
 		String id = service.findUserId(map);
 		
 		if(id != null && id.equals(map.get("mem_id"))) {
-//			messageService.sendMessage(map.get("mem_phone"), randomNum);
+			messageService.sendMessage(map.get("mem_phone"), randomNum);
 			text = randomNum;
 		}else {
 			text = "error";
@@ -120,19 +119,17 @@ public class LoginController {
 	@PostMapping("/findPasswordResult")
 	public String findPwResult(@RequestParam("mem_id") String mem_id,
 							   Model model) {
-		model.addAttribute("id", mem_id);
+		model.addAttribute("mem_id", mem_id);
 		
 		return "/login/findPasswordResult";
 	}
 	
 	@PostMapping("/changePw")
-	public String changePw(@RequestParam("id") String id,
-						   @RequestParam("pw") String password) {
-		log.info("id : "+id);
-		log.info("pwd : "+password);
+	public String changePw(@RequestParam("mem_id") String mem_id,
+						   @RequestParam("mem_pw") String mem_pw) {
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("mem_id", id);
-		map.put("mem_pw", password);
+		map.put("mem_id", mem_id);
+		map.put("mem_pw", mem_pw);
 		service.modfiyPassword(map);
 		
 		return "redirect:/";

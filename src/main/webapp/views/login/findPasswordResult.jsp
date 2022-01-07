@@ -1,53 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 재설정</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-	$(function(){
-		$("#pw").keyup(function(){
-			$("passwordChk").html("");
-		})
-		
-		$("#rePw").keyup(function(){
-			if($("#pw").val() != $("#rePw").val()){
-				$("#passwordChk").html("비밀번호가 일치하지 않습니다.")
-				$("#passwordChk").css("color", "#f82a2aa3")
-			}else{
-				$("#passwordChk").html("비밀번호가 일치합니다.")
-				$("#passwordChk").css("color", "#199894b3")
-			}
-		})
-		
-		$("#changePw").click(function(){
-			
-			if($("#pw").val() != $("#rePw").val()){
-				alert("비밀번호가 일치하지 않습니다.")
-			}else if($("#pw").val() == $("#rePw").val()){
-				$("#submitFrm").attr("action", "changePw")
-				$("#submitFrm").attr("method", "POST")
-				$("#submitFrm").submit();
-				alert("비밀번호가 변경되었습니다.")
-			}
-			
-		})
-	})
-</script>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<link rel="stylesheet" href="${path}/resources/css/home.css">
+<link rel="stylesheet" href="${path}/resources/css/find_id_password.css">
+<link rel="stylesheet" href="${path}/resources/css/find_id.css">
+<script type="text/javascript" src="${path }/resources/js/findPasswordResult.js"></script>
+<style type="text/css">
+	#a-pw{
+		border-bottom: 1px solid skyblue;
+	}
+	#span-pw{
+		color: skyblue;
+	}
+	.pw-frm{
+		width : 280px;
+		height: 55px;
+		border : none;
+		outline : 1px solid #D3D3D3;
+		font-size: 20px;
+		margin-bottom: 15px;
+	}
+	.pw-frm:focus{
+		outline : 1px solid #A1D8EF;
+	}
+	
+</style>
 </head>
 <body>
-	<h1>findPasswordResult</h1>
 	
-	<h1>비밀번호 찾기</h1>
-	<form id="submitFrm">
-		<input type="hidden" name="id" id="id" value="${id }" />
-			새 비밀번호 입력 <input type="password" name="pw" id="pw" placeholder="비밀번호"/><br>
-			비밀번호 확인 <input type="password" name="rePw" id="rePw" placeholder="비밀번호 확인" />
-			<font id="passwordChk"></font>
-			<br>
-			<input type="button" value="비밀번호 변경" id="changePw" />
-	</form>
+<div class="nav-color-width"></div>
+	<header>
+		<div class="header">
+			<div class="nav">
+				<a href="../register/register" class="nav-a">회원가입</a>
+				<a href="login" class="nav-a">로그인</a>
+				<a href="../myPage/myInfo" class="nav-a">마이페이지</a>
+				<a href="../help/notice" class="nav-a">고객센터</a>
+
+			</div>
+			<div class="logo-container">
+				<a href="../home"><img src="../resources/img/logo.png" alt="" /></a>
+			</div>
+		</div>
+	</header>
+	<h1>아이디/비밀번호 찾기</h1>
+	
+	<div id="container">
+		<div id="find-form">
+			<div id="btn-form">
+				<a href="find" class="a-find" id="a-id"><span id="span-id" class="span-find">아이디찾기</span></a>
+				<a href="findPassword" class="a-find" id="a-pw"><span id="span-pw" class="span-find">비밀번호 재설정</span></a>
+			</div>
+			
+			<h2>비밀번호 재설정</h2>
+			<h4>새로운 비밀번호를 입력해주세요.</h4>
+			<form id="frm">
+				<div id="input-form" >
+					<input type="password" name="mem_pw" class="pw-frm" id="pw" placeholder="새 비밀번호 입력"/>
+					<input type="password" name="mem_rePw" class="pw-frm" id="rePw" placeholder="비밀번호 재입력" /><br>
+					<h5 style="font-weight: normal;" id="warn" ></h5>
+					<input type="button" id="submit-btn" value="변경완료" />
+					<input type="hidden" id="hid" name="mem_id" value="${mem_id }" />
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<jsp:include page="../home/footer.jsp" />
+
 </body>
 </html>

@@ -72,11 +72,7 @@
 		</div>
 	</div>
 
-
 	<jsp:include page="../home/footer.jsp" />
-	<a href="login"><input type="button" value="로그인하러가기" /></a>
-	<a href="../"><input type="button" value="메인화면으로이동" /></a>
-	
 	
 </body>
 </html>

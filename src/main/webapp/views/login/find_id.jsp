@@ -74,41 +74,7 @@
 		</div>
 	</div>
 
-
 	<jsp:include page="../home/footer.jsp" />
-	
-	<!-- <form id="frm_id" action="findId" method="get">
-		<fieldset>
-		<legend>아이디 찾기</legend>
-		전화번호
-			<input type="tel" name="phoneNum1" id="tel1" />
-			<br>
-		이메일
-			<input type="email" name="emailId" id="" />@
-			<select name="url" id="">
-				<option value="">직접입력</option>
-				<option value="naver.com">naver.com</option>
-				<option value="daum.net">daum.net</option>
-			</select><br>
-			<input type="button" value="아이디찾기" onclick="chkSubmit(this)"/>
-		</fieldset>
-	</form>
-	<form id="frm_pwd" action="findPassword">	
-	<input type="hidden" name="" id="phoneDoubleChk" value="false" />
-		<fieldset>
-		<legend>비밀번호 찾기</legend>
-		
-			아이디 <input type="text" name="id" id="id" /><br>
-			전화번호
-			<input type="tel" name="phoneNum2" id="tel2"  />
-			<input type="button" value="인증번호받기" id="phoneChk" /><br>
-			인증번호
-			<input type="text" name="" id="authNum" />
-			<input type="button" value="확인" id="authChk" style="display: none;"/><br>
-			<input type="button" value="비밀번호찾기" id="chkSubmit2"/>
-			</fieldset>
-	</form> -->
-	
 	
 </body>
 </html>
