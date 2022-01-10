@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import kr.co.jhta.ultali.dao.CreatedClubDaoInter;
 import kr.co.jhta.ultali.dto.AppDto;
+import kr.co.jhta.ultali.dto.CNoStartEnd;
 import kr.co.jhta.ultali.dto.MyClubDto;
+import kr.co.jhta.ultali.dto.WishDTO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -27,9 +29,9 @@ public class CreatedClubServiceImple implements CreatedClubServiceInter{
 	}
 	
 	@Override
-	public List<AppDto> showAppList(int c_no) {
+	public List<AppDto> showAppList(int cNo,int startNo, int endNo) {
 		log.info("service 도달");
-		return createdClubDaoInter.selectAppList(c_no);
+		return createdClubDaoInter.selectAppList(cNo,startNo, endNo);
 	}
 
 	@Override
@@ -42,4 +44,13 @@ public class CreatedClubServiceImple implements CreatedClubServiceInter{
 		createdClubDaoInter.insertMyClub(myclubdto);
 	}
 	
+	@Override
+	public int applicantTotalPage(int c_no) {
+		return createdClubDaoInter.applicantTotalPage(c_no);
+	}
+	@Override
+	public List<WishDTO> showWishList(String mem_id) {
+		System.out.println("service :"+mem_id);
+		return createdClubDaoInter.selectWishList(mem_id);
+	}
 }

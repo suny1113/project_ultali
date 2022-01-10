@@ -9,7 +9,7 @@ public interface InquireDaoInter {
 	public InquireDto selectOne(int p_inq_no);
 	public List<InquireDto> selectList(String mem_id,int startNo, int endNo);
 	public void insertInquire(InquireDto dto);
-	public int selectTotalInquireCount();
+	public int selectTotalInquireCount(String mem_id);
 		// 게시물 총 갯수
 	public int countBoard();
 
