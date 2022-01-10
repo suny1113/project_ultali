@@ -1,10 +1,30 @@
 @charset "UTF-8";
 
-/* normalize */
+/* ------ normalize ------ */
 * {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+}
+/* ----------------------- */
+
+.header {
+	height: 15%;
+	background-color: blue;
+}
+
+.main_left {
+	width: 15%;
+	height: 75%;
+	float: left;
+	background-color: green;
+}
+
+.main_right {
+	width: 85%;
+	height: 75%;
+	float: right;
+	overflow: auto;
 }
 
 a {
@@ -12,39 +32,80 @@ a {
 	color: inherit;
 }
 
+/* -------- 인기 클럽 -------- */
 .top_club_list {
-	width: 100%;
-	float: left;
 	border: 1px solid black;
-	
-	/* 	내부 요소 중앙 정렬 */
-	display: flex;
-	justify-content: center;
-  	align-items: center;
+	padding-left: 10px;
+	padding-bottom: 10px;
 }
 
+.top_club_list .img_area {
+	width: 150px;
+	height: 130px;
+}
+
+.top_club_list .img_area img{
+	width: 100px;
+	height: 100px;
+}
+
+.top_club_list .text_area {
+	width: 155px;
+	text-align: center;
+}
+
+.top_club_list .text_area > h2 {
+	font-size: 17px;
+}
+
+.top_club_title {
+	text-align: left;
+	margin-top : 10px;
+	margin-left: 15px;
+}
+/* ------------------------ */
+
+/* -------- 일반 클럽 -------- */
 .club_list {
-	width: 100%;
-	float: left;
-	display: flex;
-	justify-content: center;
-  	align-items: center;
+	padding-left: 3px;
+	padding-top: 10px;
 }
 
 .club {
-	float: left;
+	display: inline-block;
 	box-sizing: border-box;
-	padding: 20px 40px;
+	margin: 6px 25px;
 }
 
-.img {
-	width: 200px; 
-	height: 200px; 
+.club_sort {
+	margin: 35px 0px 40px 22px;
+}
+
+.club_title {
+	text-align: left;
+	margin-top : 10px;
+	margin-left: 20px;
+}
+
+.club_sort > a {
+	font-size: 20px;
+	font-weight: bold;
+	margin-right: 15px;
+}
+/* ------------------------ */
+
+.img_area {
+	width: 200px;
+	height: 180px;
 	overflow: hidden;   /* 틀은 고정된 채로 이미지만 확대 */
-	margin: auto;
+	
+	/* 내부 요소 중앙 정렬 */
+	display: flex;
+	justify-content: center;   /* 수평 정렬 */
+  	align-items: center;	   /* 수직 정렬 */
 }   
 
-.img img {
+.img_area img {
 	width: 150px;
 	height: 150px;
 	margin: 5px;
@@ -52,26 +113,29 @@ a {
 	transition: all 0.2s linear;   /* 부드럽게 확대 */
 }
 
-.img:hover img {
+.img_area:hover img {
 	transform: scale(1.1);   /* 이미지 확대 */
 }
 
-.text {
-	width: 250px;
-	height: 250px;
-	margin: auto;
+.text_area {
+	width: 200px;
+	text-align: center;
 }
 
-.text > h2 {
+.text_area > h2 {
 	font-size: 20px;
-	margin-bottom: 5px;
 }
 
-.text > h2:hover {
+.text_area > h2:hover {
 	text-decoration: underline;
 }
 
-.text > p {
+.text_area > p {
 	margin-bottom: 1px;
 }
 
+.footer {
+	height: 10%;
+	background-color: red;
+	clear: both;
+}

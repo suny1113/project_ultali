@@ -70,13 +70,6 @@ public class Board2Controller {
 		
 	}
 	
-	// 테스트용 게시판 하원이가 완성할거임
-	@GetMapping("/clubBoardList")
-	public String clubBoardListGet(Model model) {
-		model.addAttribute("clubList", service.selectAllClubService()); 
-		return "/clubBoard/clubBoardList";
-	}
-	
 	@GetMapping("/doQuestion")
 	public String questionGet(@RequestParam("c_no") int c_no, @RequestParam("mem_id") String mem_id, Model model) {
 		
