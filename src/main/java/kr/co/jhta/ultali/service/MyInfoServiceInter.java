@@ -7,7 +7,7 @@ public interface MyInfoServiceInter {
 	public MyInfoDto showInfo(String id);
 	
 	// 수정하기
-	public void update(String mem_id);
+	public void update(MyInfoDto dto);
 	
 	// 탈퇴하기
 	public void delete(String id);

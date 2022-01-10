@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.jhta.ultali.dto.AppDto;
 import kr.co.jhta.ultali.dto.MyClubDto;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Repository
 public class CreatedClubDaoImple implements CreatedClubDaoInter {
 
@@ -16,8 +18,14 @@ public class CreatedClubDaoImple implements CreatedClubDaoInter {
 	SqlSession ss;
 	
 	@Override
-	public List<AppDto> selectList(String mem_id) {
-		return ss.selectList("kr.co.jhta.ultali.createdclub.selectList",mem_id);
+	public List<AppDto> selectClubList(String mem_id) {
+		return ss.selectList("kr.co.jhta.ultali.createdclub.selectClubList",mem_id);
+	}
+
+	@Override
+	public List<AppDto> selectAppList(int c_no) {
+		log.info("dao 도달");
+		return ss.selectList("kr.co.jhta.ultali.createdclub.selectAppList",c_no);
 	}
 
 	@Override

@@ -30,38 +30,40 @@ div.container menu a {
 
 div.container div.item2 {
   width: 600px;
-  background-color: blanchedalmond;
   position: relative;
 }
 
 div.container div.item2 table {
-  background-color: chocolate;
   text-align: left;
   margin: 90px 50px;
-  width: 800px;
+  width: 930px;
+  border-collapse: collapse;
+  border: 1px solid black;
 }
 
 div.container div.item2 th, div.container div.item2 td {
-  background-color: burlywood;
-  width: 140px;
+  width: 190px;
+  height: 30px;
+  font-size: 20px;
   display: inline-block;
-  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   padding: 10px 20px;
 }
 
-div.container div.item2 div.button {
-  position: absolute;
-  bottom: 0;
-  right: 30%;
+div.container div.item2 th input, div.container div.item2 td input {
+  width: 100%;
+  height: 100%;
+  font-size:20px;
+  padding-left:10px;
 }
 
-div.container div.item2 div.button a {
-  /* text-decoration: none;
-  padding: 0 15px;
-  border: 1px solid black;
-  border-radius: 10px; */
+div.container div.item2 .button {
+  height: 50px;
+  text-align: right;
+}
+
+div.container div.item2 .button .btn {
   text-decoration: none;
   font-size: 20px;
   color: black;
@@ -72,7 +74,27 @@ div.container div.item2 div.button a {
   background-color: lightgray;
   padding: 10px 20px 10px 20px;
   position: absolute;
-  right: -225px;
-  bottom: -50px;
+  border: white;
+  margin-top: -50px;
 }
-/*# sourceMappingURL=myInfo.css.map */
+
+div.container .nickname_ok {
+  display: none;
+  color: red;
+}
+
+div.container .nickname_already {
+  display: none;
+  color: red;
+}
+
+.pw_ok {
+  display: none;
+  color: red;
+}
+
+.pw_already {
+  display: none;
+  color: red;
+}
+/*# sourceMappingURL=myInfoModify.css.map */

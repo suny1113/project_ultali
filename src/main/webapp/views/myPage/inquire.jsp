@@ -62,6 +62,21 @@
                 </c:if>
             </tr>
             </c:forEach>
+             <tr>
+                <td colspan="4">
+                    <ul>
+                    	<c:if test="${map.prev }">
+                        	<li><a href="inquire?currentPage?${currentPage-5 }">이전</a></li>
+                        </c:if>
+                        <c:forEach begin="${map.startPageNo }" end="${map.endPageNo }" var="i">
+                        	<li> <a href="inquire?currentPage=${i }">${i }</a></li>
+                        </c:forEach>
+                        <c:if test="${map.next }">
+                        	<li> <a href="inquire?currentPage=${currentPage+5 }">다음</a></li>
+                        </c:if>
+                    </ul>
+                </td>
+            </tr>
         </table>
         <input type="submit" value="글쓰기">
     </div>

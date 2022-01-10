@@ -30,14 +30,13 @@ public class MyInfoDaoImple implements MyInfoDaoInter{
 	
 	@Override
 	public int nicknameCheck(String new_nickname) {
-		int cnt = ss.selectOne(namespace+".",new_nickname);
-		return 0;
+		return ss.selectOne(namespace+".nicknameChk",new_nickname);
 	}
 
 	@Override
-	public void modify(String id) {
+	public void modify(MyInfoDto dto) {
 		System.out.println("Sql ss :"+ss);
-		ss.update(namespace+".modifyOne",id);
+		ss.update(namespace+".modifyOne",dto);
 	}
 
 	@Override

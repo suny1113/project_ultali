@@ -6,37 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/myInfo.css">
+<link rel="stylesheet" href="../resources/css/myInfoModify.css">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="../resources/js/myInfoModify.js" ></script>
 </head>
-<script>
-    function checknickname(){
-        var nickname = $(new_name).val();
-        console.log(nickname);
-        $.ajax({
-            url:'myPage/nicknameCheck', // Controller 에서 인식할 주소
-            type:'post', // POST 방식으로 전달
-            data:{new_nickname:new_nickname},
-            success:function(){
-            	console.log("처리 성공 시 변경되는 내용");
-            },
-            error:function(){
-            	alert("에러입니다.");
-            }
-        });
-    };
-    function checkphone(){
 
-    }
-
-    function checkpassword(){
-
-    }
-</script>
 <body>
 	<jsp:include page="../home/header.jsp" />
 	<h1>정보 수정하기</h1>
+	
+	<form name="join_form" action="modify" method="post">
+	<input type="hidden" name="mem_id" value="${myInfoDto.mem_id }" />
 	<div class="container">
 		<menu>
 			<div class="item1">
@@ -65,23 +46,23 @@
 		</menu>
 
 		<div class="item2">
+		
 			<table>
 				<tr>
 					<th>이름</th>
 					<th>아이디</th>
 					<th>닉네임</th>
-                    <th>""</th>
+                    <th></th>
 				</tr>
 				<tr>
 					<td>${myInfoDto.mem_name }</td>
 					<td>${myInfoDto.mem_id }</td>
 					<td>
-                        <input type="text" name="new_nickname" id="new_nickname" placeholder="${myInfoDto.mem_id }" required oninput="checknickname()"/>
+                        <input type="text" name="mem_name" id="new_nickname" placeholder="${myInfoDto.mem_id }" required oninput="checknickname()"/>
                     </td>
                     <td id="nicknameCheck">
-                        <span class="id_ok">사용 가능합니다.</span>
-                        <span class="id_already">사용 불가능합니다.</span>
-
+                        <span class="nickname_ok">사용 가능합니다.</span>
+                        <span class="nickname_already">사용 불가능합니다.</span>
                     </td>
 				</tr>
 
@@ -92,29 +73,32 @@
                     <th></th>
 				</tr>
 				<tr>
-					<td><input type="text" name="new_pw" id="" placeholder="${myInfoDto.mem_phone }0101"required oninput="checkphone()"/></td>
+					<td>
+						<input type="text" name="mem_phone" id="new_phone" placeholder="${myInfoDto.mem_phone }" required/>
+					</td>
 					<td>${myInfoDto.mem_email }</td>
 					<td>
-						<input type="password" name="new_pw" id="" placeholder="새 비밀번호 입력" required /> 
+						<input type="password" name="new_pw" id="new_pw" placeholder="새 비밀번호 입력" required/> 
                     </td>
                     <td id="passwordCheck">
-                        <span class="id_ok">사용 가능합니다.</span>
-                        <span class="id_already">사용 불가능합니다.</span>
+                        <span class="pw_ok">일치합니다.</span>
+                        <span class="pw_already">일치하지 않습니다.</span>
                     </td>
 				</tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td colspan="4">
-                        <input type="password" name="new_pw" id="" placeholder="비밀번호 확인" required oninput="checkpassword()" />
+                        <input type="password" name="mem_pw" id="new_pwchk" placeholder="비밀번호 확인" required />
                     </td>
                 </tr>
 			</table>
 			<div class="button">
-				<input type="submit" value="수정하기">
+				<input type="button" class="btn" value="수정하기" onclick="joinform_check()">
 			</div>
 		</div>
 	</div>
+	</form>
 	<!-- jsp:include footer -->
 	<jsp:include page="../home/footer.jsp" />
 </body>

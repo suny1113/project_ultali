@@ -1,5 +1,7 @@
 package kr.co.jhta.ultali.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.jhta.ultali.dto.InquireDto;
+import kr.co.jhta.ultali.dto.InquirePageUtil;
 import kr.co.jhta.ultali.service.InquireServiceInter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("myPage")
 public class InquireController {
@@ -25,10 +32,25 @@ public class InquireController {
 		this.inquireServiceInter = inquireServiceInter;
 	}
 
-	@RequestMapping("inquire")
-	public ModelAndView inquire(HttpSession session) {
+	@RequestMapping("/inquire")
+	public ModelAndView inquire(@RequestParam(name = "currentPage",defaultValue = "1")int currentPage,HttpSession session,Model model) {
+		
+		// 문의 게시판의 전체 리스트
+		int totalInquireCount = inquireServiceInter.totalInquireCount();
+		log.info("totalInquireCount : "+totalInquireCount);
+		// 기본적으로 보여줄 문의 갯수는 10개 // 페이지당 개시물 수
+		int countPerPage = 10;
+		
+		// 페이징 개수는 5개
+		
+		Map<String, Object> map = InquirePageUtil.getPageData(totalInquireCount, countPerPage, currentPage);
+		model.addAttribute("map",map);
+		int startNo = (int)map.get("startNo");
+		int endNo =(int)map.get("endNo");
+		
+
 		String mem_id = (String) session.getAttribute("mem_id");
-		return new ModelAndView("myPage/inquire","showList",inquireServiceInter.showList(mem_id)) ;
+		return new ModelAndView("myPage/inquire","showList",inquireServiceInter.showList(mem_id,startNo,endNo)) ;
 	}
 
 	@GetMapping("inquireWrite")
@@ -47,4 +69,6 @@ public class InquireController {
 	public ModelAndView inquireDetail(@ModelAttribute("p_inq_no") int p_inq_no) {
 		return new ModelAndView("myPage/inquireDetail","dto",inquireServiceInter.showOne(p_inq_no));
 	}
+	
+	
 }

@@ -1,1 +1,89 @@
 @charset "UTF-8";
+
+h1 {
+  margin: 0 20%;
+}
+
+div.container {
+  margin: 0 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+div.container menu div.item1 {
+  width: 170px;
+}
+
+div.container menu a {
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+  color: black;
+  font-size: 20px;
+}
+
+div.container div.item2 {
+  background-color: burlywood;
+  margin-top: 100px;
+  height: 100%;
+  position: relative;
+}
+
+div.container div.item2 table {
+  background-color: chocolate;
+  margin-bottom: 50px;
+  width: 800px;
+  font-size: 20px;
+}
+
+div.container div.item2 table td, div.container div.item2 table th {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: cornflowerblue;
+  text-align: center;
+  width: 150px;
+}
+
+div.container div.item2 table tr:last-child td {
+  width: 100%;
+  text-align: center;
+}
+
+div.container div.item2 table tr:last-child td ul {
+  display: block;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+div.container div.item2 table tr:last-child td ul li {
+  background-color: burlywood;
+  padding: 0 10px;
+  font-size: 20px;
+}
+
+div.container input {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  font-size: 20px;
+  margin: -5px 5px;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: lightgray;
+  border: white;
+}
+/*# sourceMappingURL=inquireList.css.map */
