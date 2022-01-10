@@ -1,13 +1,13 @@
 package kr.co.jhta.ultali.service;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import kr.co.jhta.ultali.dto.MemberDTO;
 
 public interface LoginService {
 	
-	boolean isExistAccount(HashMap<String, String> map);
-	String findUserId(MemberDTO dto);
-	MemberDTO findPhoneNumber(String phone);
-	void modfiyPassword(HashMap<String, String> map);
+	boolean isExistAccount(Map<String, String> map);
+	String findUserId(Map<String, String> map);
+//	MemberDTO findPhoneNumber(String phone);
+	void modfiyPassword(Map<String, String> map);
 }

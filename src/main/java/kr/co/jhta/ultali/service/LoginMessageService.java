@@ -32,7 +32,7 @@ public class LoginMessageService {
 		    params.put("to", toNumber);
 		    params.put("from", fromNumber);
 		    params.put("type", "SMS");
-		    params.put("text", "[��Ÿ��] ������ȣ "+randomNumber+" �� �Է��ϼ���.");
+		    params.put("text", "[울타리] 인증번호 "+randomNumber+" 입력하세요.");
 		    params.put("app_version", "test app 1.2"); // application name and version
 
 		    try {
