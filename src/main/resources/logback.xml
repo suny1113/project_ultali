@@ -8,7 +8,7 @@
 		</encoder>
 	</appender>
 	
-	<logger name="kr.co.jhta.ultali.*" level="info" additivity="false">
+	<logger name="kr.co.jhta.ultali" level="info" additivity="false">
 		<appender-ref ref="FILE" />
 		<appender-ref ref="STDOUT" />
 	</logger>

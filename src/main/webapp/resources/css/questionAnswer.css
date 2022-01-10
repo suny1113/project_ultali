@@ -11,6 +11,8 @@
 }
 
 .contents{
+	height: 180px;
+	width: 583px;
   	background: #E0E0E0;
 }
 
@@ -64,4 +66,10 @@
 	margin-left: 500px;
 	top: 30px;
 }
+
+.textarea{
+	resize:none;
+	
+}
+
 

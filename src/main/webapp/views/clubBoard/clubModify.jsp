@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="clubModify" method="post" id="form"></form>
+	<form:form action="clubModify" method="post" modelAttribute="uploadFile" enctype="multipart/form-data" id="form">
 		<div id="main">
 			<div id="title">
 				<h4>수정하기</h4>
@@ -124,18 +125,18 @@
 					<input type="hidden" name="major_no" id="major_no"/>
 					<input type="hidden" name="sub_no" id="sub_no"/>
 					<input type="hidden" name="c_loc" id="c_loc" value="${dto.c_loc }"/>
-					<input type="hidden" name="c_loc" id="c_hits" value="0"/>
+					<input type="hidden" name="c_hits" id="c_hits" value="0"/>
 					<input type="hidden" name="c_date" id="c_date"/>
 					
 <!-- 					시퀀스로 값을 넘겨주기 떄문에 아무값이나 줌 -->
-					<input type="hidden" name="c_no" id="c_no" value="0"/>
+					<input type="hidden" name="c_no" id="c_no" value="${dto.c_no }"/>
 
 					<input type="button" value="수정하기" class="button_style" id="submit"/>
-					<input type="button" value="취소" class="button_style" id="aa" />
-					
+					<a href="clubBoardDetail?c_no=${dto.c_no}"><input type="button" value="취소" class="button_style" id="cancel" /></a>
 				</div>
 			</div>
 		</div>
-	</form>
+		<<form:errors path="file"></form:errors>
+	</form:form>
 </body>
 </html>
