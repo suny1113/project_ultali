@@ -26,6 +26,8 @@ public class NoticeServiceImple implements NoticeService{
 	@Override
 	public List<NoticeDTO> readAll(int startNo, int endNo) {
 		log.info("dao : " + dao); // dao를 실행 여부를 위한 log
+		log.info("startNo : " + startNo); // startNO 전송을 테스트하기 위한 log
+		log.info("endNo : " + endNo); // endNO 전송을 테스트하기 위한 log
 		return dao.selectAll(startNo, endNo);
 	}
 

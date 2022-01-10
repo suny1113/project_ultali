@@ -19,7 +19,7 @@ import kr.co.jhta.ultali.dto.PageUtil;
 import kr.co.jhta.ultali.service.NoticeService;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j //
+@Slf4j 
 @Controller
 @RequestMapping("/help")
 public class NoticeController {
@@ -32,7 +32,7 @@ public class NoticeController {
 		this.service = service;
 	}
 	
-	@RequestMapping(value = {"/", "/notice"})
+	@RequestMapping("/notice")
 	public ModelAndView notice(Model model, 
 		 @RequestParam(name = "currentPage", defaultValue = "1")int currentPage) {
 		
@@ -58,7 +58,7 @@ public class NoticeController {
 		int endNo = (int) map.get("endNo");
 		
 		// StartEnd se = new StartEnd(startNo, endNo);
-		return new ModelAndView("notice", "notice", service.readAll(startNo, endNo));
+		return new ModelAndView("help/notice", "help/notice", service.readAll(startNo, endNo));
 	}
 	
 		@GetMapping("/noticeWrite")
@@ -101,5 +101,10 @@ public class NoticeController {
 		public String delete(@RequestParam("n_no")int n_no) {
 			service.remove(n_no);
 			return "redirect:/help/notice";
+		}
+		
+		@RequestMapping("/faq")
+		public String faq() {
+			return "help/faq";
 		}
 }

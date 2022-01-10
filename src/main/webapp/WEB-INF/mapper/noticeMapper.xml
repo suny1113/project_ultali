@@ -4,17 +4,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.jhta.ultali">
+<mapper namespace="kr.co.jhta.ultali.notice">
 	<!-- 실행하면 resultType이 필요하다 -->
 
-	<select id="selectAll" resultType="ndto">
+	<select id="selectAll" resultType="ndto" parameterType="kr.co.jhta.ultali.dto.StartEnd">
+	
 		SELECT n_no , n_title , mem_id , n_regdate , n_hits , n_detail
-		FROM (SELECT ROWNUM rn , n_no , n_title , mem_id , n_regdate , n_hits , n_detail
-			FROM (SELECT n_no , n_title , mem_id , to_char(n_regdate,'YYYY/MM/DD') n_regdate , n_hits , n_detail
-				FROM notice
-				ORDER BY n_no desc )
-		WHERE ROWNUM &lt; = #{endNo})
-		WHERE RN &gt;=#{startNo}
+			FROM (SELECT ROWNUM rn , n_no , n_title , mem_id , n_regdate , n_hits , n_detail
+			FROM (SELECT n_no , n_title , mem_id , n_regdate , n_hits , n_detail
+			FROM notice
+			ORDER BY n_no desc )
+			WHERE ROWNUM &lt; = #{endNo})
+			WHERE RN &gt;=#{startNo} 
 	</select>
 
 	<insert id="noticeWrite" parameterType="ndto">

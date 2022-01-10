@@ -34,6 +34,6 @@ public class RegisterController {
 	public String register(@ModelAttribute("dto")RegisterDTO dto, HttpServletRequest req) {
 		System.out.println(" dto : " + dto);
 		service.register(dto);
-		return "redirect:/register/goHome";
+		return "redirect:/login/login";
 	}
 }
