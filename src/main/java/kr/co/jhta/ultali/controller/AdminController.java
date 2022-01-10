@@ -1,18 +1,28 @@
 package kr.co.jhta.ultali.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.jhta.ultali.dto.AdminInquirePagingVO;
+import kr.co.jhta.ultali.dto.PageUtil;
 import kr.co.jhta.ultali.service.AdminReportService;
+import kr.co.jhta.ultali.service.InquireServiceInter;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	AdminReportService adminReportService;
+	
+	@Autowired
+	InquireServiceInter inquireServiceInter;
 	
 	@RequestMapping("admin/home")
 	public String main() {
@@ -54,8 +64,27 @@ public class AdminController {
 		return "redirect:admin/reportList";
 	}
 	
-	@RequestMapping("admin/Inquire")
-	public String Inquire() {
+	@GetMapping("admin/Inquire")
+	public String boardList(AdminInquirePagingVO vo, Model model
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		int total = inquireServiceInter.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new AdminInquirePagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", inquireServiceInter.selectBoard(vo));
+		
+		System.out.println("start" + vo.getStart());
+		System.out.println(vo.getEnd());
+		
 		return "admin/manageInquire";
 	}
 	

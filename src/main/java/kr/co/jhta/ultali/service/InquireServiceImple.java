@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.jhta.ultali.dao.InquireDaoInter;
 import kr.co.jhta.ultali.dto.IdStartEnd;
+import kr.co.jhta.ultali.dto.AdminInquirePagingVO;
 import kr.co.jhta.ultali.dto.InquireDto;
 
 @Service
@@ -38,4 +39,15 @@ public class InquireServiceImple implements InquireServiceInter{
 	public int totalInquireCount() {
 		return inquireDaoInter.selectTotalInquireCount();
 	}
+	
+	@Override
+	public int countBoard() {
+		return inquireDaoInter.countBoard();
+	}
+
+	@Override
+	public List<InquireDto> selectBoard(AdminInquirePagingVO vo) {
+		return inquireDaoInter.selectBoard(vo);
+	}
+
 }

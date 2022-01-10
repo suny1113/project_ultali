@@ -19,5 +19,9 @@
   		<typeAlias type="kr.co.jhta.ultali.dto.AppDto" alias="AppDto"/>
   		<typeAlias type="kr.co.jhta.ultali.dto.MyClubDto" alias="MyClubDto"/>
   		<typeAlias type="kr.co.jhta.ultali.dto.IdStartEnd" alias = "idStartEnd"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.WishDTO" alias="wdto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.ClubInquiryDTO" alias="cidto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.ClubInquiryAnswerDTO" alias="ciadto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.PagingDTO" alias="pdto"/>
 		</typeAliases>
 </configuration>

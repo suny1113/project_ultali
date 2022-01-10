@@ -42,5 +42,6 @@
 		SET major_no = #{major_no}, sub_no = #{sub_no}, c_name = #{c_name}, c_loc = #{c_loc}, c_place = #{c_place}, c_date = #{c_date}, c_time = #{c_time}, c_price = #{c_price}, c_count = #{c_count}, c_image = #{c_image}, c_detail = #{c_detail}
 		WHERE c_no = #{c_no}
 	</update>
-  
+
+	
   </mapper>

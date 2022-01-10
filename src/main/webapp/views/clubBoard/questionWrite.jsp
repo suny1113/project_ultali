@@ -4,45 +4,44 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="${path }/resources/css/report.css">
+<link rel="stylesheet" type="text/css" href="${path }/resources/css/questionWrite.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="${path }/resources/js/report.js"></script>
+<script src="${path }/resources/js/questionWrite.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="doReport" method="post" id="form">
-		<h2>${c_no }</h2>
-		<h2>${mem_id}</h2>
-		<div>
-<!-- 			값이 없으면 넘어갈때 오류떠서 그냥 값을 0으로줌 -->
-			<input type="hidden" name="rep_no" value="0" />
-			
-<!-- 			로그인한 사용자 아이디받으면됨 -->
-			<input type="hidden" name="Mem_id" value="ss" />
-			
-			<input type="hidden" name="c_no" value="1" />
-<%-- 			<input type="hidden" name="c_no" value="${boardDTO.c_no }" /> --%>
-			
-<!-- 			카테고리인데 아직적용안함 -->
-			<input type="hidden" name="rep_reason" id="rep_reason" value="신고사유" />
-			<table>
-				<tr>
-					<h3>문의작성</h3>
-				</tr>
+	<div>
+		<form action="questionWrite" method="post" id="form">
 
-				<tr>
-				</tr>
-			</table>
-			<textarea rows="10" cols="70" name="rep_detail" id="textarea" placeholder="내용을 입력해주세요"></textarea>
-		</div>
-		<div>
-			<input type="button" value="등록하기" id="submit" class="report_button"/>
-			<input type="button" value="취소" id="cancel" class="report_button" onClick="window.close()"/>
-		</div>
-	</form>
+			<div id="borderDiv">
+				
+				
+				
+				<table>
+					<tr>
+						<td><h3 id="h3">문의작성</h3></td>
+						<td><label><input type="checkbox" name="secret" id="secret">비밀글</label></td>
+					</tr>
 	
+					<tr>
+					</tr>
+				</table>
+				<textarea rows="10" cols="70" name="c_inq_detail" id="textarea" placeholder="내용을 입력해주세요"></textarea>
+			</div>
+			<div>
+				<input type="button" value="등록하기" id="submit" class="button"/>
+				<input type="button" value="취소" id="cancel" class="button"/>
+	
+				<input type="hidden" name="c_inq_no" value="0" />
+				<input type="hidden" name="c_no" value="${c_no}" />
+				<input type="hidden" name="mem_id" />
+				<input type="hidden" name="c_inq_regdate" value="0" />
+				<input type="hidden" name="c_inq_secretinq" id="c_inq_secretinq" />
+			</div>
+		</form>
+	</div>
 </body>
 </html>
 

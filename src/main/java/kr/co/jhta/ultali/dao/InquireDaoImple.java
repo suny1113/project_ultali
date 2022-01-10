@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.jhta.ultali.dto.IdStartEnd;
+import kr.co.jhta.ultali.dto.AdminInquirePagingVO;
 import kr.co.jhta.ultali.dto.InquireDto;
+import kr.co.jhta.ultali.dto.StartEnd;
 
 @Repository
 public class InquireDaoImple implements InquireDaoInter{
@@ -39,6 +41,17 @@ public class InquireDaoImple implements InquireDaoInter{
 	@Override
 	public int selectTotalInquireCount() {
 		return ss.selectOne(namespace+".totalInquireCount");
+
+	//admin 전체조회
+	@Override
+	public List<InquireDto> selectBoard(AdminInquirePagingVO vo) {
+		return ss.selectList("kr.co.jhta.ultali.inquire.selectBoar", vo);
+	}
+	
+	// 총 게시글 수
+	@Override
+	public int countBoard() {
+		return ss.selectOne("kr.co.jhta.ultali.inquire.countBoard");
 	}
 	
 }

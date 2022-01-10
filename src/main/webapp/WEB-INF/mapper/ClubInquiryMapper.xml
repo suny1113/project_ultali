@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="kr.co.jhta.ClubInquiry">
+   <insert id="insertClubInquiry" parameterType="cidto">
+	  	INSERT INTO club_inquiry
+	  	VALUES (c_inq_no_seq.nextval, #{c_no}, #{mem_id}, TO_CHAR(sysdate + 9/24, 'YYYY"년 "MM"월 "DD"일"'), #{c_inq_detail}, #{c_inq_secretinq})
+   </insert>
+   
+   <select id="getAllClubInqiury" parameterType="int" resultType="cidto">
+   		SELECT c_inq_no, c_no, mem_id, c_inq_regdate, c_inq_detail, c_inq_secretinq
+   		FROM club_inquiry
+   		WHERE c_no = #{c_no}
+   </select>
+  </mapper>
