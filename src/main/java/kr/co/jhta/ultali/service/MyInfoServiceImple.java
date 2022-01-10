@@ -25,14 +25,13 @@ public class MyInfoServiceImple implements MyInfoServiceInter{
 
 	@Override
 	public int nicknameCheck(String new_nickname) {
-		int cnt =myInfoDaoInter.nicknameCheck(new_nickname);
-		return cnt;
+		return myInfoDaoInter.nicknameCheck(new_nickname);
 	}
 	
 	
 	@Override
-	public void update(String mem_id) {
-		myInfoDaoInter.modify(mem_id);
+	public void update(MyInfoDto dto) {
+		myInfoDaoInter.modify(dto);
 	}
 
 	@Override

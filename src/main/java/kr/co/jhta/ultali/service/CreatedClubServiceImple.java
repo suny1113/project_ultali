@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import kr.co.jhta.ultali.dao.CreatedClubDaoInter;
 import kr.co.jhta.ultali.dto.AppDto;
 import kr.co.jhta.ultali.dto.MyClubDto;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class CreatedClubServiceImple implements CreatedClubServiceInter{
 
@@ -20,8 +22,14 @@ public class CreatedClubServiceImple implements CreatedClubServiceInter{
 	}
 
 	@Override
-	public List<AppDto> showList(String mem_id) {
-		return createdClubDaoInter.selectList(mem_id);
+	public List<AppDto> showClubList(String mem_id) {
+		return createdClubDaoInter.selectClubList(mem_id);
+	}
+	
+	@Override
+	public List<AppDto> showAppList(int c_no) {
+		log.info("service 도달");
+		return createdClubDaoInter.selectAppList(c_no);
 	}
 
 	@Override

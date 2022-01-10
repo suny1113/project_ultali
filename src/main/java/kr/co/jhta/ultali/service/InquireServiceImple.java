@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.jhta.ultali.dao.InquireDaoInter;
+import kr.co.jhta.ultali.dto.IdStartEnd;
 import kr.co.jhta.ultali.dto.AdminInquirePagingVO;
 import kr.co.jhta.ultali.dto.InquireDto;
 
@@ -25,8 +26,8 @@ public class InquireServiceImple implements InquireServiceInter{
 	}
 
 	@Override
-	public List<InquireDto> showList(String mem_id) {
-		return inquireDaoInter.selectList(mem_id);
+	public List<InquireDto> showList(String mem_id, int startNo, int endNo) {
+		return inquireDaoInter.selectList(mem_id,startNo, endNo);
 	}
 
 	@Override
@@ -34,6 +35,10 @@ public class InquireServiceImple implements InquireServiceInter{
 		inquireDaoInter.insertInquire(dto);
 	}
 
+	@Override
+	public int totalInquireCount() {
+		return inquireDaoInter.selectTotalInquireCount();
+	}
 	
 	@Override
 	public int countBoard() {

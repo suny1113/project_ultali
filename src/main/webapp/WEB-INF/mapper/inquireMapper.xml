@@ -9,14 +9,22 @@
 		values (p_inq_no_seq.nextval,#{p_inq_title},#{mem_id},#{p_inq_detail},0)
 	</insert>
 	
-	<select id="selectList" resultType="InquireDto" parameterType="String">
-		select p_inq_no, p_inq_title, mem_id,p_inq_status from personal_inquiry
-		where mem_id = #{mem_id} order by p_inq_no DESC
+	<select id="selectList" resultType="InquireDto" parameterType="idStartEnd">
+		select rn ,p_inq_no, p_inq_title, mem_id,p_inq_status from 
+		(select rn ,p_inq_no, p_inq_title, mem_id,p_inq_status from 
+		(select rownum rn ,p_inq_no, p_inq_title, mem_id,p_inq_status from 
+		(select p_inq_no, p_inq_title, mem_id,p_inq_status from personal_inquiry where mem_id = #{id} order by p_inq_no desc)) 
+		where rn &gt;=#{startNo}) where rn &lt;= #{endNo}
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="InquireDto">
 		select p_inq_no, p_inq_title, mem_id, p_inq_detail,p_inq_answer
 		from personal_inquiry where p_inq_no = #{p_inq_no}
+	</select>
+	
+	<select id="totalInquireCount" resultType="int">
+		select count(*) from personal_inquiry
+		
 	</select>
 	
 	<!-- 아래서부턴 관리자 쿼리문 -->
@@ -43,6 +51,4 @@
 					)
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
-	
-	
 </mapper>

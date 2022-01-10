@@ -40,7 +40,7 @@
 		</menu>
 		<div class="a">
 			<div class="tablecontainer">
-				<c:forEach var="appdto" items="${showList }">
+				<c:forEach var="appdto" items="${showAppList }">
 					<div class="item2">
 						<table class="first">
 							<tr>

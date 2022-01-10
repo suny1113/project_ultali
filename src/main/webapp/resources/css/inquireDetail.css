@@ -1,1 +1,73 @@
 @charset "UTF-8";
+h1 {
+  margin: 0 20%;
+}
+
+div.container {
+  margin: 0 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+div.container menu div.item1 {
+  width: 170px;
+}
+
+div.container menu a {
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+  color: black;
+  font-size: 20px;
+}
+
+div.container div.item2 {
+  margin-left: 5%;
+  position: relative;
+}
+
+div.container div.item2 div {
+  width: 500px;
+  margin: 10px 0px;
+}
+
+div.container div.item2 div div.info {
+  display: inline-block;
+  font-weight: 900;
+  width: 20%;
+  font-size: 25px;
+}
+
+div.container div.item2 div input {
+  font-size: 20px;
+  border: none;
+}
+
+div.container div.item2 div textarea {
+  margin-top: 10px;
+  font-size: 20px;
+  resize: none;
+}
+
+
+div.container div.item2 a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: inline-block;
+  border-radius: 20px;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: lightgray;
+  padding: 10px 20px 10px 20px;
+  position: absolute;
+  right: -225px;
+  bottom: -50px;
+}
+/*# sourceMappingURL=inquireDetail.css.map */

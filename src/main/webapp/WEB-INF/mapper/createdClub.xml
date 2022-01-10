@@ -5,14 +5,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.jhta.ultali.createdclub">
-	<select id="selectList" parameterType="String"
-		resultType="AppDto">
+
+
+	<select id="selectAppList" parameterType="int" resultType="AppDto">
+		SELECT A.APP_NO app_no, A.MEM_NAME, A.MEM_ID mem_id, A.GENDER, A.MEM_PHONE, A.APP_DETAIL,
+		A.C_NO c_no, C.C_NAME c_name
+		FROM APPLYAPP a join club c on (a.c_no = c.c_no)
+		WHERE A.C_NO = #{c_no}
+	</select>
+<!-- 	<select id="selectAppList" parameterType="String" resultType="AppDto">
 		SELECT A.APP_NO app_no, A.MEM_NAME, A.MEM_ID mem_id, A.GENDER, A.MEM_PHONE, A.APP_DETAIL,
 		A.C_NO c_no, C.C_NAME c_name
 		FROM APPLYAPP A join CLUB C
 		ON(A.C_NO = C.C_NO)
 		WHERE A.C_NO in (SELECT C_NO FROM CLUB WHERE MEM_ID = #{mem_id})
-	</select>
+	</select> -->
+
 
 	<delete id="deleteOne" parameterType="int">
 		delete applyapp where app_no = #{app_no}
@@ -21,5 +29,10 @@
 	<insert id="insertMyClub" parameterType="MyClubDto">
 		insert into myclub values(my_no_seq.nextval,#{mem_id},#{c_no})
 	</insert>
+	
+	<select id="selectClubList" parameterType="String" resultType="cdto">
+		select c_no, major_no, sub_no, mem_id,c_name,c_loc,c_place,c_date,c_time,c_price,c_count,c_image,
+		c_detail,c_hits from club where mem_id = #{mem_id}
+	</select>
 	
 </mapper>

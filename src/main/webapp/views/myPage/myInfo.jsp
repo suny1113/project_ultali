@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../resources/css/myInfo.css">
 </head>
 <body>
+	${showClubList }
 	<jsp:include page="../home/header.jsp"/>
 	<h1>내정보</h1>
 	<div class="container">

@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.jhta.ultali.dto.MyInfoDto;
 import kr.co.jhta.ultali.service.MyInfoServiceInter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class MyInfoController {
 	
@@ -32,6 +35,7 @@ public class MyInfoController {
 	@GetMapping("myPage/myInfo")
 	public ModelAndView showInfoGet(HttpSession session) {
 		String id = (String)session.getAttribute("mem_id");
+		System.out.println(id);
 		MyInfoDto myInfoDto = myInfoServiceInter.showInfo(id);
 		return new ModelAndView("myPage/myInfo","myInfoDto",myInfoDto);
 	}
@@ -39,6 +43,7 @@ public class MyInfoController {
 	@PostMapping("myPage/myInfo")
 	public ModelAndView showInfoPost(@ModelAttribute("mem_id") String mem_id, HttpSession session) {
 		session.setAttribute("mem_id", mem_id);
+		System.out.println(mem_id);
 		MyInfoDto myInfoDto = myInfoServiceInter.showInfo(mem_id);
 		return new ModelAndView("myPage/myInfo","myInfoDto",myInfoDto);
 	}
@@ -46,21 +51,22 @@ public class MyInfoController {
 	@GetMapping("myPage/modify")
 	public ModelAndView modify(@ModelAttribute("mem_id") String mem_id) {
     	 MyInfoDto myInfoDto = myInfoServiceInter.showInfo(mem_id);
-    	 System.out.println("여기");
 		return new ModelAndView("myPage/myInfoModify","myInfoDto",myInfoDto);
 	}
 	
 	// ajax 비동기 방식
-	@PostMapping("myPage/nicknameCheck")
-	public int nicknameCheck(@RequestParam("new_nickname") String new_nickname) {
-		int cnt = myInfoServiceInter.nicknameCheck(new_nickname);
-		return cnt;
+	@ResponseBody
+	@GetMapping("myPage/nicknameCheck")
+	public String nicknameCheck(@RequestParam("new_nickname") String new_nickname) {
+		int cnt =myInfoServiceInter.nicknameCheck(new_nickname); 
+		String result = (cnt==1)?"is_already":"is_ok";
+		return result;
 	}
 	
 	
 	@PostMapping("myPage/modify")
 	public String modifyInfo(@ModelAttribute("dto") MyInfoDto dto) {
-//		myInfoServiceInter.update(dto);
+		myInfoServiceInter.update(dto);
 		return "redirect:/home";
 	}
 	
