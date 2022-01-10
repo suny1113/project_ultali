@@ -3,6 +3,9 @@ package kr.co.jhta.ultali.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,23 +36,22 @@ public class LoginController {
 	@Autowired
 	FindIdResult result;
 	
-	
+	// 스프링 시큐리티 커스텀 로그인 매핑
 	@GetMapping("/login")
-	public String login(String error, String logout, Model model) {
+	public String login(String error, String logout,
+						Model model){
+
 		if(error != null) {
-			model.addAttribute("error", "로그인오류!");
+			model.addAttribute("msg", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		}else if(logout!=null) {
-			model.addAttribute("logout", "로그아웃됨");
-			
+			model.addAttribute("logout", "로그아웃");	
 		}
+
+		
 		return "/login/login";
 	}
 	
-	@PostMapping("/login")
-	public String loginOk() {
-		
-		return "redirect:/";
-	}
+	
 	
 	@RequestMapping("/find")
 	public String find() {

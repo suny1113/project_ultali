@@ -42,7 +42,7 @@
 				<a href="login" class="nav-a">로그인</a>
 				<a href="../myPage/myInfo" class="nav-a">마이페이지</a>
 				<a href="../help/notice" class="nav-a">고객센터</a>
-
+				<a href="admin/reportList" class="nav-a">관리자페이지</a>
 			</div>
 			<div class="logo-container">
 				<a href="../home"><img src="../resources/img/logo.png" alt="" /></a>
