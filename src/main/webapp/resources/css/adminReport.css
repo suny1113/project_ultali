@@ -14,6 +14,7 @@ h1 {
 	
 	.report-body-left {
 		border-right: 1px solid rgb(240,240,240);
+		height: 600px;
 	}
 	
 	.report-body-left a {

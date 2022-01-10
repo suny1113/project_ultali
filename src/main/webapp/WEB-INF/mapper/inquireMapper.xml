@@ -19,4 +19,30 @@
 		from personal_inquiry where p_inq_no = #{p_inq_no}
 	</select>
 	
+	<!-- 아래서부턴 관리자 쿼리문 -->
+	<insert id="adminInsertInquire" parameterType="InquireDto">
+		INSERT INTO personal_inquiry (p_inq_no, p_inq_title, mem_id, p_inq_answer, p_inq_status ) 
+		VALUES (p_inq_no_seq.nextval, #{p_inq_title}, #{mem_id}, #{p_inq_answer}, 1)
+	</insert>
+	
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM personal_inquiry
+	</select>
+	
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectBoard" resultType="InquireDto">
+		SELECT * 
+			FROM (
+				SELECT ROWNUM RN, A.* 
+					FROM (
+							SELECT * 
+							FROM personal_inquiry 
+							ORDER BY p_inq_no DESC 
+							) A
+					)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	
 </mapper>

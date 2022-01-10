@@ -14,4 +14,5 @@ public class InquireDto {
 	private String p_inq_detail;
 	private String p_inq_answer;
 	private int p_inq_status;
+	private String regdate;
 }

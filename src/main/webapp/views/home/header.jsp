@@ -12,7 +12,7 @@
 				<a href="myPage/myInfo" class="nav-a">마이페이지</a>
 				<a href="help/notice" class="nav-a">고객센터</a>
 <%-- 				<c:if test="${ mem_id eq 'admin' }"> --%>
-				<a href="admin/reportList" class="nav-a">관리자페이지</a>
+				<a href="admin/reportList?currentPage=1" class="nav-a">관리자페이지</a>
 <%-- 				</c:if> --%>
 			</div>
 			<div class="logo-search-container">
