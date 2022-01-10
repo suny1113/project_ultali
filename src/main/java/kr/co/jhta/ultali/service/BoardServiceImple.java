@@ -11,10 +11,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import jdk.internal.org.jline.utils.Log;
 import kr.co.jhta.ultali.controller.FileValidator;
 import kr.co.jhta.ultali.controller.UploadFile;
 import kr.co.jhta.ultali.dao.Board2DAO;
 import kr.co.jhta.ultali.dto.ClubDTO;
+import kr.co.jhta.ultali.dto.ClubInquiryAnswerDTO;
+import kr.co.jhta.ultali.dto.ClubInquiryDTO;
+import kr.co.jhta.ultali.dto.PagingDTO;
+import kr.co.jhta.ultali.dto.WishDTO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -54,7 +59,7 @@ public class BoardServiceImple implements BoardService{
 		// aws에 올릴때 경로 바꿔야함
 		String filePath = "D:\\dev\\project_ultali\\project_ultali\\src\\main\\webapp\\resources\\img";
 		
-		System.out.println("파일이 업로드되는 진짜 경로 : " + filePath);
+//		System.out.println("파일이 업로드되는 진짜 경로 : " + filePath);
 		
 		MultipartFile mfile = file.getFile();
 
@@ -92,7 +97,7 @@ public class BoardServiceImple implements BoardService{
 		// 이미지파일 경로
 		dto.setC_image(imgPath);
 		
-		log.info("registerPost dto:" + dto); 
+//		log.info("registerPost dto:" + dto); 
 		dao.insertClub(dto);
 		return mav;
 	}
@@ -104,15 +109,115 @@ public class BoardServiceImple implements BoardService{
 
 	@Override
 	public void deleteClubService(int c_no) {
-		dao.deleteClub(c_no);
 		
 	}
 
 	@Override
-	public void updateClubService(ClubDTO dto, String date, String date2) {
-		dto.setC_date(date+"/"+date2);
-		dao.updateClub(dto);
+	public ModelAndView updateClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		Model model;
+
+		fileValidator.validate(file, result);
+
+		int imgDedup = dao.imgFileNameDedup();
 		
+		String filePath = "D:\\dev\\project_ultali\\project_ultali\\src\\main\\webapp\\resources\\img";
+		
+
+		
+		MultipartFile mfile = file.getFile();
+
+		// 파일의 이름
+		String fileName = mfile.getOriginalFilename();
+		
+
+		File f = new File(filePath + "/" + imgDedup + fileName);
+		
+
+		try {
+			mfile.transferTo(f);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		mav.addObject("fileName", f.getName());
+		mav.addObject("filePath", "../data/" + f.getName());
+		mav.setViewName("redirect:/clubBoard/clubBoardList");
+		
+		String imgPath = "/resources/img/" + imgDedup + mfile.getOriginalFilename();
+		
+		dto.setC_date(date+"/"+date2); 
+		dto.setC_image(imgPath);	
+		
+		dao.updateClub(dto);
+		return mav;
+		
+	
+		
+	}
+
+	@Override
+	public boolean getWishService(WishDTO dto) {
+		WishDTO wdto = dao.getWish(dto);
+		
+//		c_no가 널이 아니면 찜목록에 있으니까 true
+		if(wdto.getC_no() != 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void insertWishService(WishDTO dto) {
+		dao.insertWish(dto);
+
+	}
+
+	@Override
+	public void deleteWishService(WishDTO dto) {
+		dao.deleteWish(dto);
+
+	}
+
+	@Override
+	public void insertClubInquiryService(ClubInquiryDTO cidto) {
+		dao.insertClubInquiry(cidto);		
+	}
+
+	@Override
+	public List<ClubInquiryDTO> getAllClubInquiryService(int c_no) {
+		return dao.getAllClubInquiry(c_no);
+	}
+
+	@Override
+	public int countInquiryService() {
+		return dao.countInquiry();
+	}
+
+	@Override
+	public List<ClubInquiryDTO> selectInquiryService(PagingDTO dto) {
+		return dao.selectInquiry(dto);
+	}
+
+	@Override
+	public void insertAnswerService(ClubInquiryAnswerDTO ciadto) {
+		dao.insertAnswer(ciadto);
+	}
+
+	@Override
+	public List<ClubInquiryAnswerDTO> getAnswerService(String mem_id, int c_no) {
+		ClubDTO cdto = new ClubDTO();
+		cdto.setMem_id(mem_id);
+		cdto.setC_no(c_no);
+		return dao.getAnswer(cdto);
+	}
+
+	@Override
+	public ClubInquiryAnswerDTO getOneAnswerService(int c_inq_no) {
+		return dao.getOneAnswer(c_inq_no);
 	}
 
 

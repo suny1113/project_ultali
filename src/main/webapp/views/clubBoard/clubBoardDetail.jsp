@@ -12,7 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<form action="clubModify" id="form">
+	<input type="hidden" name="wish" id="wish" value="${wish }"/>
 	
 		<div id="main">
 			<img src="${path}${dto.c_image}" alt="" id="board_detail_img"/>
@@ -83,13 +85,12 @@
 				</table>
 				
 				<div id="wish">
-					<img src="${path}/resources/img/blackheart.png" alt="" style="float: left;"/>
-					<input type="button" value="찜하기" class="top_button" id="wish_button" onclick="location.href =''">
+					<img src="${path}${wish}" id="heart" alt="" style="float: left;"/>
+					<input type="button" value="찜하기" class="top_button" id="addOrDeleteWish_button">
 				</div>
 				
 				<div id="report">
 					<img src="${path}/resources/img/exclamation mark.png" name="c_image" alt="https://www.flaticon.com/kr/free-icon/exclamation-button_87980?term=%EB%8A%90%EB%82%8C%ED%91%9C&page=1&position=4&page=1&position=4&related_id=87980&origin=search" style="float: left;" id="wish_img"/>
-<%-- 					<a href="doReport?c_no=${dto.c_no }"><input type="button" value="신고하기" class="top_button"/></a> --%>
 					<input type="hidden" name="c_no" value="${dto.c_no }" id="c_no"/>
 					<input type="button" value="신고하기" class="top_button" id="reportButton"/>
 				</div>
@@ -101,14 +102,13 @@
 				
 	<!-- 			모임을 만든사람만 사용 할 수 있는 버튼 -->
 				<div id="bottom">
-					<input type="submit" value="수정하기" class="bottom_button"/>
-<%-- 					<input type="button" value="수정하기" class="bottom_button" onclick="location.href ='clubModify?cno=${dto.c_no }'"/> --%>
-					<input type="button" value="삭제하기" class="bottom_button" id="delete_button"/>
 				</div>
 				
 			</div>
-<!-- 				 	로그인한 사용자 아이디를 넘겨야함			 -->
-				<input type="hidden" name="mem_id" value="dh"/>
+<!-- 				 	작성자와 지금 로그인한 회원가 아이디가 같을 경우 수정하기 삭제하기 버튼 추가  			 -->
+				<input type="hidden" id = "mem_id" name="mem_id" value="${dto.mem_id}"/>
+				<input type="hidden" id = "id" value="${id}"/>
+				
 				<input type="hidden" name="c_name" value="${dto.c_name }"/>
 				<input type="hidden" name="c_detail" value="${dto.c_detail }"/>
 				<input type="hidden" name="major_no" value="${dto.major_no }"/>
@@ -118,6 +118,8 @@
 				<input type="hidden" name="c_price" value="${dto.c_price }"/>
 				<input type="hidden" name="c_count" value="${dto.c_count }"/>
 				<input type="hidden" name="c_time" value="${dto.c_time }"/>
+				<input type="hidden" name="checkWish" id="checkWish" value="${checkWish }"/>
+				
 
 			
 		</div>

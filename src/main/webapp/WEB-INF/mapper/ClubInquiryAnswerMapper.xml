@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="kr.co.jhta.ClubInquiryAnswer">
+  
+ 	 <select id="countInquiry" resultType="int">
+		SELECT COUNT(*) FROM club_inquiry
+	</select>
+  
+  	<select id="selectInquiry" resultType="cidto">
+  	SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM club_inquiry 
+						ORDER BY c_inq_no DESC 
+						) A
+				)
+	WHERE RN BETWEEN #{start} AND #{end}
+  	</select>
+  
+  	<select id="getAnswer" parameterType="cdto" resultType="ciadto">
+  		select a_no, mem_id, c_no, c_inq_no, c_inq_answer_regdate, c_inq_answer_answer
+  		FROM club_inquiry_answer
+  		WHERE mem_id = #{mem_id} AND c_no = #{c_no}
+  	</select>
+  	
+  	<insert id="insertAnswer" parameterType="ciadto">
+  		INSERT INTO club_inquiry_answer
+  		VALUES (c_inq_as_weq.nextval, #{mem_id}, #{c_no}, #{c_inq_no}, TO_CHAR(sysdate + 9/24, 'YYYY"년 "MM"월 "DD"일"'), #{c_inq_answer_answer})
+  	</insert>
+  	
+  	<select id="getOneAnswer" parameterType="int" resultType="ciadto">
+  		select a_no, mem_id, c_no, c_inq_no, c_inq_answer_regdate, c_inq_answer_answer
+  		FROM club_inquiry_answer
+  		WHERE c_inq_no = #{c_inq_no}
+  	</select>
+  </mapper>
