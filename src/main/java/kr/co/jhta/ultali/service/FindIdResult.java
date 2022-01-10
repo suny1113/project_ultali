@@ -2,7 +2,7 @@ package kr.co.jhta.ultali.service;
 
 import org.springframework.stereotype.Service;
 
-// ���̵�ã�� ������� �ڿ� �α��ڸ� * �� ǥ���ϴ� Ŭ����
+// 찾은 아이디 결과에서 뒤의 두 글자를 *로 표시
 @Service
 public class FindIdResult {
 

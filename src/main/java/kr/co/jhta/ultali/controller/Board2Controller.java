@@ -95,14 +95,7 @@ public class Board2Controller {
 		return service.insertClubService(dto, date, date2, file, result);
 		
 	}
-	
-	// 테스트용 게시판 하원이가 완성할거임
-//	@GetMapping("/clubBoardList")
-//	public String clubBoardListGet(Model model) {
-//		model.addAttribute("clubList", service.selectAllClubService()); 
-//		return "/clubBoard/clubBoardList";
-//	}
-	
+
 	@GetMapping("/doQuestion")
 	public String questionGet(@RequestParam("c_no") int c_no, Model model,
 			@RequestParam(value="nowPage", required=false)String nowPage

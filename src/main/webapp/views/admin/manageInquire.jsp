@@ -10,8 +10,25 @@
 <link rel="stylesheet" href="${path}/resources/css/adminReport.css">
 <style>
 	#inquire-table {
+		position: relative;
+		left: 20px;
 		width: 768px;
+		text-align: center;
 	}
+	
+	#inquire-table th:nth-child(1) {
+		width: 70px;
+	}
+	#inquire-table th:nth-child(2) {
+		width: 250px;
+	}
+	#inquire-table th:nth-child(3) {
+		width: 100px;
+	}
+	#inquire-table th:nth-child(4) {
+		width: 70px;
+	}
+	
 </style>
 </head>
 <body>
@@ -33,13 +50,37 @@
 						<th>번호</th>
 						<th>제목</th>
 						<th>문의인</th>
+						<th>작성일</th>
 						<th>답변상태</th>
 					</tr>
-					<c:forEach var="dto" items="${dto}">
+					<!--  전체항목 불러오기 -->
+					<c:forEach var="dto" items="${viewAll}">
 						<tr>
-						
+							<td>${dto.p_inq_no}</td>
+							<td><a href="manageInquireDetail?p_inq_no=${dto.p_inq_no}">${dto.p_inq_title}</a></td>
+							<td>${dto.mem_id}</td>
+							<td>${dto.regdate}</td>
+							<td>${dto.p_inq_status}</td>
 						</tr>
 					</c:forEach>
+					
+					<c:if test="${paging.startPage != 1 }">
+						<a href="Inquire?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+					</c:if>
+					<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+						<c:choose>
+							<c:when test="${p == paging.nowPage }">
+								<b>${p }</b>
+							</c:when>
+							<c:when test="${p != paging.nowPage }">
+								<a href="Inquire?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${paging.endPage != paging.lastPage}">
+						<a href="Inquire?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+					</c:if>
+					
 				</table>
 			</div>
 		</div>

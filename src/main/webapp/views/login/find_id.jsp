@@ -5,36 +5,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 재설정</title>
+<title>아이디 찾기</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" href="${path}/resources/css/home.css">
 <link rel="stylesheet" href="${path}/resources/css/find_id_password.css">
 <link rel="stylesheet" href="${path}/resources/css/find_id.css">
-<script type="text/javascript" src="${path }/resources/js/findPasswordResult.js"></script>
+<script src="${path }/resources/js/find_id.js"></script>
 <style type="text/css">
-	#a-pw{
-		border-bottom: 1px solid skyblue;
-	}
-	#span-pw{
-		color: skyblue;
-	}
-	.pw-frm{
-		width : 280px;
-		height: 55px;
-		border : none;
-		outline : 1px solid #D3D3D3;
-		font-size: 20px;
-		margin-bottom: 15px;
-	}
-	.pw-frm:focus{
-		outline : 1px solid #A1D8EF;
-	}
-	
+#a-id{
+	border-bottom: 1px solid skyblue;
+}
+
+#span-id{
+	color: skyblue;
+}
+
 </style>
 </head>
 <body>
-	
+
 <div class="nav-color-width"></div>
 	<header>
 		<div class="header">
@@ -50,8 +40,9 @@
 			</div>
 		</div>
 	</header>
+
 	<h1>아이디/비밀번호 찾기</h1>
-	
+
 	<div id="container">
 		<div id="find-form">
 			<div id="btn-form">
@@ -59,21 +50,31 @@
 				<a href="findPassword" class="a-find" id="a-pw"><span id="span-pw" class="span-find">비밀번호 재설정</span></a>
 			</div>
 			
-			<h2>비밀번호 재설정</h2>
-			<h4>새로운 비밀번호를 입력해주세요.</h4>
-			<form id="frm">
-				<div id="input-form" >
-					<input type="password" name="mem_pw" class="pw-frm" id="pw" placeholder="새 비밀번호 입력"/>
-					<input type="password" name="mem_rePw" class="pw-frm" id="rePw" placeholder="비밀번호 재입력" /><br>
-					<h5 style="font-weight: normal;" id="warn" ></h5>
-					<input type="button" id="submit-btn" value="변경완료" />
-					<input type="hidden" id="hid" name="mem_id" value="${mem_id }" />
+			<h2>휴대전화로 찾기</h2>
+			<h4>가입 당시 입력한 휴대전화 번호를 통해 아이디를 찾을 수 있습니다.</h4>
+		<form action="findIdResult" method="post" id="frm">
+			<div id="input-form">
+				<label for="input-name"></label>
+				<input type="text" name="mem_name" class="input-name-tel" id="input-name" placeholder="이름" autocomplete="off"  /><br>
+				<span class="warn" id="warn-name">이름을 입력하세요.</span>
+				<label for="input-tel"></label>
+				<input type="tel" name="mem_phone" class="input-name-tel" id="input-tel" placeholder="전화번호 입력(숫자만)" autocomplete="off" /><br>
+				<span class="warn" id="warn-tel">휴대전화 번호를 다시 확인해주세요.</span>
+				<div id="auth-form">
+					<input type="button" id="accept-authNum" value="인증번호 받기" />
+					<input type="text" name="" id="chk-authNum" placeholder="인증번호입력" autocomplete="off" style="display: none" />
+					<input type="button" id="chk-btn" value="인증번호 확인" style="display: none" />
 				</div>
-			</form>
+				<input type="hidden" name="" id="doubleChk" value=""  />
+				<input type="button" id="submit-btn" value="확인"  /><br>
+				<span class="warn" id="warn-btn">휴대전화 번호를 인증하세요.</span>
+			</div>
+		</form>
+			
 		</div>
 	</div>
 
 	<jsp:include page="../home/footer.jsp" />
-
+	
 </body>
 </html>
