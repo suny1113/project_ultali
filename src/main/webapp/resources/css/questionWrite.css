@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+#secret:hover {
+	cursor: pointer;
+}
+
+textarea{
+	resize: none;
+	width: 686px;
+	height: 250px;
+	margin-bottom: 30px;
+}
+
+.button{
+	width: 200px;
+	height: 40px;
+	font-weight: bold;
+}
+
+#submit{
+	margin-left: 338px;
+	margin-right: 214px;
+}
+
+
+.button:hover{
+	cursor: pointer;	
+}
+
+
+#textarea{
+	margin-left: 3px;
+}
+
+#borderDiv{
+	margin-left: 300px;
+	margin-top: 300px;
+}
+
+label{
+	font-weight: bold;
+}
+
+#h3{
+	margin-right: 520px;
+}

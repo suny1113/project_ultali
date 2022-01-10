@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+#textarea{
+	margin-top: 20px;
+}
+
+#select{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+
+textarea{
+	resize: none;
+	width: 686px;
+	height: 217;
+}
+
+.report_button{
+	width: 200px;
+	height: 30px;
+	font-weight: bold;
+
+}
+.report_button:hover{
+	cursor: pointer;	
+}
+
+#submit{
+	margin: 20px 184px 0px 50px
+}
+
+#textarea{
+	margin-left: 3px;
+}

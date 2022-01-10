@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+#reportDetail-table {
+		margin: 40px auto;
+		width: 768px;
+		text-align: center;
+		border-collapse: collapse;
+		table-layout: fixed;
+	}
+	
+	#reportDetail-table th {
+		width: 200px;
+		padding: 15px 0px;
+	}
+	
+	#reportDetail-table td {
+		width: 568px;
+		padding: 15px 0px;
+		text-overflow: ellipsis;
+		white-space: pre-wrap;
+		word-break: break-all;
+	}
+	
+	#reportDetail-table tr:nth-child(4) {
+		border-top: 1px solid black;
+		border-bottom: 1px solid black;
+	}
+	
+	#reportDetail-table tr:nth-child(5) {
+		text-align: right;
+	}
+	
+	#reportDetail-table a {
+		background: rgb(140,180,210);
+		color: white;
+		margin: 10px;
+		padding: 10px 5px;
+		border-radius: 8px;
+		font-weight: bold;
+	}
+	
+	#reportDetail-table a:hover {
+		background: black;	
+	}
+	

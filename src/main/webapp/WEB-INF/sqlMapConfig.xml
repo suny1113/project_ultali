@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- mybatis_conf -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 각자 사용할 DTO클래스 별칭 지정 -->
+<configuration>
+	<typeAliases>
+		<typeAlias type="kr.co.jhta.ultali.dto.RegisterDTO" alias="rdto" />
+		<typeAlias type="kr.co.jhta.ultali.dto.NoticeDTO" alias="ndto" />
+		<typeAlias type="kr.co.jhta.ultali.dto.StartEnd" alias="se" />
+   	 	<typeAlias type="kr.co.jhta.ultali.dto.ClubDTO" alias="cdto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.MyInfoDto" alias="MyInfoDto"/>
+    	<typeAlias type="kr.co.jhta.ultali.dto.ReportDTO" alias="reportDto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.MemberDTO" alias="mdto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.InquireDto" alias="InquireDto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.AppDto" alias="AppDto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.MyClubDto" alias="MyClubDto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.WishDTO" alias="wdto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.ClubInquiryDTO" alias="cidto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.ClubInquiryAnswerDTO" alias="ciadto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.PagingDTO" alias="pdto"/>
+		</typeAliases>
+</configuration>

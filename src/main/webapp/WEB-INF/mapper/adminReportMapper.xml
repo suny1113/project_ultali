@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-Mapper.dtd">
+
+<mapper namespace="kr.co.jhta.ultali.adminReport">
+	
+	<select id="selectAllReport" resultType="reportDto">
+		SELECT rep_no, mem_id, c_no, rep_reason, rep_detail
+		FROM report
+	</select>
+	
+	<select id="selectOneReport" resultType="reportDto" parameterType="int">
+		SELECT rep_no, mem_id, c_no, rep_reason, rep_detail
+		FROM report
+		WHERE rep_no = #{rep_no}
+	</select>
+	
+	<delete id="deleteOneReport" parameterType="int">
+		DELETE report
+		WHERE rep_no = #{rep_no}
+	</delete>
+	
+</mapper>

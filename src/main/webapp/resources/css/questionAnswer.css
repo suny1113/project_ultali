@@ -1,0 +1,75 @@
+@charset "UTF-8";
+.wrapper{
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	min-height: 100vh;
+}
+
+.content{
+/* 	background-color: red; */
+}
+
+.contents{
+	height: 180px;
+	width: 583px;
+  	background: #E0E0E0;
+}
+
+#b{
+	background-color: gray;
+	width: 400px;
+	height: 150px;
+}
+
+#text{
+	width: 500px;
+	height: 30px;
+	font-weight: bolder;
+}
+
+#submit:hover{
+	cursor: pointer;
+}
+#submit{
+	height: 30px;
+	background-color: #5E5E5E;
+	color: white;
+}
+
+.border{
+	border: solid 2px black;
+	padding-top: 1px;
+}
+
+.marginTop{
+	margin-top: 0px;
+	font-weight: bolder;
+}
+
+.bottom{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+#page{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#inquireWrite{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #E0E0E0;
+	font-weight: bold;
+	margin-left: 500px;
+	top: 30px;
+}
+
+.textarea{
+	resize:none;
+	
+}
+
+

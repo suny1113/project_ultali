@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/* normalize */
+* {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.top_club_list {
+	width: 100%;
+	float: left;
+	border: 1px solid black;
+	
+	/* 	내부 요소 중앙 정렬 */
+	display: flex;
+	justify-content: center;
+  	align-items: center;
+}
+
+.club_list {
+	width: 100%;
+	float: left;
+	display: flex;
+	justify-content: center;
+  	align-items: center;
+}
+
+.club {
+	float: left;
+	box-sizing: border-box;
+	padding: 20px 40px;
+}
+
+.img {
+	width: 200px; 
+	height: 200px; 
+	overflow: hidden;   /* 틀은 고정된 채로 이미지만 확대 */
+	margin: auto;
+}   
+
+.img img {
+	width: 150px;
+	height: 150px;
+	margin: 5px;
+	border-radius: 30%;
+	transition: all 0.2s linear;   /* 부드럽게 확대 */
+}
+
+.img:hover img {
+	transform: scale(1.1);   /* 이미지 확대 */
+}
+
+.text {
+	width: 250px;
+	height: 250px;
+	margin: auto;
+}
+
+.text > h2 {
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+.text > h2:hover {
+	text-decoration: underline;
+}
+
+.text > p {
+	margin-bottom: 1px;
+}
+

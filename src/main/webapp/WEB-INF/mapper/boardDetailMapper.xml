@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.jhta.boardDetailMapper">
+  	<select id="getClub" resultType="cdto" parameterType="int">
+  		SELECT C_NO, MAJOR_NO, SUB_NO, MEM_ID, C_NAME, C_LOC, C_PLACE, C_DATE, C_TIME, C_PRICE, C_COUNT, C_IMAGE, C_DETAIL, C_HITS
+		FROM club
+		where C_NO = #{c_no}
+  	</select>
+  	
+  	<insert id="insertClub" parameterType="cdto">
+  		INSERT INTO club
+  		VALUES (C_NO_SEQ.nextval, #{major_no}, #{sub_no}, #{mem_id}, #{c_name}, #{c_loc}, #{c_place}, #{c_date}, #{c_time}, #{c_price}, #{c_count}, #{c_image}, #{c_detail}, #{c_hits})
+  	</insert>
+  	
+  	  <select id="getAllClub" resultType="cdto">
+  		SELECT c_no, major_no, sub_no, mem_id, c_name, c_loc, c_place, c_date, c_time, c_price, c_count, c_image, c_detail, c_hits
+		FROM club
+  	</select>
+  	
+  	<select id="getClubColumnCount" resultType="int">
+  		SELECT COUNT(*) + 1
+  		FROM club
+  	</select>
+  	
+  	<select id="getOneClub" parameterType="int" resultType="cdto">
+  		SELECT C_NO, MAJOR_NO, SUB_NO, MEM_ID, C_NAME, C_LOC, C_PLACE, C_DATE, C_TIME, C_PRICE, C_COUNT, C_IMAGE, C_DETAIL, C_HITS
+  		FROM club
+  		WHERE c_no = #{c_no}
+  	</select>
+  	
+	<delete id="deleteClub" parameterType="int">
+		DELETE FROM club
+		WHERE
+		c_no = #{c_no}
+	</delete>
+	
+	<update id="modifyClub" parameterType="cdto">
+		UPDATE club
+		SET major_no = #{major_no}, sub_no = #{sub_no}, c_name = #{c_name}, c_loc = #{c_loc}, c_place = #{c_place}, c_date = #{c_date}, c_time = #{c_time}, c_price = #{c_price}, c_count = #{c_count}, c_image = #{c_image}, c_detail = #{c_detail}
+		WHERE c_no = #{c_no}
+	</update>
+
+	
+  </mapper>
