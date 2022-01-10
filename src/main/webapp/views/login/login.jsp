@@ -10,6 +10,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 <link rel="stylesheet" href="${path}/resources/css/home.css">
 <link rel="stylesheet" href="${path}/resources/css/login.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+ 
+	function setCookie(name, value, exp){
+		var date = new Date();
+		date.setTime(date.getTime() + exp*24*60*60*1000)
+	    document.cookie = name + "=" + value + ";expires=" + date.toUTCString() + ";path=/"
+	}
+	
+	function deleteCookie(name){
+	    document.cookie = name + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;path=/"	    
+	}
+	
+	function getCookie(){
+		var allCookies = document.cookie
+		
+		cookieArray = allCookies.split(";")
+		
+		for(var i=0; i < cookieArray.length; i++){
+			name = cookieArray[i].split("=")[0]
+			value = cookieArray[i].split("=")[1]
+			
+			if(name == "id"){
+				$("#mem_id").val(value)
+				$("#checkbox").prop("checked", true)
+			}
+		}
+	}
+	
+	$(function(){
+
+		getCookie()
+		
+		$("#submit-btn").click(function(){
+			if($("#checkbox").is(":checked")){
+				setCookie("id", $("#mem_id").val(), 7)
+			}else if($("#checkbox").not(":checked")){
+				deleteCookie("id")
+			}
+			$("#frm").submit()
+		})
+	})
+</script>
 <style type="text/css">
 	.warn{
 		display: block;
@@ -47,14 +90,14 @@
 				<span id="login-login">LOGIN</span>
 			</div>
 			<div id="login">
-				<input type="text" name="mem_id" id="" class="login" placeholder="아이디"/><br>
+				<input type="text" name="mem_id" id="mem_id" class="login" placeholder="아이디"/><br>
 				<input type="password" name="mem_pw" id="" class="login" placeholder="비밀번호"/><br>
 				<span class="warn">${msg }</span>
-				<input type="submit" value="로그인" /><br>
+				<input type="button" id="submit-btn" value="로그인" /><br>
 			</div>
 			<div id="login_sub">
 				<div id="saveId">
-					<input type="checkbox" name="" id="checkbox" />
+					<input type="checkbox" name="rememberId" id="checkbox" />
 					<label id="checkbox-label" for="checkbox" ><span>&nbsp;&nbsp;아이디저장</span></label>
 				</div>
 				<ul id="find_register">

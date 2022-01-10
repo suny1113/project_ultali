@@ -8,7 +8,9 @@
 	<header>
 		<div class="header">
 			<div class="nav">
-				<a href="register/register" class="nav-a">회원가입</a>
+				<sec:authorize access="isAnonymous">
+					<a href="register/register" class="nav-a">회원가입</a>
+				</sec:authorize>
 				<sec:authorize access="isAnonymous()">
 					<a href="login/login" class="nav-a">로그인</a>
 				</sec:authorize>

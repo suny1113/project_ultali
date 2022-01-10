@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.jhta.ultali.dao.InquireDaoInter;
-import kr.co.jhta.ultali.dto.IdStartEnd;
 import kr.co.jhta.ultali.dto.AdminInquirePagingVO;
 import kr.co.jhta.ultali.dto.InquireDto;
 
