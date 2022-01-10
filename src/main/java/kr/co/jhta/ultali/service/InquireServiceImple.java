@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.jhta.ultali.dao.InquireDaoInter;
+import kr.co.jhta.ultali.dto.AdminInquirePagingVO;
 import kr.co.jhta.ultali.dto.InquireDto;
 
 @Service
@@ -31,6 +32,17 @@ public class InquireServiceImple implements InquireServiceInter{
 	@Override
 	public void inquireWrite(InquireDto dto) {
 		inquireDaoInter.insertInquire(dto);
+	}
+
+	
+	@Override
+	public int countBoard() {
+		return inquireDaoInter.countBoard();
+	}
+
+	@Override
+	public List<InquireDto> selectBoard(AdminInquirePagingVO vo) {
+		return inquireDaoInter.selectBoard(vo);
 	}
 
 }
