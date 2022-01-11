@@ -1,4 +1,5 @@
 // 서버에서 전송받아온 값 저장할 변수
+	var x;
 	var code = ""
 	// 인증번호 일치 여부
 	var doubleChk = $("#doubleChk").val()
@@ -14,7 +15,6 @@
     	$("#warn-tel").hide()
     	$("#warn-btn").hide()
 
-   
 	    $("#accept-authNum").click(function(){
 	    	
 	    	if($("#input-name").val() == ""){
@@ -37,14 +37,37 @@
 		    			if(result=="error"){
 		    				alert("입력한 정보와 일치하는 계정 정보가 없습니다.")
 		    			}else{
-		    				alert("인증번호가 발송되었습니다.")
+		    				alert("인증번호가 발송되었습니다.\n제한시간 안에 인증번호를 입력하세요.")
 		    				$("#accept-authNum").hide()
 	    					$("#chk-authNum").show()
 	    					$("#chk-btn").show()
 	    					$("#input-name").attr("readonly", true)
 	    					$("#input-tel").attr("readonly", true)
 		    				code = result
-		    				
+		
+							var time = 180
+							var min = ""
+							var sec = ""
+							
+							x = setInterval(function(){
+								min = parseInt(time/60)
+								sec = time%60
+								
+								time--
+								document.getElementById("timer").innerHTML = min + "분" + sec + "초"
+								
+								if(time < 0){
+									clearInterval(x)
+									document.getElementById("timer").innerHTML = ""
+									alert("인증시간이 만료되었습니다.")
+									$("#chk-authNum").hide()
+						    		$("#chk-btn").hide()
+						    		$("#accept-authNum").show()
+									
+								}
+								
+							}, 1000)
+	
 		    			}
 		    		}
 		    	})
@@ -54,6 +77,8 @@
 	    $("#chk-btn").click(function(){
 	    	if($("#chk-authNum").val() == code && $("#chk-authNum").val() != ""){
 				alert("인증번호가 일치합니다.")
+				clearInterval(x)
+				document.getElementById("timer").innerHTML = ""
 				$("#warn-btn").hide()
 				doubleChk = "true"
 			}else{

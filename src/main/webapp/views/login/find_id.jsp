@@ -20,12 +20,12 @@
 #span-id{
 	color: skyblue;
 }
-
 </style>
 </head>
 <body>
+	<jsp:include page="../home/header.jsp" />
 
-<div class="nav-color-width"></div>
+<!-- <div class="nav-color-width"></div>
 	<header>
 		<div class="header">
 			<div class="nav">
@@ -39,7 +39,7 @@
 				<a href="../home"><img src="../resources/img/logo.png" alt="" /></a>
 			</div>
 		</div>
-	</header>
+	</header> -->
 
 	<h1>아이디/비밀번호 찾기</h1>
 
@@ -50,7 +50,8 @@
 				<a href="findPassword" class="a-find" id="a-pw"><span id="span-pw" class="span-find">비밀번호 재설정</span></a>
 			</div>
 			
-			<h2>휴대전화로 찾기</h2>
+			<img src="${path }/resources/img/smartphone.png" alt="핸드폰이미지" style="width: 50px; height: 43px" /><h2 style="display: inline; position: absolute;
+   				 margin-top: 10px;">휴대전화로 찾기</h2>
 			<h4>가입 당시 입력한 휴대전화 번호를 통해 아이디를 찾을 수 있습니다.</h4>
 		<form action="findIdResult" method="post" id="frm">
 			<div id="input-form">
@@ -63,7 +64,8 @@
 				<div id="auth-form">
 					<input type="button" id="accept-authNum" value="인증번호 받기" />
 					<input type="text" name="" id="chk-authNum" placeholder="인증번호입력" autocomplete="off" style="display: none" />
-					<input type="button" id="chk-btn" value="인증번호 확인" style="display: none" />
+					<input type="button" id="chk-btn" value="인증번호 확인" style="display: none" /><br>
+					<span id="timer" style="display: block; margin-top: 10px; font-size: 13px;"></span>
 				</div>
 				<input type="hidden" name="" id="doubleChk" value=""  />
 				<input type="button" id="submit-btn" value="확인"  /><br>

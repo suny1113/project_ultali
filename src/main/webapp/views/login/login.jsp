@@ -64,8 +64,10 @@
 </style>
 </head>
 <body>
-	<h2><c:out value="${error }"></c:out></h2>
-<div class="nav-color-width"></div>
+
+<jsp:include page="../home/header.jsp" />
+
+<!-- <div class="nav-color-width"></div>
 	<header>
 		<div class="header">
 			<div class="nav">
@@ -79,7 +81,7 @@
 				<a href="../home"><img src="../resources/img/logo.png" alt="" /></a>
 			</div>
 		</div>
-	</header>
+	</header> -->
 		
 	
 
