@@ -61,6 +61,39 @@
 	    font-size: 13px;
 	    margin-bottom: 5px;
 	}
+	
+	#remember-login{
+		display: inline-block;
+		margin-left : 20px;
+	}
+	
+	#remember-me{
+		display: none;
+	}
+
+	#remember-me + #remember-label{
+		cursor: pointer;
+	}
+
+	#remember-me + #remember-label:before{
+		content: "";
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border: 1px solid #cbcbcb;
+		vertical-align: middle;
+	}
+
+	#remember-me:checked + #remember-label::before{
+		content:"\f00c";
+		font-family: "Font Awesome 5 free";
+		font-weight: 900;
+		color: #fff;
+		background: #000;
+		border-color: #000;
+		font-size: 15px;
+		text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -99,8 +132,12 @@
 			</div>
 			<div id="login_sub">
 				<div id="saveId">
-					<input type="checkbox" name="rememberId" id="checkbox" />
-					<label id="checkbox-label" for="checkbox" ><span>&nbsp;&nbsp;아이디저장</span></label>
+					<input type="checkbox" name="" id="checkbox" />
+					<label id="checkbox-label" for="checkbox" ><span>&nbsp;&nbsp;아이디 저장</span></label>
+				</div>
+				<div id="remember-login">
+					<input type="checkbox" name="remember-me" id="remember-me" />
+					<label id="remember-label" for="remember-me"><span>&nbsp;&nbsp;로그인 기억</span></label>
 				</div>
 				<ul id="find_register">
 					<li>&nbsp;&nbsp;&nbsp;<a href="../register/register">회원가입</a></li>
