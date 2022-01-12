@@ -29,14 +29,12 @@ div.container menu a {
 }
 
 div.container div.item2 {
-  background-color: burlywood;
   margin-top: 100px;
   height: 100%;
   position: relative;
 }
 
 div.container div.item2 table {
-  background-color: chocolate;
   margin-bottom: 50px;
   width: 800px;
   font-size: 20px;
@@ -69,7 +67,6 @@ div.container div.item2 table tr:last-child td ul {
 }
 
 div.container div.item2 table tr:last-child td ul li {
-  background-color: burlywood;
   padding: 0 10px;
   font-size: 20px;
 }
@@ -83,7 +80,6 @@ div.container input {
   width: 100px;
   height: 50px;
   border-radius: 20px;
-  background-color: lightgray;
   border: white;
 }
 /*# sourceMappingURL=inquireList.css.map */

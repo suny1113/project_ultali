@@ -6,10 +6,10 @@ import kr.co.jhta.ultali.dto.AdminInquirePagingVO;
 import kr.co.jhta.ultali.dto.InquireDto;
 
 public interface InquireServiceInter {
+	
 	public InquireDto showOne(int p_inq_no);
 	public List<InquireDto> showList(String mem_id,int startNo, int endNo);
-	public void inquireWrite(InquireDto dto);
-	public int totalInquireCount();
+	public int totalInquireCount(String mem_id);
 
 
 

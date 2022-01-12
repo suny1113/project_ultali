@@ -1,75 +1,106 @@
 @charset "UTF-8";
-.wrapper{
-	display: flex;
-  	justify-content: center;
-  	align-items: center;
-  	min-height: 100vh;
-}
-
-.content{
-/* 	background-color: red; */
-}
 
 .contents{
-	height: 180px;
-	width: 583px;
-  	background: #E0E0E0;
+	width: 1080px;
+	margin: 0 auto;
+	display: grid;
+    align-items: center; 
+    justify-content: center; 
 }
 
-#b{
-	background-color: gray;
-	width: 400px;
-	height: 150px;
+
+#forEach{
+	width: 600px;
 }
 
-#text{
-	width: 500px;
-	height: 30px;
-	font-weight: bolder;
+.user{
+	margin-bottom: 10px;
 }
 
-#submit:hover{
-	cursor: pointer;
-}
-#submit{
-	height: 30px;
-	background-color: #5E5E5E;
-	color: white;
+.leader{
+	margin-top: 15px;
+	font-size: 20px;
+	font-weight: bold;
+	word-wrap: break-word;
 }
 
 .border{
-	border: solid 2px black;
-	padding-top: 1px;
+	border-bottom: 1px solid rgb(240,240,240);
+	margin-bottom: 20px;
 }
 
-.marginTop{
-	margin-top: 0px;
-	font-weight: bolder;
+#title{
+	letter-spacing: 3px;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
-.bottom{
-	margin-bottom: 0px;
-	margin-top: 0px;
-}
+#user_question{
+	margin-top: 20px;
 
-#page{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-#inquireWrite{
-	padding-top: 5px;
-	padding-bottom: 5px;
-	background: #E0E0E0;
-	font-weight: bold;
-	margin-left: 500px;
-	top: 30px;
-}
-
-.textarea{
-	resize:none;
 	
 }
 
+#leader_answer{
+	margin-top: 20px;
+	background-color: #E0E0E0;
+	
+}
 
+.text {
+	width: 500px;
+	height: 100px;
+    resize: none;
+    margin-top: 20px;
+}
+
+.user_text {
+	width: 500px;
+	height: 100px;
+    resize: none;
+    margin-top: 0px;
+}
+
+.answerWrite{
+	width: 90px;
+	height: 44px;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 74px;
+}
+
+.answerWrite:hover{
+	cursor: pointer;
+}
+
+.answer_content{
+	resize: none;
+	border-radius: 5px;
+	width: 500px;
+	height: 100px;
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+table{
+	border-radius: 5px;
+}
+
+#user_content{
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+#leader_text{
+	margin-top: 0px;
+}
+
+#inquireWrite:hover{
+	cursor: pointer;
+}
+
+#inquireWrite{
+	margin-left: 540px;
+	padding: 10px 5px 10px 5px;
+}

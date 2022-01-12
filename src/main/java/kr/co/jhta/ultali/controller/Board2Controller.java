@@ -92,6 +92,7 @@ public class Board2Controller {
 	
 	public ModelAndView registerPost(@ModelAttribute("dto") ClubDTO dto, @RequestParam("date") String date, @RequestParam("date2") String date2,
 							HttpServletRequest req, @ModelAttribute("uploadFile") UploadFile file, BindingResult result, Model model) {
+		model.addAttribute("major_no", dto.getMajor_no());
 		return service.insertClubService(dto, date, date2, file, result);
 		
 	}
@@ -114,7 +115,8 @@ public class Board2Controller {
 			cntPerPage = "2";
 		}
 		PagingDTO pdto = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-//		pdto.setC_no(c_no);
+    
+		pdto.setC_no(c_no);
 		if(service.selectInquiryService(pdto).isEmpty() == false) {
 			// 문의한 내용
 			List<ClubInquiryDTO> viewsAll = service.selectInquiryService(pdto);

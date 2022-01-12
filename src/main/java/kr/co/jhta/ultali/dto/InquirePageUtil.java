@@ -19,16 +19,16 @@ public class InquirePageUtil {
 		int endNo = (currentPage*countPerPage);
 		
 		// 시작 페이지 번호 // 이상한 부분
-		int startPageNo = currentPage-5 <=0?1:currentPage/5*5+1;
+		int startPageNo = currentPage-5 <=0?1:(currentPage/5)*5+1;
 				
 		// 끝 페이지 번호
-		int endPageNo = startPageNo+4;
+		int endPageNo = startPageNo+4 > totalPage?totalPage:startPageNo+4;
 		
 		// 이전
 		boolean prev = currentPage > 5 ? true :false;
 		
 		// 다음
-		boolean next = currentPage+5>= totalPage? false:true;
+		boolean next = startPageNo+5> totalPage? false:true;
 		
 		// 맵 객체에 담기
 		map.put("totalPage", totalPage);

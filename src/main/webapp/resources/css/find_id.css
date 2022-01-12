@@ -65,7 +65,7 @@
 #submit-btn{
 	width : 280px;
 	height : 60px;
-	margin-top : 30px;
+	margin-top : 15px;
 	margin-bottom: 5px;
 	background: skyblue;
 	border: none;
@@ -79,5 +79,5 @@
 	display: block;
     color: #FF3800;
     font-size: 13px;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
 }

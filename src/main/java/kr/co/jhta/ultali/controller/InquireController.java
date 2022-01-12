@@ -22,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("myPage")
 public class InquireController {
 	
 	@Autowired
@@ -32,11 +31,11 @@ public class InquireController {
 		this.inquireServiceInter = inquireServiceInter;
 	}
 
-	@RequestMapping("/inquire")
+	@RequestMapping("myPage/inquire")
 	public ModelAndView inquire(@RequestParam(name = "currentPage",defaultValue = "1")int currentPage,HttpSession session,Model model) {
 		
 		// 문의 게시판의 전체 리스트
-		int totalInquireCount = inquireServiceInter.totalInquireCount();
+		int totalInquireCount = inquireServiceInter.totalInquireCount((String)session.getAttribute("id"));
 		log.info("totalInquireCount : "+totalInquireCount);
 		// 기본적으로 보여줄 문의 갯수는 10개 // 페이지당 개시물 수
 		int countPerPage = 10;
@@ -49,23 +48,23 @@ public class InquireController {
 		int endNo =(int)map.get("endNo");
 		
 
-		String mem_id = (String) session.getAttribute("mem_id");
+		String mem_id = (String) session.getAttribute("id");
 		return new ModelAndView("myPage/inquire","showList",inquireServiceInter.showList(mem_id,startNo,endNo)) ;
 	}
 
-	@GetMapping("inquireWrite")
+	@GetMapping("myPage/inquireWrite")
 	public String inquireWrite(Model model,HttpSession session) {
-		model.addAttribute("mem_id",session.getAttribute("mem_id"));
+		model.addAttribute("mem_id",session.getAttribute("id"));
 		return "myPage/inquireWrite";
 	}
 	
-	@PostMapping("inquireWrite")
+	@PostMapping("myPage/inquireWrite")
 	public String makeInqure(@ModelAttribute("inquiredto")InquireDto inquiredto) {
 		inquireServiceInter.inquireWrite(inquiredto);
 		return "redirect:/myPage/inquire";
 	}
 	
-	@RequestMapping("inquireDetail")
+	@RequestMapping("myPage/inquireDetail")
 	public ModelAndView inquireDetail(@ModelAttribute("p_inq_no") int p_inq_no) {
 		return new ModelAndView("myPage/inquireDetail","dto",inquireServiceInter.showOne(p_inq_no));
 	}
