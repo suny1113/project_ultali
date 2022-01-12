@@ -34,7 +34,7 @@ public class MyInfoController {
 	
 	@GetMapping("myPage/myInfo")
 	public ModelAndView showInfoGet(HttpSession session) {
-		String id = (String)session.getAttribute("mem_id");
+		String id = (String)session.getAttribute("id");
 		System.out.println(id);
 		MyInfoDto myInfoDto = myInfoServiceInter.showInfo(id);
 		return new ModelAndView("myPage/myInfo","myInfoDto",myInfoDto);
@@ -42,8 +42,6 @@ public class MyInfoController {
 	
 	@PostMapping("myPage/myInfo")
 	public ModelAndView showInfoPost(@ModelAttribute("mem_id") String mem_id, HttpSession session) {
-		session.setAttribute("mem_id", mem_id);
-		System.out.println(mem_id);
 		MyInfoDto myInfoDto = myInfoServiceInter.showInfo(mem_id);
 		return new ModelAndView("myPage/myInfo","myInfoDto",myInfoDto);
 	}

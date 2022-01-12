@@ -34,7 +34,7 @@
 </head>
 <body>
 
-<div class="nav-color-width"></div>
+<!-- <div class="nav-color-width"></div>
 	<header>
 		<div class="header">
 			<div class="nav">
@@ -48,7 +48,9 @@
 				<a href="../home"><img src="../resources/img/logo.png" alt="" /></a>
 			</div>
 		</div>
-	</header>	
+	</header>	 -->
+	
+	<jsp:include page="../home/header.jsp" />
 	
 	<h1>아이디/비밀번호 찾기</h1>
 	

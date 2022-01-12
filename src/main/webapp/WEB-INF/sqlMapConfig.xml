@@ -23,5 +23,6 @@
   		<typeAlias type="kr.co.jhta.ultali.dto.ClubInquiryDTO" alias="cidto"/>
   		<typeAlias type="kr.co.jhta.ultali.dto.ClubInquiryAnswerDTO" alias="ciadto"/>
   		<typeAlias type="kr.co.jhta.ultali.dto.PagingDTO" alias="pdto"/>
+  		<typeAlias type="kr.co.jhta.ultali.dto.CNoStartEnd" alias="cNoStartEnd"/>
 		</typeAliases>
 </configuration>

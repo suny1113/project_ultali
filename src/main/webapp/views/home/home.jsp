@@ -5,12 +5,24 @@
 <meta charset="UTF-8">
 <title>울타리 :: 취미모임의 시작</title>
 <link rel="stylesheet" href="resources/css/home.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+	.banner {
+		width: 1080px;
+		height: 253px;
+		margin: 20px 0px;
+	}
+</style>
 </head>
 <body>
 	
 	<jsp:include page="header.jsp"/>
 	
 	<div class="body-container">
+		
+		<div class="banner">
+			<jsp:include page="slide.jsp"/>
+		</div>
 		
 		<div class="category">
 			<h1>카테고리</h1>
@@ -32,6 +44,7 @@
 				
 				<div class="meeting">
 					<a href="clubBoard/clubBoardList?major_no=2">
+
 						<img src="resources/img/sports.png" alt="" />
 						<span>스포츠</span>
 					</a>

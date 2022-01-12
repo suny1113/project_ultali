@@ -20,6 +20,8 @@
 <%-- 	<h2>답변ciadto1: ${ciadto1 }</h2> --%>
 <%-- 	<h2>답변ciadto2: ${ciadto2 }</h2> --%>
 <%-- 	<h2>paging: ${paging }</h2> --%>
+
+	<h2>paging: ${paging }</h2>
 	
 	<jsp:include page="../home/header.jsp" />
 	<div class="wrapper" >
@@ -169,8 +171,10 @@
 							</c:when>
 						</c:choose>
 					</c:forEach>
-					<c:if test="${paging.endPage != paging.lastPage}">
-						<a href="doQuestion?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&c_no=${c_no}">&gt;</a>
+					<c:if test="${paging.total > 2}">
+						<c:if test="${paging.endPage != paging.lastPage}">
+							<a href="doQuestion?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&c_no=${c_no}">&gt;</a>
+						</c:if>
 					</c:if>
 				</div>
 <!-- 				모임장이면 문의작성 버튼 안보이게 처리 -->

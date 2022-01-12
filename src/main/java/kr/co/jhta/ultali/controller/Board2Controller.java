@@ -47,7 +47,7 @@ public class Board2Controller {
 		
 		// 임시 아이디세션 삭제해야됨
 	    HttpSession session = request.getSession();
-	    session.setAttribute("id", "dh");
+	    session.setAttribute("id", "dh4");
 	    
 	    // 찜목록에 있는지 확인
 	    WishDTO wdto = new WishDTO();
@@ -105,7 +105,7 @@ public class Board2Controller {
 		// 모임장 답변
 		ClubDTO cdto = service.selectOneClubService(c_no);
 		
-		int total = service.countInquiryService();
+		int total = service.countInquiryService(c_no);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "2";
@@ -115,21 +115,35 @@ public class Board2Controller {
 			cntPerPage = "2";
 		}
 		PagingDTO pdto = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-
-		// 문의한 내용
-		List<ClubInquiryDTO> viewsAll = service.selectInquiryService(pdto);
-		
-		// 답변 내용 페이지가 2페이지여서 2개씩 받아옴
-		ClubInquiryAnswerDTO ciadto1 = service.getOneAnswerService(viewsAll.get(0).getC_inq_no());
-		ClubInquiryAnswerDTO ciadto2 = service.getOneAnswerService(viewsAll.get(1).getC_inq_no());
+    
+		pdto.setC_no(c_no);
+		if(service.selectInquiryService(pdto).isEmpty() == false) {
+			// 문의한 내용
+			List<ClubInquiryDTO> viewsAll = service.selectInquiryService(pdto);
 			
-		// 모임장 답글 넘기기
+			// 모임장 답변
+			// 답변 내용 페이지가 2페이지여서 2개씩 받아옴
+			ClubInquiryAnswerDTO ciadto1 = service.getOneAnswerService(viewsAll.get(0).getC_inq_no());
+			model.addAttribute("ciadto1", ciadto1);
+			if(viewsAll.size() > 1) {
+				
+				ClubInquiryAnswerDTO ciadto2 = service.getOneAnswerService(viewsAll.get(1).getC_inq_no());
+				model.addAttribute("ciadto2", ciadto2);
+			}
+
+			// 사용자 문의 가져오는 서비스
+			model.addAttribute("viewAll", viewsAll);
+		
+		}else {
+			// 값이 없을 경우 페이지 못넘기게 처리
+			pdto.setEndPage(1);
+		}
+		
+			
 		
 		// 페이징처리 dto
 		model.addAttribute("paging", pdto);
 		
-		// 사용자 문의 가져오는 서비스
-		model.addAttribute("viewAll", viewsAll);
 		
 		// 모임번호 
 		model.addAttribute("c_no", c_no);
@@ -137,9 +151,6 @@ public class Board2Controller {
 		// 모임장 dto
 		model.addAttribute("cdto", cdto);
 		
-		// 모임장 답변
-		model.addAttribute("ciadto1", ciadto1);
-		model.addAttribute("ciadto2", ciadto2);
 		
 		
 		return "/clubBoard/questionAnswer";
@@ -157,7 +168,7 @@ public class Board2Controller {
 		System.out.println("ciadtoaaaaaaaaaaaaa:" + ciadto);
 		
 		
-//		service.insertAnswerService(ciadto);
+		service.insertAnswerService(ciadto);
 		
 		return "redirect:/clubBoard/doQuestion?nowPage="+nowPage+"&cntPerPage="+cntPerPage+"&c_no="+c_no;
 	}

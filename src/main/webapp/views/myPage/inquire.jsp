@@ -66,13 +66,13 @@
                 <td colspan="4">
                     <ul>
                     	<c:if test="${map.prev }">
-                        	<li><a href="inquire?currentPage?${currentPage-5 }">이전</a></li>
+                        	<li><a href="inquire?currentPage=${(map.startPageNo-1)  }">이전</a></li>
                         </c:if>
                         <c:forEach begin="${map.startPageNo }" end="${map.endPageNo }" var="i">
                         	<li> <a href="inquire?currentPage=${i }">${i }</a></li>
                         </c:forEach>
                         <c:if test="${map.next }">
-                        	<li> <a href="inquire?currentPage=${currentPage+5 }">다음</a></li>
+                        	<li> <a href="inquire?currentPage=${map.endPageNo+1 }">다음</a></li>
                         </c:if>
                     </ul>
                 </td>
