@@ -11,7 +11,7 @@ public interface InquireServiceInter {
 	public List<InquireDto> showList(String mem_id,int startNo, int endNo);
 	public int totalInquireCount(String mem_id);
 
-
+	public void inquireWrite(InquireDto dto);
 
 
 
