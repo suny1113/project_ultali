@@ -119,7 +119,7 @@
 				<div>
 
 <!-- 					mem_id은 로그인하고 데이터를 받으면 넘겨줄 수 있음 -->
-					<input type="hidden" name="mem_id" value="dh" />
+					<input type="hidden" name="mem_id" value="세션 아이디로 변경해야함" />
 
 <!-- 				 카테고리 선택하면 jquery로 값을 넘겨줌 -->
 					<input type="hidden" name="major_no" id="major_no"/>

@@ -5,7 +5,9 @@
   <mapper namespace="kr.co.jhta.ClubInquiryAnswer">
   
  	 <select id="countInquiry" resultType="int">
-		SELECT COUNT(*) FROM club_inquiry
+		SELECT COUNT(*) 
+		FROM club_inquiry
+		WHERE c_no = #{c_no}
 	</select>
   
   	<select id="selectInquiry" resultType="cidto">
@@ -15,6 +17,7 @@
 				FROM (
 						SELECT * 
 						FROM club_inquiry 
+						WHERE c_no = #{c_no}
 						ORDER BY c_inq_no DESC 
 						) A
 				)

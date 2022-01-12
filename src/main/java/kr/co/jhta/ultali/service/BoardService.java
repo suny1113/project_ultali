@@ -26,7 +26,7 @@ public interface BoardService {
 	public void insertClubInquiryService(ClubInquiryDTO cidto);
 	public List<ClubInquiryDTO> getAllClubInquiryService(int c_no);
 
-	public int countInquiryService();
+	public int countInquiryService(int c_no);
 	public List<ClubInquiryDTO> selectInquiryService(PagingDTO dto);
 	
 	public void insertAnswerService(ClubInquiryAnswerDTO ciadto);
