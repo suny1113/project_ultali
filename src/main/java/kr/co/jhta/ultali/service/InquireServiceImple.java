@@ -35,8 +35,8 @@ public class InquireServiceImple implements InquireServiceInter{
 	}
 
 	@Override
-	public int totalInquireCount() {
-		return inquireDaoInter.selectTotalInquireCount();
+	public int totalInquireCount(String mem_id) {
+		return inquireDaoInter.selectTotalInquireCount(mem_id);
 	}
 	
 	@Override

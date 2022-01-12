@@ -5,15 +5,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.jhta.ultali.createdclub">
+		
+		<select id="selectAppList" parameterType="cNoStartEnd" resultType="AppDto">
+			select app_no, MEM_NAME, mem_id, GENDER, MEM_PHONE, APP_DETAIL,	c_no,c_name 
+        from (select rn, app_no, MEM_NAME, mem_id, GENDER, MEM_PHONE, APP_DETAIL, c_no,c_name 
+        from (SELECT rownum rn, A.APP_NO app_no, A.MEM_NAME, A.MEM_ID mem_id, A.GENDER, A.MEM_PHONE, A.APP_DETAIL, A.C_NO c_no, C.C_NAME c_name
+		FROM APPLYAPP a join club c on (a.c_no = c.c_no)
+		WHERE A.C_NO = #{c_no}) where rownum &lt;=#{endNo}) where rn &gt;=#{startNo}
+		</select>
 
-
-	<select id="selectAppList" parameterType="int" resultType="AppDto">
+<!--	<select id="selectAppList" parameterType="int" resultType="AppDto">
 		SELECT A.APP_NO app_no, A.MEM_NAME, A.MEM_ID mem_id, A.GENDER, A.MEM_PHONE, A.APP_DETAIL,
 		A.C_NO c_no, C.C_NAME c_name
 		FROM APPLYAPP a join club c on (a.c_no = c.c_no)
 		WHERE A.C_NO = #{c_no}
 	</select>
-<!-- 	<select id="selectAppList" parameterType="String" resultType="AppDto">
+ 	<select id="selectAppList" parameterType="String" resultType="AppDto">
 		SELECT A.APP_NO app_no, A.MEM_NAME, A.MEM_ID mem_id, A.GENDER, A.MEM_PHONE, A.APP_DETAIL,
 		A.C_NO c_no, C.C_NAME c_name
 		FROM APPLYAPP A join CLUB C
@@ -21,6 +28,11 @@
 		WHERE A.C_NO in (SELECT C_NO FROM CLUB WHERE MEM_ID = #{mem_id})
 	</select> -->
 
+	<select id="totalPage" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM APPLYAPP a join club c on (a.c_no = c.c_no)
+		WHERE A.C_NO = #{c_no}
+	</select>
 
 	<delete id="deleteOne" parameterType="int">
 		delete applyapp where app_no = #{app_no}
@@ -35,4 +47,13 @@
 		c_detail,c_hits from club where mem_id = #{mem_id}
 	</select>
 	
+	<select id="wishList" parameterType="String" resultType="cdto">
+		 select c.c_no, c.mem_id, major_no, sub_no, c_name,c_loc,c_place,c_date,c_time,c_price,c_count,c_image,
+		c_detail,c_hits from wish w join club c on(w.c_no=c.c_no) where w.mem_id = #{mem_id}	
+	</select>
+	
+	<select id="myClubList" parameterType="String" resultType="cdto">
+		 select c.c_no, c.mem_id, major_no, sub_no, c_name,c_loc,c_place,c_date,c_time,c_price,c_count,c_image,
+		c_detail,c_hits from myclub m join club c on(m.c_no=c.c_no) where m.mem_id = #{mem_id}		
+	</select>
 </mapper>
