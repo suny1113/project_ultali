@@ -7,7 +7,7 @@
 <mapper namespace="kr.co.jhta.ultali.notice">
 	<!-- 실행하면 resultType이 필요하다 -->
 
-	<select id="selectAll" resultType="ndto" parameterType="kr.co.jhta.ultali.dto.StartEnd">
+	<select id="selectList" resultType="ndto" parameterType="kr.co.jhta.ultali.dto.StartEnd">
 	
 		SELECT n_no , n_title , mem_id , n_regdate , n_hits , n_detail
 			FROM (SELECT ROWNUM rn , n_no , n_title , mem_id , n_regdate , n_hits , n_detail
@@ -18,10 +18,10 @@
 			WHERE RN &gt;=#{startNo} 
 	</select>
 
-	<insert id="noticeWrite" parameterType="ndto">
+	<insert id="insertOne" parameterType="ndto">
 
-		INSERT INTO notice
-		values (n_no_seq.nextval, #{n_title} , #{mem_id} , sysdate , #{n_hits} , #{n_detail})
+		INSERT INTO notice 
+		values (n_no_seq.nextval, #{n_title} , #{mem_id} , sysdate , 1 , #{n_detail})
 
 	</insert>
 
@@ -49,7 +49,7 @@
 
 	<update id="raiseHits" parameterType="int">
 		UPDATE notice
-		SET hits = hits+1
+		SET n_hits = n_hits+1
 		WHERE n_no = #{n_no}
 	</update>
 

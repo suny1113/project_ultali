@@ -176,12 +176,3 @@
     	}
 	}
 
-
-/* faq.css */
-
-div#wapper {
-	width: 1080px;
-	margin: 0 auto;
-	display:grid;
-	float:none;
-}
