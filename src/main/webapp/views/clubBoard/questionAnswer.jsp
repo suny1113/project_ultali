@@ -19,6 +19,8 @@
 <%-- 	<h2>모임장아이디: ${cdto.mem_id }</h2> --%>
 <%-- 	<h2>답변ciadto1: ${ciadto1 }</h2> --%>
 <%-- 	<h2>답변ciadto2: ${ciadto2 }</h2> --%>
+<%-- 	<h2>paging: ${paging }</h2> --%>
+
 	<h2>paging: ${paging }</h2>
 	
 	<jsp:include page="../home/header.jsp" />

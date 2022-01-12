@@ -9,16 +9,15 @@
 <script src="${path}/resources/js/clubBoardList.js"></script>
 </head>
 <body>
+	<jsp:include page="../home/header.jsp" />
+	
 	<div class="container">
-		
-		<div class="header"> <h1>header</h1> </div>
-		
-		<div class="main_left">  <h1>left</h1> </div>
-		
 		<div class="main_right"> 
 		
 			<div class="top_club_list">
+			
 				<div class="top_club_title"><h2>인기</h2></div>
+				
 				<div class="club">
 					<div class="img_area">
 						<a href="clubBoardDetail?c_no=${dto.c_no}">
@@ -26,162 +25,39 @@
 						</a>
 					</div>		
 					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">인기 축구 클럽 회원모집</a></h2>
-					</div>
-				</div>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>		
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">인기 축구 클럽 회원모집</a></h2>
-					</div>
-				</div>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>
-					</div>		
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">인기 축구 클럽 회원모집</a></h2>
+						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">인기 축구 클럽 TEST</a></h2>
 					</div>
 				</div>
 			</div>
 		
 			<div class="club_list">
+			
 				<div class="club_title"><h2>일반</h2></div>
 				
 				<div class="club_sort">
-					<a href="">인기순</a>
-					<a href="">등록일순</a>
+					<a href="clubBoardListSort?sort=0">인기순</a>
+					<a href="clubBoardListSort?sort=1">등록일순</a>
 				</div>
 
-<%-- 		<c:forEach var="dto" items="${soccer_club_list}"> --%>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>	
+				<c:forEach var="dto" items="${list}">
+					<div class="club">
+						<div class="img_area">
+							<a href="clubBoardDetail?c_no=${dto.c_no}">
+								<img src="${path}${dto.c_image}" alt="soccer_club${dto.c_no}_img" />
+							</a>	
+						</div>
+						<div class="text_area">
+							<h2><a href="clubBoardDetail?c_no=${dto.c_no}">${dto.c_name}</a></h2>
+							<p>일정 : ${dto.c_date}</p>
+							<p>인원 : ${dto.c_count}</p>
+							<p>지역 : ${dto.c_loc}</p>
+							<p>조회수 ${dto.c_hits}</p>
+						</div>
 					</div>
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</div>
-<%-- 		</c:forEach>  --%>
+				</c:forEach> 
 		
-		
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>	
-					</div>
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</div>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>	
-					</div>
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</div>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>	
-					</div>
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</div>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>	
-					</div>
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</div>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>	
-					</div>
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</div>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>	
-					</div>
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</div>
-				<div class="club">
-					<div class="img_area">
-						<a href="clubBoardDetail?c_no=${dto.c_no}">
-							<img src="${path}/resources/img/soccer1.jpg" alt="soccer_club1_img" />
-						</a>	
-					</div>
-					<div class="text_area">
-						<h2><a href="clubBoardDetail?c_no=${dto.c_no}">서울 축구 클럽 회원모집</a></h2>
-						<p>일정 : 21.12.10 ~ 21.12.30</p>
-						<p>인원 : 5명</p>
-						<p>지역 : 서울</p>
-						<p>조회수 10</p>
-					</div>
-				</div>
-			
 			</div>
-			
 		</div>
-		
-		<div class="footer"> <h1>footer</h1> </div>
-		
 	</div>
 
 	<c:forEach var="dto" items="${clubList }">
@@ -220,5 +96,7 @@
 			</tr>
 		</table>
 	</c:forEach>
+	
+	<jsp:include page="../home/footer.jsp" />
 </body>
 </html>

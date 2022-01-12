@@ -43,7 +43,8 @@
 				</div>
 				
 				<div class="meeting">
-					<a href="clubBoard/clubBoardList&major_no=2">
+					<a href="clubBoard/clubBoardList?major_no=2">
+
 						<img src="resources/img/sports.png" alt="" />
 						<span>스포츠</span>
 					</a>
