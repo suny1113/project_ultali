@@ -4,6 +4,26 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" href="${path}/resources/css/home.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+	$(function (){
+		
+		$("#searchbar").on("keydown", function (key){
+				if( key.keyCode == 13 && ($("#searchbar").val() == null || $("#searchbar").val() == "" || $("#searchbar").val() == "undefined") ){
+					alert("검색어를 입력해주세요.");
+				}
+				if( key.keyCode == 13){
+					
+					$.get("search"),
+					{ word : $("#searchbar").val() }
+					
+				}
+		})
+
+	})
+		
+</script>
 <div class="nav-color-width"></div>
 	<header>
 		<div class="header">
@@ -21,11 +41,13 @@
 				<a href="admin/reportList?currentPage=1" class="nav-a">관리자페이지</a>
 <%-- 				</c:if> --%>
 			</div>
-			<div class="logo-search-container">
-				<div class="logo-search">
-					<a href="home"><img src="${path}/resources/img/logo.png" alt="" id="logo" /></a>
-					<input type="text" name="" id="searchbar" placeholder="검색어를 입력해주세요."/>
+			<form action="search">
+				<div class="logo-search-container">
+					<div class="logo-search">
+						<a href="home"><img src="${path}/resources/img/logo.png" alt="" id="logo" /></a>
+						<input type="text" name="word" id="searchbar" placeholder="검색어를 입력해주세요."/>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</header>

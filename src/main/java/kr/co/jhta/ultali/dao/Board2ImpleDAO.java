@@ -102,8 +102,8 @@ public class Board2ImpleDAO implements Board2DAO{
 	}
 
 	@Override
-	public int countInquiry() {
-		return ss.selectOne("kr.co.jhta.ClubInquiryAnswer.countInquiry");
+	public int countInquiry(int c_no) {
+		return ss.selectOne("kr.co.jhta.ClubInquiryAnswer.countInquiry", c_no);
 	}
 
 	@Override

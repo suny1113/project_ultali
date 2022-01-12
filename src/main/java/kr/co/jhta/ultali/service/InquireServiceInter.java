@@ -11,13 +11,15 @@ public interface InquireServiceInter {
 	public void inquireWrite(InquireDto dto);
 	public int totalInquireCount();
 
-	public List<InquireDto> showList(String mem_id);
 
-	public void inquireWrite(InquireDto dto);
 
 	// 게시물 총 갯수
 	public int countBoard();
 
 	// 페이징 처리 게시글 조회
 	public List<InquireDto> selectBoard(AdminInquirePagingVO vo);
+	
+	// adminInquire update
+	public void adminUpdateOne(InquireDto dto);
+	
 }
