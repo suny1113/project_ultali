@@ -14,5 +14,6 @@ public interface CreatedClubServiceInter {
 	public void applyApp(int app_no);
 	public void insertMyClub(MyClubDto myclubdto);
 	public int applicantTotalPage(int c_no);
-	public List<WishDTO> showWishList(String mem_id);
+	public List<AppDto> showWishList(String mem_id);
+	public List<AppDto> myClubList(String mem_id);
 }

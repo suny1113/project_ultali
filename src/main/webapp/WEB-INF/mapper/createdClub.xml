@@ -51,4 +51,9 @@
 		 select c.c_no, c.mem_id, major_no, sub_no, c_name,c_loc,c_place,c_date,c_time,c_price,c_count,c_image,
 		c_detail,c_hits from wish w join club c on(w.c_no=c.c_no) where w.mem_id = #{mem_id}	
 	</select>
+	
+	<select id="myClubList" parameterType="String" resultType="cdto">
+		 select c.c_no, c.mem_id, major_no, sub_no, c_name,c_loc,c_place,c_date,c_time,c_price,c_count,c_image,
+		c_detail,c_hits from myclub m join club c on(m.c_no=c.c_no) where m.mem_id = #{mem_id}		
+	</select>
 </mapper>

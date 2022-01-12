@@ -26,7 +26,6 @@ public class CreatedClubDaoImple implements CreatedClubDaoInter {
 
 	@Override
 	public List<AppDto> selectAppList(int cNo, int startNo, int endNo) {
-		log.info("dao 도달");
 		CNoStartEnd cNoStartEnd = new CNoStartEnd(cNo, startNo, endNo);
 		return ss.selectList(namespace+"selectAppList",cNoStartEnd);
 	}
@@ -48,8 +47,12 @@ public class CreatedClubDaoImple implements CreatedClubDaoInter {
 	}
 	
 	@Override
-	public List<WishDTO> selectWishList(String mem_id) {
-		System.out.println("dao ::"+mem_id);
+	public List<AppDto> selectWishList(String mem_id) {
+		System.out.println("wishList :"+ss.selectList(namespace+"wishList",mem_id));
 		return ss.selectList(namespace+"wishList",mem_id);
+	}
+	@Override
+	public List<AppDto> myClubList(String mem_id) {
+		return ss.selectList(namespace+"myClubList", mem_id);
 	}
 }

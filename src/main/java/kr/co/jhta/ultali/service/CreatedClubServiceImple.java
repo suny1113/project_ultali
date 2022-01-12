@@ -49,8 +49,12 @@ public class CreatedClubServiceImple implements CreatedClubServiceInter{
 		return createdClubDaoInter.applicantTotalPage(c_no);
 	}
 	@Override
-	public List<WishDTO> showWishList(String mem_id) {
-		System.out.println("service :"+mem_id);
+	public List<AppDto> showWishList(String mem_id) {
+		System.out.println("showWish"+createdClubDaoInter.selectWishList(mem_id));
 		return createdClubDaoInter.selectWishList(mem_id);
+	}
+	@Override
+	public List<AppDto> myClubList(String mem_id) {
+		return createdClubDaoInter.myClubList(mem_id);
 	}
 }

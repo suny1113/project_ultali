@@ -93,9 +93,12 @@ public class CreatedClubController {
 	// wishList
 	@RequestMapping("myPage/wishList")
 	public ModelAndView showWish(HttpSession session) {
-		System.out.println("wishList"+session.getAttribute("id"));
-		log.info("controller 도달");
 		return new ModelAndView("myPage/wishList","showClubList",createdClubServiceInter.showWishList((String)session.getAttribute("id")));
+	}
+	
+	@RequestMapping("myPage/myClubList")
+	public ModelAndView myClubList(HttpSession session) {
+		return new ModelAndView("myPage/myClubList","showClubList",createdClubServiceInter.myClubList((String)session.getAttribute("id")));
 	}
 	
 }

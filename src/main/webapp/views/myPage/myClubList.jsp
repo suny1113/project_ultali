@@ -55,7 +55,6 @@
 						<p>지역 : ${dto.c_loc} / ${dto.c_place }</p>
 						<p>조회수: ${dto.c_hits }</p>
 					</div>
-						<a href="applicantList?c_no=${dto.c_no}" class="applicantList">신청자 현황 받습니다.</a>
 				</div>
 			</div>
 			</c:forEach>

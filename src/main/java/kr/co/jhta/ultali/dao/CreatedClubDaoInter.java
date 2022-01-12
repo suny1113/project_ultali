@@ -13,5 +13,6 @@ public interface CreatedClubDaoInter {
 	public void deleteApp(int app_no);
 	public void insertMyClub(MyClubDto myclubdto);
 	public int applicantTotalPage(int c_no);
-	public List<WishDTO> selectWishList(String mem_id);
+	public List<AppDto> selectWishList(String mem_id);
+	public List<AppDto> myClubList(String mem_id);
 }
