@@ -10,6 +10,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 <link rel="stylesheet" href="${path}/resources/css/home.css">
 <link rel="stylesheet" href="${path}/resources/css/login.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+ 
+	function setCookie(name, value, exp){
+		var date = new Date();
+		date.setTime(date.getTime() + exp*24*60*60*1000)
+	    document.cookie = name + "=" + value + ";expires=" + date.toUTCString() + ";path=/"
+	}
+	
+	function deleteCookie(name){
+	    document.cookie = name + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;path=/"	    
+	}
+	
+	function getCookie(){
+		var allCookies = document.cookie
+		
+		cookieArray = allCookies.split(";")
+		
+		for(var i=0; i < cookieArray.length; i++){
+			name = cookieArray[i].split("=")[0]
+			value = cookieArray[i].split("=")[1]
+			
+			if(name == "id"){
+				$("#mem_id").val(value)
+				$("#checkbox").prop("checked", true)
+			}
+		}
+	}
+	
+	$(function(){
+
+		getCookie()
+		
+		$("#submit-btn").click(function(){
+			if($("#checkbox").is(":checked")){
+				setCookie("id", $("#mem_id").val(), 7)
+			}else if($("#checkbox").not(":checked")){
+				deleteCookie("id")
+			}
+			$("#frm").submit()
+		})
+	})
+</script>
 <style type="text/css">
 	.warn{
 		display: block;
@@ -18,11 +61,46 @@
 	    font-size: 13px;
 	    margin-bottom: 5px;
 	}
+	
+	#remember-login{
+		display: inline-block;
+		margin-left : 20px;
+	}
+	
+	#remember-me{
+		display: none;
+	}
+
+	#remember-me + #remember-label{
+		cursor: pointer;
+	}
+
+	#remember-me + #remember-label:before{
+		content: "";
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border: 1px solid #cbcbcb;
+		vertical-align: middle;
+	}
+
+	#remember-me:checked + #remember-label::before{
+		content:"\f00c";
+		font-family: "Font Awesome 5 free";
+		font-weight: 900;
+		color: #fff;
+		background: #000;
+		border-color: #000;
+		font-size: 15px;
+		text-align: center;
+	}
 </style>
 </head>
 <body>
-	<h2><c:out value="${error }"></c:out></h2>
-<div class="nav-color-width"></div>
+
+<jsp:include page="../home/header.jsp" />
+
+<!-- <div class="nav-color-width"></div>
 	<header>
 		<div class="header">
 			<div class="nav">
@@ -36,7 +114,7 @@
 				<a href="../home"><img src="../resources/img/logo.png" alt="" /></a>
 			</div>
 		</div>
-	</header>
+	</header> -->
 		
 	
 
@@ -47,15 +125,19 @@
 				<span id="login-login">LOGIN</span>
 			</div>
 			<div id="login">
-				<input type="text" name="mem_id" id="" class="login" placeholder="아이디"/><br>
+				<input type="text" name="mem_id" id="mem_id" class="login" placeholder="아이디"/><br>
 				<input type="password" name="mem_pw" id="" class="login" placeholder="비밀번호"/><br>
 				<span class="warn">${msg }</span>
-				<input type="submit" value="로그인" /><br>
+				<input type="button" id="submit-btn" value="로그인" /><br>
 			</div>
 			<div id="login_sub">
 				<div id="saveId">
 					<input type="checkbox" name="" id="checkbox" />
-					<label id="checkbox-label" for="checkbox" ><span>&nbsp;&nbsp;아이디저장</span></label>
+					<label id="checkbox-label" for="checkbox" ><span>&nbsp;&nbsp;아이디 저장</span></label>
+				</div>
+				<div id="remember-login">
+					<input type="checkbox" name="remember-me" id="remember-me" />
+					<label id="remember-label" for="remember-me"><span>&nbsp;&nbsp;로그인 기억</span></label>
 				</div>
 				<ul id="find_register">
 					<li>&nbsp;&nbsp;&nbsp;<a href="../register/register">회원가입</a></li>

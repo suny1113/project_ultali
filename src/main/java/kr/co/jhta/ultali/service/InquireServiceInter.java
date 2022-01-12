@@ -12,6 +12,7 @@ public interface InquireServiceInter {
 	public int totalInquireCount();
 
 
+
 	// 게시물 총 갯수
 	public int countBoard();
 
