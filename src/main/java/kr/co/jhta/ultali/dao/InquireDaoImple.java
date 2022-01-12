@@ -42,6 +42,7 @@ public class InquireDaoImple implements InquireDaoInter{
 	public int selectTotalInquireCount() {
 		return ss.selectOne(namespace+".totalInquireCount");
 	}
+
 	//admin 전체조회
 	@Override
 	public List<InquireDto> selectBoard(AdminInquirePagingVO vo) {

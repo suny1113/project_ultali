@@ -7,84 +7,91 @@
 <link rel="stylesheet" type="text/css" href="${path }/resources/css/questionAnswer.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="${path }/resources/js/questionAnswer.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
-	<h1>문의한dto: ${viewAll }</h1>
-	<h1>모임장cdto: ${cdto }</h1>
-	<h2>c_no: ${c_no }</h2>
-	<h2>지금 로그인한 사용자 아이디: ${id }</h2>
-	<h2>모임장아이디: ${cdto.mem_id }</h2>
-	<h2>답변ciadto1: ${ciadto1 }</h2>
-	<h2>답변ciadto2: ${ciadto2 }</h2>
+<body>
+<%-- 	<h1>문의한dto: ${viewAll }</h1> --%>
+<%-- 	<h1>모임장cdto: ${cdto }</h1> --%>
+<%-- 	<h2>c_no: ${c_no }</h2> --%>
+<%-- 	<h2>지금 로그인한 사용자 아이디: ${id }</h2> --%>
+<%-- 	<h2>모임장아이디: ${cdto.mem_id }</h2> --%>
+<%-- 	<h2>답변ciadto1: ${ciadto1 }</h2> --%>
+<%-- 	<h2>답변ciadto2: ${ciadto2 }</h2> --%>
+	<h2>paging: ${paging }</h2>
 	
-	
+	<jsp:include page="../home/header.jsp" />
 	<div class="wrapper" >
-		<div class="content">
+		<div class="contents border">
 			<form action="questionWrite" id="form">
 
-			<input type="hidden" name="a_no" value="0"/>
-			<h3 >문의하기</h3>
+			<h2 id="title">문의하기</h2>
 			<div id="forEach">
 				<c:forEach items="${viewAll }" var="list" varStatus="status">
-						<input type="hidden" name="c_no" value="${c_no }"/>		
+							
 						<table>
-							<tr>
-								<hr class="border">
-							</tr>
-							<tr>
-								<span class="marginTop bottom">${list.mem_id }</span><br />
-								<p class="marginTop">${list.c_inq_regdate }</p>
-		
-							</tr>
-							<tr>
-								<c:if test="${list.c_inq_secretinq == 1 && cdto.mem_id != id && list.mem_id != id}">
-									<p  class="marginTop bottom">비밀글 입니다</p>
-								</c:if>
-								<c:if test="${list.c_inq_secretinq == 1 && cdto.mem_id == id}">
-									<p  class="marginTop bottom">${list.c_inq_detail }</p>
-								</c:if>
-								<c:if test="${list.c_inq_secretinq == 1 && list.mem_id == id}">
-									<p  class="marginTop bottom">${list.c_inq_detail }</p>
-								</c:if>
-								
-								<c:if test="${list.c_inq_secretinq == 0}">
-									<p  class="marginTop bottom">${list.c_inq_detail }</p>
-								</c:if>
-							</tr>
+							<div id="user_question" class="border">
+								<tr>
+								</tr>
+								<tr>
+									<p class="user bottom">문의 회원: ${list.mem_id }</p>
+									<p class="user">문의 날짜: ${list.c_inq_regdate }</p>
+			
+								</tr>
+								<tr>
+									<c:if test="${list.c_inq_secretinq == 1 && cdto.mem_id != id && list.mem_id != id}">
+										<p id="user_content" class="">문의 내용</p>
+										<textarea class="user_text" name="" id="" cols="30" rows="10" disabled>비밀글 입니다.</textarea>
+									</c:if>
+									<c:if test="${list.c_inq_secretinq == 1 && cdto.mem_id == id}">
+										<p id="user_content" class="">문의 내용</p>
+										<textarea class="user_text" name="" id="" cols="30" rows="10" disabled>${list.c_inq_detail }</textarea>
+									</c:if>
+									<c:if test="${list.c_inq_secretinq == 1 && list.mem_id == id}">
+										<p id="user_content" class="">문의 내용</p>
+										<textarea class="user_text" name="" id="" cols="30" rows="10" disabled>${list.c_inq_detail }</textarea>
+									</c:if>
+									
+									<c:if test="${list.c_inq_secretinq == 0}">
+										<p id="user_content" class="">문의 내용</p>
+										<textarea class="user_text" name="" id="" cols="30" rows="10" disabled>${list.c_inq_detail }</textarea>
+									</c:if>
+								</tr>
+							</div>
 						</table>
-						<div class="contents">
+						<div id="leader_answer" class="border">
 							<table>
 	<!-- 								if문안에 주석못달아서 여기에 적음 -->
 	<!-- 								모임장이 답변을 했으면 모임장 아이디 공개 -->
 	<!-- 								답변이 없으면 답변 대기중 입니다 내용추가 -->
 	<!-- 								답변이 있을 경우 날짜처리 -->
-								<p>${list.c_inq_no}</p>
-								<input type="hidden" name="c_inq_no" value="${list.c_inq_no}"/>
+<%-- 								<p>${list.c_inq_no}</p> --%>
+<%-- 								<p>${status.index}</p> --%>
+<%-- 								<p>${status.count}</p> --%>
+<%-- 								<p>${status.first }</p> --%>
+<%-- 								<p>${status.last}</p> --%>
+<%-- 								<a class="a" href="answerWrite?nowPage=${paging.startPage} &cntPerPage=${paging.cntPerPage} &c_no=${c_no } &c_inq_no=${list.c_inq_no} &c_inq_answer_answer=">답글쓰기</a> --%>
 								<c:if test="cdt"></c:if>
 								<tr>
 									<c:if test="${ciadto1.c_inq_no == list.c_inq_no}">
-										<p class="marginTop bottom">${ciadto1.mem_id }</p>
+										<p class="leader bottom">모임장: ${ciadto1.mem_id }</p>
 									</c:if>
 									<c:if test="${ciadto2.c_inq_no == list.c_inq_no}">
-										<p class="marginTop bottom">${ciadto2.mem_id }</p>
+										<p class="leader bottom">모임장: ${ciadto2.mem_id }</p>
 									</c:if>
 									
 									<c:if test="${ciadto1.c_inq_no != list.c_inq_no && ciadto2.c_inq_no != list.c_inq_no}">
-										<h2>답변 대기중 입니다.</h2>
+										<p class="leader">답변 대기중 입니다.</p>
 									</c:if>
 	
 								</tr>
 								<tr>
 									<c:if test="${ciadto1.c_inq_no == list.c_inq_no}">
-										<p class="marginTop">${ciadto1.c_inq_answer_regdate } 작성</p>
+										<p class="leader">답변 날짜: ${ciadto1.c_inq_answer_regdate } 작성</p>
 									</c:if>
 									<c:if test="${ciadto2.c_inq_no == list.c_inq_no}">
-										<p class="marginTop">${ciadto1.c_inq_answer_regdate } 작성</p>
+										<p class="leader">답변 날짜: ${ciadto1.c_inq_answer_regdate } 작성</p>
 									</c:if>
 								</tr>
 								<tr>
@@ -93,31 +100,38 @@
 									<c:choose>
 										
 										<c:when test="${ciadto1.mem_id == id && ciadto1.c_inq_no == list.c_inq_no}">
-											<p  class="marginTop bottom">${ciadto1.c_inq_answer_answer}</p>
+											<p class="leader">답변 내용</p>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto1.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${ciadto2.mem_id == id && ciadto2.c_inq_no == list.c_inq_no}">
-											<p  class="marginTop bottom">${ciadto2.c_inq_answer_answer}</p>
+											<p class="leader">답변 내용</p>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto2.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${cdto.mem_id == id && ciadto1.c_inq_no == list.c_inq_no}">
-											<p  class="marginTop bottom">${ciadto1.c_inq_answer_answer}</p>
+											<p class="leader">답변 내용</p>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto1.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${cdto.mem_id == id && ciadto2.c_inq_no == list.c_inq_no}">
-											<p  class="marginTop bottom">${ciadto2.c_inq_answer_answer}</p>
+											<p class="leader">답변 내용</p>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto2.c_inq_answer_answer}</textarea>
 										</c:when>
 										
-										<c:when test="${list.c_inq_secretinq == 1 && cdto.mem_id != id && list.mem_id != id}">
-											<p  class="marginTop bottom">비밀글 입니다</p>
+										<c:when test="${list.c_inq_secretinq == 1 && cdto.mem_id != id && list.mem_id != id && ciadto1.c_inq_answer_answer != null && ciadto2.c_inq_answer_answer != null}">
+											<p class="leader">답변 내용</p>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>비밀글 입니다.</textarea>
 										</c:when>
 										
 										<c:when test="${list.c_inq_secretinq == 0 && ciadto1.c_inq_no == list.c_inq_no}">
-											<p  class="marginTop bottom">${ciadto1.c_inq_answer_answer}</p>
+											<p class="leader">답변 내용</p>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto1.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${list.c_inq_secretinq == 0 && ciadto2.c_inq_no == list.c_inq_no}">
-											<p  class="marginTop bottom">${ciadto2.c_inq_answer_answer}</p>
+											<p class="leader">답변 내용</p>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto2.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 									</c:choose>
@@ -126,11 +140,11 @@
 								</tr>
 	<!-- 							모임장 아이디가 같아야하고 답변 내용이 없으면 답변하는 창 추가 -->
 								<c:if test="${cdto.mem_id == id && ciadto1.c_inq_no != list.c_inq_no && ciadto2.c_inq_no != list.c_inq_no}" >
-									<input type="hidden" name="c_inq_no" value="${list.c_inq_no }"/>
 									
 									<tr>
-										<td><input type="text" name="c_inq_answer_answer" id="text"  placeholder="내용을 입력해주세요" value=""/></td>
-										<td><input type="button" class="answerWrite" value="답글쓰기"/></td>
+										<input type="hidden" id="c_inq_no${status.count}" value="${list.c_inq_no }"/>
+										<td><textarea id="text${status.count}" class="text" name="" id="" cols="30" rows="10" placeholder="내용을 입력해주세요"></textarea> </td>
+										<td><input type="button" class="answerWrite" id="answerWrite${status.count}" value="등록"/></td>
 									</tr>
 								</c:if>
 							</table>
@@ -138,7 +152,6 @@
 						</div>
 					</c:forEach>
 				</div>
-				<hr class="border">				
 				
 				<div style="display: block; text-align: center;">		
 					<c:if test="${paging.startPage != 1 }">
@@ -156,20 +169,26 @@
 							</c:when>
 						</c:choose>
 					</c:forEach>
-					<c:if test="${paging.endPage != paging.lastPage}">
-						<a href="doQuestion?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&c_no=${c_no}">&gt;</a>
+					<c:if test="${paging.total > 2}">
+						<c:if test="${paging.endPage != paging.lastPage}">
+							<a href="doQuestion?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&c_no=${c_no}">&gt;</a>
+						</c:if>
 					</c:if>
 				</div>
 <!-- 				모임장이면 문의작성 버튼 안보이게 처리 -->
 				<c:if test="${cdto.mem_id != id }">
 					<input type="submit" value="문의작성" id="inquireWrite"/>
 				</c:if>
+			<input type="hidden" name="c_no" value="${c_no }"/>	
+			<input type="hidden" name="c_inq_no" id="c_inq_no"/>
+			<input type="hidden" name="c_inq_answer_answer" id="c_inq_answer_answer"/>
 			<input type="hidden" name="mem_id" value="${id }"/>
 			<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}"/>
 			<input type="hidden" name="nowPage" value="${paging.startPage}"/>
 			</form>
 		</div>
 	</div>
-<body>
+	<jsp:include page="../home/footer.jsp" />
+
 </body>
-</html>p
+</html>

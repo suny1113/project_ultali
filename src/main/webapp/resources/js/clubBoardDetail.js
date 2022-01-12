@@ -1,4 +1,3 @@
-// 	찜목록에 이 모임이 있으면 빨간색하트 추가해야됨
 	window.onload = function(){
 		var bottom =  $('#bottom')[0];
 		if($("#mem_id").val() == $("#id").val()){

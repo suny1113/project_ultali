@@ -11,7 +11,7 @@ public interface InquireServiceInter {
 	public void inquireWrite(InquireDto dto);
 	public int totalInquireCount();
 
-	
+
 
 	// 게시물 총 갯수
 	public int countBoard();

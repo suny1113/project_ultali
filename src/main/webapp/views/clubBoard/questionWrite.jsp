@@ -32,7 +32,7 @@
 			</div>
 			<div>
 				<input type="button" value="등록하기" id="submit" class="button"/>
-				<input type="button" value="취소" id="cancel" class="button"/>
+				<input type="button" value="취소하기" id="cancel" class="button"/>
 	
 				<input type="hidden" name="c_inq_no" value="0" />
 				<input type="hidden" name="c_no" value="${c_no}" />
