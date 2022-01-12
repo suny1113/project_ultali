@@ -49,4 +49,9 @@ public class InquireServiceImple implements InquireServiceInter{
 		return inquireDaoInter.selectBoard(vo);
 	}
 
+	@Override
+	public void adminUpdateOne(InquireDto dto) {
+		inquireDaoInter.adminUpdateOne(dto);
+	}
+
 }

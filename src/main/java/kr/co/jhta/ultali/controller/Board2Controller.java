@@ -47,7 +47,7 @@ public class Board2Controller {
 		
 		// 임시 아이디세션 삭제해야됨
 	    HttpSession session = request.getSession();
-	    session.setAttribute("id", "dh");
+	    session.setAttribute("id", "dh4");
 	    
 	    // 찜목록에 있는지 확인
 	    WishDTO wdto = new WishDTO();
@@ -115,6 +115,7 @@ public class Board2Controller {
 			cntPerPage = "2";
 		}
 		PagingDTO pdto = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+    
 		pdto.setC_no(c_no);
 		if(service.selectInquiryService(pdto).isEmpty() == false) {
 			// 문의한 내용

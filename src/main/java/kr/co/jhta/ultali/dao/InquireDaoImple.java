@@ -46,7 +46,7 @@ public class InquireDaoImple implements InquireDaoInter{
 	//admin 전체조회
 	@Override
 	public List<InquireDto> selectBoard(AdminInquirePagingVO vo) {
-		return ss.selectList("kr.co.jhta.ultali.inquire.selectBoar", vo);
+		return ss.selectList("kr.co.jhta.ultali.inquire.selectBoard", vo);
 	}
 	
 	// 총 게시글 수
@@ -54,5 +54,13 @@ public class InquireDaoImple implements InquireDaoInter{
 	public int countBoard() {
 		return ss.selectOne("kr.co.jhta.ultali.inquire.countBoard");
 	}
+
+	//adminInquire insert
+	@Override
+	public void adminUpdateOne(InquireDto dto) {
+		ss.update("kr.co.jhta.ultali.inquire.adminUpdateInquire", dto);
+	}
+	
+	
 	
 }

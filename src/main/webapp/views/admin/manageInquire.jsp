@@ -12,24 +12,80 @@
 	#inquire-table {
 		position: relative;
 		left: 20px;
+		top: 30px;
 		width: 768px;
 		text-align: center;
+		table-layout: fixed;
+		border-collapse: collapse;
+		border-bottom: 1px solid rgb(240,240,240);
+	}
+	
+	#inquire-table td {
+		overflow:hidden;
+		white-space : nowrap;
+		text-overflow: ellipsis;
+		padding: 10px 0;
+	}
+	
+	#inquire-table th {
+		padding: 10px 0px;
+	}
+	
+	#inquire-table a:hover {
+		font-weight: bold;
+		color: grey;
+	}
+	
+	#inquire-table tr:nth-child(1) {
+		border-bottom: 1px solid rgb(240,240,240);
 	}
 	
 	#inquire-table th:nth-child(1) {
 		width: 70px;
 	}
 	#inquire-table th:nth-child(2) {
-		width: 250px;
+		width: 400px;
 	}
 	#inquire-table th:nth-child(3) {
 		width: 100px;
 	}
 	#inquire-table th:nth-child(4) {
-		width: 70px;
+		width: 120px;
+	}
+	#inquire-table th:nth-child(5) {
+		width: 80px;
 	}
 	
+	.paging-div {
+		text-align: center;
+		position: relative;
+		top: 30px;
+		margin: 15px 0px;
+	}
+	
+	.paging-num {
+		margin: 0 auto;
+	}
+	
+	.paging-num td:nth-child(2) {
+		width: 180px;
+	}
+	
+	.paging-num td:nth-child(2) a {
+		padding: 0 5px;
+		font-size: 15px;
+	}
+	
+	.paging-num td:nth-child(2) b {
+		padding: 0 5px;
+		font-size: 15px;
+	}
+	
+	
 </style>
+	
+
+
 </head>
 <body>
 
@@ -46,6 +102,7 @@
 			<div class="report-body-right">
 				<h1>1:1 문의 관리</h1>
 				<table id="inquire-table">
+				
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
@@ -60,28 +117,45 @@
 							<td><a href="manageInquireDetail?p_inq_no=${dto.p_inq_no}">${dto.p_inq_title}</a></td>
 							<td>${dto.mem_id}</td>
 							<td>${dto.regdate}</td>
-							<td>${dto.p_inq_status}</td>
+							<c:if test="${dto.p_inq_status == 1}">
+								<td>답변완료</td>
+							</c:if>
+							<c:if test="${dto.p_inq_status == 0}">
+								<td>답변확인</td>
+							</c:if>
 						</tr>
 					</c:forEach>
-					
-					<c:if test="${paging.startPage != 1 }">
-						<a href="Inquire?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-					</c:if>
-					<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
-						<c:choose>
-							<c:when test="${p == paging.nowPage }">
-								<b>${p }</b>
-							</c:when>
-							<c:when test="${p != paging.nowPage }">
-								<a href="Inquire?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-							</c:when>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${paging.endPage != paging.lastPage}">
-						<a href="Inquire?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-					</c:if>
-					
 				</table>
+				
+				<div class="paging-div">
+					<table class="paging-num">
+						<tr>
+							<td>
+								<c:if test="${paging.startPage != 1 }">
+										<a href="Inquire?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+								</c:if>
+							</td>
+							<td>
+								<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+									<c:choose>
+										<c:when test="${p == paging.nowPage }">
+												<b class="num">${p }</b>
+										</c:when>
+										<c:when test="${p != paging.nowPage }">
+												<a href="Inquire?nowPage=${p }&cntPerPage=${paging.cntPerPage}" class="num">${p }</a>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+							</td>
+							<td>
+								<c:if test="${paging.endPage != paging.lastPage}">
+									<a href="Inquire?nowPage=${paging.endPage + 1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+								</c:if>
+							</td>
+						</tr>
+					</table>
+				</div>
+					
 			</div>
 		</div>
 
@@ -106,6 +180,6 @@
 <%-- 		<jsp:include page="../home/footer.jsp" /> --%>
 		
 <%-- 	</c:if> --%>
-	
+
 </body>
 </html>

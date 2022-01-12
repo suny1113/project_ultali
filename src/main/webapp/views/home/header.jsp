@@ -4,7 +4,24 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" href="${path}/resources/css/home.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+
+	$(function (){
+		
+		$("#searchbar").on("keydown", function (key){
+				if( key.keyCode == 13 && ($("#searchbar").val() == null || $("#searchbar").val() == "" || $("#searchbar").val() == "undefined") ){
+					alert("검색어를 입력해주세요.");
+				}
+				if( key.keyCode == 13){
+					
+					$.get("search"),
+					{ word : $("#searchbar").val() }
+					
+				}
+		})
+
+	})
 	function myPage(){
 		console.log("testr")
 		console.log("<c:out value='${sessionScope.id}'/>")
@@ -15,6 +32,7 @@
 			location.href = "<c:out value='${path}' />"+"/myPage/myInfo"
 		}
 	}
+  
 </script>
 <div class="nav-color-width"></div>
 	<header>
@@ -40,11 +58,17 @@
 					<a href="${path }/admin/reportList?currentPage=1" class="nav-a">관리자페이지</a>
 				</sec:authorize>
 			</div>
+			<form action="search">
+				<div class="logo-search-container">
+					<div class="logo-search">
+						<a href="home"><img src="${path}/resources/img/logo.png" alt="" id="logo" /></a>
+						<input type="text" name="word" id="searchbar" placeholder="검색어를 입력해주세요."/>
+					</div>
 			<div class="logo-search-container">
 				<div class="logo-search">
 					<a href="${path }/home"><img src="${path}/resources/img/logo.png" alt="" id="logo" /></a>
 					<input type="text" name="" id="searchbar" placeholder="검색어를 입력해주세요."/>
 				</div>
-			</div>
+			</form>
 		</div>
 	</header>
