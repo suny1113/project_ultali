@@ -11,10 +11,6 @@ public interface InquireServiceInter {
 	public void inquireWrite(InquireDto dto);
 	public int totalInquireCount();
 
-	public List<InquireDto> showList(String mem_id);
-
-	public void inquireWrite(InquireDto dto);
-
 	// 게시물 총 갯수
 	public int countBoard();
 
