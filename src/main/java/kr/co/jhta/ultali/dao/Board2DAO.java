@@ -26,7 +26,7 @@ public interface Board2DAO {
 	public void insertClubInquiry(ClubInquiryDTO cidto);
 	public List<ClubInquiryDTO> getAllClubInquiry(int c_no);
 	
-	public int countInquiry();
+	public int countInquiry(int c_no);
 	public List<ClubInquiryDTO> selectInquiry(PagingDTO dto);
 	
 	public void insertAnswer(ClubInquiryAnswerDTO ciadto);
