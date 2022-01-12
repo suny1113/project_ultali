@@ -92,6 +92,7 @@ public class Board2Controller {
 	
 	public ModelAndView registerPost(@ModelAttribute("dto") ClubDTO dto, @RequestParam("date") String date, @RequestParam("date2") String date2,
 							HttpServletRequest req, @ModelAttribute("uploadFile") UploadFile file, BindingResult result, Model model) {
+		model.addAttribute("major_no", dto.getMajor_no());
 		return service.insertClubService(dto, date, date2, file, result);
 		
 	}
