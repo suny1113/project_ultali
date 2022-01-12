@@ -18,8 +18,8 @@
 
 		<!-- nav -->
 		<nav>
-				<a href="notice">공지사항</a>
-				<a href="faq">자주묻는질문</a>
+				<a href="notice.jsp">공지사항</a>
+				<a href="faq.jsp">자주묻는질문</a>
 		</nav>
 
 

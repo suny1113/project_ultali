@@ -39,6 +39,11 @@ public class InquireDaoImple implements InquireDaoInter{
 	}
 	
 	@Override
+	public int selectTotalInquireCount() {
+		return ss.selectOne(namespace+".totalInquireCount");
+	}
+	
+
 	public int selectTotalInquireCount(String mem_id) {
 		return ss.selectOne(namespace+".totalInquireCount",mem_id);
 	}
