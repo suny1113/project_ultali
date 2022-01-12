@@ -30,19 +30,16 @@ div.container menu a {
 
 div.container div.item2 {
   width: 600px;
-  background-color: blanchedalmond;
   position: relative;
 }
 
 div.container div.item2 table {
-  background-color: chocolate;
   text-align: left;
   margin: 90px 50px;
   width: 800px;
 }
 
 div.container div.item2 th, div.container div.item2 td {
-  background-color: burlywood;
   width: 140px;
   display: inline-block;
   text-overflow: ellipsis;
@@ -69,7 +66,6 @@ div.container div.item2 div.button a {
   border-radius: 20px;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
-  background-color: lightgray;
   padding: 10px 20px 10px 20px;
   position: absolute;
   right: -225px;

@@ -6,13 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.jhta.ultali.dto.AdminInquirePagingVO;
-import kr.co.jhta.ultali.dto.PageUtil;
+import kr.co.jhta.ultali.dto.InquireDto;
 import kr.co.jhta.ultali.service.AdminReportService;
+import kr.co.jhta.ultali.service.BoardService;
 import kr.co.jhta.ultali.service.InquireServiceInter;
 
 @Controller
@@ -23,6 +25,9 @@ public class AdminController {
 	
 	@Autowired
 	InquireServiceInter inquireServiceInter;
+	
+	@Autowired
+	BoardService boardService;
 	
 	@RequestMapping("admin/home")
 	public String main() {
@@ -35,9 +40,39 @@ public class AdminController {
 		return "admin/reportList";
 	}
 	
+	@RequestMapping("admin/register/register")
+	public String register() {
+		return "redirect:/register/register";
+	}
+	
+	@RequestMapping("admin/login/login")
+	public String login() {
+		return "redirect:/login/login";
+	}
+	
+	@RequestMapping("admin/myPage/myInfo")
+	public String myPage() {
+		return "redirect:/myPage/myInfo";
+	}
+	
+	@RequestMapping("admin/help/notice")
+	public String help() {
+		return "redirect:/help/notice";
+	}
+	
 	@RequestMapping("admin/admin/reportList")
 	public String reportList2() {
 		return "redirect:/admin/reportList";
+	}
+	
+	@RequestMapping("admin/termsOfUse")
+	public String termsOfUse() {
+		return "redirect:/home/termsOfUse";
+	}
+	
+	@RequestMapping("admin/service")
+	public String service() {
+		return "redirect:/home/service";
 	}
 	
 	@RequestMapping("admin/reportDetail")
@@ -47,19 +82,16 @@ public class AdminController {
 	}
 	
 	@RequestMapping("admin/moveToDetail")
-	public String moveToDetail(@RequestParam("dto")int c_no, Model model) {
+	public String moveToDetail(@RequestParam("c_no")int c_no, Model model) {
 		// 게시판 글 1개 조회 model.add코드 추가
-		return "board/BoardDetail";
+		return "clubBoard/clubBoardDetail";
 	}
 	
 	@RequestMapping("admin/meetingDelete")
 	public String meetingDelete(@RequestParam("c_no")int c_no, @RequestParam("rep_no")int rep_no) {
 	
-		//신고내역 게시판에서 삭제
-		adminReportService.DeleteOne(rep_no);
-		
-		//실제 게시판에서 삭제
-		//게시판 글 삭제 서비스 사용 
+		//게시판 글 삭제 서비스 사용
+		boardService.deleteClubService(c_no);
 		
 		return "redirect:admin/reportList";
 	}
@@ -72,20 +104,30 @@ public class AdminController {
 		int total = inquireServiceInter.countBoard();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "10";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
+			cntPerPage = "10";
 		}
 		vo = new AdminInquirePagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", vo);
 		model.addAttribute("viewAll", inquireServiceInter.selectBoard(vo));
 		
-		System.out.println("start" + vo.getStart());
-		System.out.println(vo.getEnd());
-		
 		return "admin/manageInquire";
 	}
+	
+	@RequestMapping("admin/manageInquireDetail")
+	public String inquireDetail(@RequestParam("p_inq_no")int p_inq_no, Model model) {
+		model.addAttribute("dto", inquireServiceInter.showOne(p_inq_no));
+		return "admin/manageInquireDetail";
+	}
+	
+	@PostMapping("admin/answerInquire")
+	public String answerInquire(@ModelAttribute("dto")InquireDto dto, @RequestParam("p_inq_no")int p_inq_no, Model model) {
+		inquireServiceInter.adminUpdateOne(dto);
+		return "redirect:manageInquireDetail?p_inq_no=" + p_inq_no;
+	}
+	
 	
 }

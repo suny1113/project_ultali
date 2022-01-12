@@ -8,22 +8,13 @@
 }
 /* ----------------------- */
 
-.header {
-	height: 15%;
-	background-color: blue;
-}
-
-.main_left {
-	width: 15%;
-	height: 75%;
-	float: left;
-	background-color: green;
+.container {
+	width: 1080px;
+    margin: 0 auto;
+    display: grid;
 }
 
 .main_right {
-	width: 85%;
-	height: 75%;
-	float: right;
 	overflow: auto;
 }
 
@@ -34,9 +25,11 @@ a {
 
 /* -------- 인기 클럽 -------- */
 .top_club_list {
-	border: 1px solid black;
+	height: 250px;
 	padding-left: 10px;
 	padding-bottom: 10px;
+	margin-top: 40px;
+	border-bottom: 1px solid #D9D9D9;
 }
 
 .top_club_list .img_area {
@@ -119,6 +112,7 @@ a {
 
 .text_area {
 	width: 200px;
+	height: 150px;
 	text-align: center;
 }
 
@@ -132,10 +126,4 @@ a {
 
 .text_area > p {
 	margin-bottom: 1px;
-}
-
-.footer {
-	height: 10%;
-	background-color: red;
-	clear: both;
 }

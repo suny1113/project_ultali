@@ -21,6 +21,8 @@
  	<security:intercept-url pattern="/help/noticeWrite" access="hasRole('ROLE_ADMIN')"/>
  	<security:intercept-url pattern="/help/noticeModify" access="hasRole('ROLE_ADMIN')"/>
 	
+ 	<security:intercept-url pattern="/myPage/*" access="hasRole('ROLE_USER')"/>
+	<security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
 	<security:csrf disabled="true"/>
 
 	<!--  이경로로 매핑받아줘서 로그인 로직 처리하기 -->
@@ -30,7 +32,10 @@
 						 
 	<security:logout logout-url="/logout"
 					 logout-success-url="/"
-					 invalidate-session="true"/>
+					 invalidate-session="true"
+					 delete-cookies="JSESSIONID, remember-me"/>
+					 
+	<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
 </security:http>
 
 <security:authentication-manager>

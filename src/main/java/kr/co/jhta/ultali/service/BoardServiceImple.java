@@ -57,7 +57,7 @@ public class BoardServiceImple implements BoardService{
 		int imgDedup = dao.imgFileNameDedup();
 		
 		// aws에 올릴때 경로 바꿔야함
-		String filePath = "D:\\dev\\project_ultali\\project_ultali\\src\\main\\webapp\\resources\\img";
+		String filePath = "C:\\dev\\eclipse\\final\\final_project\\src\\main\\webapp\\resources\\img";
 		
 //		System.out.println("파일이 업로드되는 진짜 경로 : " + filePath);
 		
@@ -109,7 +109,7 @@ public class BoardServiceImple implements BoardService{
 
 	@Override
 	public void deleteClubService(int c_no) {
-		
+		dao.deleteClub(c_no);
 	}
 
 	@Override
@@ -121,9 +121,7 @@ public class BoardServiceImple implements BoardService{
 
 		int imgDedup = dao.imgFileNameDedup();
 		
-		String filePath = "D:\\dev\\project_ultali\\project_ultali\\src\\main\\webapp\\resources\\img";
-		
-
+		String filePath = "D:\\dev\\final\\webfinal\\src\\main\\webapp\\resources\\img";
 		
 		MultipartFile mfile = file.getFile();
 
@@ -193,8 +191,8 @@ public class BoardServiceImple implements BoardService{
 	}
 
 	@Override
-	public int countInquiryService() {
-		return dao.countInquiry();
+	public int countInquiryService(int c_no) {
+		return dao.countInquiry(c_no);
 	}
 
 	@Override

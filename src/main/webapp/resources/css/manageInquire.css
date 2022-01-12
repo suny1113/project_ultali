@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+	#inquire-table {
+		position: relative;
+		left: 20px;
+		top: 30px;
+		width: 768px;
+		text-align: center;
+		table-layout: fixed;
+	}
+	
+	#inquire-table td {
+		overflow:hidden;
+		white-space : nowrap;
+		text-overflow: ellipsis;
+		padding: 8px 0;
+	}
+	
+	#inquire-table a:hover {
+		font-weight: bold;
+		color: grey;
+	}
+	
+	#inquire-table th:nth-child(1) {
+		width: 70px;
+	}
+	#inquire-table th:nth-child(2) {
+		width: 400px;
+	}
+	#inquire-table th:nth-child(3) {
+		width: 100px;
+	}
+	#inquire-table th:nth-child(4) {
+		width: 120px;
+	}
+	#inquire-table th:nth-child(5) {
+		width: 70px;
+	}
+	
+	.paging {
+		text-align: right;
+	}

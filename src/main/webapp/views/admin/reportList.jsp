@@ -25,13 +25,17 @@
 				<h1>신고내역</h1>
 				<table id="report-table">
 					<tr>
-						<th>신고자 아이디</th>
 						<th>신고번호</th>
+						<th>신고자 아이디</th>
+						<th>신고 사유</th>
+						<th>상세 내용</th>
 					</tr>
 					<c:forEach var="dto" items="${dto}">
 						<tr>
-							<td>${dto.mem_id}</td>
 							<td><a href="reportDetail?rep_no=${dto.rep_no}"><strong>${dto.rep_no}</strong></a></td>
+							<td><a href="reportDetail?rep_no=${dto.rep_no}">${dto.mem_id}</a></td>
+							<td><a href="reportDetail?rep_no=${dto.rep_no}">${dto.rep_reason}</a></td>
+							<td><a href="reportDetail?rep_no=${dto.rep_no}">${dto.rep_detail}</a></td>
 						</tr>
 					</c:forEach>
 				</table>

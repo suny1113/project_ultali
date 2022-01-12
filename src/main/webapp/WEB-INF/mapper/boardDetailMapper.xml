@@ -33,8 +33,7 @@
   	
 	<delete id="deleteClub" parameterType="int">
 		DELETE FROM club
-		WHERE
-		c_no = #{c_no}
+		WHERE c_no = #{c_no}
 	</delete>
 	
 	<update id="modifyClub" parameterType="cdto">
