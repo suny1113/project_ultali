@@ -11,11 +11,6 @@ public interface InquireServiceInter {
 	public List<InquireDto> showList(String mem_id,int startNo, int endNo);
 	public int totalInquireCount(String mem_id);
 
-
-
-
-
-
 	// 게시물 총 갯수
 	public int countBoard();
 
