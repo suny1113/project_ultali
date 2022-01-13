@@ -71,12 +71,6 @@
 		text-decoration: none;
 	}
 	
-	a:link{
-		color:black;
-	}
-	a:visited{
-		color: black;
-	}
 
 	#saveId{
 		display: inline-block;
