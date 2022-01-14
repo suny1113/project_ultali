@@ -29,4 +29,8 @@ public class RegisterDAO implements MemberDAO {
 		ss.insert("kr.co.jhta.ultali.register", dto);
 		// 주어진 parameter로 들어가는 insert문
 	}
+
+	public int checkOverId(String mem_id) {
+		return 0;
+	}
 }

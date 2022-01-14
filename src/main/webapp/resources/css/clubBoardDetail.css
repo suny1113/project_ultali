@@ -16,30 +16,27 @@
 /* 	모임 이미지 */
 #board_detail_img{
 	margin-top: 20px;
-	height: 300px;
-	width: 400px;
+	height: 409px;
+	width: 409px;
 	float: left;
-	margin-right: 100px;
-	border: solid black 1px;
+	margin-right: 50px;
+	border-radius: 5px;
 }
 
 .contents{
 	font-size: 16px;
-	font-family:"나눔고딕";
+	font-family: inherit;
 }
 
-#title{
+.title{
 	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 25px;
 
 	
 }
 .subtitle{
 	margin-right: 100px;
-}
-
-.detail{
-	margin-top: 20px;
-	margin-bottom: 25px;
 }
 
 #detail_contents{
@@ -59,9 +56,17 @@
 
 
 #wish{
-	float: left;
-	margin-left: 20px;
+	display: inline-block;
 	
+}
+
+#report{
+	margin-top: 50px;
+}
+
+#reportButton{
+	background-color: #EC4444;
+	color: #F9FCFF;
 }
 
 .top_button{
@@ -77,28 +82,138 @@
 }
 
 .middle_button{
-	margin-top: 80px;
-	margin-right: 70px;
-	width: 70px;
-	height: 50px;
+	margin: 0 auto; 
 	border-radius: 5px;
-	right: 70px;
+	
+}
+
+#middle2{
+	margin: 0 auto; 
+}
+
+#addOrDeleteWish_button{
+	background-color: #EC8890;
+	color: #F9FCFF;
+}
+
+
+#inquiry_button{
+	height: 56px;
+	width: 80px;
 	position: relative;
+	top: 20px;
+	margin-left: 0px;
+	left: 60px;
+	background-color: #1E2426;
+	color: #F9FCFF;
+}
+
+#apply_button{
+	position: relative;
+	top: 20px;
+	width: 770px;
+	height: 56px;
+	background-color: rgb(0, 117, 239);
+	color: #F9FCFF;
+	font-weight: bold;
+	right: 20px;
+	margin-right: 0px;
+	font-size: 20px;
+	left: 35px;
+	
+	
 }
 
 .bottom_button{
-	margin-top: 30px;
-	margin-right: 76px;
-	left: 61px;
-	width: 70px;
-	height: 50px;
+	margin: 0 auto; 
+	margin-bottom: 10px;
+	padding:7px 12px 7px 12px;
 	border-radius: 5px;
 	position: relative;
+	border: none;
+	bottom: 30px;
+	left: 47px;
+	background-color: gray;
+	color: #F9FCFF;
 }
+
+#delete_button{
+	margin-left: 95px;
+}
+
 
 .top_button:hover, .middle_button:hover, .bottom_button:hover {
 	cursor: pointer;
 }
+
+.area{
+/* 	border-top: 3px solid rgb(240,240,240); */
+	border-bottom: 1px solid rgb(240,240,240);
+}
+
+#preArea{
+	width: 768px;
+	height: 1080px;
+	margin: 0 auto;  
+	
+}
+
+pre{    
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow: auto;    
+    font-family: inherit;
+    
+    
+}
+
+#bottom{
+	position:relative;
+	top: 30px;
+	margin: 0 auto;
+}
+
+h4{
+	margin-bottom: 20px;
+	position: relative;
+	left: 50px;
+}
+
+.button{
+	border: none;
+}
+
+#apply{
+	display: flex;
+  	position: fixed;
+  	background-color: #FFFFFF; /*임의색상*/
+  	left: 0;
+  	right: 0;
+  	bottom: 0;
+  	height: 6rem;
+  	z-index: 1;
+}
+
+#heart{
+	position:relative;
+	top: 15px; 
+}
+
+#wish_img{
+	position:relative;
+	top: 10px; 
+}
+
+#table {
+	height: 450px;
+	table-layout: fixed;
+}
+
+#table tr:nth-child(9){
+	height: 38px;
+}
+
+
 
 
 

@@ -43,7 +43,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<a href="moveToDetail?c_no=${dto.c_no}">게시글 보러가기</a><a href="meetingDelete?c_no=${dto.c_no}&rep_no=${dto.rep_no}">게시글 삭제하기</a>
+							<a href="${path}/clubBoard/clubBoardDetail?c_no=${dto.c_no}">게시글 보러가기</a><a href="meetingDelete?c_no=${dto.c_no}&rep_no=${dto.rep_no}">게시글 삭제하기</a>
 						</td>
 					</tr>
 				</table>

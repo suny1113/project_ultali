@@ -19,22 +19,22 @@ public class NoticeDetailDAO implements NoticeDAO{
 	// 보존성을 주기 위한 setter 설정
 	
 	public void setSs(SqlSession ss) {
-		this.ss = ss;
+		this.ss = ss; 
 	}
 
 	// abstract method
 	
 	@Override
-	public List<NoticeDTO> selectAll(int startNo, int endNo) {
+	public List<NoticeDTO> selectList(String mem_id, int startNo, int endNo) {
 		StartEnd se = new StartEnd(startNo, endNo);
 		System.out.println(" ss : " + ss);
-		return ss.selectList("kr.co.jhta.ultali.notice.selectAll", se);
+		return ss.selectList("kr.co.jhta.ultali.notice.selectList", se);
 	}
 
 
 	@Override
-	public void InsertOne(NoticeDTO dto) {
-		ss.insert("kr.co.jhta.ultali.notice.addOne", dto);
+	public void insertOne(NoticeDTO dto) {
+		ss.insert("kr.co.jhta.ultali.notice.insertOne", dto);
 	}
 
 	@Override

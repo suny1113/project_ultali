@@ -62,7 +62,7 @@
 				</div>
 				<div id="second-grid" class="grid-template">
 					<h2>편리한</h2>
-					<img src="resources/img/click.png" alt="" />
+					<img src="resources/img/websurfing.png" alt="" />
 					<pre>
 오프라인으로 이곳저곳 돌아보며
 시간 낭비 NO!

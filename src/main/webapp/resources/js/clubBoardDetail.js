@@ -1,8 +1,8 @@
 	window.onload = function(){
 		var bottom =  $('#bottom')[0];
 		if($("#mem_id").val() == $("#id").val()){
-			bottom.appendChild($("<input type='submit' value='수정하기' class='bottom_button'/>")[0])
-			bottom.appendChild($("<input type='button' value='삭제하기' class='bottom_button' id='delete_button'/>")[0])
+			bottom.appendChild($("<input type='submit' value='수정하기' class='bottom_button button'/>")[0])
+			bottom.appendChild($("<input type='button' value='삭제하기' class='bottom_button button' id='delete_button'/>")[0])
 		}
 		
 	
@@ -13,8 +13,10 @@
 		});
 		
 		$("#reportButton").on("click", function(){
+		    var _left = Math.ceil(( window.screen.width - 714 )/2);
+		    var _top = Math.ceil(( window.screen.height - 360 )/2); 
 			var num = $('#c_no').val();
-			var win = window.open("doReport?c_no="+num, "_blank", "width=780, height=450, location=no, scrollbars=no, fullscreen=no, resizable=no, status=no, toolbar=no , left=500, top=250");
+			var win = window.open("doReport?c_no="+num, "_blank", "location=no, width=714, height=360, scrollbars=no, fullscreen=no, status=no, toolbar=no, left=" + _left  + ",top=" + _top);
 		});
 		
 		$("#inquiry_button").on("click", function(){

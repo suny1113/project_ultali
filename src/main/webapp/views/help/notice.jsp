@@ -1,108 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<% String mem_id = (String) session.getAttribute("mem_id");%>
 <!DOCTYPE html>
 <html>
+
+
 <head>
 
-<!-- Required meta tags -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="../resources/css/main.css" />
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="${path}/resources/css/notice.css">
 
 <title>고객센터</title>
 
 </head>
 
+
 <body>
+
 	<!-- header -->
 	<jsp:include page="../home/header.jsp" />
-	
-	<form action="noticeWrite" method="get">
-	<h3>이전 : ${map.prev }</h3>
-	<h3>다음 : ${map.next }</h3>
 	<div class="container">
-		<menu>
-			<div class="item1">
-				<h1>고객센터</h1>
-				<table>
-					<!-- jstl : 게시물 번호 작성자 제목 작성일시 -->
-					<table class="table table-striped">
-						<tr>
-							<td><a href="notice">공지사항</a></td>
-							<td><a href="faq">자주묻는질문</a></td>
-						</tr>
-					</table>
-				</div>
-		</menu>
-
-		<div class="item2">
+		<div class="item1">
+			<h1>고객센터</h1>
 			<table>
 				<tr>
-					<td colspan="4"><a href="../home"><img
-							src="../resources/img/Pikachu.png" alt="홈으로" /></a> <a href="write"
-						class="btn btn-outline-primary">작성</a></td>
-				<tr>
-					<th>게시물 번호</th>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>작성일시</th>
+					<td><a href="notice">공지사항</a></td>
+					<td><a href="faq">자주묻는질문</a></td>
+					<td><a href="noticeWrite">글쓰기</a></td>
 				</tr>
-
-				<c:forEach var="dto" items="${list }">
-					<tr>
-						<td>${dto.bno }</td>
-						<td>${dto.writer }</td>
-
-						<!-- noticeDetail?bno=1 ==> HelpController.detail (dto) ==> dao.selectOne(517) ==> noticeDetail.jsp -->
-
-						<td><a href="noticeDetail?bno=${dto.bno }">${dto.title }</a></td>
-						<td>${dto.regdate }</td>
-					</tr>
-				</c:forEach>
-
-				<tr>
-
-					<!-- 1부터 40까지 반복해서 JSTL -->
-					<td colspan="4">
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-
-								<c:if test="${map.prev}">
-									<li class="page-item"><a class="page-link"
-										href="list?currentPage=${map.currentPage-5}">Previous</a></li>
-								</c:if>
-
-								<c:forEach var="i" begin="${map.startPageNo}"
-									end="${map.endPageNo}">
-									<li class="page-item"><a class="page-link"
-										href="list?currentPage=${i}">${i}</a></li>
-								</c:forEach>
-
-								<c:if test="${map.next}">
-									<li class="page-item"><a class="page-link"
-										href="list?currentPage=${map.currentPage+5}">Next</a></li>
-								</c:if>
-
-							</ul>
-						</nav>
-					</td>
-				</tr>
-
 			</table>
 		</div>
+		<br>
+		<br>
+		<br>
+		<!-- jstl : 게시물 번호 작성자 제목 작성일시 -->
+		<div class="item2">
+				<h1>공지사항</h1>
+				<table>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+
+					<!-- noticeDetail?bno=1 ==> NoticeController.detail (dto) ==> dao.selectOne(517) ==> noticeDetail.jsp -->
+					<c:forEach var="ndto" items="${selectList }">
+
+						<tr>
+							<td>${ndto.n_no }</td>
+							<td><a href="noticeDetail?n_no=${ndto.n_no }">${ndto.n_title }</a></td>
+							<td>${ndto.mem_id }</td>
+							<td>${ndto.n_regdate }</td>
+							<td>${ndto.n_hits }</td>
+						</tr>
+					</c:forEach>
+
+					<tr>
+
+						<!-- 1부터 40까지 반복해서 JSTL -->
+						<td colspan="4">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+
+									<c:if test="${map.prev}">
+										<li class="page-item"><a class="page-link"
+											href="list?currentPage=${map.currentPage-5}">Previous</a></li>
+									</c:if>
+
+									<c:forEach var="i" begin="${map.startPageNo}"
+										end="${map.endPageNo}">
+										<li class="page-item"><a class="page-link"
+											href="list?currentPage=${i}">${i}</a></li>
+									</c:forEach>
+
+									<c:if test="${map.next}">
+										<li class="page-item"><a class="page-link"
+											href="list?currentPage=${map.currentPage+5}">Next</a></li>
+									</c:if>
+
+								</ul>
+							</nav>
+						</td>
+					</tr>
+				</table>
+		</div>
+
 	</div>
-</form>
-	
+
+
+	<h3>이전 : ${map.prev }</h3>
+	<h3>다음 : ${map.next }</h3>
+
 	<!-- footer -->
 	<jsp:include page="../home/footer.jsp" />
 </body>

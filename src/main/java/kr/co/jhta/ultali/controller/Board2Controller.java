@@ -45,9 +45,12 @@ public class Board2Controller {
 	public String boardDetailGet(@RequestParam("c_no") int c_no, Model model, HttpServletRequest request) {
 		model.addAttribute("dto", service.selectOneClubService(c_no));
 		
+		// 조회수 처리
+		service.increaseHitsService(c_no);
+		
 		// 임시 아이디세션 삭제해야됨
 	    HttpSession session = request.getSession();
-	    session.setAttribute("id", "dh4");
+	    session.setAttribute("id", "dh");
 	    
 	    // 찜목록에 있는지 확인
 	    WishDTO wdto = new WishDTO();
@@ -79,7 +82,7 @@ public class Board2Controller {
 	public ModelAndView modifyPost(@ModelAttribute("dto") ClubDTO dto, @RequestParam("date") String date, @RequestParam("date2") String date2, @ModelAttribute("uploadFile") UploadFile file, BindingResult result) {
 
 		System.out.println("clubModifydtocontrol " + dto);
-		return service.updateClubService(dto, date, date2, file, result);
+		return service.updateClubService(dto, date, date2, file, result, dto.getC_no());
 	}
 	
 	
@@ -165,7 +168,6 @@ public class Board2Controller {
 		
 		// 아이디 값을 가져올때 이상하게 가져와져서 세션에 있는 아이디를 받아옴
 		ciadto.setMem_id(((String) session.getAttribute("id")));
-		System.out.println("ciadtoaaaaaaaaaaaaa:" + ciadto);
 		
 		
 		service.insertAnswerService(ciadto);
@@ -174,9 +176,9 @@ public class Board2Controller {
 	}
 	
 	@RequestMapping("clubDelete")
-	public String clubDelete(@RequestParam("c_no") int c_no) {
+	public String clubDelete(@RequestParam("c_no") int c_no, @RequestParam("major_no") int major_no) {
 		service.deleteClubService(c_no);
-		return "redirect:/clubBoard/clubBoardList";
+		return "redirect:/clubBoard/clubBoardList?major_no="+major_no;
 	}
 	
 	@GetMapping("/questionWrite")
