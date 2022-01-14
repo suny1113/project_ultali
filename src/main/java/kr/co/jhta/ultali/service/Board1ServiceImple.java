@@ -1,6 +1,5 @@
 package kr.co.jhta.ultali.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.jhta.ultali.dao.Board1DAO;
 import kr.co.jhta.ultali.dto.ClubDTO;
+import kr.co.jhta.ultali.dto.PagingDTO;
 
 @Service
 public class Board1ServiceImple implements Board1Service {
@@ -23,6 +23,16 @@ public class Board1ServiceImple implements Board1Service {
 	@Override
 	public List<ClubDTO> selectClubList_major(int major_no) {
 		return dao.selectAll_major(major_no);
+	}
+
+	@Override
+	public int countClubService(int c_no) {
+		return dao.countInquiry(c_no);
+	}
+
+	@Override
+	public List<ClubDTO> selectClubService(PagingDTO dto) {
+		return dao.selectInquiry(dto);
 	}
 
 }

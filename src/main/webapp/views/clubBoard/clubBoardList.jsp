@@ -9,8 +9,9 @@
 <script src="${path}/resources/js/clubBoardList.js"></script>
 </head>
 <body>
+	<h1>view: ${viewAll}</h1>
+	<h1>page: ${paging.cntPerPage}</h1>
 	<jsp:include page="../home/header.jsp" />
-	
 	<div class="container">
 		<div class="main_right"> 
 		
@@ -39,7 +40,7 @@
 					<a href="clubBoardListSort?sort=1">등록일순</a>
 				</div>
 
-				<c:forEach var="dto" items="${list}">
+				<c:forEach var="dto" items="${viewAll}">
 					<div class="club">
 						<div class="img_area">
 							<a href="clubBoardDetail?c_no=${dto.c_no}">
@@ -96,6 +97,25 @@
 			</tr>
 		</table>
 	</c:forEach>
+	
+	<div style="display: block; text-align: center;">
+        <c:if test="${paging.startPage != 1 }">
+            <a href="clubBoardList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&major_no=${list[0].major_no}">&lt;</a>
+        </c:if>
+        <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+            <c:choose>
+                <c:when test="${p == paging.nowPage }">
+                    <b>${p }</b>
+                </c:when>
+                <c:when test="${p != paging.nowPage }">
+                    <a href="clubBoardList?nowPage=${p }&cntPerPage=${paging.cntPerPage}&major_no=${list[0].major_no}">${p }</a>
+                </c:when>
+            </c:choose>
+        </c:forEach>
+        <c:if test="${paging.endPage != paging.lastPage}">
+            <a href="clubBoardList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&major_no=${list[0].major_no}">&gt;</a>
+        </c:if>
+    </div>
 	
 	<jsp:include page="../home/footer.jsp" />
 </body>

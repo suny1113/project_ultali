@@ -1,46 +1,44 @@
-@charset "UTF-8";
-
-#secret:hover {
-	cursor: pointer;
+#borderDiv{
+	width: 705px;
+	height: 280px;
 }
 
-textarea{
+#textarea{
+	width: 692px;
+	height: 150px;
 	resize: none;
-	width: 686px;
-	height: 250px;
-	margin-bottom: 30px;
+}
+
+h3{
+	margin-right: 550px;
+}
+
+#se{
+	position: relative;
+	top: 20px;
 }
 
 .button{
-	width: 200px;
-	height: 40px;
+	padding: 5px 2px 5px 2px;
+	border-radius: 5px;
+	position: relative;
+	bottom: 40px;
+	width: 184px;
 	font-weight: bold;
+}
+
+.button:hover{
+	cursor: pointer;
 }
 
 #submit{
-	margin-left: 338px;
-	margin-right: 214px;
+	background: rgb(0, 117, 239);
+	color: #fff;
+	margin-left: 50px;
+	margin-right: 215px;
 }
 
 
-.button:hover{
-	cursor: pointer;	
-}
 
 
-#textarea{
-	margin-left: 3px;
-}
 
-#borderDiv{
-	margin-left: 300px;
-	margin-top: 300px;
-}
-
-label{
-	font-weight: bold;
-}
-
-#h3{
-	margin-right: 520px;
-}
