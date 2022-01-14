@@ -1,6 +1,10 @@
 package kr.co.jhta.ultali.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,4 +61,13 @@ public class CreatedClubServiceImple implements CreatedClubServiceInter{
 	public List<AppDto> myClubList(String mem_id) {
 		return createdClubDaoInter.myClubList(mem_id);
 	}
+	
+	@Override
+	public List<AppDto> recentList(List list) {
+		return createdClubDaoInter.recentList(list);
+	}
+//	@Override
+//	public List<AppDto> recentList(HashMap<String , String> hm) {
+//		return createdClubDaoInter.recentList(hm);
+//	}
 }

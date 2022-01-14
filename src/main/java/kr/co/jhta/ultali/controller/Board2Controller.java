@@ -2,7 +2,9 @@ package kr.co.jhta.ultali.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/clubBoard")
 public class Board2Controller {
 
+	
 	@Autowired
 	BoardService service;
 	
@@ -42,7 +45,13 @@ public class Board2Controller {
 	
 //	울타리 게시판에서 c_no를받아 sql에 dto검색 후 boardDetail에서 보여줌 
 	@GetMapping("/clubBoardDetail")
-	public String boardDetailGet(@RequestParam("c_no") int c_no, Model model, HttpServletRequest request) {
+	public String boardDetailGet(@RequestParam("c_no") int c_no, Model model, HttpServletRequest request, HttpServletResponse response) {
+		
+		// 쿠키 생성
+		Cookie cookie = null;
+		
+		Cookie [] cookies = request.getCookies();
+		
 		model.addAttribute("dto", service.selectOneClubService(c_no));
 		
 		// 조회수 처리
@@ -67,6 +76,17 @@ public class Board2Controller {
 	    model.addAttribute("checkWish",service.getWishService(wdto));
 
 	    
+	    // 쿠키 추가하기
+	    String no = String.valueOf(c_no);
+	    
+	    // 쿠키 for 문 검사
+	    if (cookie == null) {
+			cookie = new Cookie("c_no"+no,no);
+		}
+	    
+	    cookie.setMaxAge(600);
+	    cookie.setPath("/project_ultali");
+	    response.addCookie(cookie);
 	    
 		return "/clubBoard/clubBoardDetail";
 	}

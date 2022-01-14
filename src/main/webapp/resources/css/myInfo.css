@@ -52,9 +52,14 @@ div.container div.item2 div.button {
   position: absolute;
   bottom: 0;
   right: 30%;
+  width: 500px;
+  height: 10px;
+  text-align: right;
 }
-
-div.container div.item2 div.button a {
+div.container div.item2 div.button div{
+	display: inline-block;
+}
+div.container div.item2 div.button div a {
   /* text-decoration: none;
   padding: 0 15px;
   border: 1px solid black;
@@ -62,13 +67,13 @@ div.container div.item2 div.button a {
   text-decoration: none;
   font-size: 20px;
   color: black;
-  display: inline-block;
   border-radius: 20px;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
   padding: 10px 20px 10px 20px;
-  position: absolute;
-  right: -225px;
-  bottom: -50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: lightgray;
 }
 /*# sourceMappingURL=myInfo.css.map */
