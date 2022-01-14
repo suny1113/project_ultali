@@ -26,12 +26,15 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/","/home"} )
 	public String home(Principal principal,
-					   HttpSession session) {
+					   HttpSession session, Model model) {
 		if(principal != null) {
 			session.setAttribute("id", principal.getName());
 			
 		}
 		log.info((String)session.getAttribute("id"));
+		
+		model.addAttribute("dto", boardService.hitsClub());
+		
 		return "home/home";
 	}
 	
@@ -60,8 +63,8 @@ public class HomeController {
 	@GetMapping(value = {"search", "home/search", "admin/search"})
 	public String search(@RequestParam("word")String word, Model model) {
 		model.addAttribute("word", word);
-		model.addAttribute("dto", boardService.selectAllClubService());
-		
+		model.addAttribute("dto", boardService.searchClub(word));
+		model.addAttribute("cnt", boardService.countSearchClub(word));
 		return "home/search";
 	}
 	

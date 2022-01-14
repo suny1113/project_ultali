@@ -7,18 +7,28 @@
 		width: 768px;
 		text-align: center;
 		table-layout: fixed;
+		border-collapse: collapse;
+		border-bottom: 1px solid rgb(240,240,240);
 	}
 	
 	#inquire-table td {
 		overflow:hidden;
 		white-space : nowrap;
 		text-overflow: ellipsis;
-		padding: 8px 0;
+		padding: 10px 0;
+	}
+	
+	#inquire-table th {
+		padding: 10px 0px;
 	}
 	
 	#inquire-table a:hover {
 		font-weight: bold;
 		color: grey;
+	}
+	
+	#inquire-table tr:nth-child(1) {
+		border-bottom: 1px solid rgb(240,240,240);
 	}
 	
 	#inquire-table th:nth-child(1) {
@@ -34,9 +44,30 @@
 		width: 120px;
 	}
 	#inquire-table th:nth-child(5) {
-		width: 70px;
+		width: 80px;
 	}
 	
-	.paging {
-		text-align: right;
+	.paging-div {
+		text-align: center;
+		position: relative;
+		top: 30px;
+		margin: 15px 0px;
+	}
+	
+	.paging-num {
+		margin: 0 auto;
+	}
+	
+	.paging-num td:nth-child(2) {
+		width: 180px;
+	}
+	
+	.paging-num td:nth-child(2) a {
+		padding: 0 5px;
+		font-size: 15px;
+	}
+	
+	.paging-num td:nth-child(2) b {
+		padding: 0 5px;
+		font-size: 15px;
 	}

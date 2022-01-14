@@ -48,27 +48,27 @@
 					
 					<div class="textfield">
 						<span class="inform">[내용 클릭 시 글 상세보기]</span>
-						<textarea name="inquire-detail" id="inquire-detail" cols="100" readonly="readonly">${dto.p_inq_detail}</textarea>
+						<textarea name="inquire-detail" id="inquire-detail" cols="102" readonly="readonly">${dto.p_inq_detail}</textarea>
 						<textarea name="inquire-detail-event" id="inquire-detail-event" cols="90" disabled="disabled"></textarea>
 						<br />
 						<c:if test="${dto.p_inq_answer != null }">
 							<span class="inform">[작성한 답글]</span>
 							<br />
-							<textarea name="inquire-answer" id="inquire-answer" cols="100" readonly="readonly">${dto.p_inq_answer}</textarea>
+							<textarea name="inquire-answer" id="inquire-answer" cols="102" readonly="readonly">${dto.p_inq_answer}</textarea>
 							<textarea name="inquire-answer-event" id="inquire-answer-event" cols="90" readonly="readonly" disabled="disabled"></textarea>
 						</c:if>
 						<br />
 						<span class="inform">[답글 작성 및 수정]</span>
 						<br />
-						<textarea name="p_inq_answer" id="inquire-answer-write" cols="100"></textarea>
+						<textarea name="p_inq_answer" id="inquire-answer-write" cols="102"></textarea>
 						<textarea name="inquire-answer-write-event" id="inquire-answer-write-event" cols="90" disabled="disabled"></textarea>
-					</div>
 				
-					<div class="textfield-button">
-						<input type="submit" value="답글작성" class="button" />
-						<a href="Inquire" class="button">목록</a>
-					</div>
+						<div class="textfield-button">
+							<input type="submit" value="답글작성" class="button" />
+							<a href="Inquire" class="button">목록</a>
+						</div>
 				
+					</div>
 				</form>
 				
 			</div>

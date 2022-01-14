@@ -38,9 +38,6 @@ public class InquireDaoImple implements InquireDaoInter{
 		ss.insert("kr.co.jhta.ultali.inquire.insertInquire",dto);
 	}
 	
-	
-	
-
 	public int selectTotalInquireCount(String mem_id) {
 		return ss.selectOne(namespace+".totalInquireCount",mem_id);
 	}

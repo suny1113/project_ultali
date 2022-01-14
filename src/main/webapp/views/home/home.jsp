@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>울타리 :: 취미모임의 시작</title>
 <link rel="stylesheet" href="resources/css/home.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<style>
-	.banner {
-		width: 1080px;
-		height: 253px;
-		margin: 20px 0px;
-	}
-</style>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 </head>
 <body>
 	
@@ -24,61 +19,112 @@
 			<jsp:include page="slide.jsp"/>
 		</div>
 		
-		<div class="category">
-			<h1>카테고리</h1>
-			
-			<div class="category-grid">
-				<div class="meeting">
-					<a href="clubBoard/clubBoardList?major_no=1">
-						<img src="resources/img/outdoor.png" alt="" />
-						<span>아웃도어</span>
-					</a>
-				</div>
+		<section id="section1">
+			<div class="category">
+				<h1>카테고리</h1>
 				
-				<div class="meeting">
-					<a href="clubBoard/clubBoardList?major_no=5">
-						<img src="resources/img/fitness.jpg" alt="" />
-						<span>피트니스</span>
-					</a>
-				</div>
-				
-				<div class="meeting">
-					<a href="clubBoard/clubBoardList?major_no=2">
-
-						<img src="resources/img/sports.png" alt="" />
-						<span>스포츠</span>
-					</a>
-				</div>
-				
-				<div class="meeting">
-					<a href="clubBoard/clubBoardList?major_no=6">
-						<img src="resources/img/self_improvement.jpg" alt="" />
-						<span>자기계발</span>
-					</a>
-				</div>
-				
-				<div class="meeting">
-					<a href="clubBoard/clubBoardList?major_no=3">
-						<img src="resources/img/cooking.jpg" alt="" />
-						<span>쿠킹</span>
-					</a>
-				</div>
-				
-				<div class="meeting">
-					<a href="clubBoard/clubBoardList?major_no=4">
-						<img src="resources/img/craft.jpg" alt="" />
-						<span>공예</span>
-					</a>
-				</div>
-				
-				<div class="meeting">
-					<a href="clubBoard/clubBoardList?major_no=7">
-						<img src="resources/img/meeting.jpg" alt="" />
-						<span>기타</span>
-					</a>
+				<div class="category-grid">
+					<div class="meeting">
+						<a href="clubBoard/clubBoardList?major_no=1">
+							<img src="resources/img/outdoor.png" alt="" />
+							<span>아웃도어</span>
+						</a>
+					</div>
+					
+					<div class="meeting">
+						<a href="clubBoard/clubBoardList?major_no=5">
+							<img src="resources/img/fitness.jpg" alt="" />
+							<span>피트니스</span>
+						</a>
+					</div>
+					
+					<div class="meeting">
+						<a href="clubBoard/clubBoardList?major_no=2">
+	
+							<img src="resources/img/sports.png" alt="" />
+							<span>스포츠</span>
+						</a>
+					</div>
+					
+					<div class="meeting">
+						<a href="clubBoard/clubBoardList?major_no=6">
+							<img src="resources/img/self_improvement.jpg" alt="" />
+							<span>자기계발</span>
+						</a>
+					</div>
+					
+					<div class="meeting">
+						<a href="clubBoard/clubBoardList?major_no=3">
+							<img src="resources/img/cooking.jpg" alt="" />
+							<span>쿠킹</span>
+						</a>
+					</div>
+					
+					<div class="meeting">
+						<a href="clubBoard/clubBoardList?major_no=4">
+							<img src="resources/img/craft.jpg" alt="" />
+							<span>공예</span>
+						</a>
+					</div>
+					
+					<div class="meeting">
+						<a href="clubBoard/clubBoardList?major_no=7">
+							<img src="resources/img/meeting.jpg" alt="" />
+							<span>기타</span>
+						</a>
+					</div>
 				</div>
 			</div>
-		</div>
+		</section>
+		
+		<section id="section2">
+		
+			<div class="small-banner">
+				<a href="${path}/help/notice"><img src="resources/img/middle_banner.png" alt="" /></a>
+			</div>
+			
+			<div class="recomd">
+				<div class="recomd-title">
+					<h1>핫</h1><h1>한 모임</h1>
+				</div>
+				<div class="hits-rank">
+				  	<c:forEach var="dto" items="${dto}">
+				  	<a href="${path}/clubBoard/clubBoardDetail?c_no=${dto.c_no}">
+							<table>
+								<tr>
+									<th colspan="2">
+										<img src="${path}${dto.c_image}" alt="" />
+									</th>
+								</tr>
+								<tr>
+									<td colspan="2" >
+										<h2>${dto.c_name}</h2>
+									</td>
+								</tr>
+								<tr>
+									<td class="th-title">지역</td>
+									<td>
+										<p>${dto.c_loc}</p>
+									</td>
+								</tr>
+								<tr>
+									<td class="th-title">조회수</td>
+									<td>
+										<p>${dto.c_hits}</p>
+									</td>
+								</tr>
+							</table>
+						</a>
+					</c:forEach>
+				</div>
+			</div>
+			
+			<div class="small-banner">
+				<a href="${path}/clubBoard/clubRegister"><img src="resources/img/register.png" alt="" /></a>
+			</div>
+			
+		</section>
+		
 	</div>
 	
 	<jsp:include page="footer.jsp"/>

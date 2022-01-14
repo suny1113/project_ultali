@@ -33,8 +33,15 @@ public interface Board2DAO {
 	public ClubInquiryAnswerDTO getOneAnswer(int c_inq_no);
 	public List<ClubInquiryAnswerDTO> getAnswer(ClubDTO dto);
 	
+	//헤더 search
+	public List<ClubDTO> searchClub(String word);
+	
+	//search count
+	public int countSearchClub(String word);
+	
+	//hits club
+	public List<ClubDTO> hitsClub();
 	public void increaseHits(int c_no);
 	
 	
-
 }

@@ -127,13 +127,30 @@ public class Board2ImpleDAO implements Board2DAO{
 		return ss.selectOne("kr.co.jhta.ClubInquiryAnswer.getOneAnswer", c_inq_no);
 	}
 
+	//헤더 search 메서드
+	@Override
+	public List<ClubDTO> searchClub(String word) {
+		SearchWord sw = new SearchWord(word);
+		return ss.selectList("kr.co.jhta.boardDetailMapper.searchClub", sw);
+	}
 	@Override
 	public void increaseHits(int c_no) {
 		ss.update("kr.co.jhta.boardDetailMapper.increaseHits", c_no);		
 	}
 
 
-	
+	//search count
+	@Override
+	public int countSearchClub(String word) {
+		SearchWord sw = new SearchWord(word);
+		return ss.selectOne("kr.co.jhta.boardDetailMapper.countSearchClub", sw);
+	}
+
+	//hits club
+	@Override
+	public List<ClubDTO> hitsClub() {
+		return ss.selectList("kr.co.jhta.boardDetailMapper.hitsClub");
+	}
 
 
 }
