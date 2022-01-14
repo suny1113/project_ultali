@@ -21,7 +21,6 @@
 <%-- 	<h2>답변ciadto2: ${ciadto2 }</h2> --%>
 <%-- 	<h2>paging: ${paging }</h2> --%>
 
-	<h2>paging: ${paging }</h2>
 	
 	<jsp:include page="../home/header.jsp" />
 	<div class="wrapper" >
@@ -44,20 +43,20 @@
 								<tr>
 									<c:if test="${list.c_inq_secretinq == 1 && cdto.mem_id != id && list.mem_id != id}">
 										<p id="user_content" class="">문의 내용</p>
-										<textarea class="user_text" name="" id="" cols="30" rows="10" disabled>비밀글 입니다.</textarea>
+										<textarea class="user_text" name="" id="" cols="30" rows="10" readonly="readonly">비밀글 입니다.</textarea>
 									</c:if>
 									<c:if test="${list.c_inq_secretinq == 1 && cdto.mem_id == id}">
 										<p id="user_content" class="">문의 내용</p>
-										<textarea class="user_text" name="" id="" cols="30" rows="10" disabled>${list.c_inq_detail }</textarea>
+										<textarea class="user_text" name="" id="" cols="30" rows="10" readonly="readonly">${list.c_inq_detail }</textarea>
 									</c:if>
 									<c:if test="${list.c_inq_secretinq == 1 && list.mem_id == id}">
 										<p id="user_content" class="">문의 내용</p>
-										<textarea class="user_text" name="" id="" cols="30" rows="10" disabled>${list.c_inq_detail }</textarea>
+										<textarea class="user_text" name="" id="" cols="30" rows="10" readonly="readonly">${list.c_inq_detail }</textarea>
 									</c:if>
 									
 									<c:if test="${list.c_inq_secretinq == 0}">
 										<p id="user_content" class="">문의 내용</p>
-										<textarea class="user_text" name="" id="" cols="30" rows="10" disabled>${list.c_inq_detail }</textarea>
+										<textarea class="user_text" name="" id="" cols="30" rows="10" readonly="readonly">${list.c_inq_detail }</textarea>
 									</c:if>
 								</tr>
 							</div>
@@ -103,37 +102,37 @@
 										
 										<c:when test="${ciadto1.mem_id == id && ciadto1.c_inq_no == list.c_inq_no}">
 											<p class="leader">답변 내용</p>
-											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto1.c_inq_answer_answer}</textarea>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" readonly="readonly">${ciadto1.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${ciadto2.mem_id == id && ciadto2.c_inq_no == list.c_inq_no}">
 											<p class="leader">답변 내용</p>
-											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto2.c_inq_answer_answer}</textarea>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" readonly="readonly">${ciadto2.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${cdto.mem_id == id && ciadto1.c_inq_no == list.c_inq_no}">
 											<p class="leader">답변 내용</p>
-											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto1.c_inq_answer_answer}</textarea>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" readonly="readonly">${ciadto1.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${cdto.mem_id == id && ciadto2.c_inq_no == list.c_inq_no}">
 											<p class="leader">답변 내용</p>
-											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto2.c_inq_answer_answer}</textarea>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" readonly="readonly">${ciadto2.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${list.c_inq_secretinq == 1 && cdto.mem_id != id && list.mem_id != id && ciadto1.c_inq_answer_answer != null && ciadto2.c_inq_answer_answer != null}">
 											<p class="leader">답변 내용</p>
-											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>비밀글 입니다.</textarea>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" readonly="readonly">비밀글 입니다.</textarea>
 										</c:when>
 										
 										<c:when test="${list.c_inq_secretinq == 0 && ciadto1.c_inq_no == list.c_inq_no}">
 											<p class="leader">답변 내용</p>
-											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto1.c_inq_answer_answer}</textarea>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" readonly="readonly">${ciadto1.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 										<c:when test="${list.c_inq_secretinq == 0 && ciadto2.c_inq_no == list.c_inq_no}">
 											<p class="leader">답변 내용</p>
-											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" disabled>${ciadto2.c_inq_answer_answer}</textarea>
+											<textarea name="" id="leader_text" class="answer_content" cols="30" rows="10" readonly="readonly">${ciadto2.c_inq_answer_answer}</textarea>
 										</c:when>
 										
 									</c:choose>
@@ -179,9 +178,16 @@
 				</div>
 <!-- 				모임장이면 문의작성 버튼 안보이게 처리 -->
 				<c:if test="${cdto.mem_id != id }">
-					<input type="submit" value="문의작성" id="inquireWrite"/>
+					<input type="button" value="문의작성" id="inquireWrite"/>
+<!-- 						<a href="#pop1" class="btn">문의작성</a> -->
+<!-- 						<div class="popup" id="pop1"> -->
+<!-- 							<div id="popupClose"> -->
+<!-- 								<a href="#a">닫기</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="dim"></div> -->
 				</c:if>
-			<input type="hidden" name="c_no" value="${c_no }"/>	
+			<input type="hidden" name="c_no" id="c_no" value="${c_no }"/>	
 			<input type="hidden" name="c_inq_no" id="c_inq_no"/>
 			<input type="hidden" name="c_inq_answer_answer" id="c_inq_answer_answer"/>
 			<input type="hidden" name="mem_id" value="${id }"/>
@@ -191,6 +197,5 @@
 		</div>
 	</div>
 	<jsp:include page="../home/footer.jsp" />
-
 </body>
 </html>
