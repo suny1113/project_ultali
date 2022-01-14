@@ -1,5 +1,6 @@
 package kr.co.jhta.ultali.controller;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,8 +62,9 @@ public class NoticeController {
 	}
 	
 		@GetMapping("/help/noticeWrite")
-		public String noticeWrite(Model model, HttpSession session){
-			model.addAttribute("mem_id",session.getAttribute("mem_id"));
+		public String noticeWrite(Model model, HttpSession session, Principal principal){
+			model.addAttribute("mem_id",principal.getName());
+			log.info("rincipal.getName()" + principal.getName());
 			return "help/noticeWrite";
 	}
 		
@@ -83,19 +85,23 @@ public class NoticeController {
 		}
 		
 		@GetMapping("/help/noticeModify")
-		public String noticeModify(@RequestParam("n_no")int n_no, Model model) {
+		public String noticeModify(@RequestParam("n_no")int n_no, Model model, Principal principal) {
 			NoticeDTO dto = service.readOne(n_no);
+			log.info("dto" + dto);
+			model.addAttribute("mem_id",principal.getName());
 			model.addAttribute("dto", dto);
+			log.info("model.addAttribute(\"dto\", dto)" + model.addAttribute("dto", dto));
 			return "/help/noticeModify";
 		}
 		
 		@PostMapping("/help/noticeModify")
-		public String noticeModifyOk(@ModelAttribute("dto")NoticeDTO dto) {
-			service.noticeModify(dto);
+		public String noticeModifyOk(@ModelAttribute("NoticeDTO")NoticeDTO NoticeDTO) {
+			service.noticeModify(NoticeDTO);
+			log.info("NoticeDTO" + NoticeDTO);
 			return "redirect:/help/notice";
 		}
 		
-		@GetMapping("/help/delete")
+		@GetMapping("/help/noticeDelete")
 		public String delete(@RequestParam("n_no")int n_no) {
 			service.remove(n_no);
 			return "redirect:/help/notice";

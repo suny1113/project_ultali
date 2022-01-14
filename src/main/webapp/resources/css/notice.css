@@ -1,178 +1,35 @@
 @charset "UTF-8";
 
-/* home.css */
-
-* {
-		margin: 0;
-		padding: 0;
-		font-family: "나눔고딕";
-	}
-
-	header {
+.notice-body-container {
 		width: 1080px;
 		margin: 0 auto;
-	}
-
-	.nav-color-width{
-		width: 100%;
-		background: rgb(244, 244, 244);
-		z-index: -1;
-		position: absolute;
-		height: 35px;
-	}
-
-	.nav {
-		width: 100%;
-		text-align: right;
-		padding: 8px 0px;
-	}
-	
-	.logo-search-container {
-		width: 100%;
-		height: 160px;
-		border-bottom: 1px solid rgb(240,240,240);
-	}
-	
-	a {
-		text-decoration: none;
-		color : black;
-	}
-	
-	.nav-a {
-		margin: 0px 15px;
-		font-size: 11px;
-	}
-	
-	.logo-search {
-		padding: 20px;
-		margin: 0 auto;
-		width: 750px;
-	}
-	
-	#logo {
-		position:relative;
-		left: -20px;
-		width: 250px;
-		height: 150px;
-	}
-	
-	#searchIcon {
-		width: 35px;
-		height: 20px;
-	}
-	
-	#searchbar {
-		border: 0px;
-		background: rgb(244,244,244);
-		border-radius: 15px;
-		width: 400px;
-		height: 25px;
-		position: relative;
-		top: -85px;
-		left: -20px;
-		padding: 8px 20px;
-		margin: 0px 20px;
-		font-weight: bold;
-	}
-	
-	#searchbar::placeholder {
-		font-weight: bold;
-		color: rgb(200,200,200);
-	}
-	
-	.body-container {
-		width: 1080px;
-		margin: 0 auto;
-	}
-	
-	.category h1 {
-		margin: 30px 30px 15px 30px;
-		font-size: 20px;
-	}
-	
-	.category {
-		margin: 0 auto;
-		width: 768px;
-	}
-	
-	.category-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: 200px 800px;
 	}
 	
-	.meeting {
-		margin: 15px 30px;
-		position: relative;
-		width: 160px;
-		height: 90px;
-		border-radius: 10px;
-		overflow: hidden;
-		background: linear-gradient(
-				to right,
-				rgb(3, 0, 0),
-				rgba(2, 0, 0, 0.52),
-				rgba(0, 0, 0, 0));
+.notice-body-left {
+		border-right: 1px solid rgb(240,240,240);
+		height: 600px;
 	}
 	
-	.meeting img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		opacity: 0.8
-	}
-	
-	.meeting span {
-		position: absolute;
-		top: 60px;
-		left: 10px;
-		color: white;
-		font-weight: bold;
-	}
-	
-	.before-footer {
-		height: 100px;
-	}
-	
-	.footer-color-width {
-		float:none;
-		margin-top: 20px;
-		width: 100%;
-		background: rgb(244, 244, 244);
-		z-index: -1;
-		position: absolute;
-		height: 350px;
-	}
-	
-	footer {
-		width: 1080px;
-		height: 150px;
+#notice-table {
+		width: 760px;
+		text-align: center;
 		margin: 0 auto;
-		margin-top: 20px;
-		font-size: 11px;
-		color: grey;
-	}
-	
-	footer a {
-		font-size: 11px;
-		color: grey;
-	}
-	
-	.footer {
 		position: relative;
-		top: 40px;
-		left: 60px;
+		left: 50px;
+		top: 30px;
+		border-collapse: collapse;
+		table-layout: fixed;
 	}
 	
-	.footer p {
-		margin: 20px 0px;
-	}
-	
-	@media (max-width: 1920px) {
-    .body-container {
-        width: 1080px;
-    	}
-	}
-
+#noticeDetail-table {
+		width: 760px;
+		text-align: center;
+		margin: 0 auto;
+		position: relative;
+		left: 50px;
+		top: 30px;
+		border-collapse: collapse;
+		table-layout: fixed;
+	}	

@@ -66,6 +66,7 @@
 						<input type="text" name="word" id="searchbar" placeholder="검색어를 입력해주세요."/>
 					</div>
 				</div>
+
 			</form>
 		</div>
 	</header>

@@ -26,6 +26,7 @@ public class RegisterController {
 	public void setService(RegisterService service) {
 		this.service = service;
 	}
+	
 
 	@RequestMapping("/register/register")
 	public String register() {
@@ -40,17 +41,7 @@ public class RegisterController {
 	}
 
 	
-	
-	// id 중복 체크 컨트롤러
-	@RequestMapping(value = "/register/register/idCheck", method = RequestMethod.GET)
-	@ResponseBody
-		public int idCheck(@RequestParam("mem_Id") String mem_id) {
-            log.info("userIdCheck 진입");
-			return service.userIdCheck(mem_id);
-		}
-	
-	
-	
+
 	// 다른 페이지로 이동하기
 
 	@RequestMapping("/register/register/register")

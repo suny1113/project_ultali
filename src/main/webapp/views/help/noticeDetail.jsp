@@ -1,20 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<c:set var="path" value="${pageContext.request.contextPath}" />   
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<!-- css -->
+<link rel="stylesheet" href="${path}/resources/css/home.css">
 <link rel="stylesheet" href="${path}/resources/css/notice.css">
 
+<meta charset="UTF-8">
+<title>문의사항 게시글 수정</title>
 
 </head>
 <body>
 	<!-- header -->
 	<jsp:include page="../home/header.jsp" />
 	
-	<div class="container">
-	<table>
+	<!-- body -->
+	<div class="notice-body-container">
+		<div class="notice-body-left">
+		<h1>고객센터</h1>
+			<br><br>
+			<a href="notice"><h2>공지사항</h2></a><br>
+			<a href="faq"><h2>자주묻는질문</h2></a>
+		</div>
+		
+	<div class="notice-body-right">	
+	<table id="noticeDetail-table">
 		<tr>
 			<th>게시물번호</th>
 			<td>${dto.n_no }</td>
@@ -48,7 +61,7 @@
 			</td>
 	</table>
 	</div>
-	
+</div>	
 	<!-- footer -->
 	<jsp:include page="../home/footer.jsp" />
 </body>
