@@ -29,14 +29,14 @@
 			
 			<div class="category-grid">
 				<div class="meeting">
-					<a href="clubBoard/clubBoardList&major_no=1">
+					<a href="clubBoard/clubBoardList?major_no=1">
 						<img src="resources/img/outdoor.png" alt="" />
 						<span>아웃도어</span>
 					</a>
 				</div>
 				
 				<div class="meeting">
-					<a href="clubBoard/clubBoardList&major_no=5">
+					<a href="clubBoard/clubBoardList?major_no=5">
 						<img src="resources/img/fitness.jpg" alt="" />
 						<span>피트니스</span>
 					</a>
@@ -51,28 +51,28 @@
 				</div>
 				
 				<div class="meeting">
-					<a href="clubBoard/clubBoardList&major_no=6">
+					<a href="clubBoard/clubBoardList?major_no=6">
 						<img src="resources/img/self_improvement.jpg" alt="" />
 						<span>자기계발</span>
 					</a>
 				</div>
 				
 				<div class="meeting">
-					<a href="clubBoard/clubBoardList&major_no=3">
+					<a href="clubBoard/clubBoardList?major_no=3">
 						<img src="resources/img/cooking.jpg" alt="" />
 						<span>쿠킹</span>
 					</a>
 				</div>
 				
 				<div class="meeting">
-					<a href="clubBoard/clubBoardList&major_no=4">
+					<a href="clubBoard/clubBoardList?major_no=4">
 						<img src="resources/img/craft.jpg" alt="" />
 						<span>공예</span>
 					</a>
 				</div>
 				
 				<div class="meeting">
-					<a href="clubBoard/clubBoardList&major_no=7">
+					<a href="clubBoard/clubBoardList?major_no=7">
 						<img src="resources/img/meeting.jpg" alt="" />
 						<span>기타</span>
 					</a>
