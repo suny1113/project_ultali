@@ -127,6 +127,11 @@ public class Board2ImpleDAO implements Board2DAO{
 		return ss.selectOne("kr.co.jhta.ClubInquiryAnswer.getOneAnswer", c_inq_no);
 	}
 
+	@Override
+	public void increaseHits(int c_no) {
+		ss.update("kr.co.jhta.boardDetailMapper.increaseHits", c_no);		
+	}
+
 
 	
 

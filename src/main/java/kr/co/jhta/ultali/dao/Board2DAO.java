@@ -33,6 +33,7 @@ public interface Board2DAO {
 	public ClubInquiryAnswerDTO getOneAnswer(int c_inq_no);
 	public List<ClubInquiryAnswerDTO> getAnswer(ClubDTO dto);
 	
+	public void increaseHits(int c_no);
 	
 	
 

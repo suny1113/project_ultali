@@ -59,13 +59,11 @@
 				</sec:authorize>
 			</div>
 			<form action="search">
-				
-			<div class="logo-search-container">
-				<div class="logo-search">
-					<a href="${path }/home"><img src="${path}/resources/img/logo.png" alt="" id="logo" /></a>
-					<input type="text" name="" id="searchbar" placeholder="검색어를 입력해주세요."/>
-				</div>
-			</div>
+				<div class="logo-search-container">
+					<div class="logo-search">
+						<a href="home"><img src="${path}/resources/img/logo.png" alt="" id="logo" /></a>
+						<input type="text" name="word" id="searchbar" placeholder="검색어를 입력해주세요."/>
+					</div>
 			</form>
 		</div>
 	</header>

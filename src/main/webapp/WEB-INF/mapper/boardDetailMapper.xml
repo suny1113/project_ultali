@@ -42,5 +42,10 @@
 		WHERE c_no = #{c_no}
 	</update>
 
+	<update id="increaseHits" parameterType="int">
+		UPDATE club
+		SET c_hits = c_hits+1
+		WHERE c_no = #{c_no}
+	</update>
 	
   </mapper>
