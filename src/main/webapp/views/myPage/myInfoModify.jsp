@@ -27,7 +27,7 @@
 						<td><a href="myInfo">내 정보</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">최근 본 모임</a></td>
+						<td><a href="recentClub">최근 본 모임</a></td>
 					</tr>
 					<tr>
 						<td><a href="wishList">찜한 모임</a></td>
@@ -51,19 +51,19 @@
 				<tr>
 					<th>이름</th>
 					<th>아이디</th>
-					<th>닉네임</th>
+<!-- 					<th>닉네임</th> -->
                     <th></th>
 				</tr>
 				<tr>
 					<td>${myInfoDto.mem_name }</td>
 					<td>${myInfoDto.mem_id }</td>
-					<td>
+					<%-- <td>
                         <input type="text" name="mem_name" id="new_nickname" placeholder="${myInfoDto.mem_id }" required oninput="checknickname()"/>
                     </td>
                     <td id="nicknameCheck">
                         <span class="nickname_ok">사용 가능합니다.</span>
                         <span class="nickname_already">사용 불가능합니다.</span>
-                    </td>
+                    </td> --%>
 				</tr>
 
 				<tr>

@@ -2,7 +2,9 @@ package kr.co.jhta.ultali.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/clubBoard")
 public class Board2Controller {
 
+	
 	@Autowired
 	BoardService service;
 	
@@ -42,12 +45,21 @@ public class Board2Controller {
 	
 //	울타리 게시판에서 c_no를받아 sql에 dto검색 후 boardDetail에서 보여줌 
 	@GetMapping("/clubBoardDetail")
-	public String boardDetailGet(@RequestParam("c_no") int c_no, Model model, HttpServletRequest request) {
+	public String boardDetailGet(@RequestParam("c_no") int c_no, Model model, HttpServletRequest request, HttpServletResponse response) {
+		
+		// 쿠키 생성
+		Cookie cookie = null;
+		
+		Cookie [] cookies = request.getCookies();
+		
 		model.addAttribute("dto", service.selectOneClubService(c_no));
+		
+		// 조회수 처리
+		service.increaseHitsService(c_no);
 		
 		// 임시 아이디세션 삭제해야됨
 	    HttpSession session = request.getSession();
-	    session.setAttribute("id", "dh4");
+	    session.setAttribute("id", "dh");
 	    
 	    // 찜목록에 있는지 확인
 	    WishDTO wdto = new WishDTO();
@@ -64,6 +76,17 @@ public class Board2Controller {
 	    model.addAttribute("checkWish",service.getWishService(wdto));
 
 	    
+	    // 쿠키 추가하기
+	    String no = String.valueOf(c_no);
+	    
+	    // 쿠키 for 문 검사
+	    if (cookie == null) {
+			cookie = new Cookie("c_no"+no,no);
+		}
+	    
+	    cookie.setMaxAge(600);
+	    cookie.setPath("/project_ultali");
+	    response.addCookie(cookie);
 	    
 		return "/clubBoard/clubBoardDetail";
 	}
@@ -79,7 +102,7 @@ public class Board2Controller {
 	public ModelAndView modifyPost(@ModelAttribute("dto") ClubDTO dto, @RequestParam("date") String date, @RequestParam("date2") String date2, @ModelAttribute("uploadFile") UploadFile file, BindingResult result) {
 
 		System.out.println("clubModifydtocontrol " + dto);
-		return service.updateClubService(dto, date, date2, file, result);
+		return service.updateClubService(dto, date, date2, file, result, dto.getC_no());
 	}
 	
 	
@@ -165,7 +188,6 @@ public class Board2Controller {
 		
 		// 아이디 값을 가져올때 이상하게 가져와져서 세션에 있는 아이디를 받아옴
 		ciadto.setMem_id(((String) session.getAttribute("id")));
-		System.out.println("ciadtoaaaaaaaaaaaaa:" + ciadto);
 		
 		
 		service.insertAnswerService(ciadto);
@@ -174,9 +196,9 @@ public class Board2Controller {
 	}
 	
 	@RequestMapping("clubDelete")
-	public String clubDelete(@RequestParam("c_no") int c_no) {
+	public String clubDelete(@RequestParam("c_no") int c_no, @RequestParam("major_no") int major_no) {
 		service.deleteClubService(c_no);
-		return "redirect:/clubBoard/clubBoardList";
+		return "redirect:/clubBoard/clubBoardList?major_no="+major_no;
 	}
 	
 	@GetMapping("/questionWrite")

@@ -1,34 +1,127 @@
 @charset "UTF-8";
-#main{
-	margin-left: 200px;
+#aa{
+	width: 700px;
+	margin: 0 auto;
 }
 
 
-.input{
-	margin-bottom: -10px;
-	float: right;
-	padding-top: 5px;
-	
+#input{
+	padding: 5px 10px 5px 10px;
+}
+
+#title{
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+#p{
+	font-size: 24px;
+	font-weight: bold;
 }
 
 
 .category{
 	font-size: 13px;
 	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 20px;
+/* 	border-right: 1px solid; */
+/* 	border-bottom: 1px solid; */
+/* 	border-top: 1px solid; */
+/* 	border-left: 1px solid; */
+/* 	padding: 5px 10px 5px 10px; */
+/* 	background: #F4F3F4 */
+	
+}
+
+.content{
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+#subNoSelect{
+	position: relative;
+	right: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+}
+
+#date2{
+	position: relative;
+	right: 169px;
 }
 
 textarea{
 	resize: none;
+	width: 643px;
+	height: 180px;
+	border-radius: 5px;
 }
 
 .button_style{
-	background-color: #E0E0E0;
-	padding: 5px 20px 5px 20px;
+	padding: 10px 30px 10px 30px;
 	margin: 15px 80px 0px 100px;
+	border-radius: 5px;
+}
+
+#cancel{
+	margin-left: 180px;
+}
+
+#submit{
+	background-color: rgb(0, 117, 239);
+	color: #F9FCFF;
 }
 
 .button_style:hover {
 	cursor: pointer;
+}
+
+
+.clubDetails{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#areaTitle{
+	margin-top: 5px;
+}
+
+/* #clubName{ */
+/* 	width: 150px; */
+/* 	height: 30px; */
+/* } */
+
+#contents td:nth-child(1){
+	background: gray;
+	text-align: center;
+	border-right: 1px solid;
+	border-top: 1px solid;
+	border-left: 1px solid;
+	width: 137px;
+}
+
+
+
+#contents tr{
+	width: 600px;
+	border-bottom: 1px solid;
+}
+
+#contents table{
+	border-collapse: collapse;
+	width: 643px;
+	table-layout: fixed;
+	border-top: 	1px solid;
+}
+
+#area{
+	width: 503px;
+	margin-top: 15px;
+	margin-bottom: 10px;
 }
 
 input[type="number"]::-webkit-outer-spin-button,

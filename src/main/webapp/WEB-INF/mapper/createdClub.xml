@@ -56,4 +56,9 @@
 		 select c.c_no, c.mem_id, major_no, sub_no, c_name,c_loc,c_place,c_date,c_time,c_price,c_count,c_image,
 		c_detail,c_hits from myclub m join club c on(m.c_no=c.c_no) where m.mem_id = #{mem_id}		
 	</select>
+	
+	<select id="recentList" resultType="cdto">
+		select c_no, mem_id, major_no, sub_no, c_name,c_loc,c_place,c_date,c_time,c_price,c_count,c_image,
+		c_detail,c_hits from club where c_no in <foreach collection="list" item = "item" open="(" close=")" separator=","> #{item.value}</foreach>			
+	</select>
 </mapper>

@@ -22,6 +22,7 @@
 		})
 
 	})
+	
 	function myPage(){
 		console.log("testr")
 		console.log("<c:out value='${sessionScope.id}'/>")
@@ -50,7 +51,7 @@
 				<sec:authorize access="isAnonymous()">
 					<a href="javascript:myPage()" class="nav-a">마이페이지</a>
 				</sec:authorize>
-				<sec:authorize access="hasRole('ROLE_USER')">
+				<sec:authorize access="isAuthenticated()">
 					<a href="${path }/myPage/myInfo" class="nav-a">마이페이지</a>
 				</sec:authorize>
 				<a href="${path }/help/notice" class="nav-a">고객센터</a>
@@ -61,9 +62,11 @@
 			<form action="search">
 				<div class="logo-search-container">
 					<div class="logo-search">
-						<a href="home"><img src="${path}/resources/img/logo.png" alt="" id="logo" /></a>
+						<a href="${path}/home"><img src="${path}/resources/img/logo.png" alt="" id="logo" /></a>
 						<input type="text" name="word" id="searchbar" placeholder="검색어를 입력해주세요."/>
 					</div>
+				</div>
+
 			</form>
 		</div>
 	</header>
