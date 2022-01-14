@@ -7,7 +7,12 @@
 		width: 768px;
 		text-align: center;
 		table-layout: fixed;
-		
+		border-collapse: collapse;
+	}
+	
+	#inquire-detail-table tr:nth-child(2) {
+		border-top: 1px solid rgb(240,240,240);
+		border-bottom: 1px solid rgb(240,240,240);
 	}
 	
 	#inquire-detail-table td {
@@ -60,8 +65,6 @@
 	}
 	
 	.textfield-button {
-		position: relative;
-		top: 60px;
 		text-align: right;
 	}
 	
@@ -74,6 +77,8 @@
 		background: #B9D1DB;
 		color: white;
 		margin: 5px;
+		position: relative;
+		left: -35px;
 	}
 	
 	.button:hover {

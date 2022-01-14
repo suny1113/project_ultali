@@ -29,50 +29,15 @@ public class AdminController {
 	@Autowired
 	BoardService boardService;
 	
-	@RequestMapping("admin/home")
-	public String main() {
-		return "redirect:/home";
-	}
+//	@RequestMapping("admin/home")
+//	public String main() {
+//		return "redirect:/home";
+//	}
 	
 	@RequestMapping("admin/reportList")
 	public String reportList(Model model) {
 		model.addAttribute("dto", adminReportService.selectAllReportService());
 		return "admin/reportList";
-	}
-	
-	@RequestMapping("admin/register/register")
-	public String register() {
-		return "redirect:/register/register";
-	}
-	
-	@RequestMapping("admin/login/login")
-	public String login() {
-		return "redirect:/login/login";
-	}
-	
-	@RequestMapping("admin/myPage/myInfo")
-	public String myPage() {
-		return "redirect:/myPage/myInfo";
-	}
-	
-	@RequestMapping("admin/help/notice")
-	public String help() {
-		return "redirect:/help/notice";
-	}
-	
-	@RequestMapping("admin/admin/reportList")
-	public String reportList2() {
-		return "redirect:/admin/reportList";
-	}
-	
-	@RequestMapping("admin/termsOfUse")
-	public String termsOfUse() {
-		return "redirect:/home/termsOfUse";
-	}
-	
-	@RequestMapping("admin/service")
-	public String service() {
-		return "redirect:/home/service";
 	}
 	
 	@RequestMapping("admin/reportDetail")
@@ -81,19 +46,13 @@ public class AdminController {
 		return "admin/reportDetail";
 	}
 	
-	@RequestMapping("admin/moveToDetail")
-	public String moveToDetail(@RequestParam("c_no")int c_no, Model model) {
-		// 게시판 글 1개 조회 model.add코드 추가
-		return "clubBoard/clubBoardDetail";
-	}
-	
 	@RequestMapping("admin/meetingDelete")
 	public String meetingDelete(@RequestParam("c_no")int c_no, @RequestParam("rep_no")int rep_no) {
 	
 		//게시판 글 삭제 서비스 사용
 		boardService.deleteClubService(c_no);
 		
-		return "redirect:admin/reportList";
+		return "redirect:/admin/reportList";
 	}
 	
 	@GetMapping("admin/Inquire")

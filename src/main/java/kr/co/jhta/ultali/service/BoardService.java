@@ -32,4 +32,15 @@ public interface BoardService {
 	public void insertAnswerService(ClubInquiryAnswerDTO ciadto);
 	public List<ClubInquiryAnswerDTO> getAnswerService(String mem_id, int c_no);
 	public ClubInquiryAnswerDTO getOneAnswerService(int c_inq_no);
+	
+	//헤더 search
+	public List<ClubDTO> searchClub(String word);
+	
+	//search count
+	public int countSearchClub(String word);
+	
+	//hits club
+	public List<ClubDTO> hitsClub();
+	
+		
 }

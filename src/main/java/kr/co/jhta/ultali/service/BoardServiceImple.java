@@ -219,5 +219,23 @@ public class BoardServiceImple implements BoardService{
 	}
 
 
+	// 헤더 search
+	@Override
+	public List<ClubDTO> searchClub(String word) {
+		return dao.searchClub(word);
+	}
+
+	// search count
+	@Override
+	public int countSearchClub(String word) {
+		return dao.countSearchClub(word);
+	}
+
+	// hits 내림차순 리스트
+	@Override
+	public List<ClubDTO> hitsClub() {
+		return dao.hitsClub();
+	}
+	
 
 }
