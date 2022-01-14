@@ -41,6 +41,7 @@ public interface Board2DAO {
 	
 	//hits club
 	public List<ClubDTO> hitsClub();
+	public void increaseHits(int c_no);
 	
 	
 }

@@ -49,6 +49,12 @@
 		WHERE c_name LIKE '%' || #{word} || '%' OR c_loc LIKE '%' || #{word} || '%' OR c_place LIKE '%' || #{word} || '%'
 		ORDER BY c_no
   	</select>
+    
+	<update id="increaseHits" parameterType="int">
+		UPDATE club
+		SET c_hits = c_hits+1
+		WHERE c_no = #{c_no}
+	</update>
 	
 	<!-- 검색결과 갯수 반환 -->
 	<select id="countSearchClub" parameterType="String" resultType="int">

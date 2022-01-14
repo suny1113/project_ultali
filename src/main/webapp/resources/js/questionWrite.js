@@ -11,11 +11,4 @@ $(function(){
 			$("#form").submit(); 
 		});
 		
-		$("#cancel").on("click", function(){
-			$("#cancel").attr("type","submit");
-			$("#form").attr("action", "doQuestion");
-			$("#form").attr("method", "get");
-			$("#form").submit(); 
-		
-		});
 	})

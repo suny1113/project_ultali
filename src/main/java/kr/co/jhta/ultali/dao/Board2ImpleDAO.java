@@ -133,6 +133,11 @@ public class Board2ImpleDAO implements Board2DAO{
 		SearchWord sw = new SearchWord(word);
 		return ss.selectList("kr.co.jhta.boardDetailMapper.searchClub", sw);
 	}
+	@Override
+	public void increaseHits(int c_no) {
+		ss.update("kr.co.jhta.boardDetailMapper.increaseHits", c_no);		
+	}
+
 
 	//search count
 	@Override

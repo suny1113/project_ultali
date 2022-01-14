@@ -51,7 +51,7 @@
 				<sec:authorize access="isAnonymous()">
 					<a href="javascript:myPage()" class="nav-a">마이페이지</a>
 				</sec:authorize>
-				<sec:authorize access="hasRole('ROLE_USER')">
+				<sec:authorize access="isAuthenticated()">
 					<a href="${path }/myPage/myInfo" class="nav-a">마이페이지</a>
 				</sec:authorize>
 				<a href="${path }/help/notice" class="nav-a">고객센터</a>
