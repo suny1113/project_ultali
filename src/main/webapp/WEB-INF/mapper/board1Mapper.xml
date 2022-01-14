@@ -10,5 +10,25 @@
   		FROM club
   		WHERE  major_no = #{major_no}
   	</select>
+  	
+  	<select id="countBoard" resultType="int">
+    	SELECT COUNT(*) FROM CLUB
+    	WHERE major_no = #{major_no}
+	</select>
+	
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectBoard" resultType="cdto">
+	    SELECT * 
+	        FROM (
+	            SELECT ROWNUM RN, A.* 
+	                FROM (
+	                        SELECT * 
+	                        FROM CLUB 
+	                        WHERE major_no = #{major_no}
+	                        ORDER BY C_NO DESC 
+	                        ) A
+	                )
+	    WHERE RN BETWEEN #{start} AND #{end}
+	</select>
   
 </mapper>
