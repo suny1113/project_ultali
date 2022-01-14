@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class PagingDTO {
 	
 	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, 마지막페이지, SQL쿼리에 쓸 start, end
-	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end, c_no;
+	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end, c_no, major_no;
 	private int cntPage = 5;
 	
 	public PagingDTO(int total, int nowPage, int cntPerPage) {
