@@ -32,8 +32,7 @@
 	</select>
 
 	<update id="updateOne" parameterType="ndto">
-		UPDATE notice
-		SET mem_id = #{mem_id} , n_title = #{n_title} , n_detail = #{n_detail}
+		UPDATE notice SET mem_id = #{mem_id} , n_title = #{n_title} , n_detail = #{n_detail}
 		WHERE n_no = #{n_no}
 	</update>
 

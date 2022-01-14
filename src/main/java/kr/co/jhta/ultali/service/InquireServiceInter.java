@@ -10,7 +10,8 @@ public interface InquireServiceInter {
 	public InquireDto showOne(int p_inq_no);
 	public List<InquireDto> showList(String mem_id,int startNo, int endNo);
 	public int totalInquireCount(String mem_id);
-
+	public void inquireWrite(InquireDto dto);
+	
 	// 게시물 총 갯수
 	public int countBoard();
 

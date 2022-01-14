@@ -2,13 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<% String mem_id = (String) session.getAttribute("mem_id");%>
 <!DOCTYPE html>
 <html>
 
 
 <head>
-
+<link rel="stylesheet" href="${path}/resources/css/home.css">
 <link rel="stylesheet" href="${path}/resources/css/notice.css">
 
 <title>고객센터</title>
@@ -20,24 +19,21 @@
 
 	<!-- header -->
 	<jsp:include page="../home/header.jsp" />
-	<div class="container">
-		<div class="item1">
-			<h1>고객센터</h1>
-			<table>
-				<tr>
-					<td><a href="notice">공지사항</a></td>
-					<td><a href="faq">자주묻는질문</a></td>
-					<td><a href="noticeWrite">글쓰기</a></td>
-				</tr>
-			</table>
+	
+	<!-- body -->
+	<div class="notice-body-container">
+		<div class="notice-body-left">
+		<h1>고객센터</h1>
+			<br><br>
+			<a href="notice"><h2>공지사항</h2></a><br>
+			<a href="faq"><h2>자주묻는질문</h2></a><br>
+			<a href="noticeWrite"><h2>글쓰기</h2></a>
 		</div>
-		<br>
-		<br>
-		<br>
+		
 		<!-- jstl : 게시물 번호 작성자 제목 작성일시 -->
-		<div class="item2">
+		<div class="notice-body-right">
 				<h1>공지사항</h1>
-				<table>
+				<table id="notice-table">
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
@@ -80,19 +76,19 @@
 										<li class="page-item"><a class="page-link"
 											href="list?currentPage=${map.currentPage+5}">Next</a></li>
 									</c:if>
-
 								</ul>
-							</nav>
 						</td>
 					</tr>
 				</table>
+				<br><br><br>
+				<h3>이전 : ${map.prev }</h3>
+				<h3>다음 : ${map.next }</h3>	
 		</div>
-
+				
 	</div>
 
 
-	<h3>이전 : ${map.prev }</h3>
-	<h3>다음 : ${map.next }</h3>
+
 
 	<!-- footer -->
 	<jsp:include page="../home/footer.jsp" />
