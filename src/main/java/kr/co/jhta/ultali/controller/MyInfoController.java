@@ -68,7 +68,7 @@ public class MyInfoController {
 		return "redirect:/home";
 	}
 	
-	@RequestMapping("delete")
+	@RequestMapping("myPage/delete")
 	public String deleteOne(@ModelAttribute("mem_id") String mem_id) {
 		myInfoServiceInter.delete(mem_id);
 		return "redirect:/home";

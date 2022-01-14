@@ -1,6 +1,10 @@
 package kr.co.jhta.ultali.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,4 +59,13 @@ public class CreatedClubDaoImple implements CreatedClubDaoInter {
 	public List<AppDto> myClubList(String mem_id) {
 		return ss.selectList(namespace+"myClubList", mem_id);
 	}
+	
+	@Override
+	public List<AppDto> recentList(List list) {
+		return ss.selectList(namespace+"recentList",list);
+	}
+//	@Override
+//	public List<AppDto> recentList(HashMap<String , String> hm) {
+//		return ss.selectList(namespace+"recentList",hm);
+//	}
 }

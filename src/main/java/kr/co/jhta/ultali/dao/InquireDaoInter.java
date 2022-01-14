@@ -22,4 +22,6 @@ public interface InquireDaoInter {
 	// adminInquire update
 	public void adminUpdateOne(InquireDto dto);
 	
+	public int selectTotalInquireCount();
+	
 }

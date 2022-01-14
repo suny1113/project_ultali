@@ -45,7 +45,6 @@ div.container div.item2 table td, div.container div.item2 table th {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  background-color: cornflowerblue;
   text-align: center;
   width: 150px;
 }
