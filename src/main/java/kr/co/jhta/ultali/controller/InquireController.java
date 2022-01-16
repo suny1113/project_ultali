@@ -65,8 +65,15 @@ public class InquireController {
 	}
 	
 	@RequestMapping("myPage/inquireDetail")
-	public ModelAndView inquireDetail(@ModelAttribute("p_inq_no") int p_inq_no) {
+	public ModelAndView inquireDetail(@ModelAttribute("p_inq_no") int p_inq_no,Model model) {
+		model.addAttribute("p_inq_no",p_inq_no);
 		return new ModelAndView("myPage/inquireDetail","dto",inquireServiceInter.showOne(p_inq_no));
+	}
+	
+	@RequestMapping("myPage/deleteInquire")
+	public String inquireDelete(@RequestParam("p_inq_no")int p_inq_no) {
+		inquireServiceInter.deleteInquiry(p_inq_no);
+		return "redirect:/myPage/inquire";
 	}
 	
 	

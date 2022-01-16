@@ -22,6 +22,8 @@ public interface InquireDaoInter {
 	// adminInquire update
 	public void adminUpdateOne(InquireDto dto);
 	
-	public int selectTotalInquireCount();
+	// inquire delete
+	public void inquireDelete(int p_inq_no);
+	
 	
 }

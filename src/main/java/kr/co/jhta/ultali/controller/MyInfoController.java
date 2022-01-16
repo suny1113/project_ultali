@@ -54,9 +54,11 @@ public class MyInfoController {
 	
 	// ajax 비동기 방식
 	@ResponseBody
-	@GetMapping("myPage/nicknameCheck")
-	public String nicknameCheck(@RequestParam("new_nickname") String new_nickname) {
-		int cnt =myInfoServiceInter.nicknameCheck(new_nickname); 
+	@GetMapping("register/nicknameCheck")
+	public String nicknameCheck(@RequestParam("new_id") String new_id) {
+		
+		log.info(""+new_id);
+		int cnt =myInfoServiceInter.nicknameCheck(new_id);
 		String result = (cnt==1)?"is_already":"is_ok";
 		return result;
 	}
