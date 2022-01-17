@@ -30,5 +30,10 @@
 	                )
 	    WHERE RN BETWEEN #{start} AND #{end}
 	</select>
+	
+	<delete id="deleteBoard">
+		DELETE FROM club
+		WHERE c_no = #{c_no}
+	</delete>
   
 </mapper>
