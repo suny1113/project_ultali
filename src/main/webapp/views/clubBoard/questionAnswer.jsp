@@ -9,7 +9,7 @@
 <script src="${path }/resources/js/questionAnswer.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>울타리 :: 취미모임의 시작</title>
 </head>
 <body>
 <%-- 	<h1>문의한dto: ${viewAll }</h1> --%>

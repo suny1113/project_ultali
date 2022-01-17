@@ -9,13 +9,13 @@
 <script src="${path }/resources/js/clubBoardDetail.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>울타리 :: 취미모임의 시작</title>
 </head>
 <body>
+	<input type="hidden" id="idCheck" value="${id}"/>
 	<jsp:include page="../home/header.jsp" />	
 	<c:choose>
 		<c:when test="${empty dto}">
-	
 		</c:when>
 		<c:otherwise>    
 			<div>
@@ -100,6 +100,7 @@
 											<td>
 										</tr>
 										<tr>
+<%-- 											<c:if ${ }></c:if> --%>
 											<td colspan="2">
 												<!-- 			모임을 만든사람만 사용 할 수 있는 버튼 -->
 												<div id="bottom"  >
