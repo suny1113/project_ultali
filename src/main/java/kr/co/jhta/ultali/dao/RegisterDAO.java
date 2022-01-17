@@ -33,4 +33,8 @@ public class RegisterDAO implements MemberDAO {
 	public int checkOverId(String mem_id) {
 		return 0;
 	}
+
+	public void addOne(Map<String, String> map) {
+		ss.insert("kr.co.jhta.ultali.addAuth", map);
+	}
 }
