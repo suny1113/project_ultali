@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.jhta.ultali.dto.MyInfoDto;
+import kr.co.jhta.ultali.service.CreatedClubServiceInter;
+import kr.co.jhta.ultali.service.InquireServiceInter;
 import kr.co.jhta.ultali.service.MyInfoServiceInter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,6 +29,20 @@ public class MyInfoController {
 		this.myInfoServiceInter = myInfoServiceInter;
 	}
 	
+	@Autowired
+	InquireServiceInter inquireServiceInter;
+	
+	public void setInquireServiceInter(InquireServiceInter inquireServiceInter) {
+		this.inquireServiceInter = inquireServiceInter;
+	}
+	
+	@Autowired
+	CreatedClubServiceInter createdClubServiceInter;
+
+	public void setCreatedClubServiceInter(CreatedClubServiceInter createdClubServiceInter) {
+		this.createdClubServiceInter = createdClubServiceInter;
+	}
+
 	@RequestMapping("idreq")
 	public String id() {
 		return "myPage/id";
@@ -72,6 +88,8 @@ public class MyInfoController {
 	
 	@RequestMapping("myPage/delete")
 	public String deleteOne(@ModelAttribute("mem_id") String mem_id) {
+		createdClubServiceInter.deleteClubList(mem_id);
+		inquireServiceInter.deleteInquiry(mem_id);
 		myInfoServiceInter.delete(mem_id);
 		return "redirect:/home";
 	}

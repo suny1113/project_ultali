@@ -25,5 +25,7 @@ public interface InquireDaoInter {
 	// inquire delete
 	public void inquireDelete(int p_inq_no);
 	
+	// inquiry delete by id
+	public void inqireDelete(String mem_id);
 	
 }

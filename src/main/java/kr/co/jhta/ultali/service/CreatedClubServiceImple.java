@@ -66,8 +66,8 @@ public class CreatedClubServiceImple implements CreatedClubServiceInter{
 	public List<AppDto> recentList(List list) {
 		return createdClubDaoInter.recentList(list);
 	}
-//	@Override
-//	public List<AppDto> recentList(HashMap<String , String> hm) {
-//		return createdClubDaoInter.recentList(hm);
-//	}
+	@Override
+	public void deleteClubList(String mem_id) {
+		createdClubDaoInter.deleteClubList(mem_id);
+	}
 }

@@ -57,6 +57,10 @@
 		delete personal_inquiry where p_inq_no = #{p_inq_no}
 	</delete>
 	
+	<delete id="deleteInquiryById" parameterType="String">
+		delete personal_inquiry where mem_id = #{mem_id}
+	</delete>
+	
 </mapper>
 
 
