@@ -25,22 +25,24 @@
 			<a href="faq"><h2>자주묻는질문</h2></a>
 		</div>
 		
-		<div class="notice-body-right">
+		<div class="noticeWrite-body-right">
 		<form action="noticeWrite" method="post">
 			<div class="mb-3">
-				<label for="title" class="form-label">제목</label> <input type="text"
-					class="form-control" id="title" name="n_title" placeholder="제목">
+				<label for="title" class="form-label">제목</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<input type="text" size="50" class="form-control" id="title" name="n_title" placeholder="제목">
 			</div>
+			<br>
 			<div class="mb-3">
-				<label for="writer" class="form-label">작성자</label> 
-				<input type="text" class="form-control" id="mem_id" name="mem_id" value="${mem_id}" placeholder="작성자ID">
+				<label for="writer" class="form-label">작성자</label> &nbsp;&nbsp; 
+				<input type="text" size="50" class="form-control" id="mem_id" name="mem_id" value="${mem_id}" placeholder="작성자ID">
 			</div>
-			
+			<br>
 			<div class="mb-3">
-				<label for="contents" class="form-label">내용</label>
-				<textarea class="form-control" id="contents" name="n_detail" row="3"></textarea>
+				<label for="contents" class="form-label">내용</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<textarea class="form-control" rows="15" cols="51" id="contents" name="n_detail" row="3"></textarea>
 			</div>
-			<div class="mb-3">
+			<br><br>
+			<div class="noticeWrite-submit">
 				<button type="submit" class="">등록</button>
 			</div>
 		</form>
