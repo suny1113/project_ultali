@@ -17,7 +17,7 @@
 
 //회원가입 유효성검사
 //자원을 화면에 로드하게 되면 수행할 동작(==function)
-window.onload = function() {
+window.onload(function () {
    var register = document.register; // form 데이터를 register 변수에 저장
    
    // 유효성검사할 부분을 class로 부여했기에 check class 태그를 모두 input에 저장 가져옴
@@ -163,8 +163,8 @@ window.onload = function() {
 
    }//window  
       
-      
-</script>
+   
+   </script>
 
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/home.css">
