@@ -43,12 +43,12 @@
 			<div class="top_club">
 				<div class="club">
 					<div class="img">
-	 						<a href="clubBoard?c_no=${dto.c_no}"> <img src="${path }${dto.c_image }" alt="${path }${dto.c_image }" /></a>
+	 						<a href="${path }/clubBoard/clubBoardDetail?c_no=${dto.c_no}"> <img src="${path }${dto.c_image }" alt="${path }${dto.c_image }" /></a>
 	 						
 					</div>
 					<div class="text">
 						<h2>
-							<a href="clubBoard?c_no=${dto.c_no}">${dto.c_name }</a>
+							<a href="${path }/clubBoard/clubBoardDetail?c_no=${dto.c_no}">${dto.c_name }</a>
 						</h2>
 						<p>일정 : ${dto.c_date }</p>
 						<p>인원 : ${dto.c_count }</p>

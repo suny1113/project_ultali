@@ -44,7 +44,7 @@
 			</div>
 			<div>
 				<div class="info">작성자</div>
-				<input type="text" name="mem_id" id="" value="${mem_id }">
+				<input type="text" name="mem_id" id="" value="${mem_id }" readonly="readonly">
 			</div>
 
 			<div class="contentsbox">
