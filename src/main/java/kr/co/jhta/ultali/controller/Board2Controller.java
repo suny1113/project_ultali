@@ -74,21 +74,24 @@ public class Board2Controller {
 	    // 찜목록에 담겨있는지 확인
 	    model.addAttribute("checkWish",service.getWishService(wdto));
 
-		// 쿠키 생성
-		Cookie cookie = null;
 	    
-	    // 쿠키 추가하기
-	    String no = String.valueOf(c_no);
-	    
-	    // 쿠키 for 문 검사
-	    if (cookie == null) {
-			cookie = new Cookie("c"+no,no);
-		}
-	    
-	    cookie.setMaxAge(600);
-	    cookie.setPath("/project_ultali");
-	    response.addCookie(cookie);
-	    
+	    if(session.getAttribute("id")!=null) {
+	    	// 쿠키 생성
+	    	Cookie cookie = null;
+	    	
+	    	// 쿠키 추가하기
+	    	String no = String.valueOf(c_no);
+	    	
+	    	// 쿠키 for 문 검사
+	    	if (cookie == null) {
+	    		cookie = new Cookie("c"+no,no);
+	    	}
+	    	
+	    	cookie.setMaxAge(600);
+	    	cookie.setPath("/project_ultali");
+	    	response.addCookie(cookie);
+	    	
+	    }
 
 		return "/clubBoard/clubBoardDetail";
 	}

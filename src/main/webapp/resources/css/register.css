@@ -52,8 +52,6 @@ h1 {
 	width: 900px;
 	height: 500px;
 	margin: 0 auto;
-	margin-top: 50px;
-	margin-left: 1250px;
 }
 
 .btn_area {
@@ -63,7 +61,6 @@ h1 {
 #btnJoinCancel {
 	position: absolute;
 	bottom: -35%;
-	right: 29%;
 	width: 670px;
 	height: 30px;
 	text-align: right;

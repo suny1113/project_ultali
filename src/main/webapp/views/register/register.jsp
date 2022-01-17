@@ -22,6 +22,7 @@
    <form method="post" action="register" id="register" name="register_form" autocomplete="off">
       <div id="wrapper">
          <div id="container">
+         	<div id="inner-container">
             <h1>회원가입</h1>
             
             <!-- ID -->
@@ -79,7 +80,7 @@
                <input type="button" class="cancel_button" value="취소">
             </div>
 
-
+			</div>
          </div>
       </div>
    </form>
