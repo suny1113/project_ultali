@@ -12,12 +12,6 @@ public interface InquireServiceInter {
 	public int totalInquireCount(String mem_id);
 	public void inquireWrite(InquireDto dto);
 
-	
-
-
-
-	public void inquireWrite(InquireDto dto);
-
 	// 게시물 총 갯수
 	public int countBoard();
 
@@ -26,7 +20,5 @@ public interface InquireServiceInter {
 	
 	// adminInquire update
 	public void adminUpdateOne(InquireDto dto);
-	
-	public void inquireWrite(InquireDto dto);
-	
+		
 }

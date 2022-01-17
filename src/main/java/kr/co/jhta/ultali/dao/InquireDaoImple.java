@@ -59,7 +59,5 @@ public class InquireDaoImple implements InquireDaoInter{
 	public void adminUpdateOne(InquireDto dto) {
 		ss.update("kr.co.jhta.ultali.inquire.adminUpdateInquire", dto);
 	}
-	
-	
-	
+
 }

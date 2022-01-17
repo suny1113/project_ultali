@@ -66,8 +66,6 @@ public class Board2Controller {
 	    // 찜목록에 담겨있는지 확인
 	    model.addAttribute("checkWish",service.getWishService(wdto));
 
-	    
-	    
 		return "/clubBoard/clubBoardDetail";
 	}
 	

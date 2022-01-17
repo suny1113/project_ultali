@@ -35,4 +35,9 @@ public class Board1DAOImple implements Board1DAO {
 		return ss.selectList("kr.co.jhta.ultali.board1.selectBoard", dto);
 	}
 
+	@Override
+	public void delete(String c_no) {
+		ss.delete("kr.co.jhta.ultali.board1.deleteBoard", c_no);
+	}
+
 }

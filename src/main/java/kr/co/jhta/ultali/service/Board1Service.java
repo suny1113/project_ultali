@@ -10,5 +10,6 @@ public interface Board1Service {
 	public List<ClubDTO> selectClubList_major(int major_no);
 	public int countClubService(int c_no);
     public List<ClubDTO> selectClubService(PagingDTO dto);
+    public void deleteClub(String c_no);
 	
 }
