@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.util.NestedServletException;
 
-import jdk.internal.org.jline.utils.Log;
 import kr.co.jhta.ultali.dto.ClubDTO;
 import kr.co.jhta.ultali.dto.ClubInquiryAnswerDTO;
 import kr.co.jhta.ultali.dto.ClubInquiryDTO;

@@ -22,3 +22,6 @@ public interface InquireServiceInter {
 	public void adminUpdateOne(InquireDto dto);
 
 }
+
+}
+
