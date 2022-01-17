@@ -15,7 +15,7 @@
 }
 
 .main_right {
-	overflow: auto;
+	overflow: hidden;
 }
 
 a {
@@ -64,6 +64,10 @@ a {
 	padding-top: 10px;
 }
 
+.club_list_box {
+
+}
+
 .club {
 	display: inline-block;
 	box-sizing: border-box;
@@ -84,6 +88,16 @@ a {
 	font-size: 20px;
 	font-weight: bold;
 	margin-right: 15px;
+}
+
+.club_list_btn {
+/* 	position: relative; */
+	float: right;
+	padding: 5px 50px 20px 0px;
+}
+
+.club_list_check {
+	float: right;
 }
 /* ------------------------ */
 
@@ -118,6 +132,10 @@ a {
 
 .text_area > h2 {
 	font-size: 20px;
+	width: 200px;
+	overflow:hidden;
+    white-space : nowrap;
+    text-overflow: ellipsis;
 }
 
 .text_area > h2:hover {

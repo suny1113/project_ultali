@@ -79,6 +79,7 @@ public class Board2Controller {
 	    // 찜목록에 담겨있는지 확인
 	    model.addAttribute("checkWish",service.getWishService(wdto));
 
+
 	    
 	    // 쿠키 추가하기
 	    String no = String.valueOf(c_no);
@@ -92,6 +93,7 @@ public class Board2Controller {
 	    cookie.setPath("/project_ultali");
 	    response.addCookie(cookie);
 	    
+
 		return "/clubBoard/clubBoardDetail";
 	}
 	

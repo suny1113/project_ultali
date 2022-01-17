@@ -35,4 +35,9 @@ public class Board1ServiceImple implements Board1Service {
 		return dao.selectInquiry(dto);
 	}
 
+	@Override
+	public void deleteClub(String c_no) {
+		dao.delete(c_no);
+	}
+
 }
