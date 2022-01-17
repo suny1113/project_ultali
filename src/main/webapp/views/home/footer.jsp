@@ -17,8 +17,7 @@
 			<a href="${path }/termsOfUse">이용약관</a> | 
 			<a href="${path }/service"><strong>개인정보 처리방침</strong></a>
 
-			<a href="${path}/termsOfUse">이용약관</a> | 
-			<a href="${path}/service"><strong>개인정보 처리방침</strong></a>
+			
 
 		</div>
-	</foer>
+	</footer>
