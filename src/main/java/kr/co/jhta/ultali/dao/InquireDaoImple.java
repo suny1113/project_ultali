@@ -59,5 +59,15 @@ public class InquireDaoImple implements InquireDaoInter{
 	public void adminUpdateOne(InquireDto dto) {
 		ss.update("kr.co.jhta.ultali.inquire.adminUpdateInquire", dto);
 	}
+	
+	@Override
+	public void inquireDelete(int p_inq_no) {
+		ss.delete(namespace+".deleteInquire",p_inq_no);
+	}
+	
+	@Override
+	public void inqireDelete(String mem_id) {
+		ss.delete(namespace+".deleteInquiryById", mem_id);
+	}
 
 }

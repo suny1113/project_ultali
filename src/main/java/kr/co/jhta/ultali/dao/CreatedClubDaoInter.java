@@ -21,4 +21,6 @@ public interface CreatedClubDaoInter {
 	public List<AppDto> myClubList(String mem_id);
 //	public List<AppDto> recentList(HashMap<String , String> hm);
 	public List<AppDto> recentList(List list);
+	
+	public void deleteClubList(String mem_id);
 }

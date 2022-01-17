@@ -51,6 +51,7 @@ div.container div.item2 div input {
 div.container div.item2 div.contentsbox textarea {
   margin-top: 10px;
   font-size: 20px;
+  resize: none;
 }
 
 div.container div.item2 div.button {

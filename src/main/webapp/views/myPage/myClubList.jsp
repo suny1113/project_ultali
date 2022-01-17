@@ -13,7 +13,7 @@
 	<div class="container">
 		<menu>
 			<div class="item1">
-				<h2>내가 개설한 모임</h2>
+				<h2>내가 가입한	 모임</h2>
 				<table>
 					<tr>
 						<td><a href="myInfo">내 정보</a></td>

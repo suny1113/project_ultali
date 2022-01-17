@@ -29,9 +29,9 @@ public class MyInfoDaoImple implements MyInfoDaoInter{
 	}
 	
 	@Override
-	   public int nicknameCheck(String new_id) {
-	      return ss.selectOne(namespace+".nicknameChk",new_id);
-	   }
+	public int nicknameCheck(String new_id) {
+		return ss.selectOne(namespace+".nicknameChk",new_id);
+	}
 
 	@Override
 	public void modify(MyInfoDto dto) {

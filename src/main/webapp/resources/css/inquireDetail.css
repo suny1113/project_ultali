@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 h1 {
   margin: 0 20%;
 }
@@ -55,8 +56,13 @@ div.container div.item2 div textarea {
   resize: none;
 }
 
+div.container div.item2 div.acontainer {
+  width: 750px;
+  height: 50px;
+  text-align: right;
+}
 
-div.container div.item2 a {
+div.container div.item2 div.acontainer a.btn {
   text-decoration: none;
   font-size: 20px;
   color: black;
@@ -64,9 +70,7 @@ div.container div.item2 a {
   border-radius: 20px;
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+  background-color: lightgray;
   padding: 10px 20px 10px 20px;
-  position: absolute;
-  right: -225px;
-  bottom: -50px;
 }
 /*# sourceMappingURL=inquireDetail.css.map */

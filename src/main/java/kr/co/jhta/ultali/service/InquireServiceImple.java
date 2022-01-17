@@ -53,5 +53,15 @@ public class InquireServiceImple implements InquireServiceInter{
 	public void adminUpdateOne(InquireDto dto) {
 		inquireDaoInter.adminUpdateOne(dto);
 	}
+	
+	@Override
+	public void deleteInquiry(int p_inq_no) {
+		inquireDaoInter.inquireDelete(p_inq_no);
+	}
+	
+	@Override
+	public void deleteInquiry(String mem_id) {
+		inquireDaoInter.inqireDelete(mem_id);
+	}
 
 }

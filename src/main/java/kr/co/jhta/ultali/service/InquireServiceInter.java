@@ -20,7 +20,13 @@ public interface InquireServiceInter {
 	
 	// adminInquire update
 	public void adminUpdateOne(InquireDto dto);
-
+	
+	// delete inquiry
+	public void deleteInquiry(int p_inq_no);
+	
+	// delete inquiry by mem_id
+	public void deleteInquiry(String mem_id);
+	
 }
 
 }
