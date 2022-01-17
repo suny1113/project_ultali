@@ -10,7 +10,7 @@
 <script src="${path }/resources/js/clubmodify.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>울타리 :: 취미모임의 시작</title>
 </head>
 <body>
 	<jsp:include page="../home/header.jsp" />
@@ -18,7 +18,7 @@
 		<div id="main" class="body-container">
 			<div id="aa">	
 				<div id="title">
-					<p id="p">모임등록</p>
+					<p id="p">모임수정</p>
 				</div>
 				
 				<div id="contents">

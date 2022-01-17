@@ -1,11 +1,4 @@
 $(function(){
-//		$(".answerWrite").on("click", function(){
-//			$(".answerWrite").attr("type","submit");
-//			$("#form").attr("action", "answerWrite");
-//			$("#form").submit(); 
-//		});
-	
-	
 
 		$("#answerWrite1").on("click", function(){
 			$("#c_inq_answer_answer").val($("#text1").val());
@@ -33,7 +26,7 @@ $(function(){
 			var num = $('#c_no').val();
 			var win = window.open("questionWrite?c_no="+$("#c_no").val(), "_blank", "location=no, width=714, height=360, scrollbars=no, fullscreen=no, status=no, toolbar=no, left=" + _left  + ",top=" + _top);
 			$("#inquireWrite").val("문의작성");
-		});	
+		});	"submit"
 	
 	})
 
