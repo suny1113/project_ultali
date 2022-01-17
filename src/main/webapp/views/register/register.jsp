@@ -63,7 +63,7 @@
             <!-- 비밀번호 확인 -->
             <div class="pw_check_wrap">
                <label for="pw_check_name">비밀번호 확인</label> &nbsp;&nbsp; 
-               <input type="password" class="check" id="new_pwchk" name="mem_pw" required"> 
+               <input type="password" class="check" id="new_pwchk" name="new_pwchk" required"> 
             </div>
          
             <br>
