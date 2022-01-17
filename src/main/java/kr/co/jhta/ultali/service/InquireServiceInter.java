@@ -21,5 +21,5 @@ public interface InquireServiceInter {
 	// adminInquire update
 	public void adminUpdateOne(InquireDto dto);
 	
-	public void inquireWrite(InquireDto dto);
+	
 }
