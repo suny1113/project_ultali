@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>울타리 :: 개인정보 처리방침</title>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" href="${path}/resources/css/home.css">
 <style>

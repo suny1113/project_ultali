@@ -69,4 +69,5 @@ public class InquireDaoImple implements InquireDaoInter{
 	public void inqireDelete(String mem_id) {
 		ss.delete(namespace+".deleteInquiryById", mem_id);
 	}
+
 }

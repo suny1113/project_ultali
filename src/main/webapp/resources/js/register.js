@@ -6,199 +6,93 @@ var chknickname = 0;
 var idLimit = /^[a-zA-Z0-9-_]{5,20}$/; //정규식 5~20자 (a~z, A~Z, 0~9, -, _만 입력가능)
 
 function idCheck(){
-	var id = $(mem_id).val();
-	console.log(id);
-	if (!idLimit.test(id)) { //입력값과 정규식 범위와 같지 않다면
-	// id의 오류 문구삽입
-		$(idError).html("5~20자의 영문 소대문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
-	}else{
-		$.ajax({
-		url:'nicknameCheck', // Controller에서 인식할 주소
-		type : 'get', // post 로 전달
-		data:{new_id : id},
-		success:function(result){
-			console.log(result);
-			if(result==="is_ok"){
-				$(idError).html("사용할 수 있는 ID 입니다.");
-				chknickname = 1;
-				
-			}else{
-				$(idError).html("5~20자의 영문 소대문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
-				chknickname = 0;
-			}
-			console.log(chknickname);
-		},
-		error:function(){
-			alert("에러입니다.")
-		}
-	});
-	}
+   var id = $(mem_id).val();
+   console.log(id);
+   if (!idLimit.test(id)) { //입력값과 정규식 범위와 같지 않다면
+   // id의 오류 문구삽입
+      $(idError).html("5~20자의 영문 소대문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
+   }else{
+      $.ajax({
+      url:'nicknameCheck', // Controller에서 인식할 주소
+      type : 'get', // post 로 전달
+      data:{new_id : id},
+      success:function(result){
+         console.log(result);
+         if(result==="is_ok"){
+            $(idError).html("사용할 수 있는 ID 입니다.");
+            chknickname = 1;
+            
+         }else{
+            $(idError).html("5~20자의 영문 소대문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
+            chknickname = 0;
+         }
+         console.log(chknickname);
+      },
+      error:function(){
+         alert("에러입니다.")
+      }
+   });
+   }
 
 };
 
-//회원가입 유효성검사
-//자원을 화면에 로드하게 되면 수행할 동작(==function)
-window.onload = function() {
-	var register = document.register; // form 데이터를 register 변수에 저장
+      function registerform_check(){
+      var id = $(mem_id);
+      var password = $(mem_pw);
+      var phone = $(mem_phone);
+      var email = $(mem_email);
+      if(password.val() == ""){
+         alert("비밀번호를 입력하세요")
+         password.focus();
+         return false;
+      }
+      
+      //비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
+        var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+      if(!pwdCheck.test(password.val())){
+          alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+          password.focus();
+          return false;   
+      }
+      
+      if(password.val() != $(new_pwchk).val()){
+         alert("비밀번호가 일치하지 않습니다.");
+         $(new_pwchk).focus();
+      }
+      
+      var regExp = /^([\w\.\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9])+([\w\.\_\-])+@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,8}$/;
 
-	// 유효성검사할 부분을 class로 부여했기에 check class 태그를 모두 input에 저장 가져옴
-	// 이때 input 한 태그당 배열 인덱스로 받는다.
-	var input = document.querySelectorAll('.check');
-
-	// 오류 문구 //errorId : span의 id들(각 요소마다 나타낼 오류를 표시하기 위함)
-	// error : class list의 하위 span을 모두 불러냄(일괄 처리를 위함 - 반복문)
-	var errorId = ["idError", "pwError", "pwCheckError", "nameError", "phoneNumError", "emailError"];
-	var error = document.querySelectorAll('.list > span');
-
-
-	// 오류문구 초기화 메서드
-	// 오류 표시 후, 사용자가 올바르게 수정을 하면 텍스트가 사라지는 모습을 구현
-	function innerReset(error) {
-		for (var i = 0; i < error.length; i++) {
-			error[i].innerHTML = "";
-		}
-	}
-
-	// 초기화 메서드 호출
-	innerReset(error);
-
-	// [ ID 입력문자 유효성검사 ] 
-	register.mem_id.onkeydown = function() {
-		innerReset(error); // 초기화 메서드 호출
-		var idLimit = /^[a-zA-Z0-9-_]{5,20}$/; //정규식 5~20자 (a~z, A~Z, 0~9, -, _만 입력가능)
-		if (!idLimit.test(input[0].value)) { //입력값과 정규식 범위와 같지 않다면
-			// id의 오류 문구삽입
-			document.getElementById(errorId[0]).innerHTML = "5~20자의 영문 소대문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
-
-		}
-	}
-	// [ PW 입력문자 유효성검사 ]
-	register.mem_pw.onkeydown = function() {
-		innerReset(error); // 초기화 메서드 호출
-		var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}$/; //정규식(a~z, A~Z, 0~9, ~!@#$%^&*()_- 만 입력가능)
-		if (!pwLimit.test(input[1].value)) { //입력값과 정규식 범위와 같지 않다면
-			// pw의 오류 문구삽입
-			document.getElementById(errorId[1]).innerHTML = " 10~20자의 영문 소대문자, 숫자와 특수기호 '~!@#$%^&*()_-'만 사용 가능합니다.";
-		}
-	}
-	// [ PW 재확인 입력문자 초기화 ]
-	//비밀번호 동일여부는 submit 버튼 클릭시 검사해줄 예정
-	register.mem_pwCheck.onkeydown = function() {
-		// pw의 오류 문구삽입
-		innerReset(error);// 오류문구 초기화   
-	}
-	// [ 휴대폰번호 입력문자 유효성검사 ]
-	register.mem_phone.onkeydown = function() { //입력값과 정규식 범위와 같지 않다면
-		innerReset(error); // 초기화 메서드 호출   
-		var pnumLimit = /^01[0|1|6|7|8|9]{1}[0-9]{8}$/; // 정규식(^$--> 문자의미, 01, (6자리중 "1자리"), 0~9--> "8자리")
-		if (!pnumLimit.test(input[4].value)) { //입력값과 정규식 범위와 같지 않다면
-			// pw의 오류 문구삽입 
-			document.getElementById(errorId[4]).innerHTML = " 올바른 형식이 아닙니다. 다시 확인해주세요.";
-		}
-	}
-
-	// [ 이메일 입력 유효성검사 ] 
-	register.mem_email.onkeydown = function() { //입력값과 정규식 범위와 같지 않다면
-		innerReset(error); // 초기화 메서드 호출
-		var emailLimit = /[0-9a-zA-Z-_.]/; // 정규식 0~9, a~z, A~Z, -, _, .내에서만 입력가능
-		if (!emailLimit.test(input[5].value)) {  //입력값과 정규식 범위와 같지 않다면
-			// 이메일의 오류 문구삽입
-			document.getElementById(errorId[5]).innerHTML = " 올바른 형식이 아닙니다. 영문,숫자, (-)(_)(.) 입력만 가능합니다.";
-		}
-	}
-
-
-}//window 
-
-
-
-
-//submit 실행시 수행할 동작
-function checkRegister() { // register에서 submit이 실행된다면 수행 할 함수
-
-	// 정규식 변수 모음     
-	var idLimit = /^[a-zA-Z0-9-_]{5,20}$/; //정규식(a~z, A~Z, 0~9, -, _만 입력가능)
-	var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}$/;///[a-zA-Z0-9]{10, 20}/; //정규식(a~z, A~Z, 0~9,~!@#$%^&*()_-특수문자 만 입력가능)
-	var pnumLimit = /^01[0|1|6|7|8|9]{1}[0-9]{8}$/; // 01로 시작, 0,1,6,7,8,9 중 한자리, 0~9에서 8자리 입력
-	var emailLimit = /[0-9a-zA-Z-_.]/; // 정규식 0~9, a~z, A~Z, -, _, .내에서만 입력가능
-	var errorStr = [" 아이디를", " 비밀번호를", " 비밀번호 확인을", " 성함을", " 휴대폰번호를", " 이메일을"];
-
-	// 오류 문구 //errorId : span의 id들(각 요소마다 나타낼 오류를 표시하기 위함)
-	// error : class list의 하위 span을 모두 불러냄(일괄 처리를 위함 - 반복문)
-	var errorId = ["idError", "pwError", "pwCheckError", "nameError", "phoneNumError", "emailError"];
-	var error = document.querySelectorAll('.list > span');
-
-
-	// 오류문구 초기화 메서드
-	// 오류 표시 후, 사용자가 올바르게 수정을 하면 텍스트가 사라지는 모습을 구현
-	function innerReset(error) {
-		for (var i = 0; i < error.length; i++) {
-			error[i].innerHTML = "";
-		}
-	}
-
-
-	innerReset(error); // 오류문구 초기화
-
-	// [ input 공백확인 ]
-	for (var i = 0; i < input.length - 1; i++) { // -1 == submit 제외
-		if (!input[i].value) {
-			document.getElemendById(errorId[i]).innerHTML = errorStr[i] + "입력해 주세요.";
-			input[i].focus(); // 포커스 이동
-			return false; // 종료 (포커스 이동유지를 위해 false 종료)
-		}
-	}
-
-	//유효성검사) 비밀번호 재확인
-	if (password.val() != $(pwLimit).val()) {
-		document.getElementById("pwCheckError").innerHTML = " 비밀번호가 일치하지 않습니다.";
-		register.mem_pwCheck.focus(); // 포커스 이동
-		return false;
-	}
-
-
-
-	// [ ID 유효성검사 ]
-	if (!idLimit.test(input[0].value)) {
-		document.getElementById(errorId[0]).innerHTML = " 5~20자의 영문 소대문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
-		register.mem_id.focus(); // 포커스 이동
-		return false;
-	}
-
-	// [ PW 유효성검사 ]
-	if (!pwLimit.test(input[1].value)) {
-		document.getElementById(errorId[1]).innerHTML = " 10~20자의 영문 소대문자, 숫자와 특수기호 '~!@#$%^&*()_-'만 사용 가능합니다.";
-		console.log(input[1].value);
-		//console.log(pwLimit.test(input[1].value));
-		register.mem_pw.focus(); // 포커스 이동
-		return false;
-	}
-
-	// [ 휴대폰번호 유효성검사 ]
-	if (!pnumLimit.test(input[4].value)) {
-		document.getElementById(errorId[4]).innerHTML = " 올바른 형식이 아닙니다. 다시 확인해주세요.";
-		register.mem_phone.focus(); // 포커스 이동
-		return false;
-	}
-
-	// [ email 아이디 유효성검사 ]
-	if (!emailLimit.test(input[5].value)) {
-		document.getElementById(errorId[5]).innerHTML = " 올바른 형식이 아닙니다. 영문,숫자, (-)(_)(.) 외 입력은 불가합니다.";
-		register.mem_email.focus(); // 포커스 이동
-		return false;
-	}
-
-	// [ email 주소선택 유효성검사 ]
-	if (document.getElementById("mail_Select").value == "이메일 선택") {
-		document.getElementById(errorId[5]).innerHTML = " 이메일을 선택해주세요.";
-		return false;
-	}
-	//console.log(document.getElementById("mail_Select").value);
-
-	alert("회원가입이 완료되었습니다. 울타리의 회원이 되신 것을 환영합니다!");
-
-	document.register.submit();
-
-}//register.onsublit
-
-
+      if(!regExp.test(email.val())){
+         alert("이메일은 @를 영문+숫자 포함하여 점(.), 하이픈(-),언더바(_)만 사용 가능합니다.");
+         email.focus();
+         return false;
+      }
+      
+      if(id.val() == ""){
+         alert("닉네임을 입력하세요")
+         id.focus();
+         return false;
+      }
+      if(phone.val() == ""){
+         alert("핸드폰번호를 입력하세요")
+         phone.focus();
+         return false;
+      }
+      
+      var reg = /^[0-9]+/g; //숫자만 입력하는 정규식
+      if(!reg.test(phone.val())){
+         alert("핸드폰 번호는 숫자만 입력할 수 있습니다.");
+         phone.focus();
+         return false;
+      }
+      
+      // 유효성 검사의 포인트
+      console.log(chknickname)
+      if(chknickname == 1){
+         document.register_form.submit();
+      }else{
+         alert("사용 불가능한 닉네임 입니다.")
+      }
+   }
+   
+   

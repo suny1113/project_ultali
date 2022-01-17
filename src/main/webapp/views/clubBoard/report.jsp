@@ -9,7 +9,7 @@
 <script src="${path }/resources/js/report.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>울타리 :: 취미모임의 시작</title>
 </head>
 <body>
 	<form action="doReport" method="post" id="form">
@@ -20,8 +20,8 @@
 <!-- 			로그인한 사용자 아이디받으면됨 -->
 			<input type="hidden" name="Mem_id" value="ss" />
 			
-			<input type="hidden" name="c_no" value="1" />
-<%-- 			<input type="hidden" name="c_no" value="${boardDTO.c_no }" /> --%>
+<!-- 			<input type="hidden" name="c_no" value= /> -->
+			<input type="hidden" name="c_no" value="${boardDTO.c_no }" />
 			
 <!-- 			카테고리인데 아직적용안함 -->
 			<input type="hidden" name="rep_reason" id="rep_reason" value="신고사유" />

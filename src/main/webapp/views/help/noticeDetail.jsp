@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />   
 <!DOCTYPE html>
 <html>
@@ -48,17 +49,20 @@
 		
 		<tr>
 			<th>내용</th>
-			<td colspan="6">${dto.n_detail }</td>
+			<td colspan="3">${dto.n_detail }</td>
 		</tr>
 		<tr>
-			<td colspan="4">
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<th>기능</th>
+			<td colspan="3">
 			<!-- modify?bno=517 ==> BoardController.modifyForm() ==> modifyForm.jsp -->
-			<a href="noticeModify?n_no=${dto.n_no }">수정</a>
+			<button><a href="noticeModify?n_no=${dto.n_no }">수정</a></button>
 			
 			<!-- delete?bno=517 ==> BoardController.delete(bno) ==> list.jsp -->
-			<a href="noticeDelete?n_no=${dto.n_no }">삭제</a>
-			<a href="notice">목록</a>
+			<button><a href="noticeDelete?n_no=${dto.n_no }">삭제</a></button>
+			<button><a href="notice">목록</a></button>
 			</td>
+			</sec:authorize>	
 	</table>
 	</div>
 </div>	

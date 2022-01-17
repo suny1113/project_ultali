@@ -45,20 +45,24 @@ public class Board2Controller {
 	
 //	울타리 게시판에서 c_no를받아 sql에 dto검색 후 boardDetail에서 보여줌 
 	@GetMapping("/clubBoardDetail")
-	public String boardDetailGet(@RequestParam("c_no") int c_no, Model model, HttpServletRequest request, HttpServletResponse response) {
+	public String boardDetailGet(@RequestParam("c_no") int c_no, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session ) {
 		
 		model.addAttribute("dto", service.selectOneClubService(c_no));
 		
 		// 조회수 처리
 		service.increaseHitsService(c_no);
 		
-		// 임시 아이디세션 삭제해야됨
-	    HttpSession session = request.getSession();
-	    session.setAttribute("id", "dh");
+//		// 임시 아이디세션 삭제해야됨
+//	    session.setAttribute("id", "dh");
 	    
 	    // 찜목록에 있는지 확인
 	    WishDTO wdto = new WishDTO();
-	    wdto.setMem_id((String) session.getAttribute("id"));
+	    if (session.getAttribute("id") != null) {
+	    	wdto.setMem_id((String) session.getAttribute("id"));
+		}else {
+			wdto.setMem_id("null");
+		}
+	    
 	    wdto.setC_no(c_no);
 
 	    if(service.getWishService(wdto)) {
@@ -72,6 +76,7 @@ public class Board2Controller {
 
 		// 쿠키 생성
 		Cookie cookie = null;
+	    
 	    // 쿠키 추가하기
 	    String no = String.valueOf(c_no);
 	    
@@ -84,6 +89,7 @@ public class Board2Controller {
 	    cookie.setPath("/project_ultali");
 	    response.addCookie(cookie);
 	    
+
 		return "/clubBoard/clubBoardDetail";
 	}
 	
@@ -223,6 +229,7 @@ public class Board2Controller {
 		wdto.setC_no(c_no);
 		wdto.setMem_id((String) session.getAttribute("id"));
 		
+		
 
 		
 		if(checkWish.equals("true")) {
@@ -234,5 +241,12 @@ public class Board2Controller {
 		
 		return "redirect:/clubBoard/clubBoardDetail?c_no="+c_no;
 	}
+	
+//	@RequestMapping("doWrite")
+//	public String doWrite(@RequestParam("c_no") int c_no, Model model){
+//		
+//		model.addAttribute("c_no", c_no);
+//		return "redirect:/clubBoard/doQuestion";
+//	}
 
 }

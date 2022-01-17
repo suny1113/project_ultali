@@ -2,15 +2,21 @@ package kr.co.jhta.ultali.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.jhta.ultali.dto.ClubDTO;
 import kr.co.jhta.ultali.dto.PagingDTO;
 import kr.co.jhta.ultali.service.Board1Service;
+import lombok.extern.slf4j.Slf4j;
 
 
 @Controller
@@ -47,11 +53,11 @@ public class Board1Controller {
 	    cntPerPage = "8";
 	    pdto = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 	    pdto.setMajor_no(major_no);
-		System.out.println("int major_no" + major_no);
-		System.out.println("service.selectClubService(vo)" + service.selectClubService(pdto));
+//		System.out.println("int major_no" + major_no);
+//		System.out.println("service.selectClubService(vo)" + service.selectClubService(pdto));
 	    model.addAttribute("paging", pdto);
 	    model.addAttribute("viewAll", service.selectClubService(pdto));
-		
+	    model.addAttribute("major_no", major_no);
 		
 		return "/clubBoard/clubBoardList";
 	}
@@ -64,6 +70,24 @@ public class Board1Controller {
 //		model.addAttribute("list", list);
 		
 		return "redirect:/login/login";
+	}
+	
+	// 모임 삭제(관리자 권한)
+	@RequestMapping("/clubBoard/clubDelete2")
+	public String clubDelete(@RequestParam("major_no") int major_no, RedirectAttributes redirect,
+								HttpServletRequest request) {
+		//System.out.println(major_no);
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		
+		for(int i = 0; i < size; i++) {
+			service.deleteClub(ajaxMsg[i]);
+		}
+				
+		redirect.addAttribute("major_no", major_no);
+		
+		return "redirect:/clubBoard/clubBoardList";
 	}
 	
 }
