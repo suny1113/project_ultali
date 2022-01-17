@@ -1,5 +1,7 @@
 package kr.co.jhta.ultali.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +35,9 @@ public class MyInfoController {
 	}
 	
 	@GetMapping("myPage/myInfo")
-	public ModelAndView showInfoGet(HttpSession session) {
-		String id = (String)session.getAttribute("id");
+	public ModelAndView showInfoGet(HttpSession session, Principal principal) {
+		String id = principal.getName();
+		session.setAttribute("id", id);
 		System.out.println(id);
 		MyInfoDto myInfoDto = myInfoServiceInter.showInfo(id);
 		return new ModelAndView("myPage/myInfo","myInfoDto",myInfoDto);

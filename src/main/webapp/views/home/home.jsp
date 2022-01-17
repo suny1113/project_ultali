@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>울타리 :: 취미모임의 시작</title>
+<title>울타리 :: 우리가 이어지는 공간</title>
 <link rel="stylesheet" href="resources/css/home.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <c:set var="path" value="${pageContext.request.contextPath}"/>

@@ -231,6 +231,7 @@ public class Board2Controller {
 		wdto.setC_no(c_no);
 		wdto.setMem_id((String) session.getAttribute("id"));
 		
+		
 
 		
 		if(checkWish.equals("true")) {
