@@ -5,7 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>울타리 :: 취미모임의 시작</title>
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/clubBoardList.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="${path}/resources/js/clubBoardList.js"></script>

@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% String mem_id = (String) session.getAttribute("mem_id");%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<c:set var="path" value="${pageContext.request.contextPath}" />	
+<%@page import="kr.co.jhta.ultali.dto.NoticeDTO"%>	
 <!DOCTYPE html>
 <html>
 <head>
-
+<!-- css -->
+<link rel="stylesheet" href="${path}/resources/css/home.css">
+<link rel="stylesheet" href="${path}/resources/css/notice.css">
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -13,27 +17,49 @@
 	<!-- header -->
 	<jsp:include page="../home/header.jsp" />
 	
-	<div class="container">
+	<% NoticeDTO noticeDTO = new NoticeDTO(); %>
+		
+	<!-- body -->
+	<div class="notice-body-container">
+		<div class="notice-body-left">
+		<h1>고객센터</h1>
+			<br><br>
+			<a href="notice"><h2>공지사항</h2></a><br>
+			<a href="faq"><h2>자주묻는질문</h2></a>
+		</div>
+		
+		<div class="notice-body-right">
 		<form action="noticeModify" method="post">
-		<input type="hidden" name="mem_id" value="<%=mem_id %>" />
 			<div class="mb-3">
+				<label for="title" class="form-label">번호</label> 
+				<input type="text" class="form-control" id="n_no" name="n_no" value="${dto.n_no}" placeholder="번호">
+			</div>
+				<div class="mb-3">
 				<label for="title" class="form-label">제목</label> 
-				<input type="text" class="form-control" id="title" name="n_title" placeholder="제목">
+				<input type="text" class="form-control" id="n_title" name="n_title" value="${dto.n_title}" placeholder="제목">
 			</div>
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
-				<input type="text" class="form-control" id="mem_id" name="mem_id" placeholder="작성자ID">
+				<input type="text" class="form-control" id="mem_id" name="mem_id" value="${mem_id}" placeholder="작성자ID">
 			</div>
-			
+			<div class="mb-3">
+				<label for="title" class="form-label">작성일</label> 
+				<input type="text" class="form-control" id="n_regdate" name="n_regdate" value="${dto.n_regdate}" placeholder="작성일">
+			</div>
+			<div class="mb-3">
+				<label for="title" class="form-label">조회수</label> 
+				<input type="text" class="form-control" id="n_hits" name="n_hits" value="${dto.n_hits}" placeholder="조회수">
+			</div>
 			<div class="mb-3">
 				<label for="contents" class="form-label">내용</label>
-				<textarea class="form-control" id="n_detail" name="n_detail" row="3"></textarea>
+				<textarea class="form-control" id="n_detail" name="n_detail" row="3">${dto.n_detail}</textarea>
 			</div>
 			<div class="mb-3">
-				<button type="submit" class="">등록</button>
+				<input type="submit" value="등록" />
 			</div>
 		</form>
 	</div>
+</div>
 
 	<!-- footer -->
 	<jsp:include page="../home/footer.jsp" />

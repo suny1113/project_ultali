@@ -6,149 +6,278 @@
 <html>
 <head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <!-- Required meta tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<script>
-// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-	$("#mem_id").blur(function() {
-		// id = "id_reg" / name = "userId"
-		var mem_id = $('#mem_id').val();
-		$.ajax({
-			url : '${pageContext.request.contextPath}/register/register/idCheck?mem_Id='+ mem_id,
-			type : 'get',
-			success : function(data) {
-				console.log("1 = 중복o / 0 = 중복x : "+ data);							
-				
-				if (data == 1) {
-						// 1 : 아이디가 중복되는 문구
-						$("#id_check").text("사용중인 아이디입니다 :p");
-						$("#id_check").css("color", "red");
-						$("#reg_submit").attr("disabled", true);
-					} else {
-						
-						if(idJ.test(mem_id)){
-							// 0 : 아이디 길이 / 문자열 검사
-							$("#id_check").text("");
-							$("#reg_submit").attr("disabled", false);
-				
-						} else if(mem_id == ""){
-							
-							$('#id_check').text('아이디를 입력해주세요 :)');
-							$('#id_check').css('color', 'red');
-							$("#reg_submit").attr("disabled", true);				
-							
-						} else {
-							
-							$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-							$('#id_check').css('color', 'red');
-							$("#reg_submit").attr("disabled", true);
-						}
-						
-					}
-				}, error : function() {
-						console.log("실패");
-				}
-			});
-		});
-</script>
-
 
 <script type="text/javascript">
 
-	function validate() {
+//회원가입 유효성검사
+//자원을 화면에 로드하게 되면 수행할 동작(==function)
+window.onload(function () {
+   var register = document.register; // form 데이터를 register 변수에 저장
+   
+   // 유효성검사할 부분을 class로 부여했기에 check class 태그를 모두 input에 저장 가져옴
+   // 이때 input 한 태그당 배열 인덱스로 받는다.
+   var input = document.querySelectorAll('.check');
 
-		var reg = /^[0-9]+/g; //숫자만 입력하는 정규식
+   // 오류 문구 //errorId : span의 id들(각 요소마다 나타낼 오류를 표시하기 위함)
+   // error : class list의 하위 span을 모두 불러냄(일괄 처리를 위함 - 반복문)
+   var errorId = [ "idError", "pwError", "pwCheckError", "nameError", "phoneNumError", "emailError" ];
+   var error = document.querySelectorAll('.list > span');
 
-		if (!reg.test(phone.val())) {
-			alert("핸드폰 번호는 숫자만 입력할 수 있습니다.");
-			phone.focus();
-			return false;
-		}
+   
+   // 오류문구 초기화 메서드
+   // 오류 표시 후, 사용자가 올바르게 수정을 하면 텍스트가 사라지는 모습을 구현
+   function innerReset(error){
+      for (var i = 0; i < error.length; i++) {
+         error[i].innerHTML = "";
+      }
+   }
 
-		var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-		if (!pwdCheck.test(password.val())) {
-			alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
-			password.focus();
-			return false;
-		}
+   // 초기화 메서드 호출
+   innerReset(error);
 
-	}
-</script>
+   // [ ID 입력문자 유효성검사 ] 
+   register.mem_id.onkeydown = function(){
+      innerReset(error); // 초기화 메서드 호출
+      var idLimit = /^[a-zA-Z0-9-_]{5,20}$/; //정규식 5~20자 (a~z, A~Z, 0~9, -, _만 입력가능)
+      if (!idLimit.test(input[0].value)) { //입력값과 정규식 범위와 같지 않다면
+         // id의 오류 문구삽입
+         document.getElementById(errorId[0]).innerHTML = "5~20자의 영문 소대문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+
+      }
+   }
+   // [ PW 입력문자 유효성검사 ]
+   register.mem_pw.onkeydown = function(){
+      innerReset(error); // 초기화 메서드 호출
+      var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}$/; //정규식(a~z, A~Z, 0~9, ~!@#$%^&*()_- 만 입력가능)
+      if (!pwLimit.test(input[1].value)) { //입력값과 정규식 범위와 같지 않다면
+         // pw의 오류 문구삽입
+         document.getElementById(errorId[1]).innerHTML = " 10~20자의 영문 소대문자, 숫자와 특수기호 '~!@#$%^&*()_-'만 사용 가능합니다.";
+      }   
+   }
+   // [ PW 재확인 입력문자 초기화 ]
+   //비밀번호 동일여부는 submit 버튼 클릭시 검사해줄 예정
+   register.mem_pwCheck.onkeydown = function(){
+      // pw의 오류 문구삽입
+      innerReset(error);// 오류문구 초기화   
+   }
+   // [ 휴대폰번호 입력문자 유효성검사 ]
+      register.mem_phone.onkeydown = function(){ //입력값과 정규식 범위와 같지 않다면
+      innerReset(error); // 초기화 메서드 호출   
+         var pnumLimit =  /^01[0|1|6|7|8|9]{1}[0-9]{8}$/; // 정규식(^$--> 문자의미, 01, (6자리중 "1자리"), 0~9--> "8자리")
+         if (!pnumLimit.test(input[4].value)) { //입력값과 정규식 범위와 같지 않다면
+            // pw의 오류 문구삽입 
+            document.getElementById(errorId[4]).innerHTML = " 올바른 형식이 아닙니다. 다시 확인해주세요.";
+         }
+      }
+      
+      // [ 이메일 입력 유효성검사 ] 
+      register.mem_email.onkeydown = function(){ //입력값과 정규식 범위와 같지 않다면
+         innerReset(error); // 초기화 메서드 호출
+         var emailLimit = /[0-9a-zA-Z-_.]/; // 정규식 0~9, a~z, A~Z, -, _, .내에서만 입력가능
+            if (!emailLimit.test(input[5].value)) {  //입력값과 정규식 범위와 같지 않다면
+               // 이메일의 오류 문구삽입
+               document.getElementById(errorId[5]).innerHTML = " 올바른 형식이 아닙니다. 영문,숫자, (-)(_)(.) 입력만 가능합니다.";
+            }
+         }
+      
+
+      
+      
+      
+      
+      
+    //submit 실행시 수행할 동작
+      register.onsubmit = function checkRegister(){ // register에서 submit이 실행된다면 수행 할 함수
+         var errorStr = [ " 아이디를", " 비밀번호를", " 비밀번호 확인을", " 성함을", " 휴대폰번호를", " 이메일을" ];
+         
+      	 innerReset(error); // 오류문구 초기화
+         
+      	 // [ input 공백확인 ]
+      	 for (var i = 0; i < input.length - 1; i++) { // -1 == submit 제외
+      		if (!input[i].value) {
+      			document.getElemendById(errorId[i]).innerHTML = errorStr[i]+ "입력해 주세요.";
+      			input[i].focus(); // 포커스 이동
+      			return false; // 종료 (포커스 이동유지를 위해 false 종료)
+      		}	 
+      	 }   
+         
+         //유효성검사) 비밀번호 재확인
+         if (register.mem_pwCheck.value != join.pwCheck.value) {
+            document.getElementById("pwCheckError").innerHTML = " 비밀번호가 일치하지 않습니다.";
+            register.mem_pwCheck.focus(); // 포커스 이동
+            return false;
+         }
+
+         // 정규식 변수 모음     
+         var idLimit = /^[a-zA-Z0-9-_]{5,20}$/; //정규식(a~z, A~Z, 0~9, -, _만 입력가능)
+         var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}$/;///[a-zA-Z0-9]{10, 20}/; //정규식(a~z, A~Z, 0~9,~!@#$%^&*()_-특수문자 만 입력가능)
+         var pnumLimit =  /^01[0|1|6|7|8|9]{1}[0-9]{8}$/; // 01로 시작, 0,1,6,7,8,9 중 한자리, 0~9에서 8자리 입력
+         var emailLimit = /[0-9a-zA-Z-_.]/; // 정규식 0~9, a~z, A~Z, -, _, .내에서만 입력가능
+
+         // [ ID 유효성검사 ]
+         if (!idLimit.test(input[0].value)) {
+            document.getElementById(errorId[0]).innerHTML = " 5~20자의 영문 소대문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+            register.mem_id.focus(); // 포커스 이동
+            return false;
+         }
+
+         // [ PW 유효성검사 ]
+         if (!pwLimit.test(input[1].value)) {
+            document.getElementById(errorId[1]).innerHTML = " 10~20자의 영문 소대문자, 숫자와 특수기호 '~!@#$%^&*()_-'만 사용 가능합니다.";
+            console.log(input[1].value);
+            //console.log(pwLimit.test(input[1].value));
+            register.mem_pw.focus(); // 포커스 이동
+            return false;
+         }         
+
+        // [ 휴대폰번호 유효성검사 ]
+         if (!pnumLimit.test(input[4].value)) { 
+            document.getElementById(errorId[4]).innerHTML = " 올바른 형식이 아닙니다. 다시 확인해주세요.";
+            register.mem_phone.focus(); // 포커스 이동
+            return false;
+         }
+
+        // [ email 아이디 유효성검사 ]
+         if (!emailLimit.test(input[5].value)) { 
+            document.getElementById(errorId[5]).innerHTML = " 올바른 형식이 아닙니다. 영문,숫자, (-)(_)(.) 외 입력은 불가합니다.";
+            register.mem_email.focus(); // 포커스 이동
+            return false;
+         }
+
+        // [ email 주소선택 유효성검사 ]
+         if (document.getElementById("mail_Select").value=="이메일 선택") { 
+            document.getElementById(errorId[5]).innerHTML = " 이메일을 선택해주세요.";
+            return false;
+         }
+         //console.log(document.getElementById("mail_Select").value);
+         
+         alert("회원가입이 완료되었습니다. 울타리의 회원이 되신 것을 환영합니다!");
+
+      }//join.onsublit
+
+   }//window  
+      
+   
+   </script>
 
 <title>Insert title here</title>
+<link rel="stylesheet" href="${path}/resources/css/home.css">
 <link rel="stylesheet" href="${path}/resources/css/register.css">
 </head>
 <body>
 	<!-- header -->
 	<jsp:include page="../home/header.jsp" />
 
-	<div class="wapper">
-		<form action="register" method="post">
-			<div class="wrap">
-				<div class="subject">
-					<span>회원가입</span>
-				</div>
-				<div class="id_wrap">
-					<label for="user_id">아이디</label>
-						<input type="text" class="form-control" id="mem_id" name="mem_id" placeholder="ID" required>
-					<div class="check_font" id="id_check"></div>
-				</div>
-				<div class="name_wrap">
-					<div class="name_name">이름</div>
-					<div class="name_input_box">
-						<input type="text" input class="name_input" id="name"
-							name="mem_name">
-					</div>
-				</div>
-				<div class="phone_wrap">
-					<div class="phone_name">전화번호</div>
-					<div class="phone_input_box">
-						<input type="text" input class="phone_input" id="phone"
-							name="mem_phone">
-					</div>
-				</div>
-				<div class="pw_wrap">
-					<div class="pw_name">비밀번호</div>
-					<div class="pw_input_box">
-						<input type="password" class="pw_input" id="password"
-							name="mem_pw">
-
-					</div>
-				</div>
-				<!--  <div class="pw_check_wrap">
-			<div class="pw_check_name">비밀번호 확인</div>
-			<div class="pw_check_input_box">
-				<input class="pw_check_input">
-			</div> -->
+	<div id="wrapper">
+	<div id="container">
+		<form method="post" id="register" name="register">
+		
+			
+			<h1>회원가입</h1>
+			
+			<br>
+			
+			<!-- ID -->
+			<div class="id_wrap">
+				<label for="mem_id">아이디</label> 
+				<span class="box int_id">
+				<input type="text" class="int check" name="mem_id" id="mem_id" maxlength="20" required>
+				<span id="idError"></span>
+				</span>
+				
 			</div>
+			
+			<br>
+			
+			<!--  이름 -->
+			<div class="name_wrap">
+				<label for="mem_name">이름</label>
+				<span class="box int_id">
+				<input type="text" class="int check" name="mem_name" id="mem_name" required>
+				<span id="nameError"></span>			
+				</span>
+			</div>
+			
+			<br>
+			
+			<!-- 전화번호 -->
+			<div class="phone_wrap">
+				<label for="phone_name">전화번호</label>
+				<span class="box">
+					<input type="text" class="int check" id="mem_phone" name="mem_phone" required>
+				<span id="phoneNumError"></span>
+				</span>
+			</div>
+			
+			<br>
+			
+			<!-- 비밀번호 -->
+			<div class="pw_wrap">
+				<label for="pw_name">비밀번호</label>
+				<span class="box">
+					<input type="password" class="int check" id="mem_pw"  name="mem_pw" required>
+					<span id="pwError"></span>				
+				</span>
+				
+			</div>
+			
+			<br>
+			
+			<!-- 비밀번호 확인 -->
+			<div class="pw_check_wrap">
+				<label for="pw_check_name">비밀번호 확인</label>
+				 <span class="box int_id">
+				 <input type="password" class="int check" id="mem_pwCheck" name="mem_pwCheck"  maxlength="20" required>
+				 <span id="pwCheckError"></span>
+				 </span>
+			</div>
+			
+			<br>
+			
+			<!-- 이메일 -->
 			<div class="mail_wrap">
-				<div class="mail_name">이메일</div>
-				<div class="mail_input_box">
-					<input type="text" class="mail_input" id="email" name="mem_email">
-				</div>
-				<!--  <div class="mail_check_wrap">
-			<div class="mail_check_input_box">이메일 확인</div>
-				<input class="mail_check_input">
-			</div>
-			<div class="mail_check_button">
-				<span>인증번호 전송</span>
-			</div>
-			<div class="clearfix"></div>
-		</div> -->
-			</div>
+				<label for="mail_name">이메일</label><br>
+                  <span class="emailInt" id="emailBox"> 
+                  <input type="text" class="check" id="mem_email" name="mem_email" maxlength="20" required>
+                  <span id="emailError"></span>
+                     <span>   @ </span> 
+                        <!-- 이메일 택일 -->
+                        <select id="mail_Select">
+                           <option>이메일 선택</option>
+                           <option>naver.com</option>
+                           <option>gmail.com</option>
+                           <option>daum.net</option>
+                           <option>hanmail.net</option>
+                           <option>hotmail.com</option>
+                           <option>nate.com</option>
+                           <option>yahoo.co.kr</option>
+                           <option>empas.com</option>
+                           <option>freechal.com</option>
+                           <option>lycos.co.kr</option>
+                           <option>korea.com</option>
+                           <option>hanmir.com</option>
+                           <option>dreamwiz.com</option>
+                           <option>paran.com</option>
+                        </select>
+                  </span> 
+               </div>
 
 			<br>
-			<div class="join_button_wrap">
-				<input type="submit" class="join_button" value="가입완료"
-					onclick="validate()">
-			</div>
-			<br>
-			<div class="cancel_button_wrap">
+			
+			<!-- 가입완료 / 취소 -->
+			<div id="btnJoinCancel">
+				<input type="submit" class="join_button" value="가입완료"> 
 				<input type="submit" class="cancel_button" value="취소">
-			</div>
+			</div>	
+			
 		</form>
+	</div>
 	</div>
 
 	<!-- footer -->

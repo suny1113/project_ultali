@@ -20,7 +20,7 @@
 						<td><a href="myInfo">내 정보</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">최근 본 모임</a></td>
+						<td><a href="recentClub">최근 본 모임</a></td>
 					</tr>
 					<tr>
 						<td><a href="wishList">찜한 모임</a></td>
