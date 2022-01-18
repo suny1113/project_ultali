@@ -2,6 +2,7 @@ package kr.co.jhta.ultali.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -110,22 +111,26 @@ public class CreatedClubController {
 	// recentClubList
 	@RequestMapping("myPage/recentClub")
 	public ModelAndView recent(HttpServletRequest request,HttpServletResponse response ) {
-		Cookie [] cookies = request.getCookies();
-		List list = new ArrayList();
+		Cookie []cookies = request.getCookies();
+		List<Integer> list = new ArrayList();
 		if(cookies!=null) {
-			for(Cookie c :cookies) {
+			for(Cookie c : cookies) {
+				System.out.println(c.getValue());
 				if(!c.getName().equals("JSESSIONID")) {
 					list.add(Integer.parseInt(c.getValue()));
-					return new ModelAndView("myPage/recentClubList","showClubList",createdClubServiceInter.recentList(list));
 				}
 			}
+			return new ModelAndView("myPage/recentClubList","showClub	List",
+					createdClubServiceInter.recentList(list));
+
+			//			for(Cookie c :cookies) {
+			//			for(int i=0;i<=cookies.length;i++) {
+			//				if(!cookies[i].getName().equals("JSESSIONID")) {
+			//					list.add(Integer.parseInt(cookies[i].getValue()));
+			//					return new ModelAndView("myPage/recentClubList","showClubList",createdClubServiceInter.recentList(list));
+			//				}
+			//			}
 		}
-
-		// hashmap 으로 변경
-		//		hm.put("sUser_type", list); // 네 네 결과는 cdto로 나와요 여기 hashmap
-
-		//		log.info("결과 : "+ createdClubServiceInter.recentList(hm));
-
 		return new ModelAndView("myPage/recentClubList");
 	}
 

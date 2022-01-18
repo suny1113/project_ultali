@@ -61,4 +61,9 @@
 		select c_no, mem_id, major_no, sub_no, c_name,c_loc,c_place,c_date,c_time,c_price,c_count,c_image,
 		c_detail,c_hits from club where c_no in <foreach collection="list" item = "item" open="(" close=")" separator=","> #{item.value}</foreach>			
 	</select>
+	
+	<delete id="deleteListById" parameterType="String">
+		delete club where mem_id = #{mem_id}
+	</delete>
+	
 </mapper>

@@ -184,7 +184,6 @@
 		margin: 0 auto;
 		width: 710px;
 		margin-top: 40px;
-		margin-bottom: 30px;
 	}
 	
 	.small-banner img {
@@ -196,6 +195,7 @@
 		margin: 0 auto;
 		position: relative;
 		left: -20px;
+		margin-top: 30px;
 	}
 	
 	.recomd-title {

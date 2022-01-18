@@ -47,11 +47,6 @@ public class Board2Controller {
 	@GetMapping("/clubBoardDetail")
 	public String boardDetailGet(@RequestParam("c_no") int c_no, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session ) {
 		
-		// 쿠키 생성
-		Cookie cookie = null;
-		
-		Cookie [] cookies = request.getCookies();
-		
 		model.addAttribute("dto", service.selectOneClubService(c_no));
 		
 		// 조회수 처리
@@ -79,19 +74,22 @@ public class Board2Controller {
 	    // 찜목록에 담겨있는지 확인
 	    model.addAttribute("checkWish",service.getWishService(wdto));
 
+		// 쿠키 생성
+		Cookie cookie = null;
 	    
 	    // 쿠키 추가하기
 	    String no = String.valueOf(c_no);
 	    
 	    // 쿠키 for 문 검사
 	    if (cookie == null) {
-			cookie = new Cookie("c_no"+no,no);
+			cookie = new Cookie("c"+no,no);
 		}
 	    
 	    cookie.setMaxAge(600);
 	    cookie.setPath("/project_ultali");
 	    response.addCookie(cookie);
 	    
+
 		return "/clubBoard/clubBoardDetail";
 	}
 	
@@ -230,6 +228,7 @@ public class Board2Controller {
 		WishDTO wdto = new WishDTO();
 		wdto.setC_no(c_no);
 		wdto.setMem_id((String) session.getAttribute("id"));
+		
 		
 
 		

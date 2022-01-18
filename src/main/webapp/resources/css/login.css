@@ -35,12 +35,13 @@
 		border: 1px solid #C6C9CC;
 		border-radius: 3px;
 		font-size: 20px;
+		padding:7px;
 	}
 	
 	#submit-btn{
-		width: 350px;
+		width: 365px;
 		height : 40px;
-		margin-top : 20px;
+		margin-top : 10px;
 		margin-left: 70px;
 		background: skyblue;
 		font-size: 20px;

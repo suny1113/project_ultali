@@ -23,6 +23,6 @@
   	
   	<select id="nicknameChk" parameterType="String" resultType="Integer">
   		select COUNT(mem_name) from member
-  		where mem_name = #{new_nickname}
+  		where mem_id = #{new_id}
   	</select>
   </mapper>
