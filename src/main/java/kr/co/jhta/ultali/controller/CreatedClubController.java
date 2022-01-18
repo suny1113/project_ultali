@@ -113,9 +113,6 @@ public class CreatedClubController {
 	public ModelAndView recent(HttpServletRequest request,HttpServletResponse response ) {
 		Cookie []cookies = request.getCookies();
 		List<Integer> list = new ArrayList();
-		if(cookies!=null) {
-			for(Cookie c : cookies) {
-				System.out.println(c.getValue());
 		if(cookies.length>1) {
 			for(Cookie c : cookies) {
 				if(!c.getName().equals("JSESSIONID")) {
@@ -123,18 +120,6 @@ public class CreatedClubController {
 					list.add(Integer.parseInt(c.getValue()));
 				}
 			}
-			return new ModelAndView("myPage/recentClubList","showClub	List",
-					createdClubServiceInter.recentList(list));
-
-			//			for(Cookie c :cookies) {
-			//			for(int i=0;i<=cookies.length;i++) {
-			//				if(!cookies[i].getName().equals("JSESSIONID")) {
-			//					list.add(Integer.parseInt(cookies[i].getValue()));
-			//					return new ModelAndView("myPage/recentClubList","showClubList",createdClubServiceInter.recentList(list));
-			//				}
-			//			}
-		}
-		return new ModelAndView("myPage/recentClubList");
 			return new ModelAndView("myPage/recentClubList","showClubList",	createdClubServiceInter.recentList(list));	
 		}else {
 			return new ModelAndView("myPage/recentClubList");
