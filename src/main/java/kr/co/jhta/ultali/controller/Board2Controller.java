@@ -107,10 +107,10 @@ public class Board2Controller {
 	}
 	
 	@PostMapping("/clubModify")
-	public ModelAndView modifyPost(@ModelAttribute("dto") ClubDTO dto, @RequestParam("date") String date, @RequestParam("date2") String date2, @ModelAttribute("uploadFile") UploadFile file, BindingResult result) {
+	public ModelAndView modifyPost (@ModelAttribute("dto") ClubDTO dto, @RequestParam("date") String date, @RequestParam("date2") String date2, @ModelAttribute("uploadFile") UploadFile file, BindingResult result) {
 
 		System.out.println("clubModifydtocontrol " + dto);
-		return service.updateClubService(dto, date, date2, file, result, dto.getC_no());
+		return service.updateClubService(dto, date, date2, file, result, dto.getC_no(), dto.getMajor_no());
 	}
 	
 	
@@ -124,7 +124,9 @@ public class Board2Controller {
 	public ModelAndView registerPost(@ModelAttribute("dto") ClubDTO dto, @RequestParam("date") String date, @RequestParam("date2") String date2,
 							HttpServletRequest req, @ModelAttribute("uploadFile") UploadFile file, BindingResult result, Model model) {
 		model.addAttribute("major_no", dto.getMajor_no());
-		return service.insertClubService(dto, date, date2, file, result);
+		
+		
+		return service.insertClubService(dto, date, date2, file, result, dto.getMajor_no());
 		
 	}
 
@@ -254,5 +256,6 @@ public class Board2Controller {
 //		model.addAttribute("c_no", c_no);
 //		return "redirect:/clubBoard/doQuestion";
 //	}
+	
 
 }

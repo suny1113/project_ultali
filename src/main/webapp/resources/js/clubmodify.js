@@ -54,7 +54,9 @@
 				
 			}else if($(this).val() == 7){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option name='sub_no' value='25' class='sub'>기타 추가 해야합니다. </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>소분류 선택 </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='25' class='sub'>기타 </option>")[0]);
+				
 			}else{
 				$(".sub").remove();
 				$('input[name=sub_no]').val("선택하세요");
