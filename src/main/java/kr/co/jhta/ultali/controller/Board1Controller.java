@@ -40,9 +40,16 @@ public class Board1Controller {
 							PagingDTO pdto, 
 							@RequestParam(value="nowPage", required=false)String nowPage
 							, @RequestParam(value="cntPerPage", required=false)String cntPerPage,
-							@RequestParam("sort") int sort) {
+							@RequestParam(value="sort", required=false) String sort) {
 		
-		int sort_num = sort;
+		int sort_num = 3;
+		
+		if(sort == null) {
+			
+		} else if(sort != null){
+			sort_num = Integer.parseInt(sort);
+		}
+		
 		
 		int total = service.countClubService(major_no);
 	    if (nowPage == null && cntPerPage == null) {
@@ -75,9 +82,7 @@ public class Board1Controller {
  		}
 	    
 	    model.addAttribute("major_no", major_no);
-	    
-	    List<ClubDTO> top_list = service.selectTopClub(major_no);
-		model.addAttribute("top_list", top_list);
+
 		
 		return "/clubBoard/clubBoardList";
 	}

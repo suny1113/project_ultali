@@ -115,6 +115,7 @@
 						<input type="hidden" name="sub_no" id="sub_no"/>
 						<input type="hidden" name="c_loc" id="c_loc"/>
 						<input type="hidden" name="c_hits" id="c_hits" value="0"/>
+						<input type="hidden" name="sort" id="sort" value="3"/>
 						
 	<!-- 					시퀀스로 값을 넘겨주기 떄문에 아무값이나 줌 -->
 						<input type="hidden" name="c_no" id="c_no" value="${dto.c_no}"/>
