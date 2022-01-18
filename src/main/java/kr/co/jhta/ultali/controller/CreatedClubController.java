@@ -29,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-
 public class CreatedClubController {
 
 	@Autowired
@@ -91,10 +90,11 @@ public class CreatedClubController {
 	//	}
 
 	@RequestMapping("myPage/approveApp")
-	public String approveApp(@ModelAttribute("app_no")int app_no, @ModelAttribute("myclub")MyClubDto myclub) {
-		createdClubServiceInter.applyApp(app_no);
+	public String approveApp(@ModelAttribute("myclub") MyClubDto myclub) {
+		createdClubServiceInter.applyApp(myclub.getMy_no());
 		createdClubServiceInter.insertMyClub(myclub);
-		return "redirect:applicantList";
+		System.out.println("등록됨");
+		return "redirect:createdClub";
 	}
 
 	// wishList

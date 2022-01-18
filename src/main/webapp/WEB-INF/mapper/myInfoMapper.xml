@@ -17,7 +17,7 @@
   	</delete>
   	
   	<update id="modifyOne" parameterType="MyInfoDto">
-  		update member set mem_name = #{mem_name}, mem_phone = #{mem_phone}, mem_pw = #{mem_pw}
+  		update member set mem_phone = #{mem_phone}, mem_pw = #{mem_pw}
   		where mem_id = #{mem_id} 
   	</update>
   	

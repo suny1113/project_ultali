@@ -42,7 +42,6 @@
 				<div class="top_club">
 					<div class="club">
 						<div class="img">
-						${path }
 							<a href="${path }/clubBoard/clubBoardDetail?c_no=${dto.c_no}"> <img
 								src="${path }${dto.c_image }" alt="${path }${dto.c_image }" />
 							</a>
