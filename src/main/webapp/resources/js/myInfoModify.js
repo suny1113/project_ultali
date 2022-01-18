@@ -3,7 +3,7 @@
  */
 	var chknickname = 0;
 	
-    function checknickname(){
+/*    function checknickname(){
         var nickname = $(new_nickname).val();
         $.ajax({
             url:'nicknameCheck', // Controller 에서 인식할 주소
@@ -19,7 +19,7 @@
             	}else{ // cnt 가 1인 경우
             		$('.nickname_ok').css("display","none");
             		$('.nickname_already').css("display","inline-block");
-					chknickname = 0;
+					chknickname = 1;
 					console.log(chknickname);
             	}
             },
@@ -28,13 +28,14 @@
             }
         });
 
-    };
+    };*/
 
 
 	function joinform_check(){
-		var nickname = $(new_nickname);
+		/*var nickname = $(new_nickname);*/
 		var password = $(new_pw);
 		var phone = $(new_phone);
+		
 		if(password.val() == ""){
 			alert("비밀번호를 입력하세요")
 			password.focus();
@@ -51,12 +52,9 @@
 		
 		if(password.val() != $(new_pwchk).val()){
 			alert("비밀번호가 일치하지 않습니다.");
+			console.log(password.val());
+			console.log($(new_pwchk).val());
 			$(new_pwchk).focus();
-		}
-		
-		if(nickname.val() == ""){
-			alert("닉네임을 입력하세요")
-			nickname.focus();
 			return false;
 		}
 		if(phone.val() == ""){
@@ -73,11 +71,7 @@
 		}
 		
 		// 유효성 검사의 포인트
-		console.log(chknickname)
-		if(chknickname == 1){
-			document.join_form.submit();
-		}else{
-			alert("사용 불가능한 닉네임 입니다.")
-		}
+		document.join_form.submit();
+
 	}
     	
