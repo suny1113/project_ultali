@@ -5,18 +5,12 @@
 body {
 	margin: 0;
 	height: 100%;
-	background: #f5f6f7;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 }
 
-label {
-	font-family: "맑은고딕";
-	font-size: 14pt;
-}
-
 h1 {
+	text-align: center;
 	font-family: "맑은고딕";
-	margin-left : 125px;
 	margin-bottom: 60px;
 }
 
@@ -36,16 +30,28 @@ h1 {
     border-radius:5px; 
 }
 
-#wrapper {
-	position: relative;
-	height: 100%;
+#inner-container {
+	margin: 0 auto;
+	width: 500px;
+	position : relative;
+	top: 30px;
 }
 
-#content {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%);
-	width: 460px;
+#registerTable {
+	width:500px;
+}
+
+#registerTable input{
+	position: relative;
+	top: 8px;
+}
+
+#registerTable tr:nth-child(8) {
+	text-align: center;
+}
+
+#registerTable td:nth-child(1) {
+	text-align: center;
 }
 
 #container {
@@ -54,26 +60,18 @@ h1 {
 	margin: 0 auto;
 }
 
-.btn_area {
-	margin: 30px 0 91px;
+.jc_button {
+	margin: 15px 30px;
 }
 
-#btnJoinCancel {
-	position: absolute;
-	bottom: -35%;
-	width: 670px;
-	height: 30px;
-	text-align: right;
-	text-decoration: none;
-	font-size: 20px;
-	color: black;
-	border-radius: 20px;
-	-webkit-transition: all 0.1s;
-	transition: all 0.1s;
-	padding: 10px 20px 10px 20px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
+#joinbutton {
+	position: relative;
+	left: -20px;
+}
+
+#cancelbutton {
+	position: relative;
+	right: -20px;
 }
 
 .check{
@@ -103,21 +101,4 @@ input[type=button] {
     border-radius: 4px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-
-}
-
-.error_next_box {
-	margin-top: 9px;
-	font-size: 12px;
-	color: red;
-	display: none;
-}
-
-#alertTxt {
-	position: absolute;
-	top: 19px;
-	right: 38px;
-	font-size: 12px;
-	color: red;
-	display: none;
 }
