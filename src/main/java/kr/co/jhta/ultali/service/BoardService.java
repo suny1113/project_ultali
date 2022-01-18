@@ -14,10 +14,10 @@ import kr.co.jhta.ultali.dto.WishDTO;
 
 public interface BoardService {
 	public ClubDTO selectOneClubService(int c_no);
-	public ModelAndView insertClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result);
+	public ModelAndView insertClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result, int major_no);
 	public List<ClubDTO> selectAllClubService();
 	public void deleteClubService(int c_no);
-	public ModelAndView updateClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result, int c_no);
+	public ModelAndView updateClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result, int c_no, int major_no);
 	
 	public boolean getWishService(WishDTO dto);
 	public void insertWishService(WishDTO dto);
