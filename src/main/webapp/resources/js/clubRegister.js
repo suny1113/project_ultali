@@ -1,5 +1,5 @@
 
-	$(function(){
+	$(function(){	
 	// 	대분류 카테고리가 바뀌면 실행하는 메서드 or 히든에 값을 넘겨줌
 		$("#majorNoSelect").change(function() {
 			var subNoSelect =  $('#subNoSelect')[0];
