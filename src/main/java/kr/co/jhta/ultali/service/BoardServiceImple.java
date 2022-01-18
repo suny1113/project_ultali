@@ -60,11 +60,7 @@ public class BoardServiceImple implements BoardService{
 		int imgDedup = dao.imgFileNameDedup();
 		
 		// aws에 올릴때 경로 바꿔야함
-<<<<<<< HEAD
 		String filePath = "C:\\Users\\gkwls\\OneDrive\\바탕 화면\\final\\final_project_ultali\\final_project\\src\\main\\webapp\\resources\\img";
-=======
-		String filePath = "F:\\app\\eclipse1\\final\\final_project\\src\\main\\webapp\\resources\\img";
->>>>>>> 0cd87f12764a7d919f2716b9cfa81ae855334ad1
 
     
 //		System.out.println("파일이 업로드되는 진짜 경로 : " + filePath);
@@ -195,11 +191,7 @@ public class BoardServiceImple implements BoardService{
 		int imgDedup = dao.imgFileNameDedup();
 		
 
-<<<<<<< HEAD
 		String filePath = "C:\\Users\\gkwls\\OneDrive\\바탕 화면\\final\\final_project_ultali\\final_project\\src\\main\\webapp\\resources\\img";	
-=======
-		String filePath = "F:\\app\\eclipse1\\final\\final_project\\src\\main\\webapp\\resources\\img";	
->>>>>>> 0cd87f12764a7d919f2716b9cfa81ae855334ad1
 		
 		MultipartFile mfile = file.getFile();
 
