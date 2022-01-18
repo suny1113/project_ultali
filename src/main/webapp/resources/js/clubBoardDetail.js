@@ -50,6 +50,7 @@
 		$("#apply_button").on("click", function(){
 			if($("#idCheck").val() == ""){
 				alert("로그인을 해주세요");
+				window.location.replace("../login/login");
 			}else if($("#idCheck").val() != ""){
 				$("#form").attr("action", "doApply");
 				$("#apply_button").attr("type","submit");
