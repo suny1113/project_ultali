@@ -2,6 +2,10 @@ package kr.co.jhta.ultali.controller;
 
 import java.security.Principal;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,7 +96,22 @@ public class MyInfoController {
 	public String deleteOne(@ModelAttribute("mem_id") String mem_id) {
 		createdClubServiceInter.deleteClubList(mem_id);
 		inquireServiceInter.deleteInquiry(mem_id);
+	public String deleteOne(@ModelAttribute("mem_id") String mem_id,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+//		createdClubServiceInter.deleteClubList(mem_id);
+//		inquireServiceInter.deleteInquiry(mem_id);
 		myInfoServiceInter.delete(mem_id);
+		
+		Cookie cookies[] = request.getCookies();
+		if(cookies != null) {
+			for(Cookie c : cookies) {
+				c.setMaxAge(0);
+				response.addCookie(c);
+			}
+		}
+		
+		session.invalidate();
+		
+		
 		return "redirect:/home";
 	}
 	

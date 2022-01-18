@@ -1,5 +1,7 @@
 package kr.co.jhta.ultali.service;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,4 +35,11 @@ public class RegisterServiceImple implements RegisterService {
 
 	return dao.checkOverId(mem_id);
 		}
+
+	@Override
+	public void addAuth(Map<String, String> map) {
+	
+	dao.addOne(map);	
+		
+	}
 	}

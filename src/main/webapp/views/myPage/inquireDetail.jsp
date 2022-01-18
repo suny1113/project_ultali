@@ -56,7 +56,10 @@
                 	<textarea name="admincontents" id="" cols="70" rows="5" readonly="readonly">${dto.p_inq_answer}</textarea>
                 </c:if>
             </div>
-            <a href="inquire" class="btn" >목록</a>
+            <div class="acontainer">
+            	<a href="deleteInquire?p_inq_no=${p_inq_no }" class="btn" >문의 삭제</a>
+            	<a href="inquire" class="btn" >뒤로 가기</a>
+            </div>
         </div>
     </div>
 	<jsp:include page="../home/footer.jsp"/>

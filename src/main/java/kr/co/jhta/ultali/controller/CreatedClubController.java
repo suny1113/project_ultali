@@ -116,7 +116,10 @@ public class CreatedClubController {
 		if(cookies!=null) {
 			for(Cookie c : cookies) {
 				System.out.println(c.getValue());
+		if(cookies.length>1) {
+			for(Cookie c : cookies) {
 				if(!c.getName().equals("JSESSIONID")) {
+					System.out.println(c.getValue());
 					list.add(Integer.parseInt(c.getValue()));
 				}
 			}
@@ -132,6 +135,10 @@ public class CreatedClubController {
 			//			}
 		}
 		return new ModelAndView("myPage/recentClubList");
+			return new ModelAndView("myPage/recentClubList","showClubList",	createdClubServiceInter.recentList(list));	
+		}else {
+			return new ModelAndView("myPage/recentClubList");
+		}
 	}
 
 }

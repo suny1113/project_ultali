@@ -60,6 +60,11 @@ public class Board1Controller {
 	    
 	    List<ClubDTO> top_list = service.selectTopClub(major_no);
 		model.addAttribute("top_list", top_list);
+//		System.out.println("int major_no" + major_no);
+//		System.out.println("service.selectClubService(vo)" + service.selectClubService(pdto));
+	    model.addAttribute("paging", pdto);
+	    model.addAttribute("viewAll", service.selectClubService(pdto));
+	    model.addAttribute("major_no", major_no);
 		
 		return "/clubBoard/clubBoardList";
 	}
