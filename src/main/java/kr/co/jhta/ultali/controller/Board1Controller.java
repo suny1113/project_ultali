@@ -8,13 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.jhta.ultali.dto.AppDto;
 import kr.co.jhta.ultali.dto.ClubDTO;
 import kr.co.jhta.ultali.dto.PagingDTO;
+import kr.co.jhta.ultali.dto.RegisterDTO;
 import kr.co.jhta.ultali.service.Board1Service;
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,10 +41,6 @@ public class Board1Controller {
 							@RequestParam(value="nowPage", required=false)String nowPage
 							, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 				
-		List<ClubDTO> list = service.selectClubList_major(major_no);
-		model.addAttribute("list", list);
-		
-
 		int total = service.countClubService(major_no);
 	    if (nowPage == null && cntPerPage == null) {
 	        nowPage = "1";
@@ -53,6 +53,13 @@ public class Board1Controller {
 	    cntPerPage = "8";
 	    pdto = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 	    pdto.setMajor_no(major_no);
+
+	    model.addAttribute("paging", pdto);
+	    model.addAttribute("viewAll", service.selectClubService(pdto));
+	    model.addAttribute("major_no", major_no);
+	    
+	    List<ClubDTO> top_list = service.selectTopClub(major_no);
+		model.addAttribute("top_list", top_list);
 //		System.out.println("int major_no" + major_no);
 //		System.out.println("service.selectClubService(vo)" + service.selectClubService(pdto));
 	    model.addAttribute("paging", pdto);
@@ -89,5 +96,30 @@ public class Board1Controller {
 		
 		return "redirect:/clubBoard/clubBoardList";
 	}
+	
+	// 모임 인기순, 등록일순 정렬
+	//@GetMapping("/clubBoard/clubBoardListSort")
+	
+	
+	// 모임 신청 폼으로 
+	@GetMapping("/clubBoard/doApply")
+	public String clubApplyForm(@RequestParam("c_no") int c_no, Model model) {
+		
+		model.addAttribute("c_no", c_no);
+		
+		return "/clubBoard/applicationForm";
+	}
+	
+	// 모임 신청하기
+	@PostMapping("/clubBoard/doApply")
+	public String clubDoApply(@ModelAttribute("dto") AppDto dto, @RequestParam("c_no") int c_no,
+								RedirectAttributes redirect) {
+		
+		service.insertApply(dto);
+		redirect.addAttribute("c_no", c_no);
+		
+		return "redirect:/clubBoard/clubBoardDetail";
+	}
+	
 	
 }

@@ -51,7 +51,7 @@
 			if($("#idCheck").val() == ""){
 				alert("로그인을 해주세요");
 			}else if($("#idCheck").val() != ""){
-				$("#form").attr("action", "이거수정");
+				$("#form").attr("action", "doApply");
 				$("#apply_button").attr("type","submit");
 				$("#form").submit();
 			}

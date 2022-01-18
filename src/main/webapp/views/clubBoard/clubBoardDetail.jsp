@@ -25,7 +25,8 @@
 						<div id="main">
 							<div  class="area">
 								
-								<img src="${path}${dto.c_image}" alt="" id="board_detail_img"/>
+<%-- 								<img src="${path}${dto.c_image}" alt="" id="board_detail_img"/> --%>
+								<img src="${dto.c_image}" alt="" id="board_detail_img"/>
 								
 								<h3 class="title">${dto.c_name }</h3>	
 								<div>		

@@ -93,6 +93,9 @@ public class MyInfoController {
 	}
 	
 	@RequestMapping("myPage/delete")
+	public String deleteOne(@ModelAttribute("mem_id") String mem_id) {
+		createdClubServiceInter.deleteClubList(mem_id);
+		inquireServiceInter.deleteInquiry(mem_id);
 	public String deleteOne(@ModelAttribute("mem_id") String mem_id,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
 //		createdClubServiceInter.deleteClubList(mem_id);
 //		inquireServiceInter.deleteInquiry(mem_id);

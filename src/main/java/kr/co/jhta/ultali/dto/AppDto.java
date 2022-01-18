@@ -15,5 +15,4 @@ public class AppDto {
 	private String mem_phone;
 	private String app_detail;
 	private String c_no;
-	private String c_name;
 }

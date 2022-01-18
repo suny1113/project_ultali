@@ -36,4 +36,16 @@
 		WHERE c_no = #{c_no}
 	</delete>
   
+  	<insert id="insertApp" parameterType="AppDto">
+  		INSERT INTO applyapp
+  		VALUES ( app_no_seq.nextval, #{mem_name}, #{mem_id}, #{gender}, #{mem_phone}, #{app_detail}, #{c_no} )
+  	</insert>
+  	
+  	<select id="selectTop" parameterType="int" resultType="cdto">
+		SELECT *
+		FROM ( SELECT * FROM club ORDER BY c_hits DESC )
+		WHERE major_no = #{major_no}
+		AND ROWNUM &lt; 5
+  	</select>
+  
 </mapper>
