@@ -21,7 +21,7 @@
 						<td><a href="myInfo">내 정보</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">최근 본 모임</a></td>
+						<td><a href="recentClub">최근 본 모임</a></td>
 					</tr>
 					<tr>
 						<td><a href="wishList">찜한 모임</a></td>
@@ -40,39 +40,55 @@
 		</menu>
 		<div class="a">
 			<div class="tablecontainer">
-				<c:forEach var="appdto" items="${showList }">
+				<c:forEach var="appdto" items="${showAppList }">
 					<div class="item2">
 						<table class="first">
 							<tr>
-                            	<th>모임 이름</th>
-                        	</tr>
-                        	<tr>
-                            	<td>${appdto.c_name }</td>
-                        	</tr>
+								<th>모임 이름</th>
+							</tr>
+							<tr>
+								<td>${appdto.c_name }</td>
+							</tr>
 							<tr>
 								<th>이름</th>
 								<th>성별</th>
 								<th>전화번호</th>
 							</tr>
-			
+
 							<tr>
 								<td>${appdto.mem_name }</td>
 								<td>${appdto.gender }</td>
 								<td>${appdto.mem_phone }</td>
-								
+
 							</tr>
 							<tr>
 								<td colspan="3"><textarea name="introduce" id="" cols="40"
 										rows="6">${appdto.app_detail }</textarea></td>
 							</tr>
 							<tr>
-								<td colspan="3">
-									<a href="approveApp?app_no=${appdto.app_no}&mem_id=${appdto.mem_id}&c_no=${appdto.c_no}" class="btn">승인</a>
-								</td>
+								<td colspan="3"><a
+									href="approveApp?app_no=${appdto.app_no}&mem_id=${appdto.mem_id}&c_no=${appdto.c_no}"
+									class="btn">승인</a></td>
 							</tr>
 						</table>
 					</div>
 				</c:forEach>
+
+				<div class="paging">
+					<ul>
+						<c:if test="${map.prev }">
+							<li><a
+								href="applicantList?c_no=${c_no}&currentPage=${(map.startPageNo-1)  }">이전</a></li>
+						</c:if>
+						<c:forEach begin="${map.startPageNo }" end="${map.endPageNo }"
+							var="i">
+							<li><a href="applicantList?c_no=${c_no}&currentPage=${i }">${i }</a></li>
+						</c:forEach>
+						<c:if test="${map.next }">
+							<li><a href="applicantList?c_no=${c_no}&currentPage=${map.endPageNo+1 }">다음</a></li>
+						</c:if>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

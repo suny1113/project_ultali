@@ -22,7 +22,7 @@
 						<td><a href="myInfo">내 정보</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">최근 본 모임</a></td>
+						<td><a href="recentClub">최근 본 모임</a></td>
 					</tr>
 					<tr>
 						<td><a href="wishList">찜한 모임</a></td>
@@ -62,6 +62,21 @@
                 </c:if>
             </tr>
             </c:forEach>
+             <tr>
+                <td colspan="4">
+                    <ul>
+                    	<c:if test="${map.prev }">
+                        	<li><a href="inquire?currentPage=${(map.startPageNo-1)  }">이전</a></li>
+                        </c:if>
+                        <c:forEach begin="${map.startPageNo }" end="${map.endPageNo }" var="i">
+                        	<li> <a href="inquire?currentPage=${i }">${i }</a></li>
+                        </c:forEach>
+                        <c:if test="${map.next }">
+                        	<li> <a href="inquire?currentPage=${map.endPageNo+1 }">다음</a></li>
+                        </c:if>
+                    </ul>
+                </td>
+            </tr>
         </table>
         <input type="submit" value="글쓰기">
     </div>

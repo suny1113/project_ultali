@@ -1,49 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
+<!-- css -->
+<link rel="stylesheet" href="${path}/resources/css/home.css">
+<link rel="stylesheet" href="${path}/resources/css/notice.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 게시글 작성</title>
 </head>
 <body>
-
-	<div class="container">
-		<h1>writeForm.jsp</h1>
-		<form action="write" method="post">
-			<div class="mb-3">
-				<label for="writer" class="form-label">작성자</label> <input
-					type="text" class="form-control" id="writer" name="writer"
-					placeholder="작성자ID">
-			</div>
+	<!-- header -->
+	<jsp:include page="../home/header.jsp" />
+	
+	<!-- body -->
+	<div class="notice-body-container">
+		<div class="notice-body-left">
+		<h1>고객센터</h1>
+			<br><br>
+			<a href="notice"><h2>공지사항</h2></a><br>
+			<a href="faq"><h2>자주묻는질문</h2></a>
+		</div>
+		
+		<div class="notice-body-right">
+		<form action="noticeWrite" method="post">
 			<div class="mb-3">
 				<label for="title" class="form-label">제목</label> <input type="text"
-					class="form-control" id="title" name="title" placeholder="제목">
+					class="form-control" id="title" name="n_title" placeholder="제목">
 			</div>
+			<div class="mb-3">
+				<label for="writer" class="form-label">작성자</label> 
+				<input type="text" class="form-control" id="mem_id" name="mem_id" value="${mem_id}" placeholder="작성자ID">
+			</div>
+			
 			<div class="mb-3">
 				<label for="contents" class="form-label">내용</label>
-				<textarea class="form-control" id="contents" name="contents" row="3"></textarea>
+				<textarea class="form-control" id="contents" name="n_detail" row="3"></textarea>
 			</div>
 			<div class="mb-3">
-				<button type="submit" class="btn btn-outline-success">등록</button>
+				<button type="submit" class="">등록</button>
 			</div>
 		</form>
 	</div>
+</div>
 
+	<!-- footer -->
+	<jsp:include page="../home/footer.jsp" />
 </body>
 </html>

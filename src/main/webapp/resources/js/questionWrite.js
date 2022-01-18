@@ -9,5 +9,10 @@ $(function(){
 			}
 			$("#submit").attr("type","submit");
 			$("#form").submit(); 
+			setTimeout(function() {
+				window.close();
+			}, 500);
+			opener.location.reload();
 		});
+		
 	})

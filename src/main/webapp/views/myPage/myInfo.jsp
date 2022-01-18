@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../resources/css/myInfo.css">
 </head>
 <body>
+	${showClubList }
 	<jsp:include page="../home/header.jsp"/>
 	<h1>내정보</h1>
 	<div class="container">
@@ -21,7 +22,7 @@
 						<td><a href="myInfo">내 정보</a></td>
 					</tr>
 					<tr>
-						<td><a href="#">최근 본 모임</a></td>
+						<td><a href="recentClub">최근 본 모임</a></td>
 					</tr>
 					<tr>
 						<td><a href="wishList">찜한 모임</a></td>
@@ -62,8 +63,8 @@
 				</tr>
 			</table>
 			<div class="button">
-				<a href="delete?mem_id=${myInfoDto.mem_id }">회원탈퇴</a>
-				<a href="modify?mem_id=${myInfoDto.mem_id }">수정하기</a>
+				<div><a href="delete?mem_id=${myInfoDto.mem_id }">회원탈퇴</a></div>
+				<div><a href="modify?mem_id=${myInfoDto.mem_id }">수정하기</a></div>
 			</div>
 		</div>
 	</div>

@@ -1,81 +1,219 @@
 @charset "UTF-8";
 /* 	전체틀 */
-#main{
-margin-left: 200px; 
+#container{
+	width: 1080px;
+	margin: 0 auto;
+	display: grid;
+
+}
+
+#img{
+	margin-top: 15px;
+	float: left;
+	left: 400px;
 }
 
 /* 	모임 이미지 */
 #board_detail_img{
 	margin-top: 20px;
-	height: 300px;
-	width: 400px;
-	
-}
-
-/* 	모임 상세설명 틀*/
-#board_detail_description{
-	height: 300px;
-	width: 400px;
-/* 		background: blue; */
+	height: 409px;
+	width: 409px;
 	float: left;
-	border:1px solid
-	
-	
+	margin-right: 50px;
+	border-radius: 5px;
 }
 
-
-/* 	모임 상세설명 글씨*/
-#detail_description{
-	height: 50px;
-	width: 350px;
+.contents{
+	font-size: 16px;
+	font-family: inherit;
 }
 
-/* 	게시글 제목, 모집분야, 활동지역 등등 */
-#board_detail_list{
-	position: absolute;
-	display: inline-block;
-/* 		background: green; */
-	width: 500px;
-	height: 800px;
-	float: right;
-	top: 2px;
-	left: 650px;
+.title{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 25px;
+
 	
 }
-
-.text_padding_interval{
-	padding-right: 150px;
+.subtitle{
+	margin-right: 100px;
 }
 
-table{
-border-spacing: 0 20px;
+#detail_contents{
+	margin-top: 30px;
+	margin-left: 145px;
+	
 }
 
-.top_button{
-	background-color: #5E5E5E;
-	color: white;
-	margin-right: 70px;
-	margin-left: 10px;
-	margin-top: 5px;
+#detail_content{
+	width: 400px;
+	height: 300x;
+	resize: none;
+	border-radius: 5px;
+	float: left;
+	margin-right: 80px;
 }
 
 
 #wish{
-	float: left;
+	display: inline-block;
+	
 }
 
-.middle_button, .bottom_button{
-	background-color: #E0E0E0;
-	color: black;
-	margin-right: 70px;
-	padding: 5px;
+#report{
+	margin-top: 50px;
 }
 
-#middle, #bottom{
-	margin-top: 70px;
-	margin-left: 20px;
+#reportButton{
+	background-color: #EC4444;
+	color: #F9FCFF;
 }
+
+.top_button{
+	border-radius: 5px;
+	padding: 7px 12px 7px 12px;
+	margin-left: 5px;
+}
+
+#wish_img{
+	margin-left: 60px;
+	margin-top: 3px;
+	
+}
+
+.middle_button{
+	margin: 0 auto; 
+	border-radius: 5px;
+	
+}
+
+#middle2{
+	margin: 0 auto; 
+}
+
+#addOrDeleteWish_button{
+	background-color: #EC8890;
+	color: #F9FCFF;
+}
+
+
+#inquiry_button{
+	height: 56px;
+	width: 80px;
+	position: relative;
+	top: 20px;
+	margin-left: 0px;
+	left: 60px;
+	background-color: #1E2426;
+	color: #F9FCFF;
+}
+
+#apply_button{
+	position: relative;
+	top: 20px;
+	width: 770px;
+	height: 56px;
+	background-color: rgb(0, 117, 239);
+	color: #F9FCFF;
+	font-weight: bold;
+	right: 20px;
+	margin-right: 0px;
+	font-size: 20px;
+	left: 35px;
+	
+	
+}
+
+.bottom_button{
+	margin: 0 auto; 
+	margin-bottom: 10px;
+	padding:7px 12px 7px 12px;
+	border-radius: 5px;
+	position: relative;
+	border: none;
+	bottom: 30px;
+	left: 47px;
+	background-color: gray;
+	color: #F9FCFF;
+}
+
+#delete_button{
+	margin-left: 95px;
+}
+
 
 .top_button:hover, .middle_button:hover, .bottom_button:hover {
 	cursor: pointer;
 }
+
+.area{
+/* 	border-top: 3px solid rgb(240,240,240); */
+	border-bottom: 1px solid rgb(240,240,240);
+}
+
+#preArea{
+	width: 768px;
+	height: 1080px;
+	margin: 0 auto;  
+	
+}
+
+pre{    
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow: auto;    
+    font-family: inherit;
+    
+    
+}
+
+#bottom{
+	position:relative;
+	top: 30px;
+	margin: 0 auto;
+}
+
+h4{
+	margin-bottom: 20px;
+	position: relative;
+	left: 50px;
+}
+
+.button{
+	border: none;
+}
+
+#apply{
+	display: flex;
+  	position: fixed;
+  	background-color: #FFFFFF; /*임의색상*/
+  	left: 0;
+  	right: 0;
+  	bottom: 0;
+  	height: 6rem;
+  	z-index: 1;
+}
+
+#heart{
+	position:relative;
+	top: 15px; 
+}
+
+#wish_img{
+	position:relative;
+	top: 10px; 
+}
+
+#table {
+	height: 450px;
+	table-layout: fixed;
+}
+
+#table tr:nth-child(9){
+	height: 38px;
+}
+
+
+
+
+

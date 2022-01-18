@@ -9,21 +9,21 @@
 			// 다른 카테고리거나 카테고리를 선택안하면 소분류를 없애기 위해 class="sub"를 줌
 			if($(this).val() == 1){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option value='0' class='sub'>선택하세요 </option>")[0]);
+				subNoSelect.appendChild($("<option value='0' class='sub'>소분류 선택</option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='1' class='sub'>등산 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='2' class='sub'>차/오토바이 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='3' class='sub'>캠핑 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='4' class='sub'>여행 </option>")[0]);
 			}else if($(this).val() == 2){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>선택하세요 </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>소분류 선택</option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='13' class='sub'>축구 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='14' class='sub'>농구 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='15' class='sub'>풋살 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='16' class='sub'>수영 </option>")[0]);
 			}else if($(this).val() == 3){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>선택하세요 </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>소분류 선택</option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='21' class='sub'>요리 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='22' class='sub'>음료 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='23' class='sub'>디저트 </option>")[0]);
@@ -31,7 +31,7 @@
 				
 			}else if($(this).val() == 4){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>선택하세요 </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>소분류 선택</option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='8' class='sub'>가죽 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='9' class='sub'>도자기 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='10' class='sub'>목공 </option>")[0]);
@@ -40,14 +40,14 @@
 				
 			}else if($(this).val() == 5){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>선택하세요 </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>소분류 선택</option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='5' class='sub'>헬스 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='6' class='sub'>요가 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='7' class='sub'>필라테스 </option>")[0]);
 				
 			}else if($(this).val() == 6){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option name='sub_no' value='17' class='sub'>영어 </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='17' class='sub'>소분류 선택</option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='18' class='sub'>외국어 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='19' class='sub'>컴퓨터 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='20' class='sub'>국가고시/공무원 </option>")[0]);
@@ -57,7 +57,7 @@
 				subNoSelect.appendChild($("<option name='sub_no' value='25' class='sub'>기타 추가 해야합니다. </option>")[0]);
 			}else{
 				$(".sub").remove();
-				$('input[name=sub_no]').val("선택하세요");
+				$('input[name=sub_no]').val("소분류 선택");
 			}
 
 		// 대분류 값 넘기기
@@ -94,9 +94,9 @@
 
 			if($('input[name=c_name]').val() == ""){
 				alert("모임명을 입력해주세요");
-			}else if($('input[name=major_no]').val() == "" || $('input[name=major_no]').val() == "선택하세요"){
+			}else if($('input[name=major_no]').val() == "" || $('input[name=major_no]').val() == "분야 선택"){
 				alert("분야를 선택하세요");
-			}else if($('input[name=sub_no]').val() == "" || $('input[name=sub_no]').val() == "선택하세요" || $('input[name=sub_no]').val() == 0){
+			}else if($('input[name=sub_no]').val() == "" || $('input[name=sub_no]').val() == "소분류 선택" || $('input[name=sub_no]').val() == 0){
 				alert("소분류를 선택하세요");
 			}else if($('input[name=c_loc]').val() == "" || $('input[name=c_loc]').val() == "선택하세요"){
 				alert("활동지역을 선택하세요");

@@ -6,7 +6,7 @@ public interface MyInfoDaoInter {
 	public MyInfoDto selectOne(String id);
 	
 	// 정보 수정하기 (modify)
-	public void modify(String mem_id);
+	public void modify(MyInfoDto dto);
 	
 	// 회원 탈퇴하기 (delete)
 	public void deleteOne(String id);

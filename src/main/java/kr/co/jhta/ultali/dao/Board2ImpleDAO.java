@@ -81,19 +81,16 @@ public class Board2ImpleDAO implements Board2DAO{
 	@Override
 	public void insertWish(WishDTO wdto) {
 		ss.insert("kr.co.jhta.wish.insertWish", wdto);
-		
 	}
 
 	@Override
 	public void deleteWish(WishDTO wdto) {
 		ss.delete("kr.co.jhta.wish.deleteWish", wdto);
-		
 	}
 
 	@Override
 	public void insertClubInquiry(ClubInquiryDTO cidto) {
 		ss.insert("kr.co.jhta.ClubInquiry.insertClubInquiry", cidto);
-		
 	}
 
 	@Override
@@ -102,8 +99,8 @@ public class Board2ImpleDAO implements Board2DAO{
 	}
 
 	@Override
-	public int countInquiry() {
-		return ss.selectOne("kr.co.jhta.ClubInquiryAnswer.countInquiry");
+	public int countInquiry(int c_no) {
+		return ss.selectOne("kr.co.jhta.ClubInquiryAnswer.countInquiry", c_no);
 	}
 
 	@Override
@@ -114,7 +111,6 @@ public class Board2ImpleDAO implements Board2DAO{
 	@Override
 	public void insertAnswer(ClubInquiryAnswerDTO ciadto) {
 		ss.insert("kr.co.jhta.ClubInquiryAnswer.insertAnswer", ciadto);
-		
 	}
 
 	@Override
@@ -127,8 +123,30 @@ public class Board2ImpleDAO implements Board2DAO{
 		return ss.selectOne("kr.co.jhta.ClubInquiryAnswer.getOneAnswer", c_inq_no);
 	}
 
-
+	//헤더 search 메서드
+	@Override
+	public List<ClubDTO> searchClub(String word) {
+		SearchWord sw = new SearchWord(word);
+		return ss.selectList("kr.co.jhta.boardDetailMapper.searchClub", sw);
+	}
 	
+	@Override
+	public void increaseHits(int c_no) {
+		ss.update("kr.co.jhta.boardDetailMapper.increaseHits", c_no);		
+	}
+
+	//search count
+	@Override
+	public int countSearchClub(String word) {
+		SearchWord sw = new SearchWord(word);
+		return ss.selectOne("kr.co.jhta.boardDetailMapper.countSearchClub", sw);
+	}
+
+	//hits club
+	@Override
+	public List<ClubDTO> hitsClub() {
+		return ss.selectList("kr.co.jhta.boardDetailMapper.hitsClub");
+	}
 
 
 }

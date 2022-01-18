@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 h1 {
   margin: 0 20%;
 }
@@ -28,19 +30,21 @@ div.container menu a {
 
 div.container div.item2 {
   width: 600px;
-  background-color: yellow;
   position: relative;
 }
 
 div.container div.item2 table {
-  background-color: green;
   text-align: left;
-  width: 100%;
   margin: 90px 50px;
+  width: 800px;
 }
 
 div.container div.item2 th, div.container div.item2 td {
-  background-color: red;
+  width: 140px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   padding: 10px 20px;
 }
 
@@ -48,5 +52,28 @@ div.container div.item2 div.button {
   position: absolute;
   bottom: 0;
   right: 30%;
+  width: 500px;
+  height: 10px;
+  text-align: right;
+}
+div.container div.item2 div.button div{
+	display: inline-block;
+}
+div.container div.item2 div.button div a {
+  /* text-decoration: none;
+  padding: 0 15px;
+  border: 1px solid black;
+  border-radius: 10px; */
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  border-radius: 20px;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  padding: 10px 20px 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: lightgray;
 }
 /*# sourceMappingURL=myInfo.css.map */

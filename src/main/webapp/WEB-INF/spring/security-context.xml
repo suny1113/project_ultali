@@ -17,12 +17,25 @@
 
 <security:http auto-config="true" use-expressions="true">
 	<!-- ROLE_USER 권한이 있는 사람만 이 url로 접근 가능 -->
-<!-- 	<security:intercept-url pattern="/login/find" access="hasRole('ROLE_USER')"/>
- -->	
+ 	<!-- <security:intercept-url pattern="/login/find" access="hasRole('ROLE_USER')"/> -->
+ 	<security:intercept-url pattern="/help/noticeWrite" access="hasRole('ROLE_ADMIN')"/>
+ 	<security:intercept-url pattern="/help/noticeModify" access="hasRole('ROLE_ADMIN')"/>
+	
+ 	<security:intercept-url pattern="/myPage/*" access="hasRole('ROLE_USER')"/>
+	<security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
 	<security:csrf disabled="true"/>
 
 	<!--  이경로로 매핑받아줘서 로그인 로직 처리하기 -->
-	<security:form-login login-page="/login/login" />
+	<security:form-login login-page="/login/login"
+						 username-parameter="mem_id"
+						 password-parameter="mem_pw"/>
+						 
+	<security:logout logout-url="/logout"
+					 logout-success-url="/"
+					 invalidate-session="true"
+					 delete-cookies="JSESSIONID, remember-me"/>
+					 
+	<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
 </security:http>
 
 <security:authentication-manager>

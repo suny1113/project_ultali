@@ -1,6 +1,7 @@
 package kr.co.jhta.ultali.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.jhta.ultali.dao.LoginDAO;
-import kr.co.jhta.ultali.dto.MemberDTO;
 import kr.co.jhta.ultali.service.FindIdResult;
 import kr.co.jhta.ultali.service.LoginMessageService;
 import kr.co.jhta.ultali.service.LoginService;
@@ -23,9 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/login")
 public class LoginController {
 	
-//	pull request 테스트용으로 수정함
-	
-	// pull request 두번째 테스트
 
 	@Autowired
 	LoginService service;
@@ -37,93 +33,102 @@ public class LoginController {
 	FindIdResult result;
 	
 	
+	// 스프링 시큐리티 커스텀 로그인 매핑
 	@GetMapping("/login")
-	public String login(String error, String logout, Model model) {
+	public String login(String error, String logout,
+						Model model){
+
 		if(error != null) {
-			model.addAttribute("error", "로그인오류!");
-			log.info("error : "+error);
+			model.addAttribute("msg", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		}else if(logout!=null) {
-			model.addAttribute("logout", "로그아웃됨");
-			
+			model.addAttribute("logout", "로그아웃");	
 		}
+
+		
 		return "/login/login";
 	}
 	
-	@PostMapping("/login")
-	public String loginOk() {
-		
-		return "redirect:/";
-	}
+	
 	
 	@RequestMapping("/find")
 	public String find() {
-		return "/login/find_id_password";
+		return "/login/find_id";
 	}
 	
-	@RequestMapping("/findId")
-	public String findId(@RequestParam("phone1") String phone1,
-						 @RequestParam("phone2") String phone2,
-						 @RequestParam("phone3") String phone3,
-						 @RequestParam("emailId") String emailId,
-						 @RequestParam("url") String url,
-						 Model model){
+	@PostMapping("/checkAuthNumId")
+	@ResponseBody
+	public String checkAuthNumId(@RequestParam Map<String, String> map ){
 		
-		String phoneNum = phone1+phone2+phone3;
-		String email = emailId+"@"+url;
-		log.info("phoneNum : "+phoneNum);
-		log.info("eamil : "+email);
+		String randomNum = String.valueOf((int)(Math.random()*8999)+1000);	
+		String text = "";
+		String id = service.findUserId(map);
 		
-		MemberDTO dto = new MemberDTO();
-		dto.setMem_phone(phoneNum);
-		dto.setMem_email(email);
+		if(id != null) {
+			messageService.sendMessage(map.get("mem_phone"), randomNum);
+			text = randomNum;
+		}else {
+			text = "error";
+		}
+		return text;
+	}
+	
+	@PostMapping("/checkAuthNumPw")
+	@ResponseBody
+	public String checkAuthNumPw(@RequestParam Map<String, String> map ){
 		
-		String id = result.idResult(service.findUserId(dto));
-		log.info("id : "+id);
+		String randomNum = String.valueOf((int)(Math.random()*8999)+1000);	
+		String text = "";
+		String id = service.findUserId(map);
+		
+		if(id != null && id.equals(map.get("mem_id"))) {
+			messageService.sendMessage(map.get("mem_phone"), randomNum);
+			text = randomNum;
+		}else {
+			text = "error";
+		}
+		return text;
+	}
+	
+	
+	
+	@PostMapping("/findIdResult")
+	public String findIdResult(@RequestParam("mem_name") String mem_name,
+							   @RequestParam("mem_phone") String mem_phone,
+							   Model model) {
 
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mem_name", mem_name);
+		map.put("mem_phone", mem_phone);
+		
+		String id = result.idResult(service.findUserId(map));
+		log.info("id : "+id);
+		
 		model.addAttribute("id", id);
 		
 		return "/login/findIdResult";
-
-	}
-	
-	@RequestMapping("/getMessage")
-	@ResponseBody
-	public String getMessage(@RequestParam("phoneNum") String phoneNum) {
-		String randomNum = String.valueOf((int)(Math.random()*8999)+1000);
-		log.info(phoneNum);
-		// ��ȿ���˻�
-		// �Է��� ��ȣ�� db�� �����ϴ��� ���ϴ��� �˻�
-		String data = "";
-		
-		if(service.findPhoneNumber(phoneNum) != null) {
-			messageService.sendMessage(phoneNum, randomNum);
-			data = randomNum;
-		}else {
-			data = "error";
-		}
-		return data;
-	}
-	
-	@RequestMapping("/checkNum")
-	public void checkNumber() {
-		
 	}
 	
 	
 	@RequestMapping("/findPassword")
-	public String findPwd(@RequestParam("id") String id, Model model) {
-		model.addAttribute("id", id);
+	public String findPwd() {
+		return "/login/find_password";
+	}
+	
+	@PostMapping("/findPasswordResult")
+	public String findPwResult(@RequestParam("mem_id") String mem_id,
+							   Model model) {
+		model.addAttribute("mem_id", mem_id);
+		
 		return "/login/findPasswordResult";
 	}
 	
 	@PostMapping("/changePw")
-	public String changePw(@RequestParam("id") String id,
-						   @RequestParam("pw") String password) {
-		log.info("id : "+id);
-		log.info("pwd : "+password);
+	public String changePw(@RequestParam("mem_id") String mem_id,
+						   @RequestParam("mem_pw") String mem_pw) {
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("mem_id", id);
-		map.put("mem_pw", password);
+		map.put("mem_id", mem_id);
+		map.put("mem_pw", mem_pw);
 		service.modfiyPassword(map);
 		
 		return "redirect:/";

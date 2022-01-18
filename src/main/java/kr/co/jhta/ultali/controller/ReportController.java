@@ -42,6 +42,7 @@ public class ReportController {
 	
 	@PostMapping("/doReport")
 	public String doReportPost(@ModelAttribute("reportDto") ReportDTO reportDto) {
+		System.out.println("reportDtoaaaaaaaa:"+reportDto);
 		service.insertReportServce(reportDto);
 		return "/clubBoard/doReportClose";
 	}

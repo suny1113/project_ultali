@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+	#inquire-detail-table {
+		position: relative;
+		left: 50px;
+		top: 30px;
+		width: 768px;
+		text-align: center;
+		table-layout: fixed;
+		border-collapse: collapse;
+	}
+	
+	#inquire-detail-table tr:nth-child(2) {
+		border-top: 1px solid rgb(240,240,240);
+		border-bottom: 1px solid rgb(240,240,240);
+	}
+	
+	#inquire-detail-table td {
+		padding: 8px 0;
+		text-align: center;
+	}
+	
+	#inquire-detail-table td:nth-child(1) {
+		width: 70px;
+		color: rgb(120,120,120);
+		font-weight: bold;
+	}
+	
+	.inform {
+		color: rgba(120,120,120,0.5);
+		font-size: 12px;
+	}
+	
+	textarea {
+		resize: none;
+		border-radius: 8px;
+		padding: 10px;
+		font-size: 15px;
+		margin: 10px 0px;
+		overflow-y: hidden;
+	}
+	
+	.textfield {
+		position: relative;
+		left: 60px;
+		top: 50px;
+	}
+	
+	#inquire-detail-event {
+		position: absolute;
+		left: -500px;
+		top: -1000px;
+	}
+	
+	#inquire-answer-write-event {
+		position: absolute;
+		left: -500px;
+		top: -1000px;
+	}
+	
+	#inquire-answer-event {
+		position: absolute;
+		left: -500px;
+		top: -1000px;
+	}
+	
+	.textfield-button {
+		text-align: right;
+	}
+	
+	.button {
+		font-size: 15px;
+		font-weight: bold;
+		padding: 10px;
+		border-radius: 5px;
+		border:none;
+		background: #B9D1DB;
+		color: white;
+		margin: 5px;
+		position: relative;
+		left: -35px;
+	}
+	
+	.button:hover {
+		cursor: pointer;
+	}

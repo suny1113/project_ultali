@@ -15,7 +15,7 @@
   		VALUES (C_NO_SEQ.nextval, #{major_no}, #{sub_no}, #{mem_id}, #{c_name}, #{c_loc}, #{c_place}, #{c_date}, #{c_time}, #{c_price}, #{c_count}, #{c_image}, #{c_detail}, #{c_hits})
   	</insert>
   	
-  	  <select id="getAllClub" resultType="cdto">
+  	 <select id="getAllClub" resultType="cdto">
   		SELECT c_no, major_no, sub_no, mem_id, c_name, c_loc, c_place, c_date, c_time, c_price, c_count, c_image, c_detail, c_hits
 		FROM club
   	</select>
@@ -33,8 +33,7 @@
   	
 	<delete id="deleteClub" parameterType="int">
 		DELETE FROM club
-		WHERE
-		c_no = #{c_no}
+		WHERE c_no = #{c_no}
 	</delete>
 	
 	<update id="modifyClub" parameterType="cdto">
@@ -43,5 +42,34 @@
 		WHERE c_no = #{c_no}
 	</update>
 
+	<!-- search에서 검색결과 select -->
+	<select id="searchClub" parameterType="String" resultType="cdto">
+  		SELECT c_no, mem_id, c_name, c_loc, c_place, c_date, c_image
+		FROM club
+		WHERE c_name LIKE '%' || #{word} || '%' OR c_loc LIKE '%' || #{word} || '%' OR c_place LIKE '%' || #{word} || '%'
+		ORDER BY c_no
+  	</select>
+    
+	<update id="increaseHits" parameterType="int">
+		UPDATE club
+		SET c_hits = c_hits+1
+		WHERE c_no = #{c_no}
+	</update>
 	
+	<!-- 검색결과 갯수 반환 -->
+	<select id="countSearchClub" parameterType="String" resultType="int">
+  		SELECT count(c_no) cnt
+		FROM club
+		WHERE c_name LIKE '%' || #{word} || '%' OR c_loc LIKE '%' || #{word} || '%' OR c_place LIKE '%' || #{word} || '%'
+  	</select>
+  	
+  	<!-- hits별 내림차순 -->
+  	<select id="hitsClub" resultType="cdto">
+  		SELECT c_name, c_loc, c_image, c_hits, c_no
+ 		FROM   (SELECT c_name, c_loc, c_image, c_hits, c_no
+				FROM club
+				ORDER BY c_hits desc) 
+		WHERE ROWNUM &lt;= 3
+  	</select>
+  	
   </mapper>

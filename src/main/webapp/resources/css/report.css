@@ -20,6 +20,8 @@ textarea{
 	width: 200px;
 	height: 30px;
 	font-weight: bold;
+	padding: 5px 2px 5px 2px;
+	border-radius: 5px;
 
 }
 .report_button:hover{
@@ -27,7 +29,9 @@ textarea{
 }
 
 #submit{
-	margin: 20px 184px 0px 50px
+	margin: 20px 184px 0px 50px;
+	background-color: #EC4444;
+	color: #F9FCFF;
 }
 
 #textarea{

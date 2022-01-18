@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.notice-body-container {
+		width: 1080px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 200px 800px;
+	}
+	
+.notice-body-left {
+		border-right: 1px solid rgb(240,240,240);
+		height: 600px;
+	}
+	
+#notice-table {
+		width: 760px;
+		text-align: center;
+		margin: 0 auto;
+		position: relative;
+		left: 50px;
+		top: 30px;
+		border-collapse: collapse;
+		table-layout: fixed;
+	}
+	
+#noticeDetail-table {
+		width: 760px;
+		text-align: center;
+		margin: 0 auto;
+		position: relative;
+		left: 50px;
+		top: 30px;
+		border-collapse: collapse;
+		table-layout: fixed;
+	}	

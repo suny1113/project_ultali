@@ -8,11 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/adminReport.css">
-<style>
-	#inquire-table {
-		width: 768px;
-	}
-</style>
+<link rel="stylesheet" href="${path}/resources/css/manageInquire.css">
 </head>
 <body>
 
@@ -29,18 +25,60 @@
 			<div class="report-body-right">
 				<h1>1:1 문의 관리</h1>
 				<table id="inquire-table">
+				
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
 						<th>문의인</th>
+						<th>작성일</th>
 						<th>답변상태</th>
 					</tr>
-					<c:forEach var="dto" items="${dto}">
+					<!--  전체항목 불러오기 -->
+					<c:forEach var="dto" items="${viewAll}">
 						<tr>
-						
+							<td>${dto.p_inq_no}</td>
+							<td><a href="manageInquireDetail?p_inq_no=${dto.p_inq_no}">${dto.p_inq_title}</a></td>
+							<td>${dto.mem_id}</td>
+							<td>${dto.regdate}</td>
+							<c:if test="${dto.p_inq_status == 1}">
+								<td>답변완료</td>
+							</c:if>
+							<c:if test="${dto.p_inq_status == 0}">
+								<td>답변확인</td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</table>
+				
+				<div class="paging-div">
+					<table class="paging-num">
+						<tr>
+							<td>
+								<c:if test="${paging.startPage != 1 }">
+										<a href="Inquire?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+								</c:if>
+							</td>
+							<td>
+								<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+									<c:choose>
+										<c:when test="${p == paging.nowPage }">
+												<b class="num">${p }</b>
+										</c:when>
+										<c:when test="${p != paging.nowPage }">
+												<a href="Inquire?nowPage=${p }&cntPerPage=${paging.cntPerPage}" class="num">${p }</a>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+							</td>
+							<td>
+								<c:if test="${paging.endPage != paging.lastPage}">
+									<a href="Inquire?nowPage=${paging.endPage + 1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+								</c:if>
+							</td>
+						</tr>
+					</table>
+				</div>
+					
 			</div>
 		</div>
 
@@ -65,6 +103,6 @@
 <%-- 		<jsp:include page="../home/footer.jsp" /> --%>
 		
 <%-- 	</c:if> --%>
-	
+
 </body>
 </html>

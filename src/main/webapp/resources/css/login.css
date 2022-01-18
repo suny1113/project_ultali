@@ -1,0 +1,112 @@
+@charset "UTF-8";
+#header{
+		width : 100%;
+		height : 200px;
+		background: red;
+	}
+	#login-top{
+		width : 200px;
+		height: 130px;
+		margin: 0 auto;
+	}
+	
+	#login-login{
+		font-size: 50px;
+		font-weight: bold;
+		margin-left: 23px;
+	}
+
+	#container{
+		width : 700px;
+		height : 600px;
+		margin : 0 auto;
+
+	}
+	#login{
+		width : 500px;
+		height : 230px;
+		margin : 0 auto;
+	}
+	.login{
+		width : 350px;
+		height : 40px;
+		margin-left: 70px;
+		margin-bottom: 20px;
+		border: 1px solid #C6C9CC;
+		border-radius: 3px;
+		font-size: 20px;
+	}
+	
+	#submit-btn{
+		width: 350px;
+		height : 40px;
+		margin-top : 20px;
+		margin-left: 70px;
+		background: skyblue;
+		font-size: 20px;
+		color: white;
+		border: none;
+		cursor: pointer;
+	}
+	#login_sub{
+		width : 550px;
+		height : 50px;
+		margin : 0 auto;
+		border-bottom: 2px solid #F0F0F0;
+	}
+	#find_register{
+		float: right;
+		margin : 0;
+	}
+
+	li{
+		float: right;
+		list-style: none;
+	}
+	#find::after{
+		content: " | ";
+		
+	}
+	a{
+		text-decoration: none;
+	}
+	
+
+	#saveId{
+		display: inline-block;
+		
+	}
+
+	#checkbox{
+		display: none;
+	}
+
+	#checkbox + #checkbox-label{
+		cursor: pointer;
+	}
+
+	#checkbox + #checkbox-label:before{
+		content: "";
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border: 1px solid #cbcbcb;
+		vertical-align: middle;
+	}
+
+	#checkbox:checked + #checkbox-label::before{
+		content:"\f00c";
+		font-family: "Font Awesome 5 free";
+		font-weight: 900;
+		color: #fff;
+		background: #000;
+		border-color: #000;
+		font-size: 15px;
+		text-align: center;
+	}
+	.logo-container {
+		width: 100%;
+		height: 150px;
+		border-bottom: 1px solid rgb(240,240,240);
+		text-align: center;
+	}

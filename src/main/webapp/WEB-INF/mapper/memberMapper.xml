@@ -14,4 +14,9 @@
 	VALUES (#{mem_id} , #{mem_name} , 2 , #{mem_phone} , #{mem_pw} , #{mem_email})
 </insert>
 
+<!-- 아이디 중복검사 -->
+<select id="checkOverId" parameterType="String" resultType="int">
+	select count(*) from member where mem_id = #{mem_id}
+</select>
+
 </mapper>

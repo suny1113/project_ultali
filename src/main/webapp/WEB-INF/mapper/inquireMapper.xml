@@ -9,14 +9,47 @@
 		values (p_inq_no_seq.nextval,#{p_inq_title},#{mem_id},#{p_inq_detail},0)
 	</insert>
 	
-	<select id="selectList" resultType="InquireDto" parameterType="String">
-		select p_inq_no, p_inq_title, mem_id,p_inq_status from personal_inquiry
-		where mem_id = #{mem_id} order by p_inq_no DESC
+	<select id="selectList" resultType="InquireDto" parameterType="idStartEnd">
+		select rn ,p_inq_no, p_inq_title, mem_id,p_inq_status from 
+		(select rn ,p_inq_no, p_inq_title, mem_id,p_inq_status from 
+		(select rownum rn ,p_inq_no, p_inq_title, mem_id,p_inq_status from 
+		(select p_inq_no, p_inq_title, mem_id,p_inq_status from personal_inquiry where mem_id = #{id} order by p_inq_no desc)) 
+		where rn &gt;=#{startNo}) where rn &lt;= #{endNo}
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="InquireDto">
-		select p_inq_no, p_inq_title, mem_id, p_inq_detail,p_inq_answer
+		select p_inq_no, p_inq_title, mem_id, p_inq_detail,p_inq_answer, to_char(regdate, 'YYYY/MM/DD') regdate
 		from personal_inquiry where p_inq_no = #{p_inq_no}
+	</select>
+	
+	<select id="totalInquireCount" resultType="int" parameterType="String">
+		select count(*) from personal_inquiry where mem_id = #{mem_id}
+	</select>
+	
+	<!-- 아래서부턴 관리자 쿼리문 -->
+	<update id="adminUpdateInquire" parameterType="InquireDto">
+		UPDATE personal_inquiry
+		SET p_inq_answer = #{p_inq_answer}, p_inq_status = 1
+		WHERE p_inq_no = #{p_inq_no}
+	</update>
+	
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM personal_inquiry
+	</select>
+	
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectBoard" resultType="InquireDto">
+		SELECT p_inq_no, p_inq_title, mem_id, p_inq_detail, p_inq_answer, p_inq_status, to_char(regdate, 'YYYY/MM/DD')regdate
+			FROM (
+				SELECT ROWNUM RN, A.* 
+					FROM (
+							SELECT * 
+							FROM personal_inquiry 
+							ORDER BY p_inq_no DESC 
+							) A
+					)
+		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 	
 </mapper>

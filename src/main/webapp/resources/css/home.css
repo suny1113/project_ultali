@@ -3,7 +3,7 @@
 * {
 		margin: 0;
 		padding: 0;
-		font-family: "나눔고딕";
+		font-family: "맑은 고딕";
 	}
 
 	header {
@@ -39,6 +39,8 @@
 	.nav-a {
 		margin: 0px 15px;
 		font-size: 11px;
+		font-weight: bold;
+		color: grey;
 	}
 	
 	.logo-search {
@@ -84,13 +86,17 @@
 	}
 	
 	.category h1 {
-		margin: 30px 30px 15px 30px;
+		margin: 30px;
+		padding: 10px;
 		font-size: 20px;
+		border-bottom: 1px solid rgb(240,240,240);
+		width: 650px;
 	}
 	
 	.category {
 		margin: 0 auto;
 		width: 768px;
+		
 	}
 	
 	.category-grid {
@@ -160,7 +166,7 @@
 	
 	.footer {
 		position: relative;
-		top: 40px;
+		top: 80px;
 		left: 60px;
 	}
 	
@@ -168,8 +174,100 @@
 		margin: 20px 0px;
 	}
 	
+	.banner {
+		width: 1080px;
+		height: 253px;
+		margin: 20px 0px;
+	}
+	
+	.small-banner {
+		margin: 0 auto;
+		width: 710px;
+		margin-top: 40px;
+		margin-bottom: 30px;
+	}
+	
+	.small-banner img {
+		width: 670px;
+	}
+	
+	.recomd {
+		width: 670px;
+		margin: 0 auto;
+		position: relative;
+		left: -20px;
+	}
+	
+	.recomd-title {
+		border-bottom: 1px solid rgb(240,240,240);
+		margin-bottom: 20px;
+	}
+	
+	.recomd h1 {
+		display: inline-block;
+		font-size: 20px;
+		margin-bottom: 10px;
+		position: relative;
+		left: 5px;
+	}
+	
+	.recomd h1:nth-child(1) {
+		color: #FF6773;
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+/* 	.hits-rank h2 { */
+/* 		position: relative; */
+/* 		left: 20px; */
+/* 		font-size: 20px; */
+/* 		color: black; */
+/* 		margin-bottom: 5px; */
+/* 	} */
+	
+	.hits-rank table {
+		display: inline-block;
+		width: 200px;
+		table-layout: fixed;
+		text-align: center;
+		margin: 0 5px;
+		position: relative;
+		left: 10px;
+	}
+	
+	.hits-rank th {
+		padding: 2px 0px;
+	}
+	
+	.th-title {
+		width: 80px;
+		color: grey;
+		text-align: left;
+		font-size: 13px;
+	}
+	
+	.hits-rank img{
+		width: 200px;
+		height: 160px;
+		border-radius: 10px
+	}
+	
+	.hits-rank h2 {
+		width: 200px;
+		overflow:hidden;
+		white-space : nowrap;
+		text-overflow: ellipsis;
+		font-size: 15px;
+	}
+	
+	.hits-rank p {
+		font-weight: bold;
+	}
+	
+	
 	@media (max-width: 1920px) {
     .body-container {
         width: 1080px;
     	}
 	}
+	

@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+	/* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 5em;
+		font-family: arial,helvetica;
+		color: #fff;
+		margin:0;
+	}
+	
+	.intro p{
+		color: #fff;
+	}
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+	.section{
+		text-align:center;
+	}
+
+	/* Overwriting styles for control arrows for slides
+	* --------------------------------------- */
+	.controlArrow.prev {
+		left: 50px;
+	}
+	.controlArrow.next{
+		right: 50px;
+	}
+
+
+	/* Bottom menu
+	* --------------------------------------- */
+	#infoMenu li a {
+		color: #fff;
+	}
+	
+	#section0 {
+		background: url("../img/main_cooking.png") no-repeat center/cover;
+	}
+	
+	.logo {
+		margin: 0 auto;
+		position: relative;
+		top: -300px;
+	}
+	
+	.typing {
+		height: 130px;
+		position: relative;
+		top: -100px;
+	}
+	
+	#slide1 {
+		background: url("../img/health.png") no-repeat center/cover;
+	}
+	
+	#slide2 {
+		background: url("../img/health2.png") no-repeat center/cover;
+	}
+	
+	#slide3 {
+		background: url("../img/mountain_tracking.png") no-repeat center/cover;
+	}
+	
+	#section1 {
+		background: url("../img/board_game.png") no-repeat center/cover;
+	}
+	
+	#section2 {
+		background: url("../img/craft.png") no-repeat center/cover;
+	}
+	
+	#section3 {
+		background: url("../img/craft.png") no-repeat center/cover;
+	}
+	
+	#section3 a {
+		font-size: 40px;
+		background: #FDD5C2;
+		color: white;
+		border-radius: 10px;
+		padding: 0px 20px 7px 20px;
+		position: relative;
+		top: 20px;
+		font-weight: bold;
+	}
+	
+	.text {
+		font-size: 50px;
+		font-weight: bold;
+		color: white;
+	}
+	
+	.blink {
+      	animation: blink 0.8s infinite;
+      	font-size: 4rem;
+     	color: white;
+    }
+    
+    .span-div {
+    	margin: 0 auto;
+    }
+
+	.span-div span {
+		font-size: 80px;
+		font-weight: bold;
+		color: white;
+	}
+	
+	.span-div span:nth-child(2) {
+		color: #FFE50C
+	}
+	
+	.grid-div {
+		width:100%;
+	}
+	
+	.grid-template {
+		display: inline-block;
+		width: 400px;
+		height: 700px;
+		border: 3px solid white;
+		border-radius: 15px;
+		margin: 0px 100px;
+		font-weight: bold;
+	}
+	
+	.grid-template h2 {
+		font-size: 70px;
+		color: #FFE50C;
+		font-weight: bold;
+		margin: 20px 0px;
+	}
+	
+	#first-grid {
+		position: relative;
+		top: -50px;
+	}
+	
+	#first-grid img {
+		width: 350px;
+		height: 230px;
+		position: relative;
+		top: 70px;
+	}
+	
+	#first-grid pre {
+		font-size: 24px;
+		color: white;
+		font-family: arial;
+		position: relative;
+		top: 50px;
+	}
+	
+	#second-grid img {
+		width: 350px;
+		height: 250px;
+		position: relative;
+		top: 20px;
+	}
+	
+	#second-grid pre {
+		font-size: 24px;
+		color: white;
+		font-family: arial;
+		position: relative;
+		top: 60px;
+	}
+	
+	#third-grid {
+		position: relative;
+		top: 40px;
+	}
+	
+	#third-grid img {
+		width: 220px;
+		height: 267px;
+	}
+	
+	#third-grid pre {
+		font-size: 24px;
+		color: white;
+		font-family: arial;
+		margin: 20px 0px;
+	}
+
+    @keyframes blink {
+      to {
+        opacity: 0;
+      }
+    }

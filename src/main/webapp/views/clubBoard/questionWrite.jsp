@@ -9,7 +9,7 @@
 <script src="${path }/resources/js/questionWrite.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>울타리 :: 취미모임의 시작</title>
 </head>
 <body>
 	<div>
@@ -22,7 +22,7 @@
 				<table>
 					<tr>
 						<td><h3 id="h3">문의작성</h3></td>
-						<td><label><input type="checkbox" name="secret" id="secret">비밀글</label></td>
+						<td id="se"><label><input type="checkbox" name="secret" id="secret">비밀글</label></td>
 					</tr>
 	
 					<tr>
@@ -32,7 +32,7 @@
 			</div>
 			<div>
 				<input type="button" value="등록하기" id="submit" class="button"/>
-				<input type="button" value="취소" id="cancel" class="button"/>
+				<input type="button" value="취소하기" id="cancel" class="button"  onClick="window.close()"/>
 	
 				<input type="hidden" name="c_inq_no" value="0" />
 				<input type="hidden" name="c_no" value="${c_no}" />

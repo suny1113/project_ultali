@@ -57,7 +57,7 @@ public class BoardServiceImple implements BoardService{
 		int imgDedup = dao.imgFileNameDedup();
 		
 		// aws에 올릴때 경로 바꿔야함
-		String filePath = "D:\\dev\\project_ultali\\project_ultali\\src\\main\\webapp\\resources\\img";
+		String filePath = "D:\\dev\\final\\webfinal\\src\\main\\webapp\\resources\\img";
 		
 //		System.out.println("파일이 업로드되는 진짜 경로 : " + filePath);
 		
@@ -109,11 +109,11 @@ public class BoardServiceImple implements BoardService{
 
 	@Override
 	public void deleteClubService(int c_no) {
-		
+		dao.deleteClub(c_no);
 	}
 
 	@Override
-	public ModelAndView updateClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result) {
+	public ModelAndView updateClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result, int c_no) {
 		ModelAndView mav = new ModelAndView();
 		Model model;
 
@@ -121,9 +121,7 @@ public class BoardServiceImple implements BoardService{
 
 		int imgDedup = dao.imgFileNameDedup();
 		
-		String filePath = "D:\\dev\\project_ultali\\project_ultali\\src\\main\\webapp\\resources\\img";
-		
-
+		String filePath = "D:\\dev\\final\\webfinal\\src\\main\\webapp\\resources\\img";
 		
 		MultipartFile mfile = file.getFile();
 
@@ -145,7 +143,7 @@ public class BoardServiceImple implements BoardService{
 		
 		mav.addObject("fileName", f.getName());
 		mav.addObject("filePath", "../data/" + f.getName());
-		mav.setViewName("redirect:/clubBoard/clubBoardList");
+		mav.setViewName("redirect:/clubBoard/clubBoardDetail?c_no="+c_no);
 		
 		String imgPath = "/resources/img/" + imgDedup + mfile.getOriginalFilename();
 		
@@ -193,8 +191,8 @@ public class BoardServiceImple implements BoardService{
 	}
 
 	@Override
-	public int countInquiryService() {
-		return dao.countInquiry();
+	public int countInquiryService(int c_no) {
+		return dao.countInquiry(c_no);
 	}
 
 	@Override
@@ -220,6 +218,30 @@ public class BoardServiceImple implements BoardService{
 		return dao.getOneAnswer(c_inq_no);
 	}
 
+	@Override
+	public void increaseHitsService(int c_no) {
+		dao.increaseHits(c_no);
+		
+	}
 
+
+	// 헤더 search
+	@Override
+	public List<ClubDTO> searchClub(String word) {
+		return dao.searchClub(word);
+	}
+
+	// search count
+	@Override
+	public int countSearchClub(String word) {
+		return dao.countSearchClub(word);
+	}
+
+	// hits 내림차순 리스트
+	@Override
+	public List<ClubDTO> hitsClub() {
+		return dao.hitsClub();
+	}
+	
 
 }

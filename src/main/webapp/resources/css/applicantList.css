@@ -1,1 +1,118 @@
 @charset "UTF-8";
+h1 {
+  margin: 0 20%;
+}
+
+div.container {
+  margin: 0 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+div.container menu div.item1 {
+  width: 170px;
+}
+
+div.container menu a {
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+  color: black;
+  font-size: 20px;
+}
+
+div.container div.a {
+  position: relative;
+}
+
+div.container div.a div.tablecontainer {
+  margin: 90px 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 1000px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+div.container div.a div.tablecontainer div.item2 {
+  margin-left: 10px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+div.container div.a div.tablecontainer div.item2 table {
+  table-layout: fixed;
+  padding: 10px 20px;
+  width: 450px;
+}
+
+div.container div.a div.tablecontainer div.item2 table th, div.container div.a div.tablecontainer div.item2 table td {
+  padding: 10px;
+  text-align: left;
+}
+
+div.container div.a div.tablecontainer div.item2 table th a.btn, div.container div.a div.tablecontainer div.item2 table td a.btn {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: inline-block;
+  border-radius: 20px;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  background-color: lightgray;
+  padding: 10px 20px 10px 20px;
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  margin-top: -15px;
+}
+
+div.container div.a div.tablecontainer div.item2 table tr:last-child td {
+  text-align: right;
+}
+
+div.container div.a div.tablecontainer div.item2 table tr:last-child td a {
+  margin-left: -40px;
+}
+
+div.container div.a div.tablecontainer div.paging {
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  right: 50px ;
+  	background-color: blue;
+	width: 100%;
+	height: 10px;
+}
+
+div.container div.a div.tablecontainer div.paging ul {
+  display: block;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+
+div.container div.a div.tablecontainer div.paging ul li {
+  padding: 0 10px;
+  font-size: 20px;
+  background-color: gray;
+}
+
+textarea {
+  resize: none;
+}
+/*# sourceMappingURL=applicantList.css.map *//*# sourceMappingURL=applicantList.css.map */

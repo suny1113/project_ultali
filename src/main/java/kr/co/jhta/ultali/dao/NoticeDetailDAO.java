@@ -19,47 +19,47 @@ public class NoticeDetailDAO implements NoticeDAO{
 	// 보존성을 주기 위한 setter 설정
 	
 	public void setSs(SqlSession ss) {
-		this.ss = ss;
+		this.ss = ss; 
 	}
 
 	// abstract method
 	
 	@Override
-	public List<NoticeDTO> selectAll(int startNo, int endNo) {
+	public List<NoticeDTO> selectList(String mem_id, int startNo, int endNo) {
 		StartEnd se = new StartEnd(startNo, endNo);
 		System.out.println(" ss : " + ss);
-		return ss.selectList("kr.co.jhta.ultali.selectAll", se);
+		return ss.selectList("kr.co.jhta.ultali.notice.selectList", se);
 	}
 
 
 	@Override
-	public void InsertOne(NoticeDTO dto) {
-		ss.insert("kr.co.jhta.ultali.addOne", dto);
+	public void insertOne(NoticeDTO dto) {
+		ss.insert("kr.co.jhta.ultali.notice.insertOne", dto);
 	}
 
 	@Override
 	public NoticeDTO selectOne(int n_no) {
-		return ss.selectOne("kr.co.jhta.ultali.selectOne", n_no);
+		return ss.selectOne("kr.co.jhta.ultali.notice.selectOne", n_no);
 	}
 
 	@Override
 	public void updateOne(NoticeDTO dto) {
-		ss.update("kr.co.jhta.ultali.updateOne", dto);
+		ss.update("kr.co.jhta.ultali.notice.updateOne", dto);
 	}
 
 	@Override
 	public void deleteOne(int n_no) {
-		ss.delete("kr.co.jhta.ultali.deleteOne", n_no);
+		ss.delete("kr.co.jhta.ultali.notice.deleteOne", n_no);
 	}
 
 	@Override
 	public int getTotal() {
-		return ss.selectOne("kr.co.jhta.ultali.getTotal");
+		return ss.selectOne("kr.co.jhta.ultali.notice.getTotal");
 	}
 
 	@Override
 	public void raiseHits(int n_no) {
-		ss.update("kr.co.jhta.ultali.raiseHits", n_no);
+		ss.update("kr.co.jhta.ultali.notice.raiseHits", n_no);
 	}
 
 	

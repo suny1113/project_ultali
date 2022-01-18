@@ -17,7 +17,7 @@ public interface BoardService {
 	public ModelAndView insertClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result);
 	public List<ClubDTO> selectAllClubService();
 	public void deleteClubService(int c_no);
-	public ModelAndView updateClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result);
+	public ModelAndView updateClubService(ClubDTO dto, String date, String date2, UploadFile file, BindingResult result, int c_no);
 	
 	public boolean getWishService(WishDTO dto);
 	public void insertWishService(WishDTO dto);
@@ -26,10 +26,21 @@ public interface BoardService {
 	public void insertClubInquiryService(ClubInquiryDTO cidto);
 	public List<ClubInquiryDTO> getAllClubInquiryService(int c_no);
 
-	public int countInquiryService();
+	public int countInquiryService(int c_no);
 	public List<ClubInquiryDTO> selectInquiryService(PagingDTO dto);
 	
 	public void insertAnswerService(ClubInquiryAnswerDTO ciadto);
 	public List<ClubInquiryAnswerDTO> getAnswerService(String mem_id, int c_no);
 	public ClubInquiryAnswerDTO getOneAnswerService(int c_inq_no);
+	
+	//헤더 search
+	public List<ClubDTO> searchClub(String word);
+	
+	//search count
+	public int countSearchClub(String word);
+	
+	//hits club
+	public List<ClubDTO> hitsClub();
+	
+	public void increaseHitsService(int c_no);
 }
