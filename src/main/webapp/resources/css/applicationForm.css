@@ -85,7 +85,7 @@ label {
 	margin-left: 80px;
 }
 
-input[type="button"] {
+.button {
 	width: 200px;
 	height: 40px;
 	font-size: 20px;

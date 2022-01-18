@@ -9,9 +9,13 @@
 <!-- 실행하면 resultType이 필요하다 -->
 
 <insert id="register" parameterType="rdto">
-	
-	INSERT INTO member (mem_id , mem_name , rank_no , mem_phone , mem_pw , mem_email)
+	INSERT INTO member (mem_id , mem_name , rank_no , mem_phone , mem_pw , mem_email) 
 	VALUES (#{mem_id} , #{mem_name} , 2 , #{mem_phone} , #{mem_pw} , #{mem_email})
+</insert>
+
+<insert id="addAuth" parameterType="hashmap">
+	INSERT INTO member_auth 
+	VALUES (#{mem_id} , 'ROLE_USER')
 </insert>
 
 <!-- 아이디 중복검사 -->

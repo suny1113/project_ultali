@@ -49,7 +49,7 @@
 					<div class="club">
 						<div class="img_area">
 							<a href="clubBoardDetail?c_no=${dto.c_no}">
-								<img src="${path}${dto.c_image}" alt="soccer_club${dto.c_no}_img" />
+								<img src="${dto.c_image}" alt="soccer_club${dto.c_no}_img" />
 							</a>	
 						</div>
 						<div class="text_area">

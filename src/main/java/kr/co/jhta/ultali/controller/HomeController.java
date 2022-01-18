@@ -60,7 +60,7 @@ public class HomeController {
 	
 	// 컨트롤러 별 매핑 추가
 	// 예) admin/search, help/search, ...
-	@GetMapping(value = {"search", "home/search", "admin/search"})
+	@GetMapping(value = {"search", "home/search", "admin/search", "help/search", "myPage/search", "clubBoard/search"})
 	public String search(@RequestParam("word")String word, Model model) {
 		model.addAttribute("word", word);
 		model.addAttribute("dto", boardService.searchClub(word));

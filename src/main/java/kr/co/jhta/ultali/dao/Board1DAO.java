@@ -15,6 +15,5 @@ public interface Board1DAO {
     public void apply(AppDto dto);
     public List<ClubDTO> selectTopClub(int major_no);
     public List<ClubDTO> selectClubList_top(PagingDTO dto);
-    //public List<ClubDTO> selectInquiry(PagingDTO dto);
-	
+  
 }

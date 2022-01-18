@@ -57,6 +57,13 @@ public class Board1Controller {
 	    pdto = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 	    pdto.setMajor_no(major_no);
 
+
+	    model.addAttribute("paging", pdto);
+	    model.addAttribute("viewAll", service.selectClubService(pdto));
+	    model.addAttribute("major_no", major_no);
+	    
+	    List<ClubDTO> top_list = service.selectTopClub(major_no);
+		model.addAttribute("top_list", top_list);
 	    model.addAttribute("paging", pdto);
 	    
 	    // 인기순
@@ -93,6 +100,7 @@ public class Board1Controller {
 		return "redirect:/clubBoard/clubBoardList";
 	}
 	
+
 	// 모임 신청 폼으로 
 	@GetMapping("/clubBoard/doApply")
 	public String clubApplyForm(@RequestParam("c_no") int c_no, Model model) {

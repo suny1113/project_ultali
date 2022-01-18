@@ -47,7 +47,7 @@
 		WHERE major_no = #{major_no}
 		AND ROWNUM &lt; 5
   	</select>
-  	
+
   	<select id="selectListSort0" resultType="cdto">
   		SELECT * 
 	    FROM ( SELECT ROWNUM RN, A.* 

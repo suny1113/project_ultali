@@ -58,6 +58,7 @@ function idCheck(){
       if(password.val() != $(new_pwchk).val()){
          alert("비밀번호가 일치하지 않습니다.");
          $(new_pwchk).focus();
+		 return false;
       }
       
       var regExp = /^([\w\.\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9])+([\w\.\_\-])+@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,8}$/;
