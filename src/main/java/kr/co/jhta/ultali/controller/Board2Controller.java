@@ -90,7 +90,6 @@ public class Board2Controller {
 	    response.addCookie(cookie);
 	    
 	    if(session.getAttribute("id")!=null) {
-   	
 	    	cookie.setMaxAge(600);
 	    	cookie.setPath("/project_ultali");
 	    	response.addCookie(cookie);

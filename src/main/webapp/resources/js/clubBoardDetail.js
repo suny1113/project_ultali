@@ -11,7 +11,6 @@
 		$("wish_button").on("click", function(){
 			if($("#idCheck").val() == ""){
 				alert("로그인을 해주세요");
-				$(location).attr("href", "../login/login");
 			}else if($("#idCheck").val() != ""){
 				$("wish_img").attr("src","../../resources/img/redheart.png")
 			}
