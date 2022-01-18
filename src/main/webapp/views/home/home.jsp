@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -8,6 +9,20 @@
 <link rel="stylesheet" href="resources/css/home.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<script>
+	
+	function clubRegister(){
+		
+		var id = "<c:out value='${sessionScope.id}'/>"
+		
+		if(id == ""){
+			alert("로그인이 필요합니다.")
+			location.href = "<c:out value='${path}' />"+"/login/login"
+		}
+		
+	}
+	
+</script>
 </head>
 <body>
 	
@@ -121,7 +136,12 @@
 			</div>
 			
 			<div class="small-banner">
-				<a href="${path}/clubBoard/clubRegister"><img src="resources/img/register.png" alt="" /></a>
+				<sec:authorize access="isAnonymous()">
+					<a href="javascript:clubRegister()"><img src="resources/img/register.png" alt="" /></a>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<a href="${path}/clubBoard/clubRegister"><img src="resources/img/register.png" alt="" /></a>
+				</sec:authorize>
 			</div>
 			
 		</section>
