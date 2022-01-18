@@ -57,7 +57,7 @@ public class BoardServiceImple implements BoardService{
 		int imgDedup = dao.imgFileNameDedup();
 		
 		// aws에 올릴때 경로 바꿔야함
-		String filePath = "D:\\dev\\final\\webfinal\\src\\main\\webapp\\resources\\img";
+		String filePath = "C:\\dev\\img";
 		
 //		System.out.println("파일이 업로드되는 진짜 경로 : " + filePath);
 		
@@ -89,7 +89,7 @@ public class BoardServiceImple implements BoardService{
 		mav.setViewName("redirect:/clubBoard/clubBoardList");
 		
 		// 데이터베이스에 저장되는 경로
-		String imgPath = "/resources/img/" + imgDedup + mfile.getOriginalFilename();
+		String imgPath = "/img/" + imgDedup + mfile.getOriginalFilename();
 		
 		// 모임일정을 받는 날짜가 두개여서 하나의 문자열로 만든 다음 dto에 추가 
 		dto.setC_date(date+"/"+date2); 
@@ -121,7 +121,7 @@ public class BoardServiceImple implements BoardService{
 
 		int imgDedup = dao.imgFileNameDedup();
 		
-		String filePath = "D:\\dev\\final\\webfinal\\src\\main\\webapp\\resources\\img";
+		String filePath = "C:\\dev\\img";		
 		
 		MultipartFile mfile = file.getFile();
 
@@ -145,7 +145,7 @@ public class BoardServiceImple implements BoardService{
 		mav.addObject("filePath", "../data/" + f.getName());
 		mav.setViewName("redirect:/clubBoard/clubBoardDetail?c_no="+c_no);
 		
-		String imgPath = "/resources/img/" + imgDedup + mfile.getOriginalFilename();
+		String imgPath = "/img/" + imgDedup + mfile.getOriginalFilename();
 		
 		dto.setC_date(date+"/"+date2); 
 		dto.setC_image(imgPath);	
