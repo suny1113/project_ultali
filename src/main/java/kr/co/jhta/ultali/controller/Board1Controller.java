@@ -39,8 +39,11 @@ public class Board1Controller {
 	public String clubList(@RequestParam("major_no") int major_no, Model model,
 							PagingDTO pdto, 
 							@RequestParam(value="nowPage", required=false)String nowPage
-							, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
-				
+							, @RequestParam(value="cntPerPage", required=false)String cntPerPage,
+							@RequestParam("sort") int sort) {
+		
+		int sort_num = sort;
+		
 		int total = service.countClubService(major_no);
 	    if (nowPage == null && cntPerPage == null) {
 	        nowPage = "1";
@@ -54,29 +57,29 @@ public class Board1Controller {
 	    pdto = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 	    pdto.setMajor_no(major_no);
 
+
 	    model.addAttribute("paging", pdto);
 	    model.addAttribute("viewAll", service.selectClubService(pdto));
 	    model.addAttribute("major_no", major_no);
 	    
 	    List<ClubDTO> top_list = service.selectTopClub(major_no);
 		model.addAttribute("top_list", top_list);
-//		System.out.println("int major_no" + major_no);
-//		System.out.println("service.selectClubService(vo)" + service.selectClubService(pdto));
 	    model.addAttribute("paging", pdto);
-	    model.addAttribute("viewAll", service.selectClubService(pdto));
+	    
+	    // 인기순
+ 		if(sort_num == 0) {
+	 		model.addAttribute("viewAll", service.selectTopSort(pdto));
+ 		} 
+ 		else {
+ 			model.addAttribute("viewAll", service.selectClubService(pdto));
+ 		}
+	    
 	    model.addAttribute("major_no", major_no);
+	    
+	    List<ClubDTO> top_list = service.selectTopClub(major_no);
+		model.addAttribute("top_list", top_list);
 		
 		return "/clubBoard/clubBoardList";
-	}
-	
-	// 정렬
-	@GetMapping("/clubBoard/clubBoardListSort")
-	public String clubListSort(@RequestParam("sort") int sort, Model model) {
-		
-//		List<ClubDTO> list = service.selectClubCategory(sort);
-//		model.addAttribute("list", list);
-		
-		return "redirect:/login/login";
 	}
 	
 	// 모임 삭제(관리자 권한)
@@ -97,10 +100,7 @@ public class Board1Controller {
 		return "redirect:/clubBoard/clubBoardList";
 	}
 	
-	// 모임 인기순, 등록일순 정렬
-	//@GetMapping("/clubBoard/clubBoardListSort")
-	
-	
+
 	// 모임 신청 폼으로 
 	@GetMapping("/clubBoard/doApply")
 	public String clubApplyForm(@RequestParam("c_no") int c_no, Model model) {
@@ -120,6 +120,5 @@ public class Board1Controller {
 		
 		return "redirect:/clubBoard/clubBoardDetail";
 	}
-	
 	
 }

@@ -14,5 +14,6 @@ public interface Board1Service {
     public void deleteClub(String c_no);
     public void insertApply(AppDto dto);
     public List<ClubDTO> selectTopClub(int major_no);
+    public List<ClubDTO> selectTopSort(PagingDTO dto);
 	
 }

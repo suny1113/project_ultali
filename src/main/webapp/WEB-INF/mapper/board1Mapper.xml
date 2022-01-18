@@ -47,5 +47,15 @@
 		WHERE major_no = #{major_no}
 		AND ROWNUM &lt; 5
   	</select>
+
+  	<select id="selectListSort0" resultType="cdto">
+  		SELECT * 
+	    FROM ( SELECT ROWNUM RN, A.* 
+			   FROM ( SELECT * 
+	                  FROM CLUB 
+	                  WHERE major_no = #{major_no}
+	                  ORDER BY c_hits DESC ) A )
+	    WHERE RN BETWEEN #{start} AND #{end}
+  	</select>
   
 </mapper>

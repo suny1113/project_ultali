@@ -51,4 +51,9 @@ public class Board1ServiceImple implements Board1Service {
 		return dao.selectTopClub(major_no);
 	}
 
+	@Override
+	public List<ClubDTO> selectTopSort(PagingDTO dto) {
+		return dao.selectClubList_top(dto);
+	}
+
 }

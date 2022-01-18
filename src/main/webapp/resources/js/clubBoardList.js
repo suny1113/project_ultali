@@ -1,8 +1,9 @@
 $(function (){
 
 	var chkObj = document.getElementsByName("check");
+	var id = $("#idCheck").val();
 	
-	
+	// 관리자 권한 모임 삭제
 	$("#btn_del").on("click", function(){
 		var valueArr = new Array();
 		var list = $("input[name='check']");
@@ -46,9 +47,15 @@ $(function (){
 		//$("#form").submit();
 	});
 
+	// 모임 등록
 	$("#btn_reg").on("click", function(){
-		//console.log("모임 등록 버튼");
-		$(location).attr("href", "clubRegister");
+		if($("#idCheck").val() == "") {
+			alert("로그인이 필요합니다");
+			$(location).attr("href", "../login/login");
+		}
+		else {
+			$(location).attr("href", "clubRegister");
+		}
 	});
 	
 });

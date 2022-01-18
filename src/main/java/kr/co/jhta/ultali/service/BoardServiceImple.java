@@ -58,7 +58,8 @@ public class BoardServiceImple implements BoardService{
 		
 		// aws에 올릴때 경로 바꿔야함
 		String filePath = "C:\\dev\\img";
-		
+
+    
 //		System.out.println("파일이 업로드되는 진짜 경로 : " + filePath);
 		
 		MultipartFile mfile = file.getFile();

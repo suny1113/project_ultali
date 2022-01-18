@@ -51,4 +51,9 @@ public class Board1DAOImple implements Board1DAO {
 		return ss.selectList("kr.co.jhta.ultali.board1.selectTop", major_no);
 	}
 
+	@Override
+	public List<ClubDTO> selectClubList_top(PagingDTO dto) {
+		return ss.selectList("kr.co.jhta.ultali.board1.selectListSort0", dto);
+	}
+
 }

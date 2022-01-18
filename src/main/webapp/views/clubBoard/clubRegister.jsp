@@ -17,6 +17,7 @@
 	<jsp:include page="../home/header.jsp" />
 	<form:form action="clubRegister" method="post" modelAttribute="uploadFile" enctype="multipart/form-data" id="form">
 		<div id="main" class="body-container">
+		
 			<div id="aa">	
 				<div id="title">
 					<p id="p">모임등록</p>

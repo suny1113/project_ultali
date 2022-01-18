@@ -48,8 +48,8 @@
 					</div>
 				
 					<div class="btn_box">
-						<input type="button" value="신청하기" id="apply" class="button"/>
-						<input type="button" value="취소" id="cancel" class="button"/>
+						<input type="button" value="신청하기" id="apply"/>
+						<input type="button" value="취소" id="cancel"/>
 					</div>
 				</form>
 			</div>
