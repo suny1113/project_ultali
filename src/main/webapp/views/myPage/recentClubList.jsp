@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 	<div class="container">
 		<menu>
 			<div class="item1">
-				<h2>찜한 모임</h2>
+				<h2>최근 본 모임</h2>
 				<table>
 					<tr>
 						<td><a href="myInfo">내 정보</a></td>
@@ -41,13 +42,13 @@
 				<div class="top_club">
 					<div class="club">
 						<div class="img">
-							<a href="clubBoard?c_no=${dto.c_no}"> <img
-								src="../resources/img/soccer1.jpg" alt="soccer_club1_img" />
+							<a href="${path }/clubBoard/clubBoardDetail?c_no=${dto.c_no}"> <img
+								src="${path }${dto.c_image }" alt="${path }${dto.c_image }" />
 							</a>
 						</div>
 						<div class="text">
 							<h2>
-								<a href="clubBoard?c_no=${dto.c_no}">${dto.c_name }</a>
+								<a href="${path }/clubBoard/clubBoardDetail?c_no=${dto.c_no}">${dto.c_name }</a>
 							</h2>
 							<p>일정 : ${dto.c_date }</p>
 							<p>인원 : ${dto.c_count }</p>

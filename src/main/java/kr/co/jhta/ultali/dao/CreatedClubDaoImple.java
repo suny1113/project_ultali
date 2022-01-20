@@ -64,8 +64,8 @@ public class CreatedClubDaoImple implements CreatedClubDaoInter {
 	public List<AppDto> recentList(List list) {
 		return ss.selectList(namespace+"recentList",list);
 	}
-//	@Override
-//	public List<AppDto> recentList(HashMap<String , String> hm) {
-//		return ss.selectList(namespace+"recentList",hm);
-//	}
+	@Override
+	public void deleteClubList(String mem_id) {
+		ss.delete(namespace+"deleteListById", mem_id);
+	}
 }

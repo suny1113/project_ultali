@@ -1,5 +1,8 @@
 package kr.co.jhta.ultali.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +40,10 @@ public class RegisterController {
 	public String register(@ModelAttribute("dto") RegisterDTO dto, HttpServletRequest req) {
 		System.out.println(" dto : " + dto);
 		service.register(dto);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mem_id", dto.getMem_id());
+		map.put("auth", "ROLE_USER");
+		service.addAuth(map);
 		return "redirect:/login/login";
 	}
 

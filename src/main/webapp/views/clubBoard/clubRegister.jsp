@@ -17,6 +17,7 @@
 	<jsp:include page="../home/header.jsp" />
 	<form:form action="clubRegister" method="post" modelAttribute="uploadFile" enctype="multipart/form-data" id="form">
 		<div id="main" class="body-container">
+		
 			<div id="aa">	
 				<div id="title">
 					<p id="p">모임등록</p>
@@ -109,7 +110,7 @@
 					<div>
 	
 	<!-- 					mem_id은 로그인하고 데이터를 받으면 넘겨줄 수 있음 -->
-						<input type="hidden" name="mem_id" value="${dto.mem_id}" />
+						<input type="hidden" name="mem_id" value="${id}" />
 	
 	<!-- 				 카테고리 선택하면 jquery로 값을 넘겨줌 -->
 						<input type="hidden" name="major_no" id="major_no"/>

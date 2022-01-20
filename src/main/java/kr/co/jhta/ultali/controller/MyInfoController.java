@@ -1,5 +1,11 @@
 package kr.co.jhta.ultali.controller;
 
+import java.security.Principal;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.jhta.ultali.dto.MyInfoDto;
+import kr.co.jhta.ultali.service.CreatedClubServiceInter;
+import kr.co.jhta.ultali.service.InquireServiceInter;
 import kr.co.jhta.ultali.service.MyInfoServiceInter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,14 +35,29 @@ public class MyInfoController {
 		this.myInfoServiceInter = myInfoServiceInter;
 	}
 	
+	@Autowired
+	InquireServiceInter inquireServiceInter;
+	
+	public void setInquireServiceInter(InquireServiceInter inquireServiceInter) {
+		this.inquireServiceInter = inquireServiceInter;
+	}
+	
+	@Autowired
+	CreatedClubServiceInter createdClubServiceInter;
+
+	public void setCreatedClubServiceInter(CreatedClubServiceInter createdClubServiceInter) {
+		this.createdClubServiceInter = createdClubServiceInter;
+	}
+
 	@RequestMapping("idreq")
 	public String id() {
 		return "myPage/id";
 	}
 	
 	@GetMapping("myPage/myInfo")
-	public ModelAndView showInfoGet(HttpSession session) {
-		String id = (String)session.getAttribute("id");
+	public ModelAndView showInfoGet(HttpSession session, Principal principal) {
+		String id = principal.getName();
+		session.setAttribute("id", id);
 		System.out.println(id);
 		MyInfoDto myInfoDto = myInfoServiceInter.showInfo(id);
 		return new ModelAndView("myPage/myInfo","myInfoDto",myInfoDto);
@@ -54,13 +77,14 @@ public class MyInfoController {
 	
 	// ajax 비동기 방식
 	@ResponseBody
-	@GetMapping("myPage/nicknameCheck")
-	public String nicknameCheck(@RequestParam("new_nickname") String new_nickname) {
-		int cnt =myInfoServiceInter.nicknameCheck(new_nickname); 
+	@GetMapping("register/nicknameCheck")
+	public String nicknameCheck(@RequestParam("new_id") String new_id) {
+		
+		log.info(""+new_id);
+		int cnt =myInfoServiceInter.nicknameCheck(new_id);
 		String result = (cnt==1)?"is_already":"is_ok";
 		return result;
 	}
-	
 	
 	@PostMapping("myPage/modify")
 	public String modifyInfo(@ModelAttribute("dto") MyInfoDto dto) {
@@ -69,8 +93,22 @@ public class MyInfoController {
 	}
 	
 	@RequestMapping("myPage/delete")
-	public String deleteOne(@ModelAttribute("mem_id") String mem_id) {
+	public String deleteOne(@ModelAttribute("mem_id") String mem_id,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+//		createdClubServiceInter.deleteClubList(mem_id);
+//		inquireServiceInter.deleteInquiry(mem_id);
 		myInfoServiceInter.delete(mem_id);
+		
+		Cookie cookies[] = request.getCookies();
+		if(cookies != null) {
+			for(Cookie c : cookies) {
+				c.setMaxAge(0);
+				response.addCookie(c);
+			}
+		}
+		
+		session.invalidate();
+		
+		
 		return "redirect:/home";
 	}
 	

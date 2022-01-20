@@ -1,9 +1,8 @@
 
-	$(function(){
+	$(function(){	
 	// 	대분류 카테고리가 바뀌면 실행하는 메서드 or 히든에 값을 넘겨줌
 		$("#majorNoSelect").change(function() {
 			var subNoSelect =  $('#subNoSelect')[0];
-			console.log($(this).val());
 			
 			// 만약 대분류가 1이면 이읏도어 소분류 카테고리 생성
 			// 다른 카테고리거나 카테고리를 선택안하면 소분류를 없애기 위해 class="sub"를 줌
@@ -47,14 +46,16 @@
 				
 			}else if($(this).val() == 6){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option name='sub_no' value='17' class='sub'>소분류 선택</option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>소분류 선택</option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='17' class='sub'>영어 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='18' class='sub'>외국어 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='19' class='sub'>컴퓨터 </option>")[0]);
 				subNoSelect.appendChild($("<option name='sub_no' value='20' class='sub'>국가고시/공무원 </option>")[0]);
-				
+		
 			}else if($(this).val() == 7){
 				$(".sub").remove();
-				subNoSelect.appendChild($("<option name='sub_no' value='25' class='sub'>기타 추가 해야합니다. </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='0' class='sub'>소분류 선택 </option>")[0]);
+				subNoSelect.appendChild($("<option name='sub_no' value='25' class='sub'>기타 </option>")[0]);
 			}else{
 				$(".sub").remove();
 				$('input[name=sub_no]').val("소분류 선택");
@@ -120,6 +121,16 @@
 				$("#submit").attr("type","submit");
 				$("#form").submit(); 
 			}
+			
+			
 		});
+		
+//		$("#aa").on("click", function(){
+//			if($("file").val() == null){
+//				console.log("널");
+//				console.log($("major_no").val());
+//				console.log($("sub_no").val());
+//			}
+//		});
 		
 	})

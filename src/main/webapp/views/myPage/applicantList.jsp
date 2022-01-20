@@ -12,6 +12,7 @@
 <body>
 	<jsp:include page="../home/header.jsp" />
 	<h1>신청자 현황</h1>
+	<form action="approveApp" method="post">
 	<div class="container">
 		<menu>
 			<div class="item1">
@@ -66,9 +67,11 @@
 										rows="6">${appdto.app_detail }</textarea></td>
 							</tr>
 							<tr>
-								<td colspan="3"><a
-									href="approveApp?app_no=${appdto.app_no}&mem_id=${appdto.mem_id}&c_no=${appdto.c_no}"
-									class="btn">승인</a></td>
+								<td colspan="3">
+								<input type="hidden" name="my_no" value="${appdto.app_no}" />
+								<input type="hidden" name="mem_id" value="${appdto.mem_id}" />
+								<input type="hidden" name="c_no" value="${appdto.c_no}" />
+								<input type="submit" value="승인" class="btn" />
 							</tr>
 						</table>
 					</div>
@@ -92,6 +95,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 	<jsp:include page="../home/footer.jsp" />
 
 </body>

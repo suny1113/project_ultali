@@ -5,6 +5,7 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	font-family: "맑은 고딕";
 }
 /* ----------------------- */
 
@@ -15,7 +16,7 @@
 }
 
 .main_right {
-	overflow: auto;
+	overflow: hidden;
 }
 
 a {
@@ -33,7 +34,6 @@ a {
 }
 
 .top_club_list .img_area {
-	width: 150px;
 	height: 130px;
 }
 
@@ -44,7 +44,6 @@ a {
 
 .top_club_list .text_area {
 	width: 155px;
-	text-align: center;
 }
 
 .top_club_list .text_area > h2 {
@@ -85,6 +84,16 @@ a {
 	font-weight: bold;
 	margin-right: 15px;
 }
+
+.club_list_btn {
+/* 	position: relative; */
+	float: right;
+	padding: 5px 50px 20px 0px;
+}
+
+.club_list_check {
+	float: right;
+}
 /* ------------------------ */
 
 .img_area {
@@ -118,6 +127,10 @@ a {
 
 .text_area > h2 {
 	font-size: 20px;
+	width: 200px;
+	overflow:hidden;
+    white-space : nowrap;
+    text-overflow: ellipsis;
 }
 
 .text_area > h2:hover {

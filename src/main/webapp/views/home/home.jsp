@@ -1,13 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>울타리 :: 취미모임의 시작</title>
+<title>울타리 :: 우리가 이어지는 공간</title>
 <link rel="stylesheet" href="resources/css/home.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<script>
+	
+	function clubRegister(){
+		
+		var id = "<c:out value='${sessionScope.id}'/>"
+		
+		if(id == ""){
+			alert("로그인이 필요합니다.")
+			location.href = "<c:out value='${path}' />"+"/login/login"
+		}
+		
+	}
+	
+</script>
 </head>
 <body>
 	
@@ -25,21 +40,21 @@
 				
 				<div class="category-grid">
 					<div class="meeting">
-						<a href="clubBoard/clubBoardList?major_no=1">
+						<a href="clubBoard/clubBoardList?major_no=1&sort=3">
 							<img src="resources/img/outdoor.png" alt="" />
 							<span>아웃도어</span>
 						</a>
 					</div>
 					
 					<div class="meeting">
-						<a href="clubBoard/clubBoardList?major_no=5">
+						<a href="clubBoard/clubBoardList?major_no=5&sort=3">
 							<img src="resources/img/fitness.jpg" alt="" />
 							<span>피트니스</span>
 						</a>
 					</div>
 					
 					<div class="meeting">
-						<a href="clubBoard/clubBoardList?major_no=2">
+						<a href="clubBoard/clubBoardList?major_no=2&sort=3">
 	
 							<img src="resources/img/sports.png" alt="" />
 							<span>스포츠</span>
@@ -47,28 +62,28 @@
 					</div>
 					
 					<div class="meeting">
-						<a href="clubBoard/clubBoardList?major_no=6">
+						<a href="clubBoard/clubBoardList?major_no=6&sort=3">
 							<img src="resources/img/self_improvement.jpg" alt="" />
 							<span>자기계발</span>
 						</a>
 					</div>
 					
 					<div class="meeting">
-						<a href="clubBoard/clubBoardList?major_no=3">
+						<a href="clubBoard/clubBoardList?major_no=3&sort=3">
 							<img src="resources/img/cooking.jpg" alt="" />
 							<span>쿠킹</span>
 						</a>
 					</div>
 					
 					<div class="meeting">
-						<a href="clubBoard/clubBoardList?major_no=4">
+						<a href="clubBoard/clubBoardList?major_no=4&sort=3">
 							<img src="resources/img/craft.jpg" alt="" />
 							<span>공예</span>
 						</a>
 					</div>
 					
 					<div class="meeting">
-						<a href="clubBoard/clubBoardList?major_no=7">
+						<a href="clubBoard/clubBoardList?major_no=7&sort=3">
 							<img src="resources/img/meeting.jpg" alt="" />
 							<span>기타</span>
 						</a>
@@ -121,7 +136,12 @@
 			</div>
 			
 			<div class="small-banner">
-				<a href="${path}/clubBoard/clubRegister"><img src="resources/img/register.png" alt="" /></a>
+				<sec:authorize access="isAnonymous()">
+					<a href="javascript:clubRegister()"><img src="resources/img/register.png" alt="" /></a>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<a href="${path}/clubBoard/clubRegister"><img src="resources/img/register.png" alt="" /></a>
+				</sec:authorize>
 			</div>
 			
 		</section>

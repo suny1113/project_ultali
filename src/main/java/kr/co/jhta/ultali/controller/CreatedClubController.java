@@ -2,6 +2,7 @@ package kr.co.jhta.ultali.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-
 public class CreatedClubController {
 
 	@Autowired
@@ -90,10 +90,11 @@ public class CreatedClubController {
 	//	}
 
 	@RequestMapping("myPage/approveApp")
-	public String approveApp(@ModelAttribute("app_no")int app_no, @ModelAttribute("myclub")MyClubDto myclub) {
-		createdClubServiceInter.applyApp(app_no);
+	public String approveApp(@ModelAttribute("myclub") MyClubDto myclub) {
+		createdClubServiceInter.applyApp(myclub.getMy_no());
 		createdClubServiceInter.insertMyClub(myclub);
-		return "redirect:applicantList";
+		System.out.println("등록됨");
+		return "redirect:createdClub";
 	}
 
 	// wishList
@@ -110,23 +111,19 @@ public class CreatedClubController {
 	// recentClubList
 	@RequestMapping("myPage/recentClub")
 	public ModelAndView recent(HttpServletRequest request,HttpServletResponse response ) {
-		Cookie [] cookies = request.getCookies();
-		List list = new ArrayList();
-		if(cookies!=null) {
-			for(Cookie c :cookies) {
+		Cookie []cookies = request.getCookies();
+		List<Integer> list = new ArrayList();
+		if(cookies.length>1) {
+			for(Cookie c : cookies) {
 				if(!c.getName().equals("JSESSIONID")) {
+					System.out.println(c.getValue());
 					list.add(Integer.parseInt(c.getValue()));
-					return new ModelAndView("myPage/recentClubList","showClubList",createdClubServiceInter.recentList(list));
 				}
 			}
+			return new ModelAndView("myPage/recentClubList","showClubList",	createdClubServiceInter.recentList(list));	
+		}else {
+			return new ModelAndView("myPage/recentClubList");
 		}
-
-		// hashmap 으로 변경
-		//		hm.put("sUser_type", list); // 네 네 결과는 cdto로 나와요 여기 hashmap
-
-		//		log.info("결과 : "+ createdClubServiceInter.recentList(hm));
-
-		return new ModelAndView("myPage/recentClubList");
 	}
 
 }
