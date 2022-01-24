@@ -16,6 +16,7 @@ local.properties
 .recommenders
 .classpath
 target/
+sms.properties
 # External tool builders
 .externalToolBuilders/
 
